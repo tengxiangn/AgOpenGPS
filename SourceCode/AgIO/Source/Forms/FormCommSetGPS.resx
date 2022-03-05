@@ -439,7 +439,7 @@
         j34626PHfwDOjr6Emq/VRAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnOpenSerial2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnOpenGPS2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAA0rSURBVHhe7ZtpcJXVGcdtO12nH/qhy7RfbLXjtDOO
@@ -821,6 +821,6 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>78</value>
+    <value>25</value>
   </metadata>
 </root>

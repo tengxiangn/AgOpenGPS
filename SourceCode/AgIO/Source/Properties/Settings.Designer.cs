@@ -609,5 +609,17 @@ namespace AgIO.Properties {
                 this["setPort_wasRtcmConnected"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setPort_wasGPS2Connected {
+            get {
+                return ((bool)(this["setPort_wasGPS2Connected"]));
+            }
+            set {
+                this["setPort_wasGPS2Connected"] = value;
+            }
+        }
     }
 }

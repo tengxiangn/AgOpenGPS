@@ -67,6 +67,16 @@ namespace AgIO
                 if (spGPS.IsOpen) lblGPS1Comm.Text = portNameGPS;
             }
 
+            //set baud and port from last time run
+            baudRateGPS2 = Settings.Default.setPort_baudRateGPS2;
+            portNameGPS2 = Settings.Default.setPort_portNameGPS2;
+            wasGPS2ConnectedLastRun = Settings.Default.setPort_wasGPS2Connected;
+            if (wasGPS2ConnectedLastRun)
+            {
+                OpenGPS2Port();
+                if (spGPS2.IsOpen) lblGPS2Comm.Text = portNameGPS2;
+            }
+
             // set baud and port for rtcm from last time run
             baudRateRtcm = Settings.Default.setPort_baudRateRtcm;
             portNameRtcm = Settings.Default.setPort_portNameRtcm;
@@ -408,6 +418,15 @@ namespace AgIO
 
         private void FormLoop_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.setPort_wasGPSConnected = wasGPSConnectedLastRun;
+            Properties.Settings.Default.setPort_wasGPS2Connected = wasGPS2ConnectedLastRun;
+            Properties.Settings.Default.setPort_wasModule3Connected = wasModule3ConnectedLastRun;
+            Properties.Settings.Default.setPort_wasModule2Connected = wasModule2ConnectedLastRun;
+            Properties.Settings.Default.setPort_wasModule1Connected = wasModule1ConnectedLastRun;
+            Properties.Settings.Default.setPort_wasIMUConnected = wasIMUConnectedLastRun;
+            Properties.Settings.Default.setPort_wasRtcmConnected = wasRtcmConnectedLastRun;
+            Properties.Settings.Default.Save();
+
             if (recvFromAOGLoopBackSocket != null)
             {
                 try

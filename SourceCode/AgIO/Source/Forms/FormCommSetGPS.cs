@@ -14,28 +14,6 @@ namespace AgIO
             //get copy of the calling main form
             mf = callingForm as FormLoop;
             InitializeComponent();
-            //btnOpenSerial.Text = gStr.gsConnect;
-            //btnOpenSerialArduino.Text = gStr.gsConnect;
-            //btnOpenSerialAutoSteer.Text = gStr.gsConnect;
-            //btnCloseSerial.Text = gStr.gsDisconnect;
-            //btnCloseSerialArduino.Text = gStr.gsDisconnect;
-            //btnCloseSerialAutoSteer.Text = gStr.gsDisconnect;
-            //btnRescan.Text = gStr.gsRescanPorts;
-
-            //label3.Text = gStr.gsToAutoSteer;
-            //label6.Text = gStr.gsFromAutoSteer;
-            //label2.Text = gStr.gsToMachinePort;
-            //label15.Text = gStr.gsFromMachinePort;
-
-            //groupBox1.Text = gStr.gsGPSPort;
-            //groupBox3.Text = gStr.gsAutoSteerPort;
-            //groupBox2.Text = gStr.gsMachinePort;
-
-            //lblCurrentArduinoPort.Text = gStr.gsPort;
-            //lblCurrentPort.Text = gStr.gsPort;
-            //lblCurrentAutoSteerPort.Text = gStr.gsPort;
-            //lblCurrentBaud.Text = gStr.gsBaud;
-
         }
 
         private void FormCommSet_Load(object sender, EventArgs e)
@@ -62,14 +40,14 @@ namespace AgIO
                 cboxBaud2.Enabled = false;
                 cboxPort2.Enabled = false;
                 btnCloseSerial2.Enabled = true;
-                btnOpenSerial2.Enabled = false;
+                btnOpenGPS2.Enabled = false;
             }
             else
             {
                 cboxBaud2.Enabled = true;
                 cboxPort2.Enabled = true;
                 btnCloseSerial2.Enabled = false;
-                btnOpenSerial2.Enabled = true;
+                btnOpenGPS2.Enabled = true;
             }
 
             if (mf.spRtcm.IsOpen)
@@ -306,7 +284,7 @@ namespace AgIO
             }
         }
 
-        private void btnOpenSerial2_Click(object sender, EventArgs e)
+        private void btnOpenGPS2_Click(object sender, EventArgs e)
         {
             mf.OpenGPS2Port();
             if (mf.spGPS2.IsOpen)
@@ -314,22 +292,22 @@ namespace AgIO
                 cboxBaud2.Enabled = false;
                 cboxPort2.Enabled = false;
                 btnCloseSerial2.Enabled = true;
-                btnOpenSerial2.Enabled = false;
-                lblCurrentBaud2.Text = mf.spGPS.BaudRate.ToString();
-                lblCurrentPort2.Text = mf.spGPS.PortName;
+                btnOpenGPS2.Enabled = false;
+                lblCurrentBaud2.Text = mf.spGPS2.BaudRate.ToString();
+                lblCurrentPort2.Text = mf.spGPS2.PortName;
             }
             else
             {
                 cboxBaud2.Enabled = true;
                 cboxPort2.Enabled = true;
                 btnCloseSerial2.Enabled = false;
-                btnOpenSerial2.Enabled = true;
+                btnOpenGPS2.Enabled = true;
                 MessageBox.Show("Unable to connect to Port");
             }
         }
 
 
-        private void btnCloseSerial2_Click(object sender, EventArgs e)
+        private void btnCloseGPS2_Click(object sender, EventArgs e)
         {
             mf.CloseGPS2Port();
             if (mf.spGPS2.IsOpen)
@@ -337,14 +315,14 @@ namespace AgIO
                 cboxBaud2.Enabled = false;
                 cboxPort2.Enabled = false;
                 btnCloseSerial2.Enabled = true;
-                btnOpenSerial2.Enabled = false;
+                btnOpenGPS2.Enabled = false;
             }
             else
             {
                 cboxBaud2.Enabled = true;
                 cboxPort2.Enabled = true;
                 btnCloseSerial2.Enabled = false;
-                btnOpenSerial2.Enabled = true;
+                btnOpenGPS2.Enabled = true;
             }
         }
 
@@ -357,10 +335,12 @@ namespace AgIO
             textBoxRcv2.Text = mf.recvGPS2Sentence;
             lblSteer.Text = mf.spModule1.PortName;
             lblGPS.Text = mf.spGPS.PortName;
+            lblGPS2.Text = mf.spGPS2.PortName;
             lblIMU.Text = mf.spIMU.PortName;
             lblMachine.Text = mf.spModule2.PortName;
 
             lblFromGPS.Text = mf.traffic.cntrGPSIn == 0 ? "--" : (mf.traffic.cntrGPSIn).ToString();
+            lblFromGPS2.Text = mf.traffic.cntrGPS2In == 0 ? "--" : (mf.traffic.cntrGPS2In).ToString();
 
             lblFromModule1.Text = mf.traffic.cntrModule1In == 0 ? "--" : (mf.traffic.cntrModule1In).ToString();
 

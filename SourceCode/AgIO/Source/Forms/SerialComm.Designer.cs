@@ -49,6 +49,7 @@ namespace AgIO
 
         //used to decide to autoconnect autosteer arduino this run
         public bool wasGPSConnectedLastRun = false;
+        public bool wasGPS2ConnectedLastRun = false;
         public bool wasModule3ConnectedLastRun = false;
         public bool wasModule2ConnectedLastRun = false;
         public bool wasModule1ConnectedLastRun = false;
@@ -1005,7 +1006,7 @@ namespace AgIO
         {
             //if (sp.IsOpen)
             {
-                //spGPS.DataReceived -= sp_DataReceivedGPS;
+                spGPS.DataReceived -= sp_DataReceivedGPS;
                 try { spGPS.Close(); }
                 catch (Exception e)
                 {
@@ -1020,7 +1021,8 @@ namespace AgIO
                 spGPS.Dispose();
             }
             lblGPS1Comm.Text = "---";
-            wasGPSConnectedLastRun = false;
+            Properties.Settings.Default.setPort_wasGPSConnected = false;
+            Properties.Settings.Default.Save();
 
         }
 
@@ -1057,7 +1059,10 @@ namespace AgIO
         //called by the GPS2 delegate every time a chunk is rec'd
         private void ReceiveGPS2Port(string sentence)
         {
-            SendToLoopBackMessageAOG(sentence);
+            rawBuffer2 += sentence;
+            ParseNMEA2(ref rawBuffer2);
+
+            //SendToLoopBackMessageAOG(sentence);
             traffic.cntrGPS2In += sentence.Length;
             recvGPS2Sentence = sentence;
 
@@ -1082,17 +1087,6 @@ namespace AgIO
             //close it first
             CloseGPS2Port();
 
-            //if (spGPS2.IsOpen)
-            //{
-            //    //simulatorOnToolStripMenuItem.Checked = false;
-            //    //panelSim.Visible = false;
-            //    //timerSim.Enabled = false;
-
-            //    //Settings.Default.setMenu_isSimulatorOn = simulatorOnToolStripMenuItem.Checked;
-            //    //Settings.Default.Save();
-            //}
-
-
             if (!spGPS2.IsOpen)
             {
                 spGPS2.PortName = portNameGPS2;
@@ -1114,7 +1108,10 @@ namespace AgIO
 
                 Properties.Settings.Default.setPort_portNameGPS2 = portNameGPS2;
                 Properties.Settings.Default.setPort_baudRateGPS2 = baudRateGPS2;
+                Properties.Settings.Default.setPort_wasGPS2Connected = true;    
                 Properties.Settings.Default.Save();
+                lblGPS2Comm.Text = portNameGPS2;
+                wasGPS2ConnectedLastRun = false;
             }
         }
         public void CloseGPS2Port()
@@ -1134,6 +1131,9 @@ namespace AgIO
                 //stripPortGPS2.ForeColor = Color.ForestGreen;
                 //stripOnlineGPS2.Value = 1;
                 spGPS2.Dispose();
+                lblGPS2Comm.Text = "---";
+                Properties.Settings.Default.setPort_wasGPSConnected = false;
+                Properties.Settings.Default.Save();
             }
         }
 
