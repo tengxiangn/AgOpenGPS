@@ -52,6 +52,7 @@ namespace AgIO
             isSendNMEAToUDP = Properties.Settings.Default.setUDP_isSendNMEAToUDP;
 
             lblGPS1Comm.Text = "---";
+            lblGPS2Comm.Text = "---";
             lblIMUComm.Text = "---";
             lblMod1Comm.Text = "---";
             lblMod2Comm.Text = "---";
@@ -474,6 +475,9 @@ namespace AgIO
 
             lblFromGPS.Text = traffic.cntrGPSIn == 0 ? "--" : (traffic.cntrGPSIn).ToString();
             lblToGPS.Text = traffic.cntrGPSOut == 0 ? "--" : (traffic.cntrGPSOut).ToString();
+
+            lblFromGPS2.Text = traffic.cntrGPS2In == 0 ? "--" : (traffic.cntrGPS2In).ToString();
+            lblToGPS2.Text = traffic.cntrGPS2Out == 0 ? "--" : (traffic.cntrGPS2Out).ToString();
 
             lblFromModule1.Text = traffic.cntrModule1In == 0 ? "--" : (traffic.cntrModule1In).ToString();
             lblToModule1.Text = traffic.cntrModule1Out == 0 ? "--" : (traffic.cntrModule1Out).ToString();

@@ -171,10 +171,10 @@ namespace AgIO
                 }
 
                 Properties.Settings.Default.setPort_wasIMUConnected = false;
+                wasIMUConnectedLastRun = false;
                 Properties.Settings.Default.Save();
 
                 spIMU.Dispose();
-                wasIMUConnectedLastRun = false;
             }
 
             else
@@ -997,6 +997,7 @@ namespace AgIO
                 Properties.Settings.Default.setPort_portNameGPS = portNameGPS;
                 Properties.Settings.Default.setPort_baudRateGPS = baudRateGPS;
                 Properties.Settings.Default.setPort_wasGPSConnected = true;
+                wasGPSConnectedLastRun = true;
                 Properties.Settings.Default.Save();
                 lblGPS1Comm.Text = portNameGPS;
                 wasGPSConnectedLastRun = true;
@@ -1022,6 +1023,7 @@ namespace AgIO
             }
             lblGPS1Comm.Text = "---";
             Properties.Settings.Default.setPort_wasGPSConnected = false;
+            wasGPSConnectedLastRun=false;
             Properties.Settings.Default.Save();
 
         }
@@ -1059,6 +1061,9 @@ namespace AgIO
         //called by the GPS2 delegate every time a chunk is rec'd
         private void ReceiveGPS2Port(string sentence)
         {
+            rawBuffer += sentence;
+            ParseNMEA(ref rawBuffer);
+
             rawBuffer2 += sentence;
             ParseNMEA2(ref rawBuffer2);
 
@@ -1108,10 +1113,10 @@ namespace AgIO
 
                 Properties.Settings.Default.setPort_portNameGPS2 = portNameGPS2;
                 Properties.Settings.Default.setPort_baudRateGPS2 = baudRateGPS2;
-                Properties.Settings.Default.setPort_wasGPS2Connected = true;    
+                Properties.Settings.Default.setPort_wasGPS2Connected = true;  
+                wasGPS2ConnectedLastRun = true;
                 Properties.Settings.Default.Save();
                 lblGPS2Comm.Text = portNameGPS2;
-                wasGPS2ConnectedLastRun = false;
             }
         }
         public void CloseGPS2Port()
@@ -1183,9 +1188,8 @@ namespace AgIO
                 Properties.Settings.Default.setPort_portNameRtcm = portNameRtcm;
                 Properties.Settings.Default.setPort_baudRateRtcm = baudRateRtcm;
                 Properties.Settings.Default.setPort_wasRtcmConnected = true;
-                Properties.Settings.Default.Save();
-                //lblRtcmComm.Text = portNameRtcm;
                 wasRtcmConnectedLastRun = true;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -1200,7 +1204,9 @@ namespace AgIO
                 }
             }
 
+            Properties.Settings.Default.setPort_wasRtcmConnected = false;
             wasRtcmConnectedLastRun = false;
+            Properties.Settings.Default.Save();
         }
     }//end class
 }//end namespace

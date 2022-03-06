@@ -175,6 +175,7 @@ namespace AgOpenGPS
         {
             //Roll
             lblRollZeroOffset.Text = ((double)Properties.Settings.Default.setIMU_rollZero).ToString("N2");
+            lblRollZeroOffsetTool.Text = ((double)Properties.Settings.Default.setIMU_rollZeroTool).ToString("N2");
             hsbarRollFilter.Value = (int)(Properties.Settings.Default.setIMU_rollFilter * 100);
             cboxDataInvertRoll.Checked = Properties.Settings.Default.setIMU_invertRoll;
         }
@@ -183,6 +184,7 @@ namespace AgOpenGPS
         {
             Properties.Settings.Default.setIMU_rollFilter = (double)hsbarRollFilter.Value * 0.01;
             Properties.Settings.Default.setIMU_rollZero = mf.ahrs.rollZero;
+            Properties.Settings.Default.setIMU_rollZeroTool = mf.ahrs.rollZeroTool;
             Properties.Settings.Default.setIMU_invertRoll = cboxDataInvertRoll.Checked;
 
             mf.ahrs.rollFilter = Properties.Settings.Default.setIMU_rollFilter;
@@ -214,8 +216,28 @@ namespace AgOpenGPS
         {
             mf.ahrs.rollZero = 0;
             lblRollZeroOffset.Text = "0.00";
+        }         
+
+        private void btnRemoveZeroOffsetTool_Click(object sender, EventArgs e)
+        {
+            mf.ahrs.rollZeroTool = 0;
+            lblRollZeroOffsetTool.Text = "0.00";
         }
-         
+
+        private void btnZeroRollTool_Click(object sender, EventArgs e)
+        {
+            if (mf.ahrs.imuRollTool != 88888)
+            {
+                mf.ahrs.imuRollTool += mf.ahrs.rollZeroTool;
+                mf.ahrs.rollZeroTool = mf.ahrs.imuRollTool;
+                lblRollZeroOffsetTool.Text = (mf.ahrs.rollZeroTool).ToString("N2");
+            }
+            else
+            {
+                lblRollZeroOffsetTool.Text = "***";
+            }
+        }
+
         private void btnResetIMU_Click(object sender, EventArgs e)
         {
             mf.ahrs.imuHeading = 99999;

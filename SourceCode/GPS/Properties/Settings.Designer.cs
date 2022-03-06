@@ -1415,5 +1415,17 @@ namespace AgOpenGPS.Properties {
                 this["setGPS_dualHeadingOffset"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double setIMU_rollZeroTool {
+            get {
+                return ((double)(this["setIMU_rollZeroTool"]));
+            }
+            set {
+                this["setIMU_rollZeroTool"] = value;
+            }
+        }
     }
 }

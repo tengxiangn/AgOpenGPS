@@ -89,7 +89,7 @@ namespace AgOpenGPS
                                     ahrs.imuRoll = temp - ahrs.rollZero;
                                 }
                                 if (temp == float.MinValue)
-                                    ahrs.imuRoll = 0;                               
+                                    ahrs.imuRoll = 0;
 
                                 //altitude in meters
                                 temp = BitConverter.ToSingle(data, 37);
@@ -145,13 +145,57 @@ namespace AgOpenGPS
 
                                 if (isLogNMEA)
                                     pn.logNMEASentence.Append(
-                                        DateTime.UtcNow.ToString("mm:ss.ff",CultureInfo.InvariantCulture)+ " " +
-                                        Lat.ToString("N7") + " " + Lon.ToString("N7") + " " + 
+                                        DateTime.UtcNow.ToString("mm:ss.ff", CultureInfo.InvariantCulture) + " " +
+                                        Lat.ToString("N7") + " " + Lon.ToString("N7") + " " +
                                         pn.speed.ToString("N1") + " " +
                                         pn.headingTrueDual.ToString("N1") + "\r\n"
                                         );
 
                                 UpdateFixPosition();
+                            }
+                        }
+                        break;
+
+                    case 0xD7:
+                        {
+
+                            double Lon = BitConverter.ToDouble(data, 5);
+                            double Lat = BitConverter.ToDouble(data, 13);
+
+                            if (Lon != double.MaxValue && Lat != double.MaxValue)
+                            {
+                                pn.longitudeTool = Lon;
+                                pn.latitudeTool = Lat;
+
+                                pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fixTool.northing, out pn.fixTool.easting);
+
+                                ushort sats = BitConverter.ToUInt16(data, 21);
+                                if (sats != ushort.MaxValue)
+                                    pn.satellitesTrackedTool = sats;
+
+                                byte fix = data[23];
+                                if (fix != byte.MaxValue)
+                                    pn.fixQualityTool = fix;
+
+                                ushort hdop = BitConverter.ToUInt16(data, 24);
+                                if (hdop != ushort.MaxValue)
+                                    pn.hdopTool = hdop * 0.01;
+
+                                ushort age = BitConverter.ToUInt16(data, 26);
+                                if (age != ushort.MaxValue)
+                                    pn.ageTool = age * 0.01;
+
+                                short imuRol = BitConverter.ToInt16(data, 28);
+                                if (imuRol != short.MaxValue)
+                                {
+                                    rollK = imuRol;
+                                    if (ahrs.isRollInvert) rollK *= -0.1;
+                                    else rollK *= 0.1;
+                                    rollK -= ahrs.rollZeroTool;
+                                    ahrs.imuRollTool = ahrs.imuRollTool * ahrs.rollFilter + rollK * (1 - ahrs.rollFilter);
+                                }
+
+                                //UpdateFixPosition();
                             }
                         }
                         break;

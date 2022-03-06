@@ -1055,13 +1055,13 @@ namespace AgIO
             {
                 isNMEAToSend2 = false;
 
-                byte[] nmeaPGN = new byte[29];
+                byte[] nmeaPGN = new byte[31];
 
                 nmeaPGN[0] = 0x80;
                 nmeaPGN[1] = 0x81;
                 nmeaPGN[2] = 0x7C;
                 nmeaPGN[3] = 0xD7;
-                nmeaPGN[4] = 23; // nmea total array count minus 6
+                nmeaPGN[4] = 25; // nmea total array count minus 6
 
                 //longitude
                 Buffer.BlockCopy(BitConverter.GetBytes(longitudeSend2), 0, nmeaPGN, 5, 8);
@@ -1074,16 +1074,16 @@ namespace AgIO
                 Buffer.BlockCopy(BitConverter.GetBytes(satellitesTracked2), 0, nmeaPGN, 21, 2);
                 satellitesTracked2 = ushort.MaxValue;
 
-                nmeaPGN[22] = (byte)fixQuality2;
+                nmeaPGN[23] = (byte)fixQuality2;
                 fixQuality2 = byte.MaxValue;
 
-                Buffer.BlockCopy(BitConverter.GetBytes(hdop2X100), 0, nmeaPGN, 23, 2);
+                Buffer.BlockCopy(BitConverter.GetBytes(hdop2X100), 0, nmeaPGN, 24, 2);
                 hdop2X100 = ushort.MaxValue;
 
-                Buffer.BlockCopy(BitConverter.GetBytes(age2X100), 0, nmeaPGN, 25, 2);
+                Buffer.BlockCopy(BitConverter.GetBytes(age2X100), 0, nmeaPGN, 26, 2);
                 age2X100 = ushort.MaxValue;
 
-                Buffer.BlockCopy(BitConverter.GetBytes(imuRoll2), 0, nmeaPGN, 27, 2);
+                Buffer.BlockCopy(BitConverter.GetBytes(imuRoll2), 0, nmeaPGN, 28, 2);
                 imuRoll2 = short.MaxValue;
 
                 int CK_A = 0;
@@ -1093,7 +1093,7 @@ namespace AgIO
                 }
 
                 //checksum
-                nmeaPGN[28] = (byte)CK_A;
+                nmeaPGN[30] = (byte)CK_A;
 
                 //Send nmea to AgOpenGPS
                 SendToLoopBackMessageAOG(nmeaPGN);
@@ -1256,62 +1256,62 @@ namespace AgIO
             */
             #endregion PANDA Message
 
-            if (!string.IsNullOrEmpty(words[1]) && !string.IsNullOrEmpty(words[2]) && !string.IsNullOrEmpty(words[3])
-                && !string.IsNullOrEmpty(words[3]) && !string.IsNullOrEmpty(words[0]))
+            if (!string.IsNullOrEmpty(words2[1]) && !string.IsNullOrEmpty(words2[2]) && !string.IsNullOrEmpty(words2[3])
+                && !string.IsNullOrEmpty(words2[3]) && !string.IsNullOrEmpty(words2[0]))
             {
 
                 //get latitude and convert to decimal degrees
-                int decim = words[2].IndexOf(".", StringComparison.Ordinal);
+                int decim = words2[2].IndexOf(".", StringComparison.Ordinal);
                 if (decim == -1)
                 {
-                    words[2] += ".00";
-                    decim = words[2].IndexOf(".", StringComparison.Ordinal);
+                    words2[2] += ".00";
+                    decim = words2[2].IndexOf(".", StringComparison.Ordinal);
                 }
 
                 decim -= 2;
-                double.TryParse(words[2].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out latitude2);
-                double.TryParse(words[2].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp);
+                double.TryParse(words2[2].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out latitude2);
+                double.TryParse(words2[2].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp);
                 temp *= 0.01666666666666666666666666666667;
                 latitude2 += temp;
-                if (words[3] == "S")
+                if (words2[3] == "S")
                     latitude2 *= -1;
 
                 latitudeSend2 = latitude2;
 
                 //get longitude and convert to decimal degrees
-                decim = words[4].IndexOf(".", StringComparison.Ordinal);
+                decim = words2[4].IndexOf(".", StringComparison.Ordinal);
                 if (decim == -1)
                 {
-                    words[4] += ".00";
-                    decim = words[4].IndexOf(".", StringComparison.Ordinal);
+                    words2[4] += ".00";
+                    decim = words2[4].IndexOf(".", StringComparison.Ordinal);
                 }
 
                 decim -= 2;
-                double.TryParse(words[4].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out longitude2);
-                double.TryParse(words[4].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out temp);
+                double.TryParse(words2[4].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out longitude2);
+                double.TryParse(words2[4].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out temp);
                 longitude2 += temp * 0.01666666666666666666666666666667;
 
-                { if (words[5] == "W") longitude2 *= -1; }
+                { if (words2[5] == "W") longitude2 *= -1; }
                 longitudeSend2 = longitude2;
 
                 //FixQuality
-                byte.TryParse(words[6], NumberStyles.Float, CultureInfo.InvariantCulture, out fixQuality2);
+                byte.TryParse(words2[6], NumberStyles.Float, CultureInfo.InvariantCulture, out fixQuality2);
                 fixQualityData2 = fixQuality2;
 
                 //satellites tracked
-                ushort.TryParse(words[7], NumberStyles.Float, CultureInfo.InvariantCulture, out satellitesTracked2);
+                ushort.TryParse(words2[7], NumberStyles.Float, CultureInfo.InvariantCulture, out satellitesTracked2);
                 satellitesData2 = satellitesTracked2;
 
                 //hdop
-                float.TryParse(words[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData2);
+                float.TryParse(words2[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData2);
                 hdop2X100 = (ushort)(hdopData * 100.0);
 
                 //age
-                float.TryParse(words[10], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData2);
+                float.TryParse(words2[10], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData2);
                 age2X100 = (ushort)(ageData2 * 100.0);
 
                 //roll
-                short.TryParse(words[13], NumberStyles.Float, CultureInfo.InvariantCulture, out imuRoll2);
+                short.TryParse(words2[13], NumberStyles.Float, CultureInfo.InvariantCulture, out imuRoll2);
                 imuRollData2 = imuRoll2;
 
                 //always send because its probably the only one.

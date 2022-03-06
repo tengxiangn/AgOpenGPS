@@ -7,7 +7,7 @@ namespace AgOpenGPS
 
         //Roll and heading from the IMU
         public double imuHeading = 99999, prevIMUHeading = 0, imuRoll = 0, imuPitch=0, imuYawRate = 0;
-
+        public double imuRollTool = 0, rollZeroTool = 0;
         public System.Int16 angVel;
 
         //actual value in degrees
@@ -26,6 +26,8 @@ namespace AgOpenGPS
         public CAHRS()
         {
             rollZero = Properties.Settings.Default.setIMU_rollZero;
+
+            rollZeroTool = Properties.Settings.Default.setIMU_rollZeroTool;
 
             rollFilter = Properties.Settings.Default.setIMU_rollFilter;
 
