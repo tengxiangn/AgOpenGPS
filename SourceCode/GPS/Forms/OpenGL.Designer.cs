@@ -404,9 +404,15 @@ namespace AgOpenGPS
                     //    GL.End();
                     //}
 
-                    //draw the vehicle/implement
                     tool.DrawTool();
                     vehicle.DrawVehicle();
+
+                    //draw the 2nd GPS
+                    GL.PointSize(8.0f);
+                    GL.Color3(0.20f, 1.0f, 1.0f);
+                    GL.Begin(PrimitiveType.Points);
+                    GL.Vertex3(pn.fixTool.easting, pn.fixTool.northing, 0.1);
+                    GL.End();
 
                     // 2D Ortho ---------------------------------------////////-------------------------------------------------
 

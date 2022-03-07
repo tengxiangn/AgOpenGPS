@@ -99,7 +99,6 @@ namespace AgOpenGPS
 
         public void DrawVehicle()
         {
-
             //draw vehicle
             GL.Rotate(glm.toDegrees(-mf.fixHeading), 0.0, 0.0, 1.0);
             //mf.font.DrawText3D(0, 0, "&TGF");

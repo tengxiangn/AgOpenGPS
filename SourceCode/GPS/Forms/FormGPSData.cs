@@ -25,13 +25,24 @@ namespace AgOpenGPS
             lblEastingField.Text = Math.Round(mf.pn.fix.easting, 1).ToString();
             lblNorthingField.Text = Math.Round(mf.pn.fix.northing, 1).ToString();
 
+            lblEastingFieldTool.Text = Math.Round(mf.pn.fixTool.easting, 1).ToString();
+            lblNorthingFieldTool.Text = Math.Round(mf.pn.fixTool.northing, 1).ToString();
+
             lblLatitude.Text = mf.Latitude;
             lblLongitude.Text = mf.Longitude;
+
+            lblLatitudeTool.Text = mf.LatitudeTool;
+            lblLongitudeTool.Text = mf.LongitudeTool;
 
             //other sat and GPS info
             lblFixQuality.Text = mf.FixQuality;
             lblSatsTracked.Text = mf.SatsTracked;
             lblHDOP.Text = mf.HDOP;
+
+            lblFixQualityTool.Text = mf.FixQualityTool;
+            lblSatsTrackedTool.Text = mf.SatsTrackedTool;
+            lblHDOPTool.Text = mf.HDOPTool;
+
             lblSpeed.Text = mf.pn.speed.ToString("N1");
 
             //lblUturnByte.Text = Convert.ToString(mf.mc.machineData[mf.mc.mdUTurn], 2).PadLeft(6, '0');
@@ -53,8 +64,8 @@ namespace AgOpenGPS
 
         private void FormGPSData_Load(object sender, EventArgs e)
         {
-            lblSunrise.Text = mf.sunrise.ToString("HH:mm");
-            lblSunset.Text = mf.sunset.ToString("HH:mm");
+            //lblSunrise.Text = mf.sunrise.ToString("HH:mm");
+            //lblSunset.Text = mf.sunset.ToString("HH:mm");
         }
 
         private void FormGPSData_FormClosing(object sender, FormClosingEventArgs e)

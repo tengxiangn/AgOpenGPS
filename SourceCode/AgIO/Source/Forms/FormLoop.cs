@@ -22,6 +22,7 @@ namespace AgIO
         }
 
         public StringBuilder logNMEASentence = new StringBuilder();
+        public StringBuilder logNMEASentence2 = new StringBuilder();
 
         public bool isKeyboardOn = true;
 
@@ -209,6 +210,11 @@ namespace AgIO
                         writer.Write(logNMEASentence.ToString());
                     }
                     logNMEASentence.Clear();
+                    using (StreamWriter writer = new StreamWriter("zAgIO_Tool_log.txt", true))
+                    {
+                        writer.Write(logNMEASentence2.ToString());
+                    }
+                    logNMEASentence2.Clear();
                 }
 
                 lastSecond = secondsSinceStart;

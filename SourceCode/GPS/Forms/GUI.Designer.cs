@@ -1215,10 +1215,11 @@ namespace AgOpenGPS
         public string Latitude { get { return Convert.ToString(Math.Round(pn.latitude, 7)); } }
         public string Longitude { get { return Convert.ToString(Math.Round(pn.longitude, 7)); } }
 
+         public string LatitudeTool { get { return Convert.ToString(Math.Round(pn.latitudeTool, 7)); } }
+        public string LongitudeTool { get { return Convert.ToString(Math.Round(pn.longitudeTool, 7)); } }
+
         public string SatsTracked { get { return Convert.ToString(pn.satellitesTracked); } }
         public string HDOP { get { return Convert.ToString(pn.hdop); } }
-        public string Heading { get { return Convert.ToString(Math.Round(glm.toDegrees(fixHeading), 1)) + "\u00B0"; } }
-        public string GPSHeading { get { return (Math.Round(glm.toDegrees(gpsHeading), 1)) + "\u00B0"; } }
         public string FixQuality
         {
             get
@@ -1237,6 +1238,30 @@ namespace AgOpenGPS
                 else return "Unknown: ";
             }
         }
+
+        public string SatsTrackedTool { get { return Convert.ToString(pn.satellitesTrackedTool); } }
+        public string HDOPTool { get { return Convert.ToString(pn.hdopTool); } }
+        public string FixQualityTool
+        {
+            get
+            {
+                if (timerSim.Enabled)
+                    return "Sim: ";
+                else if (pn.fixQualityTool == 0) return "Invalid: ";
+                else if (pn.fixQualityTool == 1) return "GPS single: ";
+                else if (pn.fixQualityTool == 2) return "DGPS : ";
+                else if (pn.fixQualityTool == 3) return "PPS : ";
+                else if (pn.fixQualityTool == 4) return "RTK fix: ";
+                else if (pn.fixQualityTool == 5) return "Float: ";
+                else if (pn.fixQualityTool == 6) return "Estimate: ";
+                else if (pn.fixQualityTool == 7) return "Man IP: ";
+                else if (pn.fixQualityTool == 8) return "Sim: ";
+                else return "Unknown: ";
+            }
+        }
+
+        public string Heading { get { return Convert.ToString(Math.Round(glm.toDegrees(fixHeading), 1)) + "\u00B0"; } }
+        public string GPSHeading { get { return (Math.Round(glm.toDegrees(gpsHeading), 1)) + "\u00B0"; } }
 
         public string GyroInDegrees
         {

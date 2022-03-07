@@ -389,13 +389,22 @@ namespace AgIO
                 //module data also sent to VR
                 SendToLoopBackMessageVR(data);
             }
-
-            else if (data[0] == 36 && (data[1] == 71 || data[1] == 80 || data[1]==75))
+            //$ = 36 G=71 P=80 K=75
+            //Panda
+            else if (data[0] == 36 && (data[1] == 80)) // || data[1] == 80 || data[1]==75))
             {
                 //if (timerSim.Enabled) DisableSim();
                 traffic.cntrGPSIn += data.Length;
                 rawBuffer += Encoding.ASCII.GetString(data);
                 ParseNMEA(ref rawBuffer);
+            }
+            //GGA
+            else if (data[0] == 36 && (data[1] == 71)) // || data[1] == 80 || data[1]==75))
+            {
+                //if (timerSim.Enabled) DisableSim();
+                traffic.cntrGPS2In += data.Length;
+                rawBuffer2 += Encoding.ASCII.GetString(data);
+                ParseNMEA2(ref rawBuffer2);
             }
 
             traffic.cntrUDPIn += data.Length;
