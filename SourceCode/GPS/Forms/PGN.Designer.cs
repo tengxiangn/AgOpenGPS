@@ -222,8 +222,8 @@ namespace AgOpenGPS
             /// Pin conifg 1 to 20
             /// </summary>
             public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xEC, 24,
-                                        0, 0, 0, 0, 0, 0, 0, 0, 
-                                        0, 0, 0, 0, 0, 0, 0, 0, 
+                                        0, 0, 0, 0, 0, 0, 0, 0,
+                                        0, 0, 0, 0, 0, 0, 0, 0,
                                         0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
 
             //where in the pgn is which pin
@@ -259,7 +259,7 @@ namespace AgOpenGPS
 
             public CPGN_EC()
             {
-                string [] words;
+                string[] words;
 
                 words = Properties.Settings.Default.setRelay_pinConfig.Split(',');
 
@@ -291,22 +291,29 @@ namespace AgOpenGPS
                 pgn[pin23] = (byte)int.Parse(words[23]);
 
             }
+        }
 
-            public void MakeCRC()
-            {
-                crc = 0;
-                for (int i = 2; i < pgn.Length - 1; i++)
-                {
-                    crc += pgn[i];
-                }
-                pgn[pgn.Length - 1] = (byte)crc;
-            }
+        //Tool Steer
+        public class CPGN_EB
+        {
+            /// <summary>
+            /// PGN - 235 - EB - Tool Steer
+            /// lowXTE=5  highXTE=6 
+            /// </summary>
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xEB, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+            public int lowXTE = 5;
+            public int highXTE = 6;
+            public int status = 7;
+            //public int tram = 8;
+            //public int geoStop = 9; //out of bounds etc
+            //                        //public int  = 10;
+            //public int sc1to8 = 11;
+            //public int sc9to16 = 12;
 
-            public void Reset()
+            public CPGN_EB()
             {
             }
         }
-
 
         //pgn instances
 
@@ -325,7 +332,6 @@ namespace AgOpenGPS
         /// </summary>
         public CPGN_FB p_251 = new CPGN_FB();
 
-
         /// <summary>
         /// machineData PGN - 239 - EF
         /// </summary>
@@ -341,6 +347,10 @@ namespace AgOpenGPS
         /// </summary>
         public CPGN_EC p_236 = new CPGN_EC();
 
+        /// <summary>
+        /// relayConfig PGN - 235 - EB
+        /// </summary>
+        public CPGN_EB p_235 = new CPGN_EB();
 
         /// <summary>
         /// LatitudeLongitude - D0 - 

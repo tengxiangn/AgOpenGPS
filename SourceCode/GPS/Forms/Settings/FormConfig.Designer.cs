@@ -284,6 +284,13 @@
             this.rbtnHeadingGPS = new System.Windows.Forms.RadioButton();
             this.rbtnHeadingFix = new System.Windows.Forms.RadioButton();
             this.tabDRoll = new System.Windows.Forms.TabPage();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.lblRollZeroOffsetTool = new System.Windows.Forms.Label();
+            this.btnZeroRollTool = new System.Windows.Forms.Button();
+            this.btnRemoveZeroOffsetTool = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label78 = new System.Windows.Forms.Label();
             this.label77 = new System.Windows.Forms.Label();
@@ -366,10 +373,9 @@
             this.pboxSendRelay = new System.Windows.Forms.PictureBox();
             this.btnSendRelayConfigPGN = new System.Windows.Forms.Button();
             this.tabASteer = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.cboxGPSToolOnOff = new System.Windows.Forms.CheckBox();
             this.label152 = new System.Windows.Forms.Label();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.tabAMachine = new System.Windows.Forms.TabPage();
             this.label151 = new System.Windows.Forms.Label();
             this.label150 = new System.Windows.Forms.Label();
@@ -467,13 +473,6 @@
             this.lblFeetMeters = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.lblRollZeroOffsetTool = new System.Windows.Forms.Label();
-            this.btnZeroRollTool = new System.Windows.Forms.Button();
-            this.btnRemoveZeroOffsetTool = new System.Windows.Forms.Button();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -568,7 +567,6 @@
             this.tabRelay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxSendRelay)).BeginInit();
             this.tabASteer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.tabAMachine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudUser4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudUser3)).BeginInit();
@@ -5183,6 +5181,96 @@
             this.tabDRoll.Enter += new System.EventHandler(this.tabDRoll_Enter);
             this.tabDRoll.Leave += new System.EventHandler(this.tabDRoll_Leave);
             // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Tahoma", 20.25F);
+            this.label64.ForeColor = System.Drawing.Color.Black;
+            this.label64.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label64.Location = new System.Drawing.Point(74, 8);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(98, 33);
+            this.label64.TabIndex = 492;
+            this.label64.Text = "Vehicle";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Tahoma", 20.25F);
+            this.label63.ForeColor = System.Drawing.Color.Black;
+            this.label63.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label63.Location = new System.Drawing.Point(599, 8);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(67, 33);
+            this.label63.TabIndex = 491;
+            this.label63.Text = "Tool";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.ForeColor = System.Drawing.Color.Black;
+            this.label55.Location = new System.Drawing.Point(602, 226);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(58, 16);
+            this.label55.TabIndex = 490;
+            this.label55.Text = "Zero Roll";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.ForeColor = System.Drawing.Color.Black;
+            this.label61.Location = new System.Drawing.Point(602, 53);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(91, 16);
+            this.label61.TabIndex = 489;
+            this.label61.Text = "Remove Offset";
+            // 
+            // lblRollZeroOffsetTool
+            // 
+            this.lblRollZeroOffsetTool.AutoSize = true;
+            this.lblRollZeroOffsetTool.Font = new System.Drawing.Font("Tahoma", 20.25F);
+            this.lblRollZeroOffsetTool.ForeColor = System.Drawing.Color.Black;
+            this.lblRollZeroOffsetTool.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblRollZeroOffsetTool.Location = new System.Drawing.Point(727, 273);
+            this.lblRollZeroOffsetTool.Name = "lblRollZeroOffsetTool";
+            this.lblRollZeroOffsetTool.Size = new System.Drawing.Size(100, 33);
+            this.lblRollZeroOffsetTool.TabIndex = 486;
+            this.lblRollZeroOffsetTool.Text = "label11";
+            // 
+            // btnZeroRollTool
+            // 
+            this.btnZeroRollTool.BackColor = System.Drawing.Color.Transparent;
+            this.btnZeroRollTool.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnZeroRollTool.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
+            this.btnZeroRollTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZeroRollTool.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZeroRollTool.ForeColor = System.Drawing.Color.Black;
+            this.btnZeroRollTool.Image = global::AgOpenGPS.Properties.Resources.ConDa_RollSetZero;
+            this.btnZeroRollTool.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnZeroRollTool.Location = new System.Drawing.Point(594, 245);
+            this.btnZeroRollTool.Name = "btnZeroRollTool";
+            this.btnZeroRollTool.Size = new System.Drawing.Size(130, 95);
+            this.btnZeroRollTool.TabIndex = 487;
+            this.btnZeroRollTool.UseVisualStyleBackColor = false;
+            this.btnZeroRollTool.Click += new System.EventHandler(this.btnZeroRollTool_Click);
+            // 
+            // btnRemoveZeroOffsetTool
+            // 
+            this.btnRemoveZeroOffsetTool.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemoveZeroOffsetTool.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnRemoveZeroOffsetTool.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
+            this.btnRemoveZeroOffsetTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveZeroOffsetTool.Font = new System.Drawing.Font("Tahoma", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveZeroOffsetTool.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoveZeroOffsetTool.Image = global::AgOpenGPS.Properties.Resources.ConDa_RemoveOffset;
+            this.btnRemoveZeroOffsetTool.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRemoveZeroOffsetTool.Location = new System.Drawing.Point(594, 72);
+            this.btnRemoveZeroOffsetTool.Name = "btnRemoveZeroOffsetTool";
+            this.btnRemoveZeroOffsetTool.Size = new System.Drawing.Size(130, 95);
+            this.btnRemoveZeroOffsetTool.TabIndex = 488;
+            this.btnRemoveZeroOffsetTool.UseVisualStyleBackColor = false;
+            this.btnRemoveZeroOffsetTool.Click += new System.EventHandler(this.btnRemoveZeroOffsetTool_Click);
+            // 
             // pictureBox9
             // 
             this.pictureBox9.BackgroundImage = global::AgOpenGPS.Properties.Resources.ConD_RollHelper;
@@ -6760,10 +6848,9 @@
             // tabASteer
             // 
             this.tabASteer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabASteer.Controls.Add(this.label7);
             this.tabASteer.Controls.Add(this.label5);
+            this.tabASteer.Controls.Add(this.cboxGPSToolOnOff);
             this.tabASteer.Controls.Add(this.label152);
-            this.tabASteer.Controls.Add(this.pictureBox15);
             this.tabASteer.ForeColor = System.Drawing.Color.White;
             this.tabASteer.Location = new System.Drawing.Point(4, 44);
             this.tabASteer.Name = "tabASteer";
@@ -6773,31 +6860,37 @@
             this.tabASteer.Enter += new System.EventHandler(this.tabASteer_Enter);
             this.tabASteer.Leave += new System.EventHandler(this.tabASteer_Leave);
             // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(584, 352);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(200, 122);
-            this.label7.TabIndex = 491;
-            this.label7.Text = "<- Send and Save When the Alert is Shown.";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label5
             // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(525, 58);
+            this.label5.Location = new System.Drawing.Point(133, 56);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(201, 58);
+            this.label5.Size = new System.Drawing.Size(53, 16);
             this.label5.TabIndex = 490;
-            this.label5.Text = "Expand out the form as required";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Text = "Off - On";
+            // 
+            // cboxGPSToolOnOff
+            // 
+            this.cboxGPSToolOnOff.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cboxGPSToolOnOff.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboxGPSToolOnOff.BackgroundImage = global::AgOpenGPS.Properties.Resources.DataSources;
+            this.cboxGPSToolOnOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cboxGPSToolOnOff.Checked = true;
+            this.cboxGPSToolOnOff.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxGPSToolOnOff.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cboxGPSToolOnOff.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
+            this.cboxGPSToolOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboxGPSToolOnOff.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxGPSToolOnOff.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboxGPSToolOnOff.Location = new System.Drawing.Point(112, 75);
+            this.cboxGPSToolOnOff.Name = "cboxGPSToolOnOff";
+            this.cboxGPSToolOnOff.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cboxGPSToolOnOff.Size = new System.Drawing.Size(89, 72);
+            this.cboxGPSToolOnOff.TabIndex = 489;
+            this.cboxGPSToolOnOff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboxGPSToolOnOff.UseVisualStyleBackColor = false;
             // 
             // label152
             // 
@@ -6806,21 +6899,12 @@
             this.label152.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label152.ForeColor = System.Drawing.Color.Black;
             this.label152.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label152.Location = new System.Drawing.Point(25, 16);
+            this.label152.Location = new System.Drawing.Point(284, 0);
             this.label152.Name = "label152";
-            this.label152.Size = new System.Drawing.Size(337, 25);
+            this.label152.Size = new System.Drawing.Size(198, 25);
             this.label152.TabIndex = 488;
-            this.label152.Text = "All Settings on Steer Form Now";
+            this.label152.Text = "Tool GPS Settings";
             this.label152.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = global::AgOpenGPS.Properties.Resources.ConSt_SteerForm;
-            this.pictureBox15.Location = new System.Drawing.Point(132, 119);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(446, 311);
-            this.pictureBox15.TabIndex = 489;
-            this.pictureBox15.TabStop = false;
             // 
             // tabAMachine
             // 
@@ -8410,96 +8494,6 @@
             this.label22.Text = "Units:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.ForeColor = System.Drawing.Color.Black;
-            this.label55.Location = new System.Drawing.Point(602, 226);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(58, 16);
-            this.label55.TabIndex = 490;
-            this.label55.Text = "Zero Roll";
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.ForeColor = System.Drawing.Color.Black;
-            this.label61.Location = new System.Drawing.Point(602, 53);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(91, 16);
-            this.label61.TabIndex = 489;
-            this.label61.Text = "Remove Offset";
-            // 
-            // lblRollZeroOffsetTool
-            // 
-            this.lblRollZeroOffsetTool.AutoSize = true;
-            this.lblRollZeroOffsetTool.Font = new System.Drawing.Font("Tahoma", 20.25F);
-            this.lblRollZeroOffsetTool.ForeColor = System.Drawing.Color.Black;
-            this.lblRollZeroOffsetTool.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblRollZeroOffsetTool.Location = new System.Drawing.Point(727, 273);
-            this.lblRollZeroOffsetTool.Name = "lblRollZeroOffsetTool";
-            this.lblRollZeroOffsetTool.Size = new System.Drawing.Size(100, 33);
-            this.lblRollZeroOffsetTool.TabIndex = 486;
-            this.lblRollZeroOffsetTool.Text = "label11";
-            // 
-            // btnZeroRollTool
-            // 
-            this.btnZeroRollTool.BackColor = System.Drawing.Color.Transparent;
-            this.btnZeroRollTool.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnZeroRollTool.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
-            this.btnZeroRollTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZeroRollTool.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZeroRollTool.ForeColor = System.Drawing.Color.Black;
-            this.btnZeroRollTool.Image = global::AgOpenGPS.Properties.Resources.ConDa_RollSetZero;
-            this.btnZeroRollTool.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnZeroRollTool.Location = new System.Drawing.Point(594, 245);
-            this.btnZeroRollTool.Name = "btnZeroRollTool";
-            this.btnZeroRollTool.Size = new System.Drawing.Size(130, 95);
-            this.btnZeroRollTool.TabIndex = 487;
-            this.btnZeroRollTool.UseVisualStyleBackColor = false;
-            this.btnZeroRollTool.Click += new System.EventHandler(this.btnZeroRollTool_Click);
-            // 
-            // btnRemoveZeroOffsetTool
-            // 
-            this.btnRemoveZeroOffsetTool.BackColor = System.Drawing.Color.Transparent;
-            this.btnRemoveZeroOffsetTool.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnRemoveZeroOffsetTool.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
-            this.btnRemoveZeroOffsetTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveZeroOffsetTool.Font = new System.Drawing.Font("Tahoma", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveZeroOffsetTool.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoveZeroOffsetTool.Image = global::AgOpenGPS.Properties.Resources.ConDa_RemoveOffset;
-            this.btnRemoveZeroOffsetTool.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRemoveZeroOffsetTool.Location = new System.Drawing.Point(594, 72);
-            this.btnRemoveZeroOffsetTool.Name = "btnRemoveZeroOffsetTool";
-            this.btnRemoveZeroOffsetTool.Size = new System.Drawing.Size(130, 95);
-            this.btnRemoveZeroOffsetTool.TabIndex = 488;
-            this.btnRemoveZeroOffsetTool.UseVisualStyleBackColor = false;
-            this.btnRemoveZeroOffsetTool.Click += new System.EventHandler(this.btnRemoveZeroOffsetTool_Click);
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("Tahoma", 20.25F);
-            this.label63.ForeColor = System.Drawing.Color.Black;
-            this.label63.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label63.Location = new System.Drawing.Point(599, 8);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(67, 33);
-            this.label63.TabIndex = 491;
-            this.label63.Text = "Tool";
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Tahoma", 20.25F);
-            this.label64.ForeColor = System.Drawing.Color.Black;
-            this.label64.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label64.Location = new System.Drawing.Point(74, 8);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(98, 33);
-            this.label64.TabIndex = 492;
-            this.label64.Text = "Vehicle";
-            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -8629,7 +8623,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pboxSendRelay)).EndInit();
             this.tabASteer.ResumeLayout(false);
             this.tabASteer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.tabAMachine.ResumeLayout(false);
             this.tabAMachine.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudUser4)).EndInit();
@@ -9086,10 +9079,6 @@
         private System.Windows.Forms.Label label148;
         private System.Windows.Forms.NumericUpDown nudUser4;
         private System.Windows.Forms.NumericUpDown nudUser3;
-        private System.Windows.Forms.Label label152;
-        private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkSetAutoSections;
         private System.Windows.Forms.GroupBox grpControls;
         private System.Windows.Forms.CheckBox chkRemoteSwitchEnable;
@@ -9103,5 +9092,8 @@
         private System.Windows.Forms.Label lblRollZeroOffsetTool;
         private System.Windows.Forms.Button btnZeroRollTool;
         private System.Windows.Forms.Button btnRemoveZeroOffsetTool;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cboxGPSToolOnOff;
+        private System.Windows.Forms.Label label152;
     }
 }

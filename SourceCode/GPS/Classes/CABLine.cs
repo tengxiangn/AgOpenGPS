@@ -16,7 +16,7 @@ namespace AgOpenGPS
         public vec3 currentABLineP1 = new vec3(0.0, 0.0, 0.0);
         public vec3 currentABLineP2 = new vec3(0.0, 1.0, 0.0);
 
-        public double distanceFromCurrentLinePivot;
+        public double distanceFromCurrentLinePivot, distanceFromCurrentLineTool;
         public double distanceFromRefLine;
         //pure pursuit values
         public vec2 goalPointAB = new vec2(0, 0);
@@ -166,6 +166,19 @@ namespace AgOpenGPS
                 distanceFromCurrentLinePivot = ((dy * pivot.easting) - (dx * pivot.northing) + (currentABLineP2.easting
                             * currentABLineP1.northing) - (currentABLineP2.northing * currentABLineP1.easting))
                             / Math.Sqrt((dy * dy) + (dx * dx));
+                
+                if (mf.pn.isGPSTool)
+                {
+                    distanceFromCurrentLineTool = ((dy * mf.pn.fixTool.easting) - (dx * mf.pn.fixTool.northing) + (currentABLineP2.easting
+                                * currentABLineP1.northing) - (currentABLineP2.northing * currentABLineP1.easting))
+                                / Math.Sqrt((dy * dy) + (dx * dx));
+                }
+                else
+                {
+                    distanceFromCurrentLineTool = ((dy * mf.toolPos.easting) - (dx * mf.toolPos.northing) + (currentABLineP2.easting
+                                * currentABLineP1.northing) - (currentABLineP2.northing * currentABLineP1.easting))
+                                / Math.Sqrt((dy * dy) + (dx * dx));
+                }
 
                 //integral slider is set to 0
                 if (mf.vehicle.purePursuitIntegralGain != 0 && !mf.isReverse)
@@ -286,10 +299,14 @@ namespace AgOpenGPS
 
                 //distance is negative if on left, positive if on right
                 if (!isHeadingSameWay)
+                {
                     distanceFromCurrentLinePivot *= -1.0;
+                    distanceFromCurrentLineTool *= -1.0;
+                }
 
                 //Convert to millimeters
                 mf.guidanceLineDistanceOff = (short)Math.Round(distanceFromCurrentLinePivot * 1000.0, MidpointRounding.AwayFromZero);
+                mf.guidanceLineDistanceOffTool = (short)Math.Round(distanceFromCurrentLineTool * 1000.0, MidpointRounding.AwayFromZero);
                 mf.guidanceLineSteerAngle = (short)(steerAngleAB * 100);
             }
         }

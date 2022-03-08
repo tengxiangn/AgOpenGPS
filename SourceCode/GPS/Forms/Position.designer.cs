@@ -17,7 +17,7 @@ namespace AgOpenGPS
         public StringBuilder sbFix = new StringBuilder();
 
         // autosteer variables for sending serial
-        public short guidanceLineDistanceOff, guidanceLineSteerAngle;
+        public short guidanceLineDistanceOff, guidanceLineDistanceOffTool, guidanceLineSteerAngle;
         public double avGuidanceSteerAngle;
 
         public short errorAngVel;
@@ -625,12 +625,13 @@ namespace AgOpenGPS
                 default:
                     break;
             }
-        
+
 
             #region AutoSteer
 
             //preset the values
             guidanceLineDistanceOff = 32000;
+            guidanceLineDistanceOffTool = 32000;
 
             if (ct.isContourBtnOn)
             {
@@ -665,14 +666,21 @@ namespace AgOpenGPS
 
                 //save distance for display
                 lightbarDistance = guidanceLineDistanceOff;
+                lightbarDistanceTool = guidanceLineDistanceOffTool;
 
                 if (!isAutoSteerBtnOn) //32020 means auto steer is off
                 {
                     guidanceLineDistanceOff = 32020;
+                    guidanceLineDistanceOffTool = 32020;
                     p_254.pgn[p_254.status] = 0;
+                    p_235.pgn[p_235.status] = 0;
                 }
 
-                else p_254.pgn[p_254.status] = 1;
+                else
+                {
+                    p_254.pgn[p_254.status] = 1;
+                    p_235.pgn[p_235.status] = 1;
+                }
 
                 if (recPath.isDrivingRecordedPath || recPath.isFollowingDubinsToPath) p_254.pgn[p_254.status] = 1;
 
@@ -706,6 +714,9 @@ namespace AgOpenGPS
                 {
                     p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
                     p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
+
+                    p_235.pgn[p_235.highXTE] = unchecked((byte)(guidanceLineDistanceOffTool >> 8));
+                    p_235.pgn[p_235.lowXTE] = unchecked((byte)(guidanceLineDistanceOffTool));
                 }
 
                 //for now if backing up, turn off autosteer
@@ -720,6 +731,7 @@ namespace AgOpenGPS
 
                 //turn on status to operate
                 p_254.pgn[p_254.status] = 1;
+                p_235.pgn[p_235.status] = 1;
 
                 //send the steer angle
                 guidanceLineSteerAngle = (Int16)(vehicle.ast.driveFreeSteerAngle * 100);
@@ -739,12 +751,13 @@ namespace AgOpenGPS
                 {
                     p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
                     p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
-
                 }
             }
 
             //out serial to autosteer module  //indivdual classes load the distance and heading deltas 
             SendPgnToLoop(p_254.pgn);
+
+            if (pn.isGPSTool) SendPgnToLoop(p_235.pgn);
 
             //for average cross track error
             if (guidanceLineDistanceOff < 29000)

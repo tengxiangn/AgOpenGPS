@@ -404,15 +404,15 @@ namespace AgOpenGPS
                     //    GL.End();
                     //}
 
-                    tool.DrawTool();
-                    vehicle.DrawVehicle();
-
                     //draw the 2nd GPS
                     GL.PointSize(8.0f);
                     GL.Color3(0.20f, 1.0f, 1.0f);
                     GL.Begin(PrimitiveType.Points);
-                    GL.Vertex3(pn.fixTool.easting, pn.fixTool.northing, 0.1);
+                    GL.Vertex3(pn.fixTool.easting, pn.fixTool.northing, 0.2);
                     GL.End();
+
+                    tool.DrawTool();
+                    vehicle.DrawVehicle();
 
                     // 2D Ortho ---------------------------------------////////-------------------------------------------------
 
@@ -434,6 +434,8 @@ namespace AgOpenGPS
                     if (isLightbarOn)
                     {
                         DrawLightBarText();
+
+                        DrawLightBarTextTool();
                     }
 
                     if ((ahrs.imuRoll != 88888))
@@ -1881,45 +1883,45 @@ namespace AgOpenGPS
             //Are you on the right side of line? So its green.
             //GL.Translate(0, 0, 0.01);
             if ((offlineDistance) < 0.0)
-                {
-                    int dots = (dotDistance * -1 / lightbarCmPerPixel);
+            {
+                int dots = (dotDistance * -1 / lightbarCmPerPixel);
 
-                    GL.PointSize(24.0f);
-                    GL.Color3(0.0f, 0.0f, 0.0f);
-                    GL.Begin(PrimitiveType.Points);
-                    for (int i = 1; i < dots + 1; i++) GL.Vertex2((i * 32), down);
-                    GL.End();
+                GL.PointSize(24.0f);
+                GL.Color3(0.0f, 0.0f, 0.0f);
+                GL.Begin(PrimitiveType.Points);
+                for (int i = 1; i < dots + 1; i++) GL.Vertex2((i * 32), down);
+                GL.End();
 
-                    GL.PointSize(16.0f);
-                    GL.Color3(0.0f, 0.980f, 0.0f);
-                    GL.Begin(PrimitiveType.Points);
-                    for (int i = 0; i < dots; i++) GL.Vertex2((i * 32 + 32), down);
-                    GL.End();
-                    //return;
-                }
+                GL.PointSize(16.0f);
+                GL.Color3(0.0f, 0.980f, 0.0f);
+                GL.Begin(PrimitiveType.Points);
+                for (int i = 0; i < dots; i++) GL.Vertex2((i * 32 + 32), down);
+                GL.End();
+                //return;
+            }
 
-                else
-                {
-                    int dots = (int)(dotDistance / lightbarCmPerPixel);
+            else
+            {
+                int dots = (int)(dotDistance / lightbarCmPerPixel);
 
-                    GL.PointSize(24.0f);
-                    GL.Color3(0.0f, 0.0f, 0.0f);
-                    GL.Begin(PrimitiveType.Points);
-                    for (int i = 1; i < dots + 1; i++) GL.Vertex2((i * -32), down);
-                    GL.End();
+                GL.PointSize(24.0f);
+                GL.Color3(0.0f, 0.0f, 0.0f);
+                GL.Begin(PrimitiveType.Points);
+                for (int i = 1; i < dots + 1; i++) GL.Vertex2((i * -32), down);
+                GL.End();
 
-                    GL.PointSize(16.0f);
-                    GL.Color3(0.980f, 0.30f, 0.0f);
-                    GL.Begin(PrimitiveType.Points);
-                    for (int i = 0; i < dots; i++) GL.Vertex2((i * -32 - 32), down);
-                    GL.End();
-                    //return;
-                }
-            
+                GL.PointSize(16.0f);
+                GL.Color3(0.980f, 0.30f, 0.0f);
+                GL.Begin(PrimitiveType.Points);
+                for (int i = 0; i < dots; i++) GL.Vertex2((i * -32 - 32), down);
+                GL.End();
+                //return;
+            }
+
             //yellow center dot
             if (dotDistance >= -lightbarCmPerPixel && dotDistance <= lightbarCmPerPixel)
             {
-                GL.PointSize(32.0f);                
+                GL.PointSize(32.0f);
                 GL.Color3(0.0f, 0.0f, 0.0f);
                 GL.Begin(PrimitiveType.Points);
                 GL.Vertex2(0, down);
@@ -1954,6 +1956,7 @@ namespace AgOpenGPS
         }
 
         private double avgPivDistance, lightbarDistance;
+        private double avgPivDistanceTool, lightbarDistanceTool;
         private void DrawLightBarText()
         {
 
@@ -1984,7 +1987,40 @@ namespace AgOpenGPS
                     }
 
                     int center = -(int)(((double)(hede.Length) * 0.5) * 16);
-                    font.DrawText(center, 30, hede, 1);
+                    font.DrawText(center, 25, hede, 1);
+                }
+            }
+        }
+        private void DrawLightBarTextTool()
+        {
+            GL.Disable(EnableCap.DepthTest);
+
+            if (ct.isContourBtnOn || ABLine.isBtnABLineOn || curve.isBtnCurveOn || recPath.isDrivingRecordedPath)
+            {
+
+                //if (guidanceLineDistanceOff != 32000 && guidanceLineDistanceOff != 32020)
+                {
+                    // in millimeters
+                    avgPivDistanceTool = avgPivDistanceTool * 0.5 + lightbarDistanceTool * 0.5;
+
+                    double avgPivotDistance2 = avgPivDistanceTool * (isMetric ? 0.1 : 0.03937);
+                    string hede;
+
+                    //DrawLightBar(oglMain.Width, oglMain.Height, avgPivotDistance2);
+
+                    if (avgPivotDistance2 > 0.0)
+                    {
+                        GL.Color3(0.9752f, 0.50f, 0.3f);
+                        hede = "< " + (Math.Abs(avgPivotDistance2)).ToString("N0");
+                    }
+                    else
+                    {
+                        GL.Color3(0.50f, 0.952f, 0.3f);
+                        hede = (Math.Abs(avgPivotDistance2)).ToString("N0") + " >";
+                    }
+
+                    int center = -(int)(((double)(hede.Length) * 0.5) * 16);
+                    font.DrawText(center, 50, hede, 1);
                 }
             }
         }

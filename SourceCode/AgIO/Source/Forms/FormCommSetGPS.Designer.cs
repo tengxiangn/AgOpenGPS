@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCloseRTCM = new System.Windows.Forms.Button();
             this.btnOpenRTCM = new System.Windows.Forms.Button();
-            this.labelDifferentRtcmPort = new System.Windows.Forms.Label();
             this.cboxRtcmPort = new System.Windows.Forms.ComboBox();
             this.cboxRtcmBaud = new System.Windows.Forms.ComboBox();
             this.labelRtcmPort = new System.Windows.Forms.Label();
@@ -48,7 +47,6 @@
             this.btnCloseSerial = new System.Windows.Forms.Button();
             this.textBoxRcv = new System.Windows.Forms.TextBox();
             this.btnOpenSerial = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboxPort2 = new System.Windows.Forms.ComboBox();
             this.cboxBaud2 = new System.Windows.Forms.ComboBox();
             this.lblCurrentPort2 = new System.Windows.Forms.Label();
@@ -97,8 +95,8 @@
             this.lblFromGPS2 = new System.Windows.Forms.Label();
             this.lblGPS2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -117,15 +115,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.textBoxRcv2);
+            this.groupBox1.Controls.Add(this.lblCurrentPort2);
+            this.groupBox1.Controls.Add(this.cboxPort2);
+            this.groupBox1.Controls.Add(this.lblCurrentBaud2);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cboxBaud2);
             this.groupBox1.Controls.Add(this.btnCloseRTCM);
             this.groupBox1.Controls.Add(this.btnOpenRTCM);
-            this.groupBox1.Controls.Add(this.labelDifferentRtcmPort);
             this.groupBox1.Controls.Add(this.cboxRtcmPort);
+            this.groupBox1.Controls.Add(this.btnCloseSerial2);
             this.groupBox1.Controls.Add(this.cboxRtcmBaud);
+            this.groupBox1.Controls.Add(this.btnOpenGPS2);
             this.groupBox1.Controls.Add(this.labelRtcmPort);
             this.groupBox1.Controls.Add(this.labelRtcmBaud);
             this.groupBox1.Controls.Add(this.cboxPort);
@@ -136,19 +138,20 @@
             this.groupBox1.Controls.Add(this.btnCloseSerial);
             this.groupBox1.Controls.Add(this.textBoxRcv);
             this.groupBox1.Controls.Add(this.btnOpenSerial);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(173, 3);
+            this.groupBox1.Location = new System.Drawing.Point(95, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(846, 226);
+            this.groupBox1.Size = new System.Drawing.Size(663, 332);
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "GPS Main";
+            this.groupBox1.Text = "GPS";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(154, 112);
+            this.label3.Location = new System.Drawing.Point(67, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 29);
             this.label3.TabIndex = 97;
@@ -161,7 +164,7 @@
             this.btnCloseRTCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseRTCM.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCloseRTCM.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseRTCM.Image")));
-            this.btnCloseRTCM.Location = new System.Drawing.Point(673, 94);
+            this.btnCloseRTCM.Location = new System.Drawing.Point(585, 98);
             this.btnCloseRTCM.Name = "btnCloseRTCM";
             this.btnCloseRTCM.Size = new System.Drawing.Size(56, 58);
             this.btnCloseRTCM.TabIndex = 95;
@@ -175,22 +178,12 @@
             this.btnOpenRTCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenRTCM.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenRTCM.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenRTCM.Image")));
-            this.btnOpenRTCM.Location = new System.Drawing.Point(572, 94);
+            this.btnOpenRTCM.Location = new System.Drawing.Point(484, 98);
             this.btnOpenRTCM.Name = "btnOpenRTCM";
             this.btnOpenRTCM.Size = new System.Drawing.Size(58, 58);
             this.btnOpenRTCM.TabIndex = 96;
             this.btnOpenRTCM.UseVisualStyleBackColor = false;
             this.btnOpenRTCM.Click += new System.EventHandler(this.btnOpenRTCM_Click);
-            // 
-            // labelDifferentRtcmPort
-            // 
-            this.labelDifferentRtcmPort.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDifferentRtcmPort.Location = new System.Drawing.Point(22, 109);
-            this.labelDifferentRtcmPort.Name = "labelDifferentRtcmPort";
-            this.labelDifferentRtcmPort.Size = new System.Drawing.Size(128, 43);
-            this.labelDifferentRtcmPort.TabIndex = 94;
-            this.labelDifferentRtcmPort.Text = "Different Port Then GPS ?";
-            this.labelDifferentRtcmPort.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cboxRtcmPort
             // 
@@ -199,7 +192,7 @@
             this.cboxRtcmPort.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
             this.cboxRtcmPort.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cboxRtcmPort.FormattingEnabled = true;
-            this.cboxRtcmPort.Location = new System.Drawing.Point(244, 109);
+            this.cboxRtcmPort.Location = new System.Drawing.Point(155, 111);
             this.cboxRtcmPort.Name = "cboxRtcmPort";
             this.cboxRtcmPort.Size = new System.Drawing.Size(124, 37);
             this.cboxRtcmPort.TabIndex = 54;
@@ -221,7 +214,7 @@
             "115200",
             "128000",
             "256000"});
-            this.cboxRtcmBaud.Location = new System.Drawing.Point(395, 109);
+            this.cboxRtcmBaud.Location = new System.Drawing.Point(310, 111);
             this.cboxRtcmBaud.Name = "cboxRtcmBaud";
             this.cboxRtcmBaud.Size = new System.Drawing.Size(127, 37);
             this.cboxRtcmBaud.TabIndex = 53;
@@ -230,7 +223,7 @@
             // labelRtcmPort
             // 
             this.labelRtcmPort.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRtcmPort.Location = new System.Drawing.Point(244, 88);
+            this.labelRtcmPort.Location = new System.Drawing.Point(155, 90);
             this.labelRtcmPort.Name = "labelRtcmPort";
             this.labelRtcmPort.Size = new System.Drawing.Size(121, 18);
             this.labelRtcmPort.TabIndex = 52;
@@ -240,7 +233,7 @@
             // labelRtcmBaud
             // 
             this.labelRtcmBaud.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRtcmBaud.Location = new System.Drawing.Point(395, 88);
+            this.labelRtcmBaud.Location = new System.Drawing.Point(310, 90);
             this.labelRtcmBaud.Name = "labelRtcmBaud";
             this.labelRtcmBaud.Size = new System.Drawing.Size(124, 18);
             this.labelRtcmBaud.TabIndex = 51;
@@ -254,7 +247,7 @@
             this.cboxPort.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
             this.cboxPort.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cboxPort.FormattingEnabled = true;
-            this.cboxPort.Location = new System.Drawing.Point(244, 37);
+            this.cboxPort.Location = new System.Drawing.Point(155, 36);
             this.cboxPort.Name = "cboxPort";
             this.cboxPort.Size = new System.Drawing.Size(124, 37);
             this.cboxPort.TabIndex = 50;
@@ -274,7 +267,7 @@
             "38400",
             "57600",
             "115200"});
-            this.cboxBaud.Location = new System.Drawing.Point(395, 37);
+            this.cboxBaud.Location = new System.Drawing.Point(310, 36);
             this.cboxBaud.Name = "cboxBaud";
             this.cboxBaud.Size = new System.Drawing.Size(127, 37);
             this.cboxBaud.TabIndex = 49;
@@ -283,7 +276,7 @@
             // lblCurrentPort
             // 
             this.lblCurrentPort.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentPort.Location = new System.Drawing.Point(244, 16);
+            this.lblCurrentPort.Location = new System.Drawing.Point(155, 15);
             this.lblCurrentPort.Name = "lblCurrentPort";
             this.lblCurrentPort.Size = new System.Drawing.Size(121, 18);
             this.lblCurrentPort.TabIndex = 47;
@@ -294,16 +287,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(174, 39);
+            this.label2.Location = new System.Drawing.Point(23, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 29);
+            this.label2.Size = new System.Drawing.Size(126, 29);
             this.label2.TabIndex = 74;
-            this.label2.Text = "GPS";
+            this.label2.Text = "Main GPS";
             // 
             // lblCurrentBaud
             // 
             this.lblCurrentBaud.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentBaud.Location = new System.Drawing.Point(395, 16);
+            this.lblCurrentBaud.Location = new System.Drawing.Point(310, 15);
             this.lblCurrentBaud.Name = "lblCurrentBaud";
             this.lblCurrentBaud.Size = new System.Drawing.Size(124, 18);
             this.lblCurrentBaud.TabIndex = 46;
@@ -317,7 +310,7 @@
             this.btnCloseSerial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseSerial.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCloseSerial.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseSerial.Image")));
-            this.btnCloseSerial.Location = new System.Drawing.Point(673, 23);
+            this.btnCloseSerial.Location = new System.Drawing.Point(585, 24);
             this.btnCloseSerial.Name = "btnCloseSerial";
             this.btnCloseSerial.Size = new System.Drawing.Size(56, 58);
             this.btnCloseSerial.TabIndex = 44;
@@ -330,13 +323,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRcv.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxRcv.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.textBoxRcv.Location = new System.Drawing.Point(12, 162);
+            this.textBoxRcv.Location = new System.Drawing.Point(21, 164);
             this.textBoxRcv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxRcv.Multiline = true;
             this.textBoxRcv.Name = "textBoxRcv";
             this.textBoxRcv.ReadOnly = true;
-            this.textBoxRcv.Size = new System.Drawing.Size(824, 53);
+            this.textBoxRcv.Size = new System.Drawing.Size(627, 38);
             this.textBoxRcv.TabIndex = 40;
+            this.textBoxRcv.Text = "Line1\r\nLine2";
             // 
             // btnOpenSerial
             // 
@@ -345,30 +339,12 @@
             this.btnOpenSerial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenSerial.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenSerial.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSerial.Image")));
-            this.btnOpenSerial.Location = new System.Drawing.Point(572, 23);
+            this.btnOpenSerial.Location = new System.Drawing.Point(484, 24);
             this.btnOpenSerial.Name = "btnOpenSerial";
             this.btnOpenSerial.Size = new System.Drawing.Size(58, 58);
             this.btnOpenSerial.TabIndex = 45;
             this.btnOpenSerial.UseVisualStyleBackColor = false;
             this.btnOpenSerial.Click += new System.EventHandler(this.btnOpenSerial_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Controls.Add(this.cboxPort2);
-            this.groupBox2.Controls.Add(this.cboxBaud2);
-            this.groupBox2.Controls.Add(this.lblCurrentPort2);
-            this.groupBox2.Controls.Add(this.lblCurrentBaud2);
-            this.groupBox2.Controls.Add(this.btnCloseSerial2);
-            this.groupBox2.Controls.Add(this.textBoxRcv2);
-            this.groupBox2.Controls.Add(this.btnOpenGPS2);
-            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(140, 243);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(538, 181);
-            this.groupBox2.TabIndex = 65;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "GPS Tool";
             // 
             // cboxPort2
             // 
@@ -377,9 +353,9 @@
             this.cboxPort2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
             this.cboxPort2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cboxPort2.FormattingEnabled = true;
-            this.cboxPort2.Location = new System.Drawing.Point(10, 37);
+            this.cboxPort2.Location = new System.Drawing.Point(155, 233);
             this.cboxPort2.Name = "cboxPort2";
-            this.cboxPort2.Size = new System.Drawing.Size(169, 37);
+            this.cboxPort2.Size = new System.Drawing.Size(124, 37);
             this.cboxPort2.TabIndex = 50;
             this.cboxPort2.SelectedIndexChanged += new System.EventHandler(this.cboxPort2_SelectedIndexChanged);
             // 
@@ -397,7 +373,7 @@
             "38400",
             "57600",
             "115200"});
-            this.cboxBaud2.Location = new System.Drawing.Point(198, 37);
+            this.cboxBaud2.Location = new System.Drawing.Point(310, 233);
             this.cboxBaud2.Name = "cboxBaud2";
             this.cboxBaud2.Size = new System.Drawing.Size(127, 37);
             this.cboxBaud2.TabIndex = 49;
@@ -407,7 +383,7 @@
             // 
             this.lblCurrentPort2.AutoSize = true;
             this.lblCurrentPort2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentPort2.Location = new System.Drawing.Point(139, 16);
+            this.lblCurrentPort2.Location = new System.Drawing.Point(194, 212);
             this.lblCurrentPort2.Name = "lblCurrentPort2";
             this.lblCurrentPort2.Size = new System.Drawing.Size(40, 18);
             this.lblCurrentPort2.TabIndex = 47;
@@ -417,7 +393,7 @@
             // 
             this.lblCurrentBaud2.AutoSize = true;
             this.lblCurrentBaud2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentBaud2.Location = new System.Drawing.Point(280, 16);
+            this.lblCurrentBaud2.Location = new System.Drawing.Point(352, 212);
             this.lblCurrentBaud2.Name = "lblCurrentBaud2";
             this.lblCurrentBaud2.Size = new System.Drawing.Size(45, 18);
             this.lblCurrentBaud2.TabIndex = 46;
@@ -430,9 +406,9 @@
             this.btnCloseSerial2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseSerial2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCloseSerial2.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseSerial2.Image")));
-            this.btnCloseSerial2.Location = new System.Drawing.Point(447, 16);
+            this.btnCloseSerial2.Location = new System.Drawing.Point(585, 214);
             this.btnCloseSerial2.Name = "btnCloseSerial2";
-            this.btnCloseSerial2.Size = new System.Drawing.Size(101, 58);
+            this.btnCloseSerial2.Size = new System.Drawing.Size(56, 58);
             this.btnCloseSerial2.TabIndex = 44;
             this.btnCloseSerial2.UseVisualStyleBackColor = false;
             this.btnCloseSerial2.Click += new System.EventHandler(this.btnCloseGPS2_Click);
@@ -442,12 +418,12 @@
             this.textBoxRcv2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRcv2.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxRcv2.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.textBoxRcv2.Location = new System.Drawing.Point(7, 116);
+            this.textBoxRcv2.Location = new System.Drawing.Point(21, 286);
             this.textBoxRcv2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxRcv2.Multiline = true;
             this.textBoxRcv2.Name = "textBoxRcv2";
             this.textBoxRcv2.ReadOnly = true;
-            this.textBoxRcv2.Size = new System.Drawing.Size(514, 57);
+            this.textBoxRcv2.Size = new System.Drawing.Size(627, 38);
             this.textBoxRcv2.TabIndex = 40;
             // 
             // btnOpenGPS2
@@ -457,9 +433,9 @@
             this.btnOpenGPS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenGPS2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenGPS2.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenGPS2.Image")));
-            this.btnOpenGPS2.Location = new System.Drawing.Point(345, 17);
+            this.btnOpenGPS2.Location = new System.Drawing.Point(484, 214);
             this.btnOpenGPS2.Name = "btnOpenGPS2";
-            this.btnOpenGPS2.Size = new System.Drawing.Size(96, 58);
+            this.btnOpenGPS2.Size = new System.Drawing.Size(56, 58);
             this.btnOpenGPS2.TabIndex = 45;
             this.btnOpenGPS2.UseVisualStyleBackColor = false;
             this.btnOpenGPS2.Click += new System.EventHandler(this.btnOpenGPS2_Click);
@@ -472,7 +448,7 @@
             this.groupBox3.Controls.Add(this.btnOpenSerialModule1);
             this.groupBox3.Controls.Add(this.btnCloseSerialModule1);
             this.groupBox3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(139, 430);
+            this.groupBox3.Location = new System.Drawing.Point(144, 342);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(369, 90);
             this.groupBox3.TabIndex = 66;
@@ -536,7 +512,7 @@
             this.groupBox4.Controls.Add(this.btnOpenSerialModule2);
             this.groupBox4.Controls.Add(this.btnCloseSerialModule2);
             this.groupBox4.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox4.Location = new System.Drawing.Point(139, 531);
+            this.groupBox4.Location = new System.Drawing.Point(144, 452);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(369, 90);
             this.groupBox4.TabIndex = 67;
@@ -665,7 +641,7 @@
             this.groupBox6.Controls.Add(this.btnCloseIMU);
             this.groupBox6.Controls.Add(this.btnOpenIMU);
             this.groupBox6.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox6.Location = new System.Drawing.Point(139, 632);
+            this.groupBox6.Location = new System.Drawing.Point(144, 562);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(369, 90);
             this.groupBox6.TabIndex = 68;
@@ -727,9 +703,9 @@
             // 
             this.pictureBox4.BackgroundImage = global::AgIO.Properties.Resources.satellite;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Location = new System.Drawing.Point(27, 49);
+            this.pictureBox4.Location = new System.Drawing.Point(2, 57);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox4.Size = new System.Drawing.Size(87, 90);
             this.pictureBox4.TabIndex = 72;
             this.pictureBox4.TabStop = false;
             // 
@@ -737,7 +713,7 @@
             // 
             this.pictureBox3.BackgroundImage = global::AgIO.Properties.Resources.Com_Module2;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(30, 545);
+            this.pictureBox3.Location = new System.Drawing.Point(27, 466);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(93, 76);
             this.pictureBox3.TabIndex = 71;
@@ -747,7 +723,7 @@
             // 
             this.pictureBox2.BackgroundImage = global::AgIO.Properties.Resources.Com_AutosteerModule;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(30, 454);
+            this.pictureBox2.Location = new System.Drawing.Point(27, 356);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(93, 76);
             this.pictureBox2.TabIndex = 70;
@@ -757,7 +733,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::AgIO.Properties.Resources.Com_IMUModule;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 646);
+            this.pictureBox1.Location = new System.Drawing.Point(27, 575);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(93, 76);
             this.pictureBox1.TabIndex = 69;
@@ -772,7 +748,7 @@
             this.btnRescan.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRescan.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRescan.Image = global::AgIO.Properties.Resources.ScanPorts;
-            this.btnRescan.Location = new System.Drawing.Point(769, 620);
+            this.btnRescan.Location = new System.Drawing.Point(565, 588);
             this.btnRescan.Name = "btnRescan";
             this.btnRescan.Size = new System.Drawing.Size(89, 63);
             this.btnRescan.TabIndex = 58;
@@ -790,7 +766,7 @@
             this.btnSerialOK.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnSerialOK.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSerialOK.Image = global::AgIO.Properties.Resources.OK64;
-            this.btnSerialOK.Location = new System.Drawing.Point(930, 619);
+            this.btnSerialOK.Location = new System.Drawing.Point(677, 590);
             this.btnSerialOK.Name = "btnSerialOK";
             this.btnSerialOK.Size = new System.Drawing.Size(91, 63);
             this.btnSerialOK.TabIndex = 59;
@@ -800,11 +776,10 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(775, 327);
+            this.label1.Location = new System.Drawing.Point(586, 359);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 23);
             this.label1.TabIndex = 73;
@@ -812,11 +787,10 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(734, 498);
+            this.label4.Location = new System.Drawing.Point(545, 530);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 23);
             this.label4.TabIndex = 76;
@@ -824,11 +798,10 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(763, 456);
+            this.label5.Location = new System.Drawing.Point(574, 488);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 23);
             this.label5.TabIndex = 77;
@@ -836,11 +809,10 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(773, 413);
+            this.label6.Location = new System.Drawing.Point(584, 445);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 23);
             this.label6.TabIndex = 78;
@@ -848,10 +820,9 @@
             // 
             // lblIMU
             // 
-            this.lblIMU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIMU.AutoSize = true;
             this.lblIMU.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIMU.Location = new System.Drawing.Point(829, 413);
+            this.lblIMU.Location = new System.Drawing.Point(635, 445);
             this.lblIMU.Name = "lblIMU";
             this.lblIMU.Size = new System.Drawing.Size(50, 23);
             this.lblIMU.TabIndex = 83;
@@ -859,10 +830,9 @@
             // 
             // lblSteer
             // 
-            this.lblSteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSteer.AutoSize = true;
             this.lblSteer.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSteer.Location = new System.Drawing.Point(829, 456);
+            this.lblSteer.Location = new System.Drawing.Point(635, 488);
             this.lblSteer.Name = "lblSteer";
             this.lblSteer.Size = new System.Drawing.Size(60, 23);
             this.lblSteer.TabIndex = 82;
@@ -870,10 +840,9 @@
             // 
             // lblMachine
             // 
-            this.lblMachine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMachine.AutoSize = true;
             this.lblMachine.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMachine.Location = new System.Drawing.Point(829, 498);
+            this.lblMachine.Location = new System.Drawing.Point(635, 530);
             this.lblMachine.Name = "lblMachine";
             this.lblMachine.Size = new System.Drawing.Size(60, 23);
             this.lblMachine.TabIndex = 81;
@@ -881,10 +850,9 @@
             // 
             // lblGPS
             // 
-            this.lblGPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGPS.AutoSize = true;
             this.lblGPS.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGPS.Location = new System.Drawing.Point(829, 327);
+            this.lblGPS.Location = new System.Drawing.Point(635, 359);
             this.lblGPS.Name = "lblGPS";
             this.lblGPS.Size = new System.Drawing.Size(48, 23);
             this.lblGPS.TabIndex = 79;
@@ -892,11 +860,10 @@
             // 
             // lblFromGPS
             // 
-            this.lblFromGPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFromGPS.BackColor = System.Drawing.Color.Transparent;
             this.lblFromGPS.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFromGPS.ForeColor = System.Drawing.Color.Black;
-            this.lblFromGPS.Location = new System.Drawing.Point(908, 325);
+            this.lblFromGPS.Location = new System.Drawing.Point(690, 357);
             this.lblFromGPS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFromGPS.Name = "lblFromGPS";
             this.lblFromGPS.Size = new System.Drawing.Size(64, 27);
@@ -906,11 +873,10 @@
             // 
             // lblFromMU
             // 
-            this.lblFromMU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFromMU.BackColor = System.Drawing.Color.Transparent;
             this.lblFromMU.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFromMU.ForeColor = System.Drawing.Color.Black;
-            this.lblFromMU.Location = new System.Drawing.Point(908, 410);
+            this.lblFromMU.Location = new System.Drawing.Point(690, 442);
             this.lblFromMU.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFromMU.Name = "lblFromMU";
             this.lblFromMU.Size = new System.Drawing.Size(64, 27);
@@ -920,11 +886,10 @@
             // 
             // lblFromModule1
             // 
-            this.lblFromModule1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFromModule1.BackColor = System.Drawing.Color.Transparent;
             this.lblFromModule1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFromModule1.ForeColor = System.Drawing.Color.Black;
-            this.lblFromModule1.Location = new System.Drawing.Point(908, 454);
+            this.lblFromModule1.Location = new System.Drawing.Point(690, 486);
             this.lblFromModule1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFromModule1.Name = "lblFromModule1";
             this.lblFromModule1.Size = new System.Drawing.Size(64, 27);
@@ -934,11 +899,10 @@
             // 
             // lblFromModule2
             // 
-            this.lblFromModule2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFromModule2.BackColor = System.Drawing.Color.Transparent;
             this.lblFromModule2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFromModule2.ForeColor = System.Drawing.Color.Black;
-            this.lblFromModule2.Location = new System.Drawing.Point(908, 496);
+            this.lblFromModule2.Location = new System.Drawing.Point(690, 528);
             this.lblFromModule2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFromModule2.Name = "lblFromModule2";
             this.lblFromModule2.Size = new System.Drawing.Size(64, 27);
@@ -948,11 +912,10 @@
             // 
             // lblFromGPS2
             // 
-            this.lblFromGPS2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFromGPS2.BackColor = System.Drawing.Color.Transparent;
             this.lblFromGPS2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFromGPS2.ForeColor = System.Drawing.Color.Black;
-            this.lblFromGPS2.Location = new System.Drawing.Point(908, 359);
+            this.lblFromGPS2.Location = new System.Drawing.Point(690, 391);
             this.lblFromGPS2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFromGPS2.Name = "lblFromGPS2";
             this.lblFromGPS2.Size = new System.Drawing.Size(64, 27);
@@ -962,10 +925,9 @@
             // 
             // lblGPS2
             // 
-            this.lblGPS2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGPS2.AutoSize = true;
             this.lblGPS2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGPS2.Location = new System.Drawing.Point(828, 361);
+            this.lblGPS2.Location = new System.Drawing.Point(634, 393);
             this.lblGPS2.Name = "lblGPS2";
             this.lblGPS2.Size = new System.Drawing.Size(48, 23);
             this.lblGPS2.TabIndex = 177;
@@ -973,29 +935,33 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label9.Location = new System.Drawing.Point(764, 361);
+            this.label9.Location = new System.Drawing.Point(575, 393);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 23);
             this.label9.TabIndex = 176;
             this.label9.Text = "GPS2:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(23, 236);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 29);
+            this.label7.TabIndex = 98;
+            this.label7.Text = "Tool GPS";
+            // 
             // FormCommSetGPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1033, 761);
+            this.ClientSize = new System.Drawing.Size(770, 661);
             this.ControlBox = false;
-            this.Controls.Add(this.lblFromGPS2);
             this.Controls.Add(this.lblGPS2);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.lblFromGPS);
-            this.Controls.Add(this.lblFromMU);
-            this.Controls.Add(this.lblFromModule1);
-            this.Controls.Add(this.lblFromModule2);
             this.Controls.Add(this.lblIMU);
             this.Controls.Add(this.lblSteer);
             this.Controls.Add(this.lblMachine);
@@ -1008,7 +974,6 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
@@ -1016,6 +981,11 @@
             this.Controls.Add(this.btnRescan);
             this.Controls.Add(this.btnSerialOK);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.lblFromGPS2);
+            this.Controls.Add(this.lblFromGPS);
+            this.Controls.Add(this.lblFromMU);
+            this.Controls.Add(this.lblFromModule1);
+            this.Controls.Add(this.lblFromModule2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormCommSetGPS";
             this.ShowInTaskbar = false;
@@ -1024,8 +994,6 @@
             this.Load += new System.EventHandler(this.FormCommSet_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -1053,7 +1021,6 @@
         private System.Windows.Forms.Button btnOpenSerial;
         private System.Windows.Forms.ComboBox cboxBaud;
         private System.Windows.Forms.ComboBox cboxPort;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cboxPort2;
         private System.Windows.Forms.ComboBox cboxBaud2;
         private System.Windows.Forms.Label lblCurrentPort2;
@@ -1102,12 +1069,12 @@
         private System.Windows.Forms.ComboBox cboxRtcmBaud;
         private System.Windows.Forms.Label labelRtcmPort;
         private System.Windows.Forms.Label labelRtcmBaud;
-        private System.Windows.Forms.Label labelDifferentRtcmPort;
         private System.Windows.Forms.Button btnCloseRTCM;
         private System.Windows.Forms.Button btnOpenRTCM;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblFromGPS2;
         private System.Windows.Forms.Label lblGPS2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
     }
 }

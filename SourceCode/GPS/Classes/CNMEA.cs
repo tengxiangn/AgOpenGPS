@@ -6,6 +6,9 @@ namespace AgOpenGPS
 {
     public class CNMEA
     {
+        // turn on functions used with GPS Antenna on tool
+        public bool isGPSTool = false;
+
         //WGS84 Lat Long
         public double latitude, longitude;
         public double latitudeTool, longitudeTool;
@@ -39,6 +42,7 @@ namespace AgOpenGPS
             latStart = 0;
             lonStart = 0;
             ageAlarm = Properties.Settings.Default.setGPS_ageAlarm;
+            isGPSTool = Properties.Settings.Default.setGPS_isGPSTool;
         }
 
         public void AverageTheSpeed()

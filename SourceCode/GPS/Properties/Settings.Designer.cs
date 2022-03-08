@@ -1427,5 +1427,17 @@ namespace AgOpenGPS.Properties {
                 this["setIMU_rollZeroTool"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setGPS_isGPSTool {
+            get {
+                return ((bool)(this["setGPS_isGPSTool"]));
+            }
+            set {
+                this["setGPS_isGPSTool"] = value;
+            }
+        }
     }
 }

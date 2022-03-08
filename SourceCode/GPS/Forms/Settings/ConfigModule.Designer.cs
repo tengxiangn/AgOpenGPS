@@ -10,10 +10,13 @@ namespace AgOpenGPS
         #region Module Steer
         private void tabASteer_Enter(object sender, EventArgs e)
         {
+            cboxGPSToolOnOff.Checked = Properties.Settings.Default.setGPS_isGPSTool;
         }
 
         private void tabASteer_Leave(object sender, EventArgs e)
         {
+            mf.pn.isGPSTool = cboxGPSToolOnOff.Checked;
+            Properties.Settings.Default.setGPS_isGPSTool = mf.pn.isGPSTool;
         }
 
         #endregion
@@ -22,7 +25,7 @@ namespace AgOpenGPS
             pboxSendMachine.Visible = true;
         }
 
-        #region Module MAchine
+        #region Module Machine
 
         private void tabAMachine_Enter(object sender, EventArgs e)
         {

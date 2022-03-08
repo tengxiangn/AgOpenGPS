@@ -353,5 +353,8 @@
     <Setting Name="setIMU_rollZeroTool" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="setGPS_isGPSTool" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
