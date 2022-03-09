@@ -263,9 +263,9 @@ namespace AgIO
                                 SendModule1Port(data, data.Length);
                                 break;
                             }
-                        case 0xEB: //235 machine steer - out machine port
+                        case 0xEB: //235 machine steer - out machine Steer port
                             {
-                                SendModule2Port(data, data.Length);
+                                SendModule3Port(data, data.Length);
                                 break;
                             }
                     }

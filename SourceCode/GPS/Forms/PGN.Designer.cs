@@ -293,7 +293,7 @@ namespace AgOpenGPS
             }
         }
 
-        //Tool Steer
+        //Tool Steer 235
         public class CPGN_EB
         {
             /// <summary>
@@ -304,11 +304,11 @@ namespace AgOpenGPS
             public int lowXTE = 5;
             public int highXTE = 6;
             public int status = 7;
-            //public int tram = 8;
-            //public int geoStop = 9; //out of bounds etc
-            //                        //public int  = 10;
-            //public int sc1to8 = 11;
-            //public int sc9to16 = 12;
+            public int lowVehXTE = 8;
+            public int highVehXTE = 9;
+            //public int isUturn = 10;
+            public int sc1to8 = 11;
+            public int sc9to16 = 12;
 
             public CPGN_EB()
             {

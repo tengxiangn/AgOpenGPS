@@ -675,17 +675,16 @@ namespace AgOpenGPS
                     p_254.pgn[p_254.status] = 0;
                     p_235.pgn[p_235.status] = 0;
                 }
-
                 else
                 {
                     p_254.pgn[p_254.status] = 1;
-                    p_235.pgn[p_235.status] = 1;
+
+                    //no tool guidance when uturn
+                    if (!yt.isYouTurnTriggered) p_235.pgn[p_235.status] = 1;
+                    else p_235.pgn[p_235.status] = 0;
                 }
 
                 if (recPath.isDrivingRecordedPath || recPath.isFollowingDubinsToPath) p_254.pgn[p_254.status] = 1;
-
-                //mc.autoSteerData[7] = unchecked((byte)(guidanceLineDistanceOff >> 8));
-                //mc.autoSteerData[8] = unchecked((byte)(guidanceLineDistanceOff));
 
                 //convert to cm from mm and divide by 2 - lightbar
                 int distanceX2;
@@ -715,12 +714,14 @@ namespace AgOpenGPS
                     p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
                     p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
 
+                    //Tool XTE
                     p_235.pgn[p_235.highXTE] = unchecked((byte)(guidanceLineDistanceOffTool >> 8));
                     p_235.pgn[p_235.lowXTE] = unchecked((byte)(guidanceLineDistanceOffTool));
-                }
 
-                //for now if backing up, turn off autosteer
-                //if (isReverse) p_254.pgn[p_254.status] = 0;
+                    //Vehicle XTE
+                    p_235.pgn[p_235.highVehXTE] = unchecked((byte)(guidanceLineDistanceOff >> 8));
+                    p_235.pgn[p_235.lowVehXTE] = unchecked((byte)(guidanceLineDistanceOff));
+                }
             }
 
             else //Drive button is on
@@ -731,7 +732,7 @@ namespace AgOpenGPS
 
                 //turn on status to operate
                 p_254.pgn[p_254.status] = 1;
-                p_235.pgn[p_235.status] = 1;
+                p_235.pgn[p_235.status] = 0;
 
                 //send the steer angle
                 guidanceLineSteerAngle = (Int16)(vehicle.ast.driveFreeSteerAngle * 100);

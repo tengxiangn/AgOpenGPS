@@ -181,7 +181,6 @@ namespace AgIO
                 btnCloseGPS2.Enabled = false;
                 btnOpenGPS2.Enabled = true;
             }
-
         }
 
         private void cboxBaud2_SelectedIndexChanged(object sender, EventArgs e)
