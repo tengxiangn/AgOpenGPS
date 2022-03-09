@@ -84,11 +84,11 @@
     <Compile Include="Forms\FormCommSaver.designer.cs">
       <DependentUpon>FormCommSaver.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormCommSetModules.cs">
+    <Compile Include="Forms\FormCommTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormCommSetModules.Designer.cs">
-      <DependentUpon>FormCommSetModules.cs</DependentUpon>
+    <Compile Include="Forms\FormCommTool.Designer.cs">
+      <DependentUpon>FormCommTool.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormCommSetGPS.cs">
       <SubType>Form</SubType>
@@ -167,8 +167,8 @@
     <EmbeddedResource Include="Forms\FormCommSaver.resx">
       <DependentUpon>FormCommSaver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormCommSetModules.resx">
-      <DependentUpon>FormCommSetModules.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormCommTool.resx">
+      <DependentUpon>FormCommTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCommSetGPS.resx">
       <DependentUpon>FormCommSetGPS.cs</DependentUpon>

@@ -276,7 +276,7 @@ namespace AgIO
 
         private void btnBringUpCommSettings_Click(object sender, EventArgs e)
         {
-            SettingsCommunicationGPS();
+            SettingsCommunicationGPSTool();
         }
 
         private void btnUDP_Click(object sender, EventArgs e)
@@ -303,6 +303,11 @@ namespace AgIO
         {
             Close();
         }
+        private void btnToolSteer_Click(object sender, EventArgs e)
+        {
+            SettingsCommunicationGPSTool();
+        }
+
 
         public void ConfigureNTRIP()
         {
@@ -418,6 +423,7 @@ namespace AgIO
         }
 
         public bool isLogNMEA;
+
         private void cboxLogNMEA_CheckedChanged(object sender, EventArgs e)
         {
             isLogNMEA = cboxLogNMEA.Checked;

@@ -43,6 +43,7 @@ namespace AgIO
         public string recvModule3Sentence = "Module 3";
 
         public bool isGPSCommOpen = false;
+        public bool isGPSCommToolOpen = false;
 
         public byte checksumSent = 0;
         public byte checksumRecd = 0;
@@ -1061,16 +1062,12 @@ namespace AgIO
         //called by the GPS2 delegate every time a chunk is rec'd
         private void ReceiveGPS2Port(string sentence)
         {
-            rawBuffer += sentence;
-            ParseNMEA(ref rawBuffer);
-
             rawBuffer2 += sentence;
             ParseNMEA2(ref rawBuffer2);
 
             //SendToLoopBackMessageAOG(sentence);
             traffic.cntrGPS2In += sentence.Length;
-            recvGPS2Sentence = sentence;
-
+            if (isGPSCommToolOpen) recvGPS2Sentence = sentence;
         }
         public void SendGPS2Port(byte[] data)
         {

@@ -32,6 +32,24 @@ namespace AgIO
             //}
         }
 
+        private void SettingsCommunicationGPSTool()
+        {
+            isGPSCommToolOpen = true;
+            //var useDifferentRtcmPort = Properties.Settings.Default.setDifferentPort_Rtcm;
+
+            using (FormCommTool form = new FormCommTool(this))
+            {
+                form.ShowDialog(this);
+            }
+            isGPSCommToolOpen = false;
+
+            //if (Properties.Settings.Default.setDifferentPort_Rtcm && !useDifferentRtcmPort)
+            //{
+            //    // Different Rtcm port to send RTCM data to is configured. Open it.
+            //    OpenRtcmPort();
+            //}
+        }
+
         private void DoNTRIPSecondRoutine()
         {
             //count up the ntrip clock only if everything is alive
