@@ -1439,5 +1439,17 @@ namespace AgOpenGPS.Properties {
                 this["setGPS_isGPSTool"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setGPS_isGPSToolOnly {
+            get {
+                return ((bool)(this["setGPS_isGPSToolOnly"]));
+            }
+            set {
+                this["setGPS_isGPSToolOnly"] = value;
+            }
+        }
     }
 }

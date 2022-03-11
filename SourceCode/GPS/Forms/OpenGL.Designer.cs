@@ -405,11 +405,14 @@ namespace AgOpenGPS
                     //}
 
                     //draw the 2nd GPS
-                    GL.PointSize(8.0f);
-                    GL.Color3(0.20f, 1.0f, 1.0f);
-                    GL.Begin(PrimitiveType.Points);
-                    GL.Vertex3(pn.fixTool.easting, pn.fixTool.northing, 0.2);
-                    GL.End();
+                    if (pn.isGPSTool)
+                    {
+                        GL.PointSize(8.0f);
+                        GL.Color3(0.20f, 1.0f, 1.0f);
+                        GL.Begin(PrimitiveType.Points);
+                        GL.Vertex3(pn.fixTool.easting, pn.fixTool.northing, 0.2);
+                        GL.End();
+                    }
 
                     tool.DrawTool();
                     vehicle.DrawVehicle();
@@ -435,7 +438,7 @@ namespace AgOpenGPS
                     {
                         DrawLightBarText();
 
-                        DrawLightBarTextTool();
+                        if (!pn.isGPSToolOnly)DrawLightBarTextTool();
                     }
 
                     if ((ahrs.imuRoll != 88888))

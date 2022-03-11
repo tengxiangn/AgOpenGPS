@@ -373,6 +373,10 @@
             this.pboxSendRelay = new System.Windows.Forms.PictureBox();
             this.btnSendRelayConfigPGN = new System.Windows.Forms.Button();
             this.tabASteer = new System.Windows.Forms.TabPage();
+            this.cboxGPSNormal = new System.Windows.Forms.CheckBox();
+            this.btnConvertToToolOnly = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboxGPSToolOnlyOnOff = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cboxGPSToolOnOff = new System.Windows.Forms.CheckBox();
             this.label152 = new System.Windows.Forms.Label();
@@ -6848,6 +6852,10 @@
             // tabASteer
             // 
             this.tabASteer.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabASteer.Controls.Add(this.cboxGPSNormal);
+            this.tabASteer.Controls.Add(this.btnConvertToToolOnly);
+            this.tabASteer.Controls.Add(this.label7);
+            this.tabASteer.Controls.Add(this.cboxGPSToolOnlyOnOff);
             this.tabASteer.Controls.Add(this.label5);
             this.tabASteer.Controls.Add(this.cboxGPSToolOnOff);
             this.tabASteer.Controls.Add(this.label152);
@@ -6860,22 +6868,94 @@
             this.tabASteer.Enter += new System.EventHandler(this.tabASteer_Enter);
             this.tabASteer.Leave += new System.EventHandler(this.tabASteer_Leave);
             // 
+            // cboxGPSNormal
+            // 
+            this.cboxGPSNormal.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cboxGPSNormal.AutoCheck = false;
+            this.cboxGPSNormal.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboxGPSNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cboxGPSNormal.Checked = true;
+            this.cboxGPSNormal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxGPSNormal.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cboxGPSNormal.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
+            this.cboxGPSNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboxGPSNormal.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxGPSNormal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboxGPSNormal.Location = new System.Drawing.Point(75, 79);
+            this.cboxGPSNormal.Name = "cboxGPSNormal";
+            this.cboxGPSNormal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cboxGPSNormal.Size = new System.Drawing.Size(115, 72);
+            this.cboxGPSNormal.TabIndex = 495;
+            this.cboxGPSNormal.Text = "Vehicle Only";
+            this.cboxGPSNormal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboxGPSNormal.UseVisualStyleBackColor = false;
+            this.cboxGPSNormal.Click += new System.EventHandler(this.cboxGPSNormal_Click);
+            // 
+            // btnConvertToToolOnly
+            // 
+            this.btnConvertToToolOnly.BackColor = System.Drawing.Color.Transparent;
+            this.btnConvertToToolOnly.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Turquoise;
+            this.btnConvertToToolOnly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConvertToToolOnly.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConvertToToolOnly.ForeColor = System.Drawing.Color.Black;
+            this.btnConvertToToolOnly.Location = new System.Drawing.Point(605, 86);
+            this.btnConvertToToolOnly.Name = "btnConvertToToolOnly";
+            this.btnConvertToToolOnly.Size = new System.Drawing.Size(110, 59);
+            this.btnConvertToToolOnly.TabIndex = 494;
+            this.btnConvertToToolOnly.Text = "Convert Tool";
+            this.btnConvertToToolOnly.UseVisualStyleBackColor = false;
+            this.btnConvertToToolOnly.Click += new System.EventHandler(this.btnConvertToToolOnly_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(479, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 16);
+            this.label7.TabIndex = 493;
+            this.label7.Text = "Tool Only";
+            // 
+            // cboxGPSToolOnlyOnOff
+            // 
+            this.cboxGPSToolOnlyOnOff.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cboxGPSToolOnlyOnOff.AutoCheck = false;
+            this.cboxGPSToolOnlyOnOff.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboxGPSToolOnlyOnOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cboxGPSToolOnlyOnOff.Checked = true;
+            this.cboxGPSToolOnlyOnOff.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxGPSToolOnlyOnOff.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cboxGPSToolOnlyOnOff.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
+            this.cboxGPSToolOnlyOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboxGPSToolOnlyOnOff.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxGPSToolOnlyOnOff.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboxGPSToolOnlyOnOff.Location = new System.Drawing.Point(467, 79);
+            this.cboxGPSToolOnlyOnOff.Name = "cboxGPSToolOnlyOnOff";
+            this.cboxGPSToolOnlyOnOff.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cboxGPSToolOnlyOnOff.Size = new System.Drawing.Size(115, 72);
+            this.cboxGPSToolOnlyOnOff.TabIndex = 491;
+            this.cboxGPSToolOnlyOnOff.Text = "Tool Only";
+            this.cboxGPSToolOnlyOnOff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboxGPSToolOnlyOnOff.UseVisualStyleBackColor = false;
+            this.cboxGPSToolOnlyOnOff.Click += new System.EventHandler(this.cboxGPSToolOnlyOnOff_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(133, 56);
+            this.label5.Location = new System.Drawing.Point(291, 60);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 16);
+            this.label5.Size = new System.Drawing.Size(94, 16);
             this.label5.TabIndex = 490;
-            this.label5.Text = "Off - On";
+            this.label5.Text = "GPS + ToolGPS";
             // 
             // cboxGPSToolOnOff
             // 
             this.cboxGPSToolOnOff.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cboxGPSToolOnOff.AutoCheck = false;
             this.cboxGPSToolOnOff.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboxGPSToolOnOff.BackgroundImage = global::AgOpenGPS.Properties.Resources.DataSources;
             this.cboxGPSToolOnOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.cboxGPSToolOnOff.Checked = true;
             this.cboxGPSToolOnOff.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -6884,13 +6964,15 @@
             this.cboxGPSToolOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboxGPSToolOnOff.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxGPSToolOnOff.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboxGPSToolOnOff.Location = new System.Drawing.Point(112, 75);
+            this.cboxGPSToolOnOff.Location = new System.Drawing.Point(271, 79);
             this.cboxGPSToolOnOff.Name = "cboxGPSToolOnOff";
             this.cboxGPSToolOnOff.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cboxGPSToolOnOff.Size = new System.Drawing.Size(89, 72);
+            this.cboxGPSToolOnOff.Size = new System.Drawing.Size(115, 72);
             this.cboxGPSToolOnOff.TabIndex = 489;
+            this.cboxGPSToolOnOff.Text = "Vehicle And Tool";
             this.cboxGPSToolOnOff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cboxGPSToolOnOff.UseVisualStyleBackColor = false;
+            this.cboxGPSToolOnOff.Click += new System.EventHandler(this.cboxGPSToolOnOff_Click);
             // 
             // label152
             // 
@@ -9095,5 +9177,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox cboxGPSToolOnOff;
         private System.Windows.Forms.Label label152;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox cboxGPSToolOnlyOnOff;
+        private System.Windows.Forms.CheckBox cboxGPSNormal;
+        private System.Windows.Forms.Button btnConvertToToolOnly;
     }
 }

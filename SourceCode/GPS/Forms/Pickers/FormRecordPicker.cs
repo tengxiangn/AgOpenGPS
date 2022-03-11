@@ -57,9 +57,11 @@ namespace AgOpenGPS.Forms.Pickers
 
             if (lvLines.Items.Count == 0)
             {
-                MessageBox.Show("No Recorded Paths", "Create A Path First",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
+                mf.TimedMessageBox(1500, "No Recorded Paths", "List is Empty");
+                
+                //MessageBox.Show("No Recorded Paths", "Create A Path First",
+                //            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Close();
             }
         }
 

@@ -8,6 +8,7 @@ namespace AgOpenGPS
     {
         // turn on functions used with GPS Antenna on tool
         public bool isGPSTool = false;
+        public bool isGPSToolOnly = false;
 
         //WGS84 Lat Long
         public double latitude, longitude;
@@ -43,6 +44,7 @@ namespace AgOpenGPS
             lonStart = 0;
             ageAlarm = Properties.Settings.Default.setGPS_ageAlarm;
             isGPSTool = Properties.Settings.Default.setGPS_isGPSTool;
+            isGPSToolOnly = Properties.Settings.Default.setGPS_isGPSToolOnly;
         }
 
         public void AverageTheSpeed()

@@ -167,7 +167,13 @@ namespace AgOpenGPS
                             * currentABLineP1.northing) - (currentABLineP2.northing * currentABLineP1.easting))
                             / Math.Sqrt((dy * dy) + (dx * dx));
                 
-                if (mf.pn.isGPSTool)
+                if (mf.pn.isGPSToolOnly)
+                {
+                    distanceFromCurrentLineTool = ((dy * mf.pn.fix.easting) - (dx * mf.pn.fix.northing) + (currentABLineP2.easting
+                            * currentABLineP1.northing) - (currentABLineP2.northing * currentABLineP1.easting))
+                            / Math.Sqrt((dy * dy) + (dx * dx));
+                }
+                else if (mf.pn.isGPSTool)
                 {
                     distanceFromCurrentLineTool = ((dy * mf.pn.fixTool.easting) - (dx * mf.pn.fixTool.northing) + (currentABLineP2.easting
                                 * currentABLineP1.northing) - (currentABLineP2.northing * currentABLineP1.easting))
@@ -303,6 +309,8 @@ namespace AgOpenGPS
                     distanceFromCurrentLinePivot *= -1.0;
                     distanceFromCurrentLineTool *= -1.0;
                 }
+
+                if (mf.pn.isGPSToolOnly) distanceFromCurrentLinePivot = distanceFromCurrentLineTool;
 
                 //Convert to millimeters
                 mf.guidanceLineDistanceOff = (short)Math.Round(distanceFromCurrentLinePivot * 1000.0, MidpointRounding.AwayFromZero);

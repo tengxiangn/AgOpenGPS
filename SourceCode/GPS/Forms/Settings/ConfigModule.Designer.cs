@@ -10,13 +10,75 @@ namespace AgOpenGPS
         #region Module Steer
         private void tabASteer_Enter(object sender, EventArgs e)
         {
+            if (!Properties.Settings.Default.setGPS_isGPSTool 
+                && !Properties.Settings.Default.setGPS_isGPSToolOnly)
+            {
+                cboxGPSNormal.Checked = true;
+                cboxGPSToolOnOff.Checked = false;
+                cboxGPSToolOnlyOnOff.Checked = false;
+            }
+            else
+            {
+                cboxGPSNormal.Checked = false;
+            }
+
             cboxGPSToolOnOff.Checked = Properties.Settings.Default.setGPS_isGPSTool;
+            cboxGPSToolOnlyOnOff.Checked = Properties.Settings.Default.setGPS_isGPSToolOnly;
         }
+
+        private void cboxGPSToolOnOff_Click(object sender, EventArgs e)
+        {
+            if (cboxGPSToolOnOff.Checked) return;
+            else cboxGPSToolOnOff.Checked = true;
+                if (cboxGPSToolOnlyOnOff.Checked) cboxGPSToolOnlyOnOff.Checked = false;
+            if (cboxGPSNormal.Checked) cboxGPSNormal.Checked = false;
+        }
+        private void cboxGPSToolOnlyOnOff_Click(object sender, EventArgs e)
+        {
+            if (cboxGPSToolOnlyOnOff.Checked) return;
+            else cboxGPSToolOnlyOnOff.Checked = true;
+                if (cboxGPSToolOnOff.Checked) cboxGPSToolOnOff.Checked = false;
+            if (cboxGPSNormal.Checked) cboxGPSNormal.Checked = false;
+        }
+
+        private void cboxGPSNormal_Click(object sender, EventArgs e)
+        {
+            if (cboxGPSNormal.Checked) return;
+            else cboxGPSNormal.Checked = true;
+                if (cboxGPSToolOnlyOnOff.Checked) cboxGPSToolOnlyOnOff.Checked = false;
+            if (cboxGPSToolOnOff.Checked) cboxGPSToolOnOff.Checked = false;
+        }
+
+        private void btnConvertToToolOnly_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.setDisplay_vehicleOpacity = 23;
+            mf.vehicleOpacity = 0.23;
+            mf.vehicleOpacityByte = 60;
+
+            mf.vehicle.antennaPivot = Properties.Vehicle.Default.setVehicle_antennaPivot = 0.1;
+
+            //image to triangle
+            mf.isVehicleImage = false;
+            Properties.Settings.Default.setDisplay_isVehicleImage = false;
+
+            mf.tool.isToolRearFixed = Properties.Vehicle.Default.setTool_isToolRearFixed = false;
+            mf.tool.isToolTrailing = Properties.Vehicle.Default.setTool_isToolTrailing = false;
+            mf.tool.isToolTBT = Properties.Vehicle.Default.setTool_isToolTBT = false;
+            mf.tool.isToolFrontFixed = Properties.Vehicle.Default.setTool_isToolFront = true;
+
+            Properties.Vehicle.Default.setVehicle_hitchLength = mf.tool.hitchLength = 0.1;
+        }
+
 
         private void tabASteer_Leave(object sender, EventArgs e)
         {
             mf.pn.isGPSTool = cboxGPSToolOnOff.Checked;
             Properties.Settings.Default.setGPS_isGPSTool = mf.pn.isGPSTool;
+            mf.pn.isGPSToolOnly = cboxGPSToolOnlyOnOff.Checked;
+            Properties.Settings.Default.setGPS_isGPSToolOnly = mf.pn.isGPSToolOnly;
+            
+            Properties.Settings.Default.Save();
+            Properties.Vehicle.Default.Save();
         }
 
         #endregion

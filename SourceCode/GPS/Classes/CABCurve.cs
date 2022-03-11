@@ -12,7 +12,7 @@ namespace AgOpenGPS
         //flag for starting stop adding points
         public bool isBtnCurveOn, isCurveSet, isOkToAddDesPoints;
 
-        public double distanceFromCurrentLinePivot;
+        public double distanceFromCurrentLinePivot, distanceFromCurrentLineTool;
         public double distanceFromRefLine;
 
         public bool isHeadingSameWay = true;
@@ -389,6 +389,22 @@ namespace AgOpenGPS
                                 * curList[A].northing) - (curList[B].northing * curList[A].easting))
                                     / Math.Sqrt((dz * dz) + (dx * dx));
 
+
+                    if (mf.pn.isGPSToolOnly || mf.pn.isGPSTool)
+                    {
+                        distanceFromCurrentLineTool = ((dz * mf.pn.fix.easting) - (dx * mf.pn.fix.northing) + (curList[B].easting
+                                * curList[A].northing) - (curList[B].northing * curList[A].easting))
+                                    / Math.Sqrt((dz * dz) + (dx * dx));
+                    }
+                    else
+                    {
+                        distanceFromCurrentLineTool = ((dz * mf.toolPos.easting) - (dx * mf.toolPos.northing) + (curList[B].easting
+                                * curList[A].northing) - (curList[B].northing * curList[A].easting))
+                                    / Math.Sqrt((dz * dz) + (dx * dx));
+                    }
+
+
+
                     //integral slider is set to 0
                     if (mf.vehicle.purePursuitIntegralGain != 0 && !mf.isReverse)
                     {
@@ -506,10 +522,18 @@ namespace AgOpenGPS
                     //}
 
                     if (!isHeadingSameWay)
+                    {
                         distanceFromCurrentLinePivot *= -1.0;
+                        distanceFromCurrentLineTool *= -1.0;
+                    }
 
-                    //Convert to centimeters
-                    mf.guidanceLineDistanceOff = (short)Math.Round(distanceFromCurrentLinePivot * 1000.0, MidpointRounding.AwayFromZero);
+                    if (mf.pn.isGPSToolOnly) distanceFromCurrentLinePivot = distanceFromCurrentLineTool;
+
+                    //Convert to mm
+                    mf.guidanceLineDistanceOff = (short)Math.Round(distanceFromCurrentLinePivot 
+                        * 1000.0, MidpointRounding.AwayFromZero);
+                    mf.guidanceLineDistanceOffTool = (short)Math.Round(distanceFromCurrentLineTool 
+                        * 1000.0, MidpointRounding.AwayFromZero);
                     mf.guidanceLineSteerAngle = (short)(steerAngleCu * 100);
                 }
             }

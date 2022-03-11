@@ -373,26 +373,52 @@ namespace AgOpenGPS
             }
             else
             {
-                GL.Color4(1.2, 1.20, 0.0, mf.vehicleOpacity);
-                GL.Begin(PrimitiveType.TriangleFan);
-                GL.Vertex3(0, antennaPivot, -0.0);
-                GL.Vertex3(1.0, -0, 0.0);
-                GL.Color4(0.0, 1.20, 1.22, mf.vehicleOpacity);
-                GL.Vertex3(0, wheelbase, 0.0);
-                GL.Color4(1.220, 0.0, 1.2, mf.vehicleOpacity);
-                GL.Vertex3(-1.0, -0, 0.0);
-                GL.Vertex3(1.0, -0, 0.0);
-                GL.End();
-
-                GL.LineWidth(3);
-                GL.Color3(0.12, 0.12, 0.12);
-                GL.Begin(PrimitiveType.LineLoop);
+                if (!mf.pn.isGPSToolOnly)
                 {
-                    GL.Vertex3(-1.0, 0, 0);
-                    GL.Vertex3(1.0, 0, 0);
-                    GL.Vertex3(0, wheelbase, 0);
+                    GL.Color4((byte)252, (byte)252, (byte)0, mf.vehicleOpacity);
+                    GL.Begin(PrimitiveType.TriangleFan);
+                    GL.Vertex3(0, antennaPivot, -0.0);
+                    GL.Vertex3(1.0, -0, 0.0);
+                    GL.Color4((byte)0, (byte)252, (byte)252, mf.vehicleOpacity);
+                    GL.Vertex3(0, wheelbase, 0.0);
+                    GL.Color4((byte)252, (byte)0, (byte)252, mf.vehicleOpacity);
+                    GL.Vertex3(-1.0, -0, 0.0);
+                    GL.Vertex3(1.0, -0, 0.0);
+                    GL.End();
+
+                    GL.LineWidth(3);
+                    GL.Color3(0.12, 0.12, 0.12);
+                    GL.Begin(PrimitiveType.LineLoop);
+                    {
+                        GL.Vertex3(-1.0, 0, 0);
+                        GL.Vertex3(1.0, 0, 0);
+                        GL.Vertex3(0, wheelbase, 0);
+                    }
+                    GL.End();
                 }
-                GL.End();
+                else
+                {
+                    GL.Color4((byte)252, (byte)252, (byte)100, (byte)60);
+                    GL.Begin(PrimitiveType.TriangleFan);
+                    GL.Vertex3(0, antennaPivot, -0.0);
+                    GL.Vertex3(1.0, -0, 0.0);
+                    GL.Color4((byte)100, (byte)252, (byte)252, (byte)60);
+                    GL.Vertex3(0, wheelbase, 0.0);
+                    GL.Color4((byte)252, (byte)100, (byte)252, (byte)60);
+                    GL.Vertex3(-1.0, -0, 0.0);
+                    GL.Vertex3(1.0, -0, 0.0);
+                    GL.End();
+
+                    GL.LineWidth(3);
+                    GL.Color3(0.12, 0.12, 0.12);
+                    GL.Begin(PrimitiveType.LineLoop);
+                    {
+                        GL.Vertex3(-1.0, 0, 0);
+                        GL.Vertex3(1.0, 0, 0);
+                        GL.Vertex3(0, wheelbase, 0);
+                    }
+                    GL.End();
+                }
 
             }
 

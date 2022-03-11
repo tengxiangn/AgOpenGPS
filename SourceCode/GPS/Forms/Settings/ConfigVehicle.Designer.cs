@@ -288,6 +288,7 @@ namespace AgOpenGPS
             else { Properties.Settings.Default.setMenu_isMetric = false; mf.isMetric = false; }
 
             Properties.Settings.Default.Save();
+            Properties.Vehicle.Default.Save();
         }
 
         #endregion
