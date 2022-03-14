@@ -40,7 +40,7 @@ namespace AgIO
 
         //GPS Tool fields
         public double latitudeSend2 = double.MaxValue, longitudeSend2 = double.MaxValue, latitude2, longitude2;
-        public float hdopData2, ageData2;
+        public float hdopData2, ageData2, rollData2, roll2=float.MaxValue, headingTrueDual2 = float.MaxValue;
         public ushort satellitesData2, satellitesTracked2 = ushort.MaxValue, hdop2X100 = ushort.MaxValue,
             age2X100 = ushort.MaxValue;
         public short imuRollData2, imuRoll2 = short.MaxValue;
@@ -1042,6 +1042,12 @@ namespace AgIO
                     //if (isGPSSentencesOn) pandaSentence = nextNMEASentence2;
                 }
 
+                else if (words2[0] == "$PAOGI" && words2.Length > 14)
+                {
+                    ParseOGI2();
+                    if (isGPSSentencesOn) paogiSentence = nextNMEASentence;
+                }
+
                 //else if ((words2[0] == "$GPVTG" || words2[0] == "$GNVTG") && words2.Length > 7)
                 //{
                 //    ParseVTG();
@@ -1054,13 +1060,13 @@ namespace AgIO
             {
                 isNMEAToSend2 = false;
 
-                byte[] nmeaPGN = new byte[31];
+                byte[] nmeaPGN = new byte[35];
 
                 nmeaPGN[0] = 0x80;
                 nmeaPGN[1] = 0x81;
                 nmeaPGN[2] = 0x7C;
                 nmeaPGN[3] = 0xD7;
-                nmeaPGN[4] = 25; // nmea total array count minus 6
+                nmeaPGN[4] = 29; // nmea total array count minus 6
 
                 //longitude
                 Buffer.BlockCopy(BitConverter.GetBytes(longitudeSend2), 0, nmeaPGN, 5, 8);
@@ -1085,6 +1091,10 @@ namespace AgIO
                 Buffer.BlockCopy(BitConverter.GetBytes(imuRoll2), 0, nmeaPGN, 28, 2);
                 imuRoll2 = short.MaxValue;
 
+                //the different dual antenna headings
+                Buffer.BlockCopy(BitConverter.GetBytes(headingTrueDual2), 0, nmeaPGN, 30, 4);
+                headingTrueDual2 = float.MaxValue;
+
                 int CK_A = 0;
                 for (int j = 2; j < nmeaPGN.Length; j++)
                 {
@@ -1092,7 +1102,7 @@ namespace AgIO
                 }
 
                 //checksum
-                nmeaPGN[30] = (byte)CK_A;
+                nmeaPGN[34] = (byte)CK_A;
 
                 //Send nmea to AgOpenGPS
                 SendToLoopBackMessageAOG(nmeaPGN);
@@ -1312,6 +1322,110 @@ namespace AgIO
                 //roll
                 short.TryParse(words2[13], NumberStyles.Float, CultureInfo.InvariantCulture, out imuRoll2);
                 imuRollData2 = imuRoll2;
+
+                //always send because its probably the only one.
+                isNMEAToSend2 = true;
+                //}
+            }
+        }
+
+        private void ParseOGI2()
+        {
+            #region PAOGI Message
+            /*
+            $PAOGI
+            (1) 123519 Fix taken at 1219 UTC
+
+            Roll corrected position
+            (2,3) 4807.038,N Latitude 48 deg 07.038' N
+            (4,5) 01131.000,E Longitude 11 deg 31.000' E
+
+            (6) 1 Fix quality: 
+                0 = invalid
+                1 = GPS fix(SPS)
+                2 = DGPS fix
+                3 = PPS fix
+                4 = Real Time Kinematic
+                5 = Float RTK
+                6 = estimated(dead reckoning)(2.3 feature)
+                7 = Manual input mode
+                8 = Simulation mode
+            (7) Number of satellites being tracked
+            (8) 0.9 Horizontal dilution of position
+            (9) 545.4 Altitude (ALWAYS in Meters, above mean sea level)
+            (10) 1.2 time in seconds since last DGPS update
+
+            (11) 022.4 Speed over the ground in knots - can be positive or negative
+
+            FROM AHRS:
+            (12) Heading in degrees
+            (13) Roll angle in degrees(positive roll = right leaning - right down, left up)
+            (14) Pitch angle in degrees(Positive pitch = nose up)
+            (15) Yaw Rate in Degrees / second
+
+            * CHKSUM
+            */
+            #endregion PAOGI Message
+
+            if (!string.IsNullOrEmpty(words2[1]) && !string.IsNullOrEmpty(words2[2]) && !string.IsNullOrEmpty(words2[3])
+                && !string.IsNullOrEmpty(words2[4]) && !string.IsNullOrEmpty(words2[5]))
+            {
+                //get latitude and convert to decimal degrees
+                int decim = words2[2].IndexOf(".", StringComparison.Ordinal);
+                if (decim == -1)
+                {
+                    words2[2] += ".00";
+                    decim = words2[2].IndexOf(".", StringComparison.Ordinal);
+                }
+
+                //age
+                float.TryParse(words2[10], NumberStyles.Float, CultureInfo.InvariantCulture, out ageData2);
+                age2X100 = (ushort)(ageData2 * 100.0);
+
+                decim -= 2;
+                double.TryParse(words2[2].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out latitude2);
+                double.TryParse(words2[2].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out double temp);
+                temp *= 0.01666666666666666666666666666667;
+                latitude2 += temp;
+                if (words2[3] == "S")
+                    latitude2 *= -1;
+
+                latitudeSend2 = latitude2;
+
+                //get longitude and convert to decimal degrees
+                decim = words2[4].IndexOf(".", StringComparison.Ordinal);
+                if (decim == -1)
+                {
+                    words2[4] += ".00";
+                    decim = words2[4].IndexOf(".", StringComparison.Ordinal);
+                }
+
+                decim -= 2;
+                double.TryParse(words2[4].Substring(0, decim), NumberStyles.Float, CultureInfo.InvariantCulture, out longitude2);
+                double.TryParse(words2[4].Substring(decim), NumberStyles.Float, CultureInfo.InvariantCulture, out temp);
+                longitude2 += temp * 0.01666666666666666666666666666667;
+
+                { if (words2[5] == "W") longitude2 *= -1; }
+                longitudeSend2 = longitude2;
+
+                //FixQuality
+                byte.TryParse(words2[6], NumberStyles.Float, CultureInfo.InvariantCulture, out fixQuality2);
+                fixQualityData2 = fixQuality2;
+
+                //satellites tracked
+                ushort.TryParse(words2[7], NumberStyles.Float, CultureInfo.InvariantCulture, out satellitesTracked2);
+                satellitesData2 = satellitesTracked2;
+
+                //hdop
+                float.TryParse(words2[8], NumberStyles.Float, CultureInfo.InvariantCulture, out hdopData2);
+                hdop2X100 = (ushort)(hdopData2 * 100.0);
+
+                //Dual antenna derived heading
+                float.TryParse(words2[12], NumberStyles.Float, CultureInfo.InvariantCulture, out headingTrueDual2);
+
+                //roll putinto imuRoll2 * 10 like the imu
+                float.TryParse(words2[13], NumberStyles.Float, CultureInfo.InvariantCulture, out roll2);
+                imuRoll2 = (short)(roll2 * 10);
 
                 //always send because its probably the only one.
                 isNMEAToSend2 = true;

@@ -51,24 +51,27 @@ namespace AgOpenGPS
 
         private void btnConvertToToolOnly_Click(object sender, EventArgs e)
         {
+            //make it see thru
             Properties.Settings.Default.setDisplay_vehicleOpacity = 23;
             mf.vehicleOpacity = 0.23;
             mf.vehicleOpacityByte = 60;
 
+            //antenna slightly ahead of pivot at minimum distance
             mf.vehicle.antennaPivot = Properties.Vehicle.Default.setVehicle_antennaPivot = 0.1;
 
             //image to triangle
             mf.isVehicleImage = false;
             Properties.Settings.Default.setDisplay_isVehicleImage = false;
 
+            //front hitch
             mf.tool.isToolRearFixed = Properties.Vehicle.Default.setTool_isToolRearFixed = false;
             mf.tool.isToolTrailing = Properties.Vehicle.Default.setTool_isToolTrailing = false;
             mf.tool.isToolTBT = Properties.Vehicle.Default.setTool_isToolTBT = false;
             mf.tool.isToolFrontFixed = Properties.Vehicle.Default.setTool_isToolFront = true;
 
+            //hitch slightly forward to min length
             Properties.Vehicle.Default.setVehicle_hitchLength = mf.tool.hitchLength = 0.1;
         }
-
 
         private void tabASteer_Leave(object sender, EventArgs e)
         {

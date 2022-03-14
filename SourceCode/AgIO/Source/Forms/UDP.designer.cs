@@ -397,7 +397,6 @@ namespace AgIO
                     SendToLoopBackMessageVR(data);
                 }
                 //$ = 36 G=71 P=80 K=75
-                //Panda
                 else if (data[0] == 36 && (data[1] == 71 || data[1] == 80 || data[1] == 75))
                 {
                     //if (timerSim.Enabled) DisableSim();
@@ -406,10 +405,10 @@ namespace AgIO
                     ParseNMEA(ref rawBuffer);
                 }
             }
-            //GGA
-            else
+            
+            else //is tool NMEA set to port 10,000
             {
-                //GGA or Panda
+                //GGA or Panda or PAOGI
                 if (data[0] == 36 && (data[1] == 71 || data[1] == 80))
                 {
                     traffic.cntrGPS2In += data.Length;

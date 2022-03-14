@@ -33,7 +33,7 @@ namespace AgOpenGPS
             {
                 switch (data[3])
                 {
-                    case 0xD6:
+                    case 0xD6: //Main Vehicle Antenna
                         {
                             if (udpWatch.ElapsedMilliseconds < udpWatchLimit)
                             {
@@ -156,9 +156,8 @@ namespace AgOpenGPS
                         }
                         break;
 
-                    case 0xD7:
+                    case 0xD7: //Tool Antenna
                         {
-
                             double Lon = BitConverter.ToDouble(data, 5);
                             double Lat = BitConverter.ToDouble(data, 13);
 
@@ -195,7 +194,14 @@ namespace AgOpenGPS
                                     ahrs.imuRollTool = ahrs.imuRollTool * ahrs.rollFilter + rollK * (1 - ahrs.rollFilter);
                                 }
 
-                                //UpdateFixPosition();
+                                //From dual antenna heading sentences
+                                float temp = BitConverter.ToSingle(data, 30);
+                                if (temp != float.MaxValue)
+                                {
+                                    pn.headingTrueDualTool = temp;// + pn.headingTrueDualOffset;
+                                    if (pn.headingTrueDualTool < 0) pn.headingTrueDualTool += 360;
+                                    if (ahrs.isDualAsIMU) ahrs.imuHeading = temp;
+                                }
                             }
                         }
                         break;

@@ -6898,7 +6898,7 @@
             this.btnConvertToToolOnly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvertToToolOnly.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConvertToToolOnly.ForeColor = System.Drawing.Color.Black;
-            this.btnConvertToToolOnly.Location = new System.Drawing.Point(605, 86);
+            this.btnConvertToToolOnly.Location = new System.Drawing.Point(616, 86);
             this.btnConvertToToolOnly.Name = "btnConvertToToolOnly";
             this.btnConvertToToolOnly.Size = new System.Drawing.Size(110, 59);
             this.btnConvertToToolOnly.TabIndex = 494;
@@ -6923,8 +6923,6 @@
             this.cboxGPSToolOnlyOnOff.AutoCheck = false;
             this.cboxGPSToolOnlyOnOff.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cboxGPSToolOnlyOnOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cboxGPSToolOnlyOnOff.Checked = true;
-            this.cboxGPSToolOnlyOnOff.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cboxGPSToolOnlyOnOff.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.cboxGPSToolOnlyOnOff.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
             this.cboxGPSToolOnlyOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -6957,8 +6955,6 @@
             this.cboxGPSToolOnOff.AutoCheck = false;
             this.cboxGPSToolOnOff.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cboxGPSToolOnOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cboxGPSToolOnOff.Checked = true;
-            this.cboxGPSToolOnOff.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cboxGPSToolOnOff.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.cboxGPSToolOnOff.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
             this.cboxGPSToolOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
