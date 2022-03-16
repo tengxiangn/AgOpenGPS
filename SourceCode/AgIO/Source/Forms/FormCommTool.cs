@@ -77,6 +77,8 @@ namespace AgIO
 
             lblFromModule2.Text = mf.traffic.cntrModule2In == 0 ? "--" : (mf.traffic.cntrModule2In).ToString();
 
+            lblFromToolSteer.Text = mf.traffic.cntrModule3In == 0 ? "--" : (mf.traffic.cntrModule3In).ToString();
+
             lblFromMU.Text = mf.traffic.cntrIMUIn == 0 ? "--" : (mf.traffic.cntrIMUIn).ToString();
 
         }

@@ -202,6 +202,16 @@ namespace AgOpenGPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AntennaPlaces {
+            get {
+                object obj = ResourceManager.GetObject("AntennaPlaces", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AntennaTractor {
             get {
                 object obj = ResourceManager.GetObject("AntennaTractor", resourceCulture);
@@ -1665,6 +1675,36 @@ namespace AgOpenGPS.Properties {
         internal static System.Drawing.Bitmap GoogleEarth {
             get {
                 object obj = ResourceManager.GetObject("GoogleEarth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GPS_Tool {
+            get {
+                object obj = ResourceManager.GetObject("GPS_Tool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GPS_ToolVehicle {
+            get {
+                object obj = ResourceManager.GetObject("GPS_ToolVehicle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GPS_Vehicle {
+            get {
+                object obj = ResourceManager.GetObject("GPS_Vehicle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

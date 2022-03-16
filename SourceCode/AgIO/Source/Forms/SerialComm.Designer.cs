@@ -45,9 +45,6 @@ namespace AgIO
         public bool isGPSCommOpen = false;
         public bool isGPSCommToolOpen = false;
 
-        public byte checksumSent = 0;
-        public byte checksumRecd = 0;
-
         //used to decide to autoconnect autosteer arduino this run
         public bool wasGPSConnectedLastRun = false;
         public bool wasGPS2ConnectedLastRun = false;
@@ -795,13 +792,12 @@ namespace AgIO
                 spModule3.DiscardOutBuffer();
                 spModule3.DiscardInBuffer();
 
-                //update port status label
-
                 Properties.Settings.Default.setPort_portNameModule3 = portNameModule3;
                 Properties.Settings.Default.setPort_wasModule3Connected = true;
                 Properties.Settings.Default.Save();
 
                 wasModule3ConnectedLastRun = true;
+                lblMod3Comm.Text = portNameModule3;
             }
         }
 
@@ -813,7 +809,7 @@ namespace AgIO
                 try { spModule3.Close(); }
                 catch (Exception e)
                 {
-                    //WriteErrorLog("Closing steer Port" + e.ToString());
+                    //WriteErrorLog("Closing Machine Serial Port" + e.ToString());
                     MessageBox.Show(e.Message, "Connection already terminated??");
                 }
 
@@ -824,7 +820,7 @@ namespace AgIO
             }
 
             wasModule3ConnectedLastRun = false;
-
+            lblMod3Comm.Text = "---";
         }
 
         //called by the module delegate every time a chunk is rec'd

@@ -57,7 +57,7 @@ namespace AgIO
             lblIMUComm.Text = "---";
             lblMod1Comm.Text = "---";
             lblMod2Comm.Text = "---";
-            //lblMod3Comm.Text = "---";
+            lblMod3Comm.Text = "---";
 
             //set baud and port from last time run
             baudRateGPS = Settings.Default.setPort_baudRateGPS;
@@ -123,7 +123,7 @@ namespace AgIO
             if (wasModule3ConnectedLastRun)
             {
                 OpenModule3Port();
-                //if (spModule3.IsOpen) lblMod3Comm.Text = portNameModule3;
+                if (spModule3.IsOpen) lblMod3Comm.Text = portNameModule3;
             }
 
             ConfigureNTRIP();
@@ -264,6 +264,7 @@ namespace AgIO
                     if (!spModule3.IsOpen)
                     {
                         wasModule3ConnectedLastRun = false;
+                        lblMod3Comm.Text = "---";
                     }
                 }
             }
@@ -496,6 +497,9 @@ namespace AgIO
 
             lblFromModule2.Text = traffic.cntrModule2In == 0 ? "--" : (traffic.cntrModule2In).ToString();
             lblToModule2.Text = traffic.cntrModule2Out == 0 ? "--" : (traffic.cntrModule2Out).ToString();
+
+            lblFromModule3.Text = traffic.cntrModule3In == 0 ? "--" : (traffic.cntrModule3In).ToString();
+            lblToModule3.Text = traffic.cntrModule3Out == 0 ? "--" : (traffic.cntrModule3Out).ToString();
 
             lblFromMU.Text = traffic.cntrIMUIn == 0 ? "--" : (traffic.cntrIMUIn).ToString();
             lblToIMU.Text = traffic.cntrIMUOut == 0 ? "--" : (traffic.cntrIMUOut).ToString();

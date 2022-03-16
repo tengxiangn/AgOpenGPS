@@ -268,6 +268,11 @@ namespace AgIO
                                 SendModule3Port(data, data.Length);
                                 break;
                             }
+                        case 0xE9: //233 tool steer config
+                            {
+                                SendModule3Port(data, data.Length);
+                                break;
+                            }
                     }
                 }
             }

@@ -804,6 +804,10 @@
   <ItemGroup>
     <Content Include="AOG.ico" />
     <Content Include="aChangeLog.txt" />
+    <None Include="btnImages\Config\GPS_Vehicle.png" />
+    <None Include="btnImages\Config\GPS_ToolVehicle.png" />
+    <None Include="btnImages\Config\GPS_Tool.png" />
+    <None Include="btnImages\AntennaPlaces.png" />
     <None Include="btnImages\Marker.png" />
     <None Include="btnImages\MapGray.png" />
     <None Include="btnImages\MapColor.png" />

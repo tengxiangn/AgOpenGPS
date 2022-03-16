@@ -126,6 +126,19 @@ namespace AgOpenGPS
                         * curPtA.northing) - (curPtB.northing * curPtA.easting))
                             / Math.Sqrt((dy * dy) + (dx * dx));
 
+            if (mf.pn.isGPSToolOnly || mf.pn.isGPSTool)
+            {
+                mf.ABLine.distanceFromCurrentLineTool = ((dy * mf.pn.fix.easting) - (dx * mf.pn.fix.northing) + (curPtB.easting
+                        * curPtA.northing) - (curPtB.northing * curPtA.easting))
+                        / Math.Sqrt((dy * dy) + (dx * dx));
+            }
+            else
+            {
+                mf.ABLine.distanceFromCurrentLineTool = ((dy * mf.toolPos.easting) - (dx * mf.toolPos.northing) + (curPtB.easting
+                            * curPtA.northing) - (curPtB.northing * curPtA.easting))
+                            / Math.Sqrt((dy * dy) + (dx * dx));
+            }
+
             if (!mf.ABLine.isHeadingSameWay)
                 distanceFromCurrentLinePivot *= -1.0;
 
@@ -133,6 +146,8 @@ namespace AgOpenGPS
             double U = (((pivot.easting - curPtA.easting) * dx)
                             + ((pivot.northing - curPtA.northing) * dy))
                             / ((dx * dx) + (dy * dy));
+
+
 
             rEastPivot = curPtA.easting + (U * dx);
             rNorthPivot = curPtA.northing + (U * dy);
@@ -324,6 +339,7 @@ namespace AgOpenGPS
                                 / Math.Sqrt((dz * dz) + (dx * dx));
 
                 mf.curve.distanceFromCurrentLinePivot = distanceFromCurrentLinePivot;
+
                 double U = (((pivot.easting - pivA.easting) * dx)
                                 + ((pivot.northing - pivA.northing) * dz))
                                 / ((dx * dx) + (dz * dz));

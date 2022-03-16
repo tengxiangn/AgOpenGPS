@@ -390,9 +390,15 @@ namespace AgOpenGPS
                                     / Math.Sqrt((dz * dz) + (dx * dx));
 
 
-                    if (mf.pn.isGPSToolOnly || mf.pn.isGPSTool)
+                    if (mf.pn.isGPSToolOnly)
                     {
                         distanceFromCurrentLineTool = ((dz * mf.pn.fix.easting) - (dx * mf.pn.fix.northing) + (curList[B].easting
+                                * curList[A].northing) - (curList[B].northing * curList[A].easting))
+                                    / Math.Sqrt((dz * dz) + (dx * dx));
+                    }
+                    else if (mf.pn.isGPSTool)
+                    {
+                        distanceFromCurrentLineTool = ((dz * mf.pn.fixTool.easting) - (dx * mf.pn.fixTool.northing) + (curList[B].easting
                                 * curList[A].northing) - (curList[B].northing * curList[A].easting))
                                     / Math.Sqrt((dz * dz) + (dx * dx));
                     }
@@ -402,8 +408,6 @@ namespace AgOpenGPS
                                 * curList[A].northing) - (curList[B].northing * curList[A].easting))
                                     / Math.Sqrt((dz * dz) + (dx * dx));
                     }
-
-
 
                     //integral slider is set to 0
                     if (mf.vehicle.purePursuitIntegralGain != 0 && !mf.isReverse)
