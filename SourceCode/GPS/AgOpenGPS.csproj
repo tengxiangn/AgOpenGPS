@@ -732,6 +732,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>gStr.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="gStr.tr.resx" />
     <EmbeddedResource Include="gStr.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>gStr.uk.Designer.cs</LastGenOutput>

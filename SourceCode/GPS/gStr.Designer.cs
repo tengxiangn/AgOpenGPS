@@ -61,6 +61,15 @@ namespace AgOpenGPS {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _ {
+            get {
+                return ResourceManager.GetString("", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AB Curve.
         /// </summary>
         public static string gsABCurve {

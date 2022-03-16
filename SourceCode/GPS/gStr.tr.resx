@@ -117,266 +117,263 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="" xml:space="preserve">
-    <value></value>
-  </data>
   <data name="gsABCurve" xml:space="preserve">
-    <value>AB Curve</value>
+    <value>AB Eğrisi</value>
   </data>
   <data name="gsABline" xml:space="preserve">
-    <value>AB Line</value>
+    <value>AB Hattı</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>About...</value>
+    <value>Hakkında...</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
-    <value>Action Has Been Cancelled</value>
+    <value>İşlem İptal Edildi</value>
   </data>
   <data name="gsActual" xml:space="preserve">
-    <value>Actual</value>
+    <value>Gerçek</value>
   </data>
   <data name="gsAgressiveness" xml:space="preserve">
-    <value>Agressiveness</value>
-  </data>
-  <data name="gsAreYouSure" xml:space="preserve">
-    <value>Are you sure ?</value>
+    <value>Agresiflik</value>
   </data>
   <data name="gsArea" xml:space="preserve">
-    <value>Area</value>
+    <value>Alan</value>
+  </data>
+  <data name="gsAreYouSure" xml:space="preserve">
+    <value>Emin misiniz?</value>
   </data>
   <data name="gsAutoSteerConfiguration" xml:space="preserve">
-    <value>Auto Steer Configuration</value>
+    <value>Otomatik Dumenleme Yapılandırması</value>
   </data>
   <data name="gsAutoSteerPort" xml:space="preserve">
-    <value>AutoSteer Port</value>
+    <value>Otomatik Dumenleme Port</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Based on Field:</value>
+    <value>Alan Bazlı:</value>
   </data>
   <data name="gsBoundary" xml:space="preserve">
-    <value>Boundary</value>
+    <value>Sınır</value>
   </data>
   <data name="gsBoundaryLineFilesAreCorrupt" xml:space="preserve">
-    <value>Boundary Lines File Corrupt</value>
+    <value>Sınır Çizgileri Dosyası Bozuk</value>
   </data>
   <data name="gsButFieldIsLoaded" xml:space="preserve">
-    <value>But Field Is Loaded</value>
+    <value>Ama Alan Yüklendi</value>
   </data>
   <data name="gsCentimeters" xml:space="preserve">
-    <value>Centimeters</value>
+    <value>Santimetre</value>
   </data>
   <data name="gsChooseADifferentField" xml:space="preserve">
-    <value>Choose a different field</value>
+    <value>Farklı bir alan seçin</value>
   </data>
   <data name="gsChooseADifferentName" xml:space="preserve">
-    <value>Choose a different name</value>
+    <value>Farklı bir isim seçin</value>
   </data>
   <data name="gsChooseBuildDifferentone" xml:space="preserve">
-    <value>Choose or Build a Different one</value>
+    <value>Farklı Birini Seçin veya Oluşturun</value>
   </data>
   <data name="gsCloseFieldFirst" xml:space="preserve">
-    <value>Close Field First</value>
+    <value>Önce Alanı Kapat</value>
   </data>
   <data name="gsColors" xml:space="preserve">
-    <value>Colors</value>
+    <value>Renkler</value>
   </data>
   <data name="gsCompletelyDeleteBoundary" xml:space="preserve">
-    <value>Completely Delete Boundary</value>
+    <value>Sınırı Tamamen Sil</value>
   </data>
   <data name="gsContourFileIsCorrupt" xml:space="preserve">
-    <value>Contour File Corrupt</value>
+    <value>Kontur Dosyası Bozuk</value>
   </data>
   <data name="gsContourOn" xml:space="preserve">
-    <value>Contour On</value>
+    <value>Kontur Açık</value>
   </data>
   <data name="gsCouldntGenerateValidPath" xml:space="preserve">
-    <value>No Valid Path</value>
+    <value>Geçerli Yol Yok</value>
   </data>
   <data name="gsCreateABoundaryFirst" xml:space="preserve">
-    <value>Create A Boundary First</value>
+    <value>Önce Bir Sınır Oluşturun</value>
   </data>
   <data name="gsCreateNewField" xml:space="preserve">
-    <value>Create New Field</value>
+    <value>Yeni Alan Oluştur</value>
   </data>
   <data name="gsCurrent" xml:space="preserve">
-    <value>Current (A)</value>
+    <value>Akım (A)</value>
   </data>
   <data name="gsCurrentSensorValueLabel" xml:space="preserve">
-    <value>Current (A)</value>
+    <value>Akım (A)</value>
   </data>
   <data name="gsCurveLineFileIsCorrupt" xml:space="preserve">
-    <value>Curve Line File Corrupt</value>
+    <value>Eğri Çizgi Dosyası Bozuk</value>
   </data>
   <data name="gsCurveNotOn" xml:space="preserve">
-    <value>Curve Not ON</value>
+    <value>Eğri Açık değil</value>
   </data>
   <data name="gsDeleteAllContoursAndSections" xml:space="preserve">
-    <value>Delete All Sections And Contours</value>
+    <value>Tüm Bölümleri ve Konturları Sil</value>
   </data>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
-    <value>Delete Applied Area</value>
+    <value>Uygulanan Alanı Sil</value>
   </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
-    <value>Delete Contour Paths</value>
+    <value>Kontur Yollarını Sil</value>
   </data>
   <data name="gsDeleteForSure" xml:space="preserve">
-    <value>Delete For Sure?</value>
+    <value>Kesinlikle Silinsin mi?</value>
   </data>
   <data name="gsDirectories" xml:space="preserve">
-    <value>Directories</value>
+    <value>Dizinler</value>
   </data>
   <data name="gsDirectoryExists" xml:space="preserve">
-    <value>Directory Exists</value>
+    <value>Dizin var</value>
   </data>
   <data name="gsDriveThru" xml:space="preserve">
-    <value>Drive Thru</value>
+    <value>Arabaya servis</value>
   </data>
   <data name="gsDriving" xml:space="preserve">
-    <value>Driving</value>
+    <value>Sürme</value>
   </data>
   <data name="gsEast" xml:space="preserve">
-    <value>East</value>
+    <value>Doğu</value>
   </data>
   <data name="gsEditABCurve" xml:space="preserve">
-    <value>Edit AB Curve</value>
+    <value>AB Eğrisini Düzenle</value>
   </data>
   <data name="gsEditABLine" xml:space="preserve">
-    <value>Edit AB Line</value>
+    <value>AB Çizgisini Düzenle</value>
   </data>
   <data name="gsEncoderCounts" xml:space="preserve">
-    <value>Counts</value>
+    <value>Enkoder</value>
   </data>
   <data name="gsEnterCoordinatesForSimulator" xml:space="preserve">
-    <value>Enter Coordinates For Simulator</value>
+    <value>Simülatör için Koordinatları Girin</value>
   </data>
   <data name="gsEnterFieldName" xml:space="preserve">
-    <value>Enter Field Name</value>
+    <value>Alan Adını Girin</value>
   </data>
   <data name="gsEnterSimCoords" xml:space="preserve">
-    <value>Enter Sim Coords</value>
+    <value>Sim Kordinatlarını Girin</value>
   </data>
   <data name="gsError" xml:space="preserve">
-    <value>Error</value>
+    <value>Hata</value>
   </data>
   <data name="gsErrorreadingKML" xml:space="preserve">
-    <value>Error reading KML</value>
+    <value>KML okunurken hata oluştu</value>
   </data>
   <data name="gsFieldFileIsCorrupt" xml:space="preserve">
-    <value>Field File is Corrupt</value>
+    <value>Alan Dosyası Bozuk</value>
   </data>
   <data name="gsFieldIsOpen" xml:space="preserve">
-    <value>Field Is Open</value>
+    <value>Alan Açık</value>
   </data>
   <data name="gsFieldNotOpen" xml:space="preserve">
-    <value>Field Not Open</value>
+    <value>Alan Açık Değil</value>
   </data>
   <data name="gsFileError" xml:space="preserve">
-    <value>File Error</value>
+    <value>Dosya Hatası</value>
   </data>
   <data name="gsFlagFileIsCorrupt" xml:space="preserve">
-    <value>Flag File Corrupt</value>
+    <value>Bayrak Dosyası Hatalı</value>
   </data>
   <data name="gsForNow" xml:space="preserve">
-    <value>For Now</value>
+    <value>Şimdilik</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
-    <value>Headland</value>
+    <value>Sürülmemiş Arazi</value>
   </data>
   <data name="gsHeadlandForm" xml:space="preserve">
-    <value>Create and Edit Headland</value>
+    <value>Sürülmemiş Alan Oluştur ve Düzenle</value>
   </data>
   <data name="gsHelp" xml:space="preserve">
-    <value>Help</value>
+    <value>Yardım</value>
   </data>
   <data name="gsInches" xml:space="preserve">
-    <value>Inches</value>
+    <value>İnç</value>
   </data>
   <data name="gsInner" xml:space="preserve">
-    <value>Inner</value>
+    <value>İç</value>
   </data>
   <data name="gsKMH" xml:space="preserve">
     <value>kmh</value>
   </data>
   <data name="gsLanguage" xml:space="preserve">
-    <value>Language</value>
+    <value>Dil</value>
+  </data>
+  <data name="gsMachinePort" xml:space="preserve">
+    <value>Makine Port</value>
+  </data>
+  <data name="gsMakeBoundaryContours" xml:space="preserve">
+    <value>Sınır Konturları Yap</value>
+  </data>
+  <data name="gsManual" xml:space="preserve">
+    <value>Manuel</value>
+  </data>
+  <data name="gsMeters" xml:space="preserve">
+    <value>Metre</value>
+  </data>
+  <data name="gsMissingABLinesFile" xml:space="preserve">
+    <value>Eksik AB Hattı Dosyası</value>
+  </data>
+  <data name="gsMissingBoundaryFile" xml:space="preserve">
+    <value>Eksik Sınır Dosyası</value>
+  </data>
+  <data name="gsMissingContourFile" xml:space="preserve">
+    <value>Kontur Dosyası Eksik</value>
+  </data>
+  <data name="gsMissingFlagsFile" xml:space="preserve">
+    <value>Eksik Bayrak Dosyası</value>
+  </data>
+  <data name="gsMissingSectionFile" xml:space="preserve">
+    <value>Eksik Bölüm Dosyası</value>
   </data>
   <data name="gsMPH" xml:space="preserve">
     <value>mph</value>
   </data>
-  <data name="gsMachinePort" xml:space="preserve">
-    <value>Machine Port</value>
-  </data>
-  <data name="gsMakeBoundaryContours" xml:space="preserve">
-    <value>Make Boundary Contours</value>
-  </data>
-  <data name="gsManual" xml:space="preserve">
-    <value>Manual</value>
-  </data>
-  <data name="gsMeters" xml:space="preserve">
-    <value>Meters</value>
-  </data>
-  <data name="gsMissingABLinesFile" xml:space="preserve">
-    <value>Missing ABLInes File</value>
-  </data>
-  <data name="gsMissingBoundaryFile" xml:space="preserve">
-    <value>Missing Boundary File</value>
-  </data>
-  <data name="gsMissingContourFile" xml:space="preserve">
-    <value>Missing Contour File</value>
-  </data>
-  <data name="gsMissingFlagsFile" xml:space="preserve">
-    <value>Missing Flag File</value>
-  </data>
-  <data name="gsMissingSectionFile" xml:space="preserve">
-    <value>Missing Section File</value>
-  </data>
-  <data name="gsN_East" xml:space="preserve">
-    <value>NEast</value>
-  </data>
-  <data name="gsN_West" xml:space="preserve">
-    <value>NWest</value>
-  </data>
   <data name="gsNew" xml:space="preserve">
-    <value>New</value>
+    <value>Yeni</value>
   </data>
   <data name="gsNoABLineActive" xml:space="preserve">
-    <value>No ABLine Active</value>
+    <value>Aktif AB Hattı Yok</value>
   </data>
   <data name="gsNoBoundary" xml:space="preserve">
-    <value>No Boundary</value>
+    <value>Sınır Yok</value>
   </data>
   <data name="gsNoFieldsFound" xml:space="preserve">
-    <value>No Fields Found</value>
+    <value>Alan Bulunamadı</value>
   </data>
   <data name="gsNoGuidanceLines" xml:space="preserve">
-    <value>No Guidance Lines</value>
+    <value>Kılavuz Hat Yok</value>
   </data>
   <data name="gsNone" xml:space="preserve">
-    <value>None</value>
+    <value>Hiçbiri</value>
   </data>
   <data name="gsNoneUsed" xml:space="preserve">
-    <value>None Used</value>
+    <value>Hiçbiri Kullanılmadı</value>
   </data>
   <data name="gsNorth" xml:space="preserve">
-    <value>North</value>
+    <value>Kuzey</value>
   </data>
   <data name="gsNothingDeleted" xml:space="preserve">
-    <value>Nothing Deleted</value>
+    <value>Hiçbir şey Silinmedi</value>
+  </data>
+  <data name="gsN_East" xml:space="preserve">
+    <value>KuzeyDoğu</value>
+  </data>
+  <data name="gsN_West" xml:space="preserve">
+    <value>KuzeyBatı</value>
   </data>
   <data name="gsOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Ofset</value>
   </data>
   <data name="gsOffsetFix" xml:space="preserve">
-    <value>Offset Fix</value>
+    <value>Ofset Düzeltme</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
-    <value>Open</value>
+    <value>Aç</value>
   </data>
   <data name="gsOuter" xml:space="preserve">
-    <value>Outer</value>
+    <value>Dış</value>
   </data>
   <data name="gsOvershootReduction" xml:space="preserve">
-    <value>Overshoot Reduction</value>
+    <value>Aşma Azaltma</value>
   </data>
   <data name="gsPass" xml:space="preserve">
     <value>Pass #</value>
@@ -385,456 +382,114 @@
     <value>Passes</value>
   </data>
   <data name="gsPause" xml:space="preserve">
-    <value>Pause</value>
+    <value>Duraklat</value>
   </data>
   <data name="gsPleaseEnterABLine" xml:space="preserve">
-    <value>Please Enter ABLine</value>
+    <value>Lütfen AB Hattı Girin</value>
   </data>
   <data name="gsPressureSensorValueLabel" xml:space="preserve">
-    <value>Pressure (bar)</value>
+    <value>Basınç (bar)</value>
   </data>
   <data name="gsProblemMakingPath" xml:space="preserve">
-    <value>Problem Making Path</value>
+    <value>Yol Yapılırken Hata Oluştu</value>
   </data>
   <data name="gsProgramWillExitPleaseRestart" xml:space="preserve">
-    <value>Program Will Exit Please Restart</value>
+    <value>Programdan Çıkılacak Lütfen Yeniden Başlatın</value>
   </data>
   <data name="gsReallyResetEverything" xml:space="preserve">
-    <value>Really Reset Everything</value>
+    <value>Gerçekten Her Şeyi Sıfırla?</value>
   </data>
   <data name="gsRecord" xml:space="preserve">
-    <value>Record</value>
+    <value>Kayıt</value>
   </data>
   <data name="gsRecordedPathFileIsCorrupt" xml:space="preserve">
-    <value>Recorded Path File Corrupt</value>
+    <value>Kayıtlı Yol Dosyası Bozuk</value>
   </data>
   <data name="gsResetAll" xml:space="preserve">
-    <value>Reset All</value>
+    <value>Her Şeyi Sıfırla?</value>
   </data>
   <data name="gsResetAllForSure" xml:space="preserve">
-    <value>Reset All For Sure?</value>
+    <value>Her Şeyi Kesin Olarak Sıfırla?</value>
   </data>
   <data name="gsResume" xml:space="preserve">
-    <value>Resume</value>
-  </data>
-  <data name="gsS_East" xml:space="preserve">
-    <value>SE</value>
-  </data>
-  <data name="gsS_West" xml:space="preserve">
-    <value>SW</value>
+    <value>Devam Et</value>
   </data>
   <data name="gsSaveAndReturn" xml:space="preserve">
-    <value>Save and Return</value>
+    <value>Kaydet ve Geri Dön</value>
   </data>
   <data name="gsSaveAs" xml:space="preserve">
-    <value>Save As</value>
+    <value>Farklı kaydet</value>
   </data>
   <data name="gsSentToMachineModule" xml:space="preserve">
-    <value>Sent To Machine Module</value>
+    <value>Makine Modülüne Gönderildi</value>
   </data>
   <data name="gsSetPoint" xml:space="preserve">
-    <value>SetPoint</value>
+    <value>Ayar Noktası</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Shift GPS Position (cm)</value>
+    <value>GPS Konumunu Kaydır (cm)</value>
   </data>
   <data name="gsSimulatorOn" xml:space="preserve">
-    <value>Simulator On</value>
+    <value>Simulatör Açık</value>
   </data>
   <data name="gsSmoothABCurve" xml:space="preserve">
-    <value>Smooth AB Curve</value>
+    <value>Yumuşak AB Eğrisi</value>
   </data>
   <data name="gsSort" xml:space="preserve">
-    <value>Sort</value>
+    <value>Çeşit</value>
   </data>
   <data name="gsSouth" xml:space="preserve">
-    <value>South</value>
+    <value>Güney</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Spacing (cm)</value>
+    <value>Aralık (cm)</value>
   </data>
   <data name="gsStartDeleteABoundary" xml:space="preserve">
-    <value>Start or Delete A Boundary</value>
+    <value>Bir Sınırı Başlatın veya Silin</value>
   </data>
   <data name="gsStartNewField" xml:space="preserve">
-    <value>Start New Field</value>
+    <value>Yeni Alan Başlat</value>
   </data>
   <data name="gsSteerChart" xml:space="preserve">
-    <value>Steer Chart</value>
+    <value>Dümenleme Tablosu</value>
   </data>
   <data name="gsStopRecordPauseBoundary" xml:space="preserve">
-    <value>Stop Record Pause Boundary</value>
+    <value>Kaydı Durdur Alanı Duraklat</value>
+  </data>
+  <data name="gsS_East" xml:space="preserve">
+    <value>GüneyDoğu</value>
+  </data>
+  <data name="gsS_West" xml:space="preserve">
+    <value>GüneyBatı</value>
   </data>
   <data name="gsToFile" xml:space="preserve">
-    <value>To File</value>
+    <value>Dosyaya</value>
   </data>
   <data name="gsTopFieldView" xml:space="preserve">
-    <value>Top Field View</value>
+    <value>Üst Alan Görünümü</value>
   </data>
   <data name="gsTramLines" xml:space="preserve">
-    <value>Tram Lines</value>
+    <value>Tram Hatları</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
-    <value>Turn AB Curve On</value>
+    <value>AB Eğrisini Aç</value>
   </data>
   <data name="gsTurnOnContourOrMakeABLine" xml:space="preserve">
-    <value>Turn On Contour of Make AB Line</value>
+    <value>Kontur Açın veya AB Hattı Yapın</value>
   </data>
   <data name="gsUseSelected" xml:space="preserve">
-    <value>Use Selected</value>
+    <value>Seçileni Kullan</value>
   </data>
   <data name="gsWebCam" xml:space="preserve">
     <value>WebCam</value>
   </data>
   <data name="gsWest" xml:space="preserve">
-    <value>West</value>
+    <value>Batı</value>
   </data>
-  <data name="h_btn2D" xml:space="preserve">
-    <value>2D View Button.</value>
-  </data>
-  <data name="h_btn3D" xml:space="preserve">
-    <value>3D View Button.</value>
-  </data>
-  <data name="h_btnABDraw" xml:space="preserve">
-    <value>AB Draw Button
+  <data name="ha_btnAddTime" xml:space="preserve">
+    <value>Add Time
 
-ABDraw only is available with a boundary created. It brings up a new form to click on the perimeter to create Lines, Curves, and a full perimeter guidance line. All lines can be named, deleted, and moved.  Handy for seeing all the guidance lines created.</value>
-  </data>
-  <data name="h_btnABLine" xml:space="preserve">
-    <value>ABLine Button
-
-ABLine guidance is repeating straight parallel lines across the field. Pushing the button enable AB guidance if a line exists, or if none, brings up the create/edit form where lines can be created either by 2 points with a line intersecting both or a single point and direction or heading. Lines to the right count positive upward and lines to the left are counted up as negative. </value>
-  </data>
-  <data name="h_btnAutoSteer" xml:space="preserve">
-    <value>Auto Steer Button
-
-Turns on and off Auto Steer steering control. You must have an active guidance line set. Pressing UTurn button can also turn on AutoSteer. In Config/Guidance you can set features and button function.</value>
-  </data>
-  <data name="h_btnAutoSteerConfig" xml:space="preserve">
-    <value>AutoSteer Angle and Settings Button
-
-Display Steer Angles and Configure AutoSteer settings</value>
-  </data>
-  <data name="h_btnAutoYouTurn" xml:space="preserve">
-    <value>U Turn Button
-
-If guidance line is available you can auto turn around at the headland. You can set distance from edge of field to start turning, the diameter and type of turn. Pressing this button also enables autosteer and U Turn if both are off.</value>
-  </data>
-  <data name="h_btnChangeMappingColor" xml:space="preserve">
-    <value>Change Mapping Color Button
-
-Brings up the color picker to choose a color to draw where you have applied. You can change as often as you like, but you need to travel a ways before the color changes, or turn off and on sections then the color change will be immediate.</value>
-  </data>
-  <data name="h_btnConfig" xml:space="preserve">
-    <value>Main Configuration Button
-
-Most of the settings are here. As you make changes they are automatically saved. Careful though as there is no cancel.</value>
-  </data>
-  <data name="h_btnContour" xml:space="preserve">
-    <value>Contour Button
-
-To be able to follow guidance beside your last pass. If ABLine and ABCurve are on, you can turn on and off Contour while one of those functions are still on switching between them.</value>
-  </data>
-  <data name="h_btnCurve" xml:space="preserve">
-    <value>Curve Guidance Button
-
-Curve guidance allows you to follow any shape in lines repeating across the field. The lines are like contour lines where the last pass follows the curvature of the previous, but any variations made are not carried to the next line. Pressing the button brings up the Curve Creation/Edit form or if a curve line exists it brings that up. Pressing it again allows you to copy/edit/create more lines.</value>
-  </data>
-  <data name="h_btnCycleLines" xml:space="preserve">
-    <value>Cycle Through Lines Button
-
-Allows you to cycle or step through existing lines of the mode you currently have selected. Cycle all ABLines or all Curve Lines available. Disabled if no lines are made.</value>
-  </data>
-  <data name="h_btnDayNightMode" xml:space="preserve">
-    <value>Day or Night Colors Button.</value>
-  </data>
-  <data name="h_btnDistanceArea" xml:space="preserve">
-    <value>Distance and Area Button
-
-Shows user distance travelled and accumulated area marked. Touch the digits to reset to zero. Will be remembered when exiting the program and starting again</value>
-  </data>
-  <data name="h_btnEditAB" xml:space="preserve">
-    <value>Edit Guidance Line Button
-
-If there is an active guidance line available to edit, this will bring up the form to edit the line. It is the same button for either curve or line and brings up the correct form depending on which one you are using at the time. To copy or create new guidance lines press the ABLine or AB Curve button.</value>
-  </data>
-  <data name="h_btnFlag" xml:space="preserve">
-    <value>Flag Mark Button
-
-Make a flag mark on the field surface. You can right click or long push to bring up a small menu to select either red green or yellow colored flags. Creating a flag brings up an edit box to allow you to add notes, it also shows what number flag was made.</value>
-  </data>
-  <data name="h_btnFreeDrive" xml:space="preserve">
-    <value>Free Drive Button
-
-Allows you to test the autosteer hardware manually. Control the autosteer even if we don't have a line, drive straight.
-We can change the angle with the arrows.</value>
-  </data>
-  <data name="h_btnFreeDriveZero" xml:space="preserve">
-    <value>Drive Steer Angle Zero
-
-Set steer angle to zero, or if it is zero sets angle to plus 5. Good for testing the steer response.</value>
-  </data>
-  <data name="h_btnHeadlandOnOff" xml:space="preserve">
-    <value>Headland On Off Button
-
-Once a headland is created you can turn the headland on and off with this button. When off, section control no longer stops at headland. You can disable section control turning off at the headland in the headland create/edit form from the field menu. </value>
-  </data>
-  <data name="h_btnHydLift" xml:space="preserve">
-    <value>Hydraulic Lift On Off Button
-
-Once a headland is active, and headland control is on, you can also turn on tool lift control to raise the tool when entering the headland and lower it again just before leaving it to the work area. This button is only visible with a headland created and on.</value>
-  </data>
-  <data name="h_btnLockToContour" xml:space="preserve">
-    <value>Lock to Line
-
-Locks to current contour line till you get to the end of it. Ignores all other lines.</value>
-  </data>
-  <data name="h_btnManualOffOn" xml:space="preserve">
-    <value>Manual Section Control Button
-
-To turn sections off and on manually. No section control is performed, does not matter what is currently applied or not, inside or outside boundaries.</value>
-  </data>
-  <data name="h_btnN2D" xml:space="preserve">
-    <value>Pointing North and Flat 2D view</value>
-  </data>
-  <data name="h_btnN3D" xml:space="preserve">
-    <value>Pointing North and Flat 3D view</value>
-  </data>
-  <data name="h_btnRowWidthSkips" xml:space="preserve">
-    <value>U Turn Row Skips
-
-Select how many passes to skip when using U Turn. </value>
-  </data>
-  <data name="h_btnSectionOffAutoOn" xml:space="preserve">
-    <value>Auto Section Control Off On Button
-
-Automatic section control turns sections on if area not applied and off if area already applied. It will turn off outside of boundaries. You can set how early or how late the sections are controlled in Config/Sections</value>
-  </data>
-  <data name="h_btnSnapToPivot" xml:space="preserve">
-    <value>Snap Line to Pivot Button
-
-Pressing Snap button moves the line to the vehicle pivot point. The line change of position is not saved. If you want to save the line, Use the Edit AB button where you can save the new position permanently. Snap works in Curve and AB Line but not in Contour.</value>
-  </data>
-  <data name="h_btnStanleyPure" xml:space="preserve">
-    <value>Stanley or Pure Pursuit Steering Mode
-
-Select the mode you wish to use. Stanley uses the front of the vehicle to reference how quickly to steer to the line. The pivot just follows along trailing not on the line. Good for a swather or harvester, but not so good for attached tools. 
-Pure Pursuit uses the pivot point to determine steering corrections and tries to correct heading and off track error to get on the line. The integral also varies heading to force the pivot to the line so on slopes or side draft it follows the line better by oversteering past the line. Each mode has its own setting, accessed by the steer settings button which is the green one showing the steering angles on the left lower part of the screen. </value>
-  </data>
-  <data name="h_btnStartAgIO" xml:space="preserve">
-    <value>Start the AgIO Application Button
-
-If AgIO is already running, button does nothing, but if AgIO is not running it will start it. AgIO is responsible for all serial and UDP input output for AgOpenGPS.</value>
-  </data>
-  <data name="h_btnStartSA" xml:space="preserve">
-    <value>Steer Angle Calculator
-
-Function to calculate the real steering angle, drive steady in a circle slowly, click start, and it will
-show the angle when finished. The difference between left and right shows Ackerman error. Adjust Ackermann angle so left turn is the same as right turn.</value>
-  </data>
-  <data name="h_btnSteerAngleDown" xml:space="preserve">
-    <value>Steer Angle Down Button
-
-Turns more to the left. Lowers the Free Drive steering angle.</value>
-  </data>
-  <data name="h_btnSteerAngleUp" xml:space="preserve">
-    <value>Steer Angle Up Button
-
-Turns more to the right. Raises the Free Drive steering angle.</value>
-  </data>
-  <data name="h_btnTiltDown" xml:space="preserve">
-    <value>Tilt the view Downward Button</value>
-  </data>
-  <data name="h_btnTiltUp" xml:space="preserve">
-    <value>Tilt the view upward button</value>
-  </data>
-  <data name="h_btnTramDisplayMode" xml:space="preserve">
-    <value>Tram Line Display Mode Button
-
-If there are tram lines active, you can select all trams or inner or outer or none visible. Trams are made by pressing field menu and then selecting tramlines.</value>
-  </data>
-  <data name="h_btnYouSkipEnable" xml:space="preserve">
-    <value>U Turn Skip Enable
-
-Allows automatic looping based on number set in Row skips to do as a group of passes, then move on to next group automatically.</value>
-  </data>
-  <data name="h_btnZeroWAS" xml:space="preserve">
-    <value>Wheel Angle Sensor Zero Button
-
-Allows the steering angle to be zero degrees when driving
-forward. This setting must be done and be zero degrees when
-driving straight ahead in order to be properly set. Wheel Angle
-Sensor (WAS) zero allows you to remove that non-zero steering
-angle so it is zero degrees. This is a very important setting and
-must be accurately set.</value>
-  </data>
-  <data name="h_btnZoomIn" xml:space="preserve">
-    <value>Zoom in to see less field button</value>
-  </data>
-  <data name="h_btnZoomOut" xml:space="preserve">
-    <value>Zoom out to see more field button</value>
-  </data>
-  <data name="h_hsbarAckerman" xml:space="preserve">
-    <value>Ackerman Compensation Slider
-
-Ackermann steering geometry is a geometric arrangement of
-linkages in the steering of a vehicle designed to solve the problem
-of wheels on the inside and outside of a turn needing to trace out
-circles of different radius.
-The setting is based on reference of the right wheel where the left wheel angle is determined by multiplying the steering wheel angle by the percentage Ackermann is set to. 
-Ackermann has no effect on steer angle when turning right, only left.
-
-Example. Ackermann is set to 80%. When turning to the left and the steer angle is 10 degrees, the corrected angle will be 8 degrees.
-</value>
-  </data>
-  <data name="h_hsbarCountsPerDegree" xml:space="preserve">
-    <value>Counts Per Degree Slider
-
-Also known as CPD
-The A/D converter puts out -4000 to +4000 (8000 in total) levels
-as the Wheel Angle Sensor puts out 0 to 5v. To convert that into
-steer angle degrees - because we don’t visualize counts very well,
-we now divide those levels by counts per degree. So, when the
-CPD is increased, the wheels turn farther for each degree needed.
-When lowered, the wheels don’t turn as far. This is a critical setting, 
-if the vehicle steers too far lower the CPD and vice versa.</value>
-  </data>
-  <data name="h_hsbarHeadingErrorGain" xml:space="preserve">
-    <value>Stanley Heading Slider
-
-The slider affects how much opposition to distance setting
-there is by keeping the vehicle turning away from the line.
-It’s the winner of the two, heading and distance away that
-determines the length of time to get to the line. Ideal is to
-balance them so you get quickly to the line without going too far
-over the line or oscillating back and forth (too aggressive).</value>
-  </data>
-  <data name="h_hsbarHighSteerPWM" xml:space="preserve">
-    <value>Maximum PWM Gain Slider
-
-Limits the total power deliver to steer motor or valve to prevent steering too violently.
-Initially set lower to prevent oscillation. If driving fast be sure to not turn too fast to prevent roll over.</value>
-  </data>
-  <data name="h_hsbarIntegral" xml:space="preserve">
-    <value>Stanley Integral Slider
-
-Integral setting allows the distance error to keep adding up over time to help add steer angle when a normal distance and heading calculation won't bring the tractor to the line.
-Like on a sidehill or pulling heavy draft to one side. Too much integral will cause it to get too fast to the line and cross over it.
-Too low of a setting will take too long to get to the line.
-Better to set a bit lower or it will oscillate across line a lot.</value>
-  </data>
-  <data name="h_hsbarIntegralPurePursuit" xml:space="preserve">
-    <value>Pure Pursuit Integral Slider
-
-Integral setting allows the distance error to keep adding up over time to help add steer angle when a normal distance and heading calculation won't bring the tractor to the line.
-Like on a sidehill or pulling heavy draft to one side. Too much integral will cause it to get too fast to the line and cross over it.
-Too low of a setting will take too long to get to the line.
-Better to set a bit lower or it will oscillate across line a lot.</value>
-  </data>
-  <data name="h_hsbarLookAhead" xml:space="preserve">
-    <value>Look Ahead Slider
-
-How far ahead of the vehicle is the reference point. If point is close vehicle turns very quickly.
-Farther away the steering is more relaxed and takes longer to get to line. Use the Speed gain to set distance based on speed as it takes less steering when you go faster. But set lookahead first. 
-Tune it at the speed you will most often be travelling. </value>
-  </data>
-  <data name="h_hsbarLookAheadMult" xml:space="preserve">
-    <value>Look Ahead Speed Gain Slider
-
-The faster you drive, the faster you get to the line. 
-This slider sets how quickly the reference point moves away from you as your speed increases and reduces the steer angle so it doesn't turn as fast preventing going back and forth across the line.</value>
-  </data>
-  <data name="h_hsbarLowSteerPWM" xml:space="preserve">
-    <value>Low Steer Angle PWM
-
-As the vehicle gets closer to the line, the gain is reduced linearly
-from the max value to the low value. This helps it overshoot the
-line when close, but provide rapid movement when further away.</value>
-  </data>
-  <data name="h_hsbarMaxSteerAngle" xml:space="preserve">
-    <value>Max Steer Angle Slider
-
-The maximum left and right steer angle autosteer will provide. Initially a low setting here will help you not drive all over the place with wild steer angles. 
-You do need a high value to steer around U Turns that are quite small and require a sharp turn. </value>
-  </data>
-  <data name="h_hsbarMinPWM" xml:space="preserve">
-    <value>Minimum PWM Sider
-
-Minimum PWM value is used to apply a minimum amount of
-power to overcome friction of the valve/motor. Too high and it will turn all the time, 
-too low and there will be a delay as pwm increases before the steering happens. 
-The more proportional gain, the more sensitive this setting.</value>
-  </data>
-  <data name="h_hsbarProportionalGain" xml:space="preserve">
-    <value>Proportional Gain Slider
-
-The proportional gain is multiplied by the distance error then added to
-the minimum PWM value to generate the final output value. The
-higher this value the faster the motor will correct the steering.
-However, if it is too high, the steering will overshoot the line and
-then oversteer the other way again called oscillate. Too low of a value and it will
-either take too long or never get to the guidance line. A critical setting that 
-takes some experimenting to see its effect. All 4 of these gain settings affect 
-each other so set one and see the effect. </value>
-  </data>
-  <data name="h_hsbarSideHillComp" xml:space="preserve">
-    <value>Sidehill Compensation Slider
-
-Adds a static steer angle based on roll angle to turn the wheels to compensate for the side draft of hills. You can make the vehicle go above the line with this setting allowing the tool to follow better as well.</value>
-  </data>
-  <data name="h_hsbarStanleyGain" xml:space="preserve">
-    <value>Stanley Distance Slider
-
-The slider works with distance. The more aggressive the
-faster it tries to steer towards the line with the risk of crossing
-over the line. The heading slider tries to dampen this effect.</value>
-  </data>
-  <data name="h_hsbarWasOffset" xml:space="preserve">
-    <value>Wheel Angle Sensor Zero Slider
-
-Moving this slider changes the zero position for steering angle. Drive in free drive mode and adjust this so you are going straight out. 
-This is a critical setting</value>
-  </data>
-  <data name="h_lblIntegral" xml:space="preserve">
-    <value>AutoSteer Integral Value
-
-Display only. This value shows the amount of additional steering angle to bring the vehicle closer to the guidance line.</value>
-  </data>
-  <data name="h_lblLateralTurnTouch" xml:space="preserve">
-    <value>Lateral Shift Touch
-
-Touching this area allows the vehicle to shift left or right to next guidance line. You can touch more then once and shift over multiple lines. Touching the other arrow allows you to reduce the number of shifts over.</value>
-  </data>
-  <data name="h_lblManualTurnCancelTouch" xml:space="preserve">
-    <value>Manual Turn and Cancel Touch
-
-You can initiate a manual U Turn or cancel it if you are already in a manual turn. When driving in normal auto U Turn touching one of these jumps to the next line and turns around.</value>
-  </data>
-  <data name="h_lblSpeed" xml:space="preserve">
-    <value>Speed Indicator
-
-Dual purpose label. Shows the speed of the vehicle and also tapping the value brings up the GPS Data form showing all the GPS information.</value>
-  </data>
-  <data name="h_lblSteerCircleTouch" xml:space="preserve">
-    <value>Steer Information Indicator
-
-Graphic shows steering angle as well as the color shows auto steer status.....
-
-Purple - Steer module not connected.
-Red - Steer module connected, not enabled.
-Orange - Steer Module connected and enabled, steer switch is off
-Green - Connected, enabled, and auto steering. Fully functional.</value>
-  </data>
-  <data name="h_lblSwapDirectionCancel" xml:space="preserve">
-    <value>This area shows the distance to the start of the next U Turn. There are normally 2 functions here. When not in a U Turn, touching this area allows you to now turn the opposite direction. If you are doing a U Turn then touching this area cancels the U Turn - so be careful and grab the wheel.</value>
-  </data>
-  <data name="h_lblVehicleDirectionResetTouch" xml:space="preserve">
-    <value>Swap Direction Touch
-
-Touch here if the vehicle is pointing backwards while travelling forwards. Without dual heading you don't know if you are backing up or going forward. Backing up is position to position like going forward but 180 degrees is added to your heading to make it look like you are backing up. At times, like turning sharp when going slow the direction can get confused and this resets that direction. Drive forward and touch this area to tell AOG which way forward is. Can be touched at any time.</value>
-  </data>
-  <data name="h_lbludpWatchCounts" xml:space="preserve">
-    <value>How many NMEA messages have been missed or too late from AgIO</value>
+Adds a time stamp to the current line name. Helps make the name unique as well.</value>
   </data>
   <data name="ha_btnAPoint" xml:space="preserve">
     <value>A Point
@@ -842,11 +497,6 @@ Touch here if the vehicle is pointing backwards while travelling forwards. Witho
 This is the first point of the line. It is also used for the base point of A plus heading. 
 
 Once A is touched, you can either touch B point or enter in the heading.</value>
-  </data>
-  <data name="ha_btnAddTime" xml:space="preserve">
-    <value>Add Time
-
-Adds a time stamp to the current line name. Helps make the name unique as well.</value>
   </data>
   <data name="ha_btnBPoint" xml:space="preserve">
     <value>B Point
@@ -995,10 +645,24 @@ The offset to mark the boundary is measure from the center of the pivot point - 
 
 It defaults to one half the tool width. Use the select sides button to move from left to right side.</value>
   </data>
-  <data name="hc_ListViewVehicles" xml:space="preserve">
-    <value>Vehicles List
+  <data name="hcur_btnAPoint" xml:space="preserve">
+    <value>A Point
 
-The list of saved vehicles.</value>
+The start of the Curve Line. </value>
+  </data>
+  <data name="hcur_btnBPoint" xml:space="preserve">
+    <value>B Point
+
+The end of the Curve Line.</value>
+  </data>
+  <data name="hcur_btnPausePlay" xml:space="preserve">
+    <value>Pause Rec
+
+Pause the creation of points, continue recording points if paused.
+
+This is really useful if you want a straighter line instead of recording all the points. The line between the pauses will be a straight line. 
+
+After saving the line, a small amount of smoothing is also applied. </value>
   </data>
   <data name="hc_btnRemoveZeroOffset" xml:space="preserve">
     <value>Remove Roll Offset
@@ -1090,6 +754,11 @@ Instead of using dual antenna as heading directly, use fix to fix single antenna
 
 Enable hydraulic control of tool when entering and leaving the headland. </value>
   </data>
+  <data name="hc_cboxIsReverseOn" xml:space="preserve">
+    <value>Reverse Detect
+
+Show the vehicle backing up when enabled or screen spins 180 degrees and shows still going forward</value>
+  </data>
   <data name="hc_cboxIsRTK" xml:space="preserve">
     <value>RTK Alarm
 
@@ -1099,11 +768,6 @@ Enabling this shows an alarm called Lost RTK on the main screen.</value>
     <value>AutoSteer Off if RTK Alarm
 
 If RTK alarm is on, then enabling this turns off the AutoSteer when RTK is lost.</value>
-  </data>
-  <data name="hc_cboxIsReverseOn" xml:space="preserve">
-    <value>Reverse Detect
-
-Show the vehicle backing up when enabled or screen spins 180 degrees and shows still going forward</value>
   </data>
   <data name="hc_cboxMachInvertRelays" xml:space="preserve">
     <value>Invert Controls
@@ -1138,13 +802,11 @@ Section math is intense along with boundaries and headlands so this may help a s
 
 2 types of Switch. 
 
-Button- Push and release turns Auto Steer On. Push and release again turns Auto Steer off.
+Switch - Connect and release turns Auto Steer On. Connect and release again turns Auto Steer off.
 
-Switch - like a light switch style. Connect and Auto Steer is on, Disconnect and Auto Steer turns off. 
+Button - like a momentary style. Connect and Auto Steer is on, Disconnect and Auto Steer turns off. 
 
-Note... Any type switch or button can be configured to do either method. The Switch setting is most common for steer motors that just push on a switch when engaged and then when released simply opens the switch again.
-
-The button setting is more common for hydraulic as you want pressure to disable steering, then just hit the button to enable again. </value>
+Note... A microswitch or momentary type pushbutton can be configured to do either method. The button is most common for steer motors that just push on a momentary switch when engaged and then when released simply open the switch again.</value>
   </data>
   <data name="hc_cboxTramOnBackBuffer" xml:space="preserve">
     <value>Tram Tool Control
@@ -1221,6 +883,11 @@ Sets the amount of meters the legs of the uturn continue past and into the turn.
     <value>UTurn Smoothing
 
 Removes the abrupt change of direction for Keyhole turns and smooths them out. Makes the turn easier to follow.</value>
+  </data>
+  <data name="hc_ListViewVehicles" xml:space="preserve">
+    <value>Vehicles List
+
+The list of saved vehicles.</value>
   </data>
   <data name="hc_nudABLength" xml:space="preserve">
     <value>Length of AB Line
@@ -1408,25 +1075,6 @@ Select where the tool will end up when making a pass on the tram line. This is d
 
 Enter the new vehicle name and touch the Save button</value>
   </data>
-  <data name="hcur_btnAPoint" xml:space="preserve">
-    <value>A Point
-
-The start of the Curve Line. </value>
-  </data>
-  <data name="hcur_btnBPoint" xml:space="preserve">
-    <value>B Point
-
-The end of the Curve Line.</value>
-  </data>
-  <data name="hcur_btnPausePlay" xml:space="preserve">
-    <value>Pause Rec
-
-Pause the creation of points, continue recording points if paused.
-
-This is really useful if you want a straighter line instead of recording all the points. The line between the pauses will be a straight line. 
-
-After saving the line, a small amount of smoothing is also applied. </value>
-  </data>
   <data name="hd_btnCancelTouch" xml:space="preserve">
     <value>Cancel Touch Points
 
@@ -1593,6 +1241,325 @@ This is important as tram lines are made on the right side of the line counting 
     <value>Tram Passes
 
 Enter the number of tram passes or use the up down arrows to change the number</value>
+  </data>
+  <data name="h_btn2D" xml:space="preserve">
+    <value>2D Görünüm Butonu.</value>
+  </data>
+  <data name="h_btn3D" xml:space="preserve">
+    <value>3D Görünüm Butonu.</value>
+  </data>
+  <data name="h_btnABDraw" xml:space="preserve">
+    <value>AB Çizim Butonu
+
+AB Çizim yalnızca oluşturulan bir sınırla kullanılabilir. Çizgiler, Eğriler ve tam çevre kılavuz çizgisi oluşturmak için yeni bir pencere açar. Tüm satırlar adlandırılabilir, silinebilir ve taşınabilir. Oluşturulan tüm kılavuz çizgilerini görmek için kullanılabilir.</value>
+  </data>
+  <data name="h_btnABLine" xml:space="preserve">
+    <value>AB Hattı Butonu
+
+Düğmeye basmak eğer varsa AB hattını etkinleştirir. Eğer AB hattı yoksa, yeni AB Hattı oluşturma/düzenleme penceresini açar. Açılan pencerede oluşturulan 2 nokta arasındaki doğrultuda bir AB Hattı oluşturulur</value>
+  </data>
+  <data name="h_btnAutoSteer" xml:space="preserve">
+    <value>Otomatik Dümenleme Butonu
+
+Otomatik dümenleme kontrolünü açar veya kapatır. Etkin bir AB Hattı ya da AB eğriniz olmalıdır. UDönüş butonuna basmak da Otomatik Dümenlemeyi açabilir. Yapılandırma ayarlarında özelliklerini ve buton işlevini ayarlayabilirsiniz.</value>
+  </data>
+  <data name="h_btnAutoSteerConfig" xml:space="preserve">
+    <value>Otomatik Dümenleme Açısı ve Ayarlar Düğmesi
+
+Direksiyon Açılarını görüntüleyin ve Otomatik Dümenleme ayarlarını yapılandırın</value>
+  </data>
+  <data name="h_btnAutoYouTurn" xml:space="preserve">
+    <value>U Dönüş Butonu
+
+Kılavuz çizgi varsa, arazide otomatik olarak dönebilirsiniz. Dönmeye başlamak için alanın kenarından olan mesafeyi, dönüşün çapını ve türünü ayarlayabilirsiniz. Bu butona basmak aynı zamanda otomatik yönlendirmeyi ve her ikisi de kapalıysa U Dönüş'ü etkinleştirir.</value>
+  </data>
+  <data name="h_btnChangeMappingColor" xml:space="preserve">
+    <value>Haritalama Rengini Değiştir Butonu
+
+Sürülen araziyi çizmek üzere bir renk seçmek için renk seçiciyi açar. İstediğiniz sıklıkta değiştirebilirsiniz, ancak renk değişmeden önce bir yol kat etmeniz veya bölümleri kapatıp açmanız gerekir, ardından renk değişikliği hemen gerçekleşecektir.</value>
+  </data>
+  <data name="h_btnConfig" xml:space="preserve">
+    <value>Ana Yapılandırma Butonu
+
+Ayarların çoğu burada. Siz değişiklik yaptıkça bunlar otomatik olarak kaydedilir.</value>
+  </data>
+  <data name="h_btnContour" xml:space="preserve">
+    <value>Kontur Butonu
+
+Son geçişinizin yanında rehberliği takip edebilmek için. AB Hattı ve AB Eğrisi açıksa, bu işlevlerden biri hala aralarında geçiş yaparken Kontur'u açıp kapatabilirsiniz.</value>
+  </data>
+  <data name="h_btnCurve" xml:space="preserve">
+    <value>Eğri Kılavuz Butonu
+
+Eğri kılavuzu, alan boyunca tekrar eden çizgilerdeki herhangi bir şekli takip etmenizi sağlar. Çizgiler, son geçişin bir öncekinin eğriliğini takip ettiği, ancak yapılan herhangi bir değişikliğin bir sonraki çizgiye taşınmadığı kontur çizgileri gibidir. Düğmeye basmak Eğri Oluşturma/Düzenleme penceresini getirir veya bir eğri çizgisi varsa onu açar. Tekrar basmak, daha fazla satır kopyalamanıza/düzenlemenize/oluşturmanıza olanak tanır.</value>
+  </data>
+  <data name="h_btnCycleLines" xml:space="preserve">
+    <value>Hatlar Arası Geçiş Butonu
+
+Halihazırda seçmiş olduğunuz modun mevcut hatları arasında gezinmenizi veya atlamanızı sağlar. Mevcut tüm AB Hatları veya tüm Eğri Çizgileri arasında atlayabilir.</value>
+  </data>
+  <data name="h_btnDayNightMode" xml:space="preserve">
+    <value>Gündüz veya Gece Renkleri Butonu.</value>
+  </data>
+  <data name="h_btnDistanceArea" xml:space="preserve">
+    <value>Mesafe ve Alan Butonu
+
+Kullanıcının kat ettiği mesafeyi ve sürülmüş alanı gösterir. Sıfırlamak için rakamlara dokunun. Programdan çıkıp tekrar başlatıldığında kayıtlı kalır.</value>
+  </data>
+  <data name="h_btnEditAB" xml:space="preserve">
+    <value>Kılavuz Hattını Düzenle Butonu
+
+Düzenlemek için aktif bir kılavuz hattı varsa, bu satırı düzenlemek için gerekli pencereyi açar. Eğri veya çizgi için aynı düğmedir ve o anda hangisini kullandığınıza bağlı olarak doğru formu getirir. Yeni kılavuz çizgileri kopyalamak veya oluşturmak için ABLine veya AB Curve düğmesine basın.</value>
+  </data>
+  <data name="h_btnFlag" xml:space="preserve">
+    <value>Bayrak İşareti Butonu
+
+Alan yüzeyinde bir bayrak işareti ekleyin. Kırmızı yeşil veya sarı renkli bayrakları seçmeye yarayan küçük bir menü açmak için sağ tıklayabilir veya uzun basabilirsiniz. Bir bayrak oluşturmak, not eklemenizi sağlayan bir düzenleme penceresi getirir, ayrıca kaçıncı bayrağın eklendiğinide gösterir.</value>
+  </data>
+  <data name="h_btnFreeDrive" xml:space="preserve">
+    <value>Serbest Sürüş Butonu
+
+Otomatik dümenleme donanımını manuel olarak test etmenizi sağlar. Bir AB hattı olmasa bile düz sürüşe olanak tanır. Oklarla açıyı değiştirebilirsiniz.</value>
+  </data>
+  <data name="h_btnFreeDriveZero" xml:space="preserve">
+    <value>Sürüş Direksiyon Açısı Sıfır
+
+Direksiyon açısını sıfırlar veya sıfır ise açıyı artı 5'e ayarlar . Direksiyon tepkisini test etmek için kullanılabilir.</value>
+  </data>
+  <data name="h_btnHeadlandOnOff" xml:space="preserve">
+    <value>Arazi Açma Kapatma Butonu
+
+Arazi oluşturulduktan sonra bu düğme ile araziyi açıp kapatabilirsiniz. Kapalıyken, bölüm kontrolü artık arazi dışında kapanmaz. Arazide bölüm kontrolünü kapatmayı Arazi oluştur/düzenle menüsünden devre dışı bırakabilirsiniz.</value>
+  </data>
+  <data name="h_btnHydLift" xml:space="preserve">
+    <value>Hidrolik Kaldırma Açma Kapatma Butonu
+
+Arazi aktif olduğunda ve sürülmemiş arazi kontrolü açık olduğunda, aleti sürülmemiş araziye girerken yükseltmek ve çalışma alanına gitmeden hemen önce tekrar indirmek için alet kaldırma kontrolünü  açabilirsiniz. Bu düğme yalnızca, oluşturulup açık olan bir sürülmemiş arazi ile görünür.</value>
+  </data>
+  <data name="h_btnLockToContour" xml:space="preserve">
+    <value>Hattı Kilitle
+
+Sonuna gelene kadar mevcut kontur hattına kilitlenir. Diğer tüm hatları yok sayar.</value>
+  </data>
+  <data name="h_btnManualOffOn" xml:space="preserve">
+    <value>Manuel Bölüm Kontrol Butonu
+
+Bölümleri manuel olarak kapatmaya yarar. Halihazırda uygulanan veya uygulanmayan, sınırların içinde veya dışında herhangi bir bölüm kontrolü yapılmamaktadır.</value>
+  </data>
+  <data name="h_btnN2D" xml:space="preserve">
+    <value>Kuzey ve Düz 2B görünümü aktifleştirir</value>
+  </data>
+  <data name="h_btnN3D" xml:space="preserve">
+    <value>Kuzey ve Düz 3B görünümü aktifleştirir</value>
+  </data>
+  <data name="h_btnRowWidthSkips" xml:space="preserve">
+    <value>U Dönüş Sıra Atlamaları
+
+U Dönüşü kullanırken kaç geçişin atlanacağını seçmenize yarar.</value>
+  </data>
+  <data name="h_btnSectionOffAutoOn" xml:space="preserve">
+    <value>Otomatik Bölüm Kontrolü Kapalı Açık Düğmesi
+
+Otomatik bölüm kontrolü, alana işlem bölümleri açar ve alan zaten uygulanmışsa kapatır. Aynı zamanda sınırların dışındada kapanır. Yapılandırma/Bölümler'de ne kadar erken veya ne kadar geç kontrol edileceğini ayarlayabilirsiniz.</value>
+  </data>
+  <data name="h_btnSnapToPivot" xml:space="preserve">
+    <value>Hattı Pivot Düğmesine Yasla
+
+Snap düğmesine basmak, çizgiyi araç pivot noktasına taşır. Hat konumu değişikliği kaydedilmez. Çizgiyi kaydetmek istiyorsanız, yeni konumu kalıcı olarak kaydedebileceğiniz AB Düzenle düğmesini kullanın. Snap, Eğri ve AB hattında çalışır ancak konturda çalışmaz.</value>
+  </data>
+  <data name="h_btnStanleyPure" xml:space="preserve">
+    <value>Stanley veya Pure Pursuit Dümenleme Modu
+
+Kullanmak istediğiniz modu seçin. Stanley, çizgiye ne kadar hızlı yönlendirileceğini belirtmek için aracın önünü kullanır. Pivot sadece hattı takip eder. Örme veya biçerdöver için iyi, ancak arkadan bağlı aletler için pek iyi değildir. Pure Pursuit, yönlendirme düzeltmelerini belirlemek için arka pivot noktasını kullanır ve hatta geçmek için rota ve rota dışı hatalarını düzeltmeye çalışır. İntegral ayrıca, pivotu çizgiye dümenleme zorlaması için yönü değiştirir, böylece eğimlerde veya yandan çekişte çizgiyi aşarak çizgiyi daha iyi takip eder. Her modun kendi ayarı vardır ve ekranın sol alt kısmındaki direksiyon açılarını gösteren yeşil olan direksiyon ayarları düğmesiyle erişilir.</value>
+  </data>
+  <data name="h_btnStartAgIO" xml:space="preserve">
+    <value>AgIO Uygulama Düğmesini Başlat
+
+AgIO zaten çalışıyorsa, düğme hiçbir şey yapmaz, ancak AgIO çalışmıyorsa başlatır. AgIO, AgOpenGPS için tüm seri ve UDP giriş çıkışlarından sorumludur.</value>
+  </data>
+  <data name="h_btnStartSA" xml:space="preserve">
+    <value>Direksiyon Açısı Hesaplayıcı
+
+Gerçek direksiyon açısını hesaplamak için kullanılır, yavaşça bir daire içinde sabit direksiyon açısıyla sürün, başlat'ı tıklayın. işlem bittiğinde direksiyon açınız belirecektir. Sol ve sağ arasındaki fark, Ackerman hatasını gösterir. Ackermann açısını sola dönüşle sağa dönüş aynı olacak şekilde ayarlayın.</value>
+  </data>
+  <data name="h_btnSteerAngleDown" xml:space="preserve">
+    <value>Direksiyon Açısını Azalt Butonu
+
+Serbest Sürüş direksiyon açısını düşürür.</value>
+  </data>
+  <data name="h_btnSteerAngleUp" xml:space="preserve">
+    <value>Direksiyon Açısını Arttır Butonu
+
+Serbest Sürüş direksiyon açısını yükseltir.</value>
+  </data>
+  <data name="h_btnTiltDown" xml:space="preserve">
+    <value>Görünümü aşağı eğme butonu</value>
+  </data>
+  <data name="h_btnTiltUp" xml:space="preserve">
+    <value>Görünümü yukarı kaldırma butonu</value>
+  </data>
+  <data name="h_btnTramDisplayMode" xml:space="preserve">
+    <value>Tram Hattı Görüntüleme Modu Butonu
+
+Aktif tram hatları varsa, tüm tramları, içi, dışı veya hiçbirinin görünmemesini seçebilirsiniz. Tramvaylar, Alan menüsüne basılarak ve ardından sürme izi seçilerek yapılır.</value>
+  </data>
+  <data name="h_btnYouSkipEnable" xml:space="preserve">
+    <value>U Dönüşü Atlamayı Etkinleştir
+
+Bir grup geçiş yapmak için hat atlamalarında ayarlanan sayıya göre otomatik dönüşe izin verir, ardından otomatik olarak bir sonraki gruba geçer.</value>
+  </data>
+  <data name="h_btnZeroWAS" xml:space="preserve">
+    <value>Tekerlek Açı Sensörü Sıfırla Butonu
+
+Sürüş sırasında direksiyon açısının sıfır dereceye ayarlanmasını sağlar. direksiyon açısı sıfırlanmalı ve bu butona basılmalıdır. Doğru şekilde ayarlanması için dümdüz ileri sürülür ve tekerlek açı sensörünü sıfırla butonuna basılırç</value>
+  </data>
+  <data name="h_btnZoomIn" xml:space="preserve">
+    <value>Daha az alan görmek için yakınlaştırın</value>
+  </data>
+  <data name="h_btnZoomOut" xml:space="preserve">
+    <value>Daha fazla alan görmek için uzaklaştırın</value>
+  </data>
+  <data name="h_hsbarAckerman" xml:space="preserve">
+    <value>Ackerman Düzeltmesi
+
+Ackermann direksiyon geometrisi, farklı yarıçapların çevrelerini takip etmeye ihtiyaç duyan bir dönüşün içindeki ve dışındaki tekerleklerin, problemini çözmek için tasarlanmış, bir otomobilin veya başka bir aracın direksiyonundaki bağlantıların geometrik bir düzenlemesidir. Ackermann'ın sağa dönüşte direksiyon açısı üzerinde hiçbir etkisi yoktur, sadece sola döner.
+
+Örnek olarak. Ackermann %80 olarak ayarlanmışsa. Sola dönüşte ve direksiyon açısı 10 derece olduğunda, düzeltilen açı 8 derece olacaktır.</value>
+  </data>
+  <data name="h_hsbarCountsPerDegree" xml:space="preserve">
+    <value>Derece Başına Sayım Düzeltmesi
+
+Ads1115, potansiyometreden gelen veriyi -4000 ve +4000 olarak toplamda 8000 parçaya böler. Tekerlek Açı Sensörleri farklı geometriye ve farklı direnç değerlerine sahip olduğu için her traktör için hesaplanan tekerlek açısı doğru olmayacaktır. Derece Başına Sayım ile bu farkı kendi traktörünüze göre ayarlayabilirsiniz.</value>
+  </data>
+  <data name="h_hsbarHeadingErrorGain" xml:space="preserve">
+    <value>Stanley Heading Kaydırıcısı</value>
+  </data>
+  <data name="h_hsbarHighSteerPWM" xml:space="preserve">
+    <value>Maksimum PWM arttırma Kaydırıcısı
+
+Çok şiddetli yönlendirmeyi önlemek için yönlendirme motoruna veya valfe verilen toplam gücü sınırlar.
+Salınımı önlemek için başlangıçta daha düşük ayarlayın. Hızlı sürüyorsanız, slalomu önlemek için çok hızlı ayarlamadığınızdan emin olun.</value>
+  </data>
+  <data name="h_hsbarIntegral" xml:space="preserve">
+    <value>Stanley Integral Slider
+
+Integral setting allows the distance error to keep adding up over time to help add steer angle when a normal distance and heading calculation won't bring the tractor to the line.
+Like on a sidehill or pulling heavy draft to one side. Too much integral will cause it to get too fast to the line and cross over it.
+Too low of a setting will take too long to get to the line.
+Better to set a bit lower or it will oscillate across line a lot.</value>
+  </data>
+  <data name="h_hsbarIntegralPurePursuit" xml:space="preserve">
+    <value>Pure Pursuit Integral Slider
+
+Integral setting allows the distance error to keep adding up over time to help add steer angle when a normal distance and heading calculation won't bring the tractor to the line.
+Like on a sidehill or pulling heavy draft to one side. Too much integral will cause it to get too fast to the line and cross over it.
+Too low of a setting will take too long to get to the line.
+Better to set a bit lower or it will oscillate across line a lot.</value>
+  </data>
+  <data name="h_hsbarLookAhead" xml:space="preserve">
+    <value>Look Ahead Slider
+
+How far ahead of the vehicle is the reference point. If point is close vehicle turns very quickly.
+Farther away the steering is more relaxed and takes longer to get to line. Use the Speed gain to set distance based on speed as it takes less steering when you go faster. But set lookahead first. 
+Tune it at the speed you will most often be travelling. </value>
+  </data>
+  <data name="h_hsbarLookAheadMult" xml:space="preserve">
+    <value>Look Ahead Speed Gain Slider
+
+The faster you drive, the faster you get to the line. 
+This slider sets how quickly the reference point moves away from you as your speed increases and reduces the steer angle so it doesn't turn as fast preventing going back and forth across the line.</value>
+  </data>
+  <data name="h_hsbarLowSteerPWM" xml:space="preserve">
+    <value>Low Steer Angle PWM
+
+As the vehicle gets closer to the line, the gain is reduced linearly
+from the max value to the low value. This helps it overshoot the
+line when close, but provide rapid movement when further away.</value>
+  </data>
+  <data name="h_hsbarMaxSteerAngle" xml:space="preserve">
+    <value>Max Steer Angle Slider
+
+The maximum left and right steer angle autosteer will provide. Initially a low setting here will help you not drive all over the place with wild steer angles. 
+You do need a high value to steer around U Turns that are quite small and require a sharp turn. </value>
+  </data>
+  <data name="h_hsbarMinPWM" xml:space="preserve">
+    <value>Minimum PWM Sider
+
+Minimum PWM value is used to apply a minimum amount of
+power to overcome friction of the valve/motor. Too high and it will turn all the time, 
+too low and there will be a delay as pwm increases before the steering happens. 
+The more proportional gain, the more sensitive this setting.</value>
+  </data>
+  <data name="h_hsbarProportionalGain" xml:space="preserve">
+    <value>Proportional Gain Slider
+
+The proportional gain is multiplied by the distance error then added to
+the minimum PWM value to generate the final output value. The
+higher this value the faster the motor will correct the steering.
+However, if it is too high, the steering will overshoot the line and
+then oversteer the other way again called oscillate. Too low of a value and it will
+either take too long or never get to the guidance line. A critical setting that 
+takes some experimenting to see its effect. All 4 of these gain settings affect 
+each other so set one and see the effect. </value>
+  </data>
+  <data name="h_hsbarSideHillComp" xml:space="preserve">
+    <value>Sidehill Compensation Slider
+
+Adds a static steer angle based on roll angle to turn the wheels to compensate for the side draft of hills. You can make the vehicle go above the line with this setting allowing the tool to follow better as well.</value>
+  </data>
+  <data name="h_hsbarStanleyGain" xml:space="preserve">
+    <value>Stanley Distance Slider
+
+The slider works with distance. The more aggressive the
+faster it tries to steer towards the line with the risk of crossing
+over the line. The heading slider tries to dampen this effect.</value>
+  </data>
+  <data name="h_hsbarWasOffset" xml:space="preserve">
+    <value>Wheel Angle Sensor Zero Slider
+
+Moving this slider changes the zero position for steering angle. Drive in free drive mode and adjust this so you are going straight out. 
+This is a critical setting</value>
+  </data>
+  <data name="h_lblIntegral" xml:space="preserve">
+    <value>AutoSteer Integral Value
+
+Display only. This value shows the amount of additional steering angle to bring the vehicle closer to the guidance line.</value>
+  </data>
+  <data name="h_lblLateralTurnTouch" xml:space="preserve">
+    <value>Lateral Shift Touch
+
+Touching this area allows the vehicle to shift left or right to next guidance line. You can touch more then once and shift over multiple lines. Touching the other arrow allows you to reduce the number of shifts over.</value>
+  </data>
+  <data name="h_lblManualTurnCancelTouch" xml:space="preserve">
+    <value>Manual Turn and Cancel Touch
+
+You can initiate a manual U Turn or cancel it if you are already in a manual turn. When driving in normal auto U Turn touching one of these jumps to the next line and turns around.</value>
+  </data>
+  <data name="h_lblSpeed" xml:space="preserve">
+    <value>Speed Indicator
+
+Dual purpose label. Shows the speed of the vehicle and also tapping the value brings up the GPS Data form showing all the GPS information.</value>
+  </data>
+  <data name="h_lblSteerCircleTouch" xml:space="preserve">
+    <value>Steer Information Indicator
+
+Graphic shows steering angle as well as the color shows auto steer status.....
+
+Purple - Steer module not connected.
+Red - Steer module connected, not enabled.
+Orange - Steer Module connected and enabled, steer switch is off
+Green - Connected, enabled, and auto steering. Fully functional.</value>
+  </data>
+  <data name="h_lblSwapDirectionCancel" xml:space="preserve">
+    <value>This area shows the distance to the start of the next U Turn. There are normally 2 functions here. When not in a U Turn, touching this area allows you to now turn the opposite direction. If you are doing a U Turn then touching this area cancels the U Turn - so be careful and grab the wheel.</value>
+  </data>
+  <data name="h_lbludpWatchCounts" xml:space="preserve">
+    <value>How many NMEA messages have been missed or too late from AgIO</value>
+  </data>
+  <data name="h_lblVehicleDirectionResetTouch" xml:space="preserve">
+    <value>Swap Direction Touch
+
+Touch here if the vehicle is pointing backwards while travelling forwards. Without dual heading you don't know if you are backing up or going forward. Backing up is position to position like going forward but 180 degrees is added to your heading to make it look like you are backing up. At times, like turning sharp when going slow the direction can get confused and this resets that direction. Drive forward and touch this area to tell AOG which way forward is. Can be touched at any time.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
