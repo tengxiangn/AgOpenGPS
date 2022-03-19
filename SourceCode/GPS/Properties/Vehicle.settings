@@ -251,14 +251,20 @@
     <Setting Name="setTool_I" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="setTool_D" Type="System.Byte" Scope="User">
+    <Setting Name="setTool_MinPWM" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="setTool_G" Type="System.Byte" Scope="User">
+    <Setting Name="setTool_LowPWM" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="setTool_Counts" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="setTool_HighPWM" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="setTool_Offset" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">127</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -28,15 +28,19 @@ namespace AgOpenGPS
 
             hsbarTool_P.Value = Properties.Vehicle.Default.setTool_P;
             hsbarTool_I.Value = Properties.Vehicle.Default.setTool_I;
-            hsbarTool_D.Value = Properties.Vehicle.Default.setTool_D;
-            hsbarTool_G.Value = Properties.Vehicle.Default.setTool_G;
+            hsbarTool_MinPWM.Value = Properties.Vehicle.Default.setTool_MinPWM;
+            hsbarTool_LowPWM.Value = Properties.Vehicle.Default.setTool_LowPWM;
+            hsbarTool_HighPWM.Value = Properties.Vehicle.Default.setTool_HighPWM;
             hsbarTool_Counts.Value = Properties.Vehicle.Default.setTool_Counts;
+            hsbarTool_Offset.Value = Properties.Vehicle.Default.setTool_Offset;
 
             lblTool_P.Text = hsbarTool_P.Value.ToString();
             lblTool_I.Text = hsbarTool_I.Value.ToString();
-            lblTool_D.Text = hsbarTool_D.Value.ToString();
-            lblTool_G.Text = hsbarTool_G.Value.ToString();
+            lblTool_MinPWM.Text = hsbarTool_MinPWM.Value.ToString();
+            lblTool_LowPWM.Text = hsbarTool_LowPWM.Value.ToString();
+            lblTool_HighPWM.Text = hsbarTool_HighPWM.Value.ToString();
             lblTool_Counts.Text = hsbarTool_Counts.Value.ToString();
+            lblTool_Offset.Text = (hsbarTool_Offset.Value - 127).ToString();
 
             pboxSendToolSteer.Visible = false;
 
@@ -48,15 +52,19 @@ namespace AgOpenGPS
         {
             Properties.Vehicle.Default.setTool_P = (byte)(hsbarTool_P.Value);
             Properties.Vehicle.Default.setTool_I = (byte)(hsbarTool_I.Value);
-            Properties.Vehicle.Default.setTool_D = (byte)(hsbarTool_D.Value);
-            Properties.Vehicle.Default.setTool_G = (byte)(hsbarTool_G.Value);
+            Properties.Vehicle.Default.setTool_MinPWM = (byte)(hsbarTool_MinPWM.Value);
+            Properties.Vehicle.Default.setTool_LowPWM = (byte)(hsbarTool_LowPWM.Value);
+            Properties.Vehicle.Default.setTool_HighPWM = (byte)(hsbarTool_HighPWM.Value);
             Properties.Vehicle.Default.setTool_Counts = (byte)(hsbarTool_Counts.Value);
+            Properties.Vehicle.Default.setTool_Offset = (byte)(hsbarTool_Offset.Value);
 
             mf.p_233.pgn[mf.p_233.P] = (byte)(hsbarTool_P.Value);
             mf.p_233.pgn[mf.p_233.I] = (byte)(hsbarTool_I.Value);
-            mf.p_233.pgn[mf.p_233.D] = (byte)(hsbarTool_D.Value);
-            mf.p_233.pgn[mf.p_233.G] = (byte)(hsbarTool_G.Value);
+            mf.p_233.pgn[mf.p_233.minPWM] = (byte)(hsbarTool_MinPWM.Value);
+            mf.p_233.pgn[mf.p_233.lowPWM] = (byte)(hsbarTool_LowPWM.Value);
+            mf.p_233.pgn[mf.p_233.highPWM] = (byte)(hsbarTool_HighPWM.Value);
             mf.p_233.pgn[mf.p_233.counts] = (byte)(hsbarTool_Counts.Value);
+            mf.p_233.pgn[mf.p_233.offset] = (byte)(hsbarTool_Offset.Value);
 
             mf.SendPgnToLoop(mf.p_233.pgn);
             pboxSendToolSteer.Visible = false;
@@ -80,36 +88,29 @@ namespace AgOpenGPS
             lblTool_I.Text = hsbarTool_I.Value.ToString();
         }
 
-        private void hsbarTool_D_ValueChanged(object sender, EventArgs e)
+        private void hsbarTool_MinPWM_ValueChanged(object sender, EventArgs e)
         {
             pboxSendToolSteer.Visible = true;
-            lblTool_D.Text = hsbarTool_D.Value.ToString();
+            lblTool_MinPWM.Text = hsbarTool_MinPWM.Value.ToString();
         }
 
-        private void hsbarTool_G_ValueChanged(object sender, EventArgs e)
+        private void hsbarTool_LowPWM_ValueChanged(object sender, EventArgs e)
         {
             pboxSendToolSteer.Visible = true;
-            lblTool_G.Text = hsbarTool_G.Value.ToString();
+            lblTool_LowPWM.Text = hsbarTool_LowPWM.Value.ToString();
         }
 
-        //private void SetPictureBoxes()
-        //{
-        //    if (cboxGPSNormal.Checked)
-        //    {
-        //        pboxTractor.Visible = true;
-        //        pboxTool.Visible = false;
-        //    }
-        //    else if (cboxGPSToolOnOff.Checked)
-        //    {
-        //        pboxTractor.Visible = true;
-        //        pboxTool.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        pboxTractor.Visible = false;
-        //        pboxTool.Visible = true;
-        //    }
-        //}
+        private void hsbarTool_HighPWM_ValueChanged(object sender, EventArgs e)
+        {
+            pboxSendToolSteer.Visible = true;
+            lblTool_HighPWM.Text = hsbarTool_HighPWM.Value.ToString();
+        }
+
+        private void hsbarTool_Offset_ValueChanged(object sender, EventArgs e)
+        {
+            pboxSendToolSteer.Visible = true;
+            lblTool_Offset.Text = (hsbarTool_Offset.Value - 127).ToString();
+        }
 
         private void cboxGPSToolOnOff_Click(object sender, EventArgs e)
         {

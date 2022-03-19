@@ -1022,24 +1022,24 @@ namespace AgOpenGPS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte setTool_D {
+        public byte setTool_MinPWM {
             get {
-                return ((byte)(this["setTool_D"]));
+                return ((byte)(this["setTool_MinPWM"]));
             }
             set {
-                this["setTool_D"] = value;
+                this["setTool_MinPWM"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte setTool_G {
+        public byte setTool_LowPWM {
             get {
-                return ((byte)(this["setTool_G"]));
+                return ((byte)(this["setTool_LowPWM"]));
             }
             set {
-                this["setTool_G"] = value;
+                this["setTool_LowPWM"] = value;
             }
         }
         
@@ -1052,6 +1052,30 @@ namespace AgOpenGPS.Properties {
             }
             set {
                 this["setTool_Counts"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("120")]
+        public byte setTool_HighPWM {
+            get {
+                return ((byte)(this["setTool_HighPWM"]));
+            }
+            set {
+                this["setTool_HighPWM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127")]
+        public byte setTool_Offset {
+            get {
+                return ((byte)(this["setTool_Offset"]));
+            }
+            set {
+                this["setTool_Offset"] = value;
             }
         }
     }

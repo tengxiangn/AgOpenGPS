@@ -324,12 +324,12 @@ namespace AgOpenGPS
             public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE9, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
             public int P = 5;
             public int I = 6;
-            public int D = 7;
-            public int G = 8;
-            public int counts = 9;
-            //public int isUturn = 10;
-            //public int sc1to8 = 11;
-            //public int sc9to16 = 12;
+            public int minPWM = 7;
+            public int lowPWM = 8;
+            public int highPWM = 9;
+            public int counts = 10;
+            public int offset = 11;
+            //public int *** = 12;
 
             public CPGN_E9()
             {
