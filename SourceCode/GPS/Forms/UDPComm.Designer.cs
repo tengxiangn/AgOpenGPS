@@ -304,6 +304,25 @@ namespace AgOpenGPS
                             break;
                         }
 
+                    case 232: //return from autosteer module
+                        {
+                            //Steer angle actual
+                            if (data.Length != 14)
+                                break;
+                            double toolActual = (Int16)((data[6] << 8) + data[5]);
+                            toolActual *= 0.1;
+                            double toolError = (Int16)((data[8] << 8) + data[7]);
+                            toolError *= 0.1;
+
+                            int pwmDisplay = (Int16)((data[9]));
+
+                            lblToolActual.Text = toolActual.ToString("N2");
+                            lblToolError.Text = toolError.ToString("N2");
+                            lblToolPWM.Text = pwmDisplay.ToString();
+
+                            break;
+                        }
+
                     #region Remote Switches
                     case 234://MTZ8302 Feb 2020
                         {

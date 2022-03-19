@@ -277,7 +277,11 @@ namespace AgIO
 
         private void btnBringUpCommSettings_Click(object sender, EventArgs e)
         {
-            SettingsCommunicationGPSTool();
+            SettingsCommunicationGPS();
+        }
+        private void btnBringUpCommSettingsTool_Click(object sender, EventArgs e)
+        {
+           SettingsCommunicationGPSTool();
         }
 
         private void btnUDP_Click(object sender, EventArgs e)

@@ -912,6 +912,8 @@ namespace AgIO
                                                 CK_A = CK_A + ByteList[j];
                                             }
 
+                                            length++;
+
                                             //if checksum matches finish and update main thread
                                             if (a == (byte)(CK_A))
                                             {

@@ -48,8 +48,8 @@
             this.menuLanguageSlovak = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageUkranian = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageRussian = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLanguageTest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageTurkish = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLanguageTest = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.setWorkingDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
@@ -175,6 +175,9 @@
             this.btnStartAgIO = new System.Windows.Forms.Button();
             this.btnShutdown = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.lblToolActual = new System.Windows.Forms.Label();
+            this.lblToolError = new System.Windows.Forms.Label();
+            this.lblToolPWM = new System.Windows.Forms.Label();
             this.contextMenuStripOpenGL.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStripFlag.SuspendLayout();
@@ -362,19 +365,19 @@
             this.menuLanguageRussian.Text = "русский (Russia)";
             this.menuLanguageRussian.Click += new System.EventHandler(this.menuLanguageRussian_Click);
             // 
-            // menuLanguageTest
-            // 
-            this.menuLanguageTest.Name = "menuLanguageTest";
-            this.menuLanguageTest.Size = new System.Drawing.Size(372, 40);
-            this.menuLanguageTest.Text = "Test";
-            this.menuLanguageTest.Click += new System.EventHandler(this.menuLanguageTest_Click);
-            // 
             // menuLanguageTurkish
             // 
             this.menuLanguageTurkish.Name = "menuLanguageTurkish";
             this.menuLanguageTurkish.Size = new System.Drawing.Size(372, 40);
             this.menuLanguageTurkish.Text = "Turkish (Türk)";
             this.menuLanguageTurkish.Click += new System.EventHandler(this.menuLanguageTurkish_Click);
+            // 
+            // menuLanguageTest
+            // 
+            this.menuLanguageTest.Name = "menuLanguageTest";
+            this.menuLanguageTest.Size = new System.Drawing.Size(372, 40);
+            this.menuLanguageTest.Text = "Test";
+            this.menuLanguageTest.Click += new System.EventHandler(this.menuLanguageTest_Click);
             // 
             // toolStripSeparator11
             // 
@@ -698,7 +701,7 @@
             this.btnResetSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetSim.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnResetSim.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnResetSim.Location = new System.Drawing.Point(539, 4);
+            this.btnResetSim.Location = new System.Drawing.Point(537, 4);
             this.btnResetSim.Name = "btnResetSim";
             this.btnResetSim.Size = new System.Drawing.Size(50, 31);
             this.btnResetSim.TabIndex = 164;
@@ -713,7 +716,7 @@
             this.btnResetSteerAngle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetSteerAngle.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnResetSteerAngle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnResetSteerAngle.Location = new System.Drawing.Point(486, 4);
+            this.btnResetSteerAngle.Location = new System.Drawing.Point(484, 4);
             this.btnResetSteerAngle.Name = "btnResetSteerAngle";
             this.btnResetSteerAngle.Size = new System.Drawing.Size(43, 31);
             this.btnResetSteerAngle.TabIndex = 162;
@@ -738,10 +741,10 @@
             this.hsbarSteerAngle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hsbarSteerAngle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.hsbarSteerAngle.LargeChange = 20;
-            this.hsbarSteerAngle.Location = new System.Drawing.Point(275, 1);
+            this.hsbarSteerAngle.Location = new System.Drawing.Point(274, 1);
             this.hsbarSteerAngle.Maximum = 800;
             this.hsbarSteerAngle.Name = "hsbarSteerAngle";
-            this.hsbarSteerAngle.Size = new System.Drawing.Size(207, 37);
+            this.hsbarSteerAngle.Size = new System.Drawing.Size(206, 37);
             this.hsbarSteerAngle.TabIndex = 179;
             this.hsbarSteerAngle.Value = 400;
             this.hsbarSteerAngle.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hsbarSteerAngle_Scroll);
@@ -754,7 +757,7 @@
             this.hsbarStepDistance.Location = new System.Drawing.Point(1, 1);
             this.hsbarStepDistance.Minimum = -25;
             this.hsbarStepDistance.Name = "hsbarStepDistance";
-            this.hsbarStepDistance.Size = new System.Drawing.Size(207, 37);
+            this.hsbarStepDistance.Size = new System.Drawing.Size(206, 37);
             this.hsbarStepDistance.TabIndex = 178;
             this.hsbarStepDistance.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hsbarStepDistance_Scroll);
             // 
@@ -1454,7 +1457,7 @@
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panelSim.Controls.Add(this.btnResetSteerAngle, 3, 0);
             this.panelSim.Controls.Add(this.hsbarSteerAngle, 2, 0);
@@ -1478,7 +1481,7 @@
             this.btnSimSetSpeedToZero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimSetSpeedToZero.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnSimSetSpeedToZero.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(212, 4);
+            this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(211, 4);
             this.btnSimSetSpeedToZero.Name = "btnSimSetSpeedToZero";
             this.btnSimSetSpeedToZero.Size = new System.Drawing.Size(59, 31);
             this.btnSimSetSpeedToZero.TabIndex = 453;
@@ -2167,7 +2170,7 @@
             this.pictureboxStart.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pictureboxStart.BackgroundImage = global::AgOpenGPS.Properties.Resources.first;
             this.pictureboxStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureboxStart.Location = new System.Drawing.Point(714, 458);
+            this.pictureboxStart.Location = new System.Drawing.Point(514, 444);
             this.pictureboxStart.Name = "pictureboxStart";
             this.pictureboxStart.Size = new System.Drawing.Size(74, 60);
             this.pictureboxStart.TabIndex = 473;
@@ -2228,12 +2231,51 @@
             this.btnHelp.UseVisualStyleBackColor = false;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // lblToolActual
+            // 
+            this.lblToolActual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblToolActual.AutoSize = true;
+            this.lblToolActual.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblToolActual.Location = new System.Drawing.Point(748, 424);
+            this.lblToolActual.Name = "lblToolActual";
+            this.lblToolActual.Size = new System.Drawing.Size(43, 16);
+            this.lblToolActual.TabIndex = 496;
+            this.lblToolActual.Text = "0.000";
+            this.lblToolActual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblToolError
+            // 
+            this.lblToolError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblToolError.AutoSize = true;
+            this.lblToolError.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblToolError.Location = new System.Drawing.Point(748, 444);
+            this.lblToolError.Name = "lblToolError";
+            this.lblToolError.Size = new System.Drawing.Size(59, 16);
+            this.lblToolError.TabIndex = 497;
+            this.lblToolError.Text = "0.00000";
+            this.lblToolError.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblToolPWM
+            // 
+            this.lblToolPWM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblToolPWM.AutoSize = true;
+            this.lblToolPWM.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblToolPWM.Location = new System.Drawing.Point(748, 464);
+            this.lblToolPWM.Name = "lblToolPWM";
+            this.lblToolPWM.Size = new System.Drawing.Size(51, 16);
+            this.lblToolPWM.TabIndex = 498;
+            this.lblToolPWM.Text = "0.0000";
+            this.lblToolPWM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // FormGPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(900, 700);
+            this.Controls.Add(this.lblToolPWM);
+            this.Controls.Add(this.lblToolError);
+            this.Controls.Add(this.lblToolActual);
             this.Controls.Add(this.lblAge);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbludpWatchCounts);
@@ -2454,6 +2496,9 @@
         private System.Windows.Forms.ToolStripMenuItem correctionToolStrip;
         public System.Windows.Forms.Button btnResumePath;
         private System.Windows.Forms.ToolStripMenuItem menuLanguageTurkish;
+        private System.Windows.Forms.Label lblToolActual;
+        private System.Windows.Forms.Label lblToolError;
+        private System.Windows.Forms.Label lblToolPWM;
     }
 }
 

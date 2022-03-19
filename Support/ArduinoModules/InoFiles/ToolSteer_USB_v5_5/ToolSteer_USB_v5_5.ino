@@ -285,13 +285,17 @@
               //----------------------------------------------------------------------------
               //Serial Send to agopenGPS
               // Steer Data to AOG
-              int16_t sa = (int16_t)(steerPositionActual * 100);
+              int16_t sa = (int16_t)(steerPositionActual*10);
               PGN_232[5] = (uint8_t)sa;
               PGN_232[6] = sa >> 8;
 
+              sa = (int16_t)(steerPositionError*10);
+              PGN_232[7] = (uint8_t)sa;
+              PGN_232[8] = sa >> 8;
+
 
               //PGN_232[11] = switchByte;
-              PGN_232[12] = (uint8_t)pwmDisplay;
+              PGN_232[9] = (uint8_t)pwmDisplay;
 
               //add the checksum for AOG
               int16_t CK_A = 0;
