@@ -56,7 +56,7 @@ namespace UDP_Sim
         private string sumStr = "";
 
         public byte[] pgnIMU = new byte[] { 0x80, 0x81, 0x7f, 0xD3, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
-        public byte[] pgnWAS = new byte[] { 0x80, 0x81, 0x7E, 0xFD, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+        public byte[] pgnWAS = new byte[] { 0x80, 0x81, 0x7E, 232, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
         public byte[] pgnIMUDisconnect = new byte[] { 0x80, 0x81, 0x7C, 0xD4, 2, 1, 0, 0xCC };
 
         #endregion properties sim
@@ -76,6 +76,7 @@ namespace UDP_Sim
 
             UDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             UDPSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
+            UDPSocket.Bind(new IPEndPoint(IPAddress.Any, 10000));
             isUDPNetworkConnected = true;
 
             //AgIO sends to AgOpen on this endpoint
@@ -492,9 +493,9 @@ namespace UDP_Sim
                 pgnWAS[10] = unchecked((byte)((int)(8888) >> 8));
 
                 if (cboxSwitch.Checked)
-                    pgnWAS[11] = unchecked((byte)5);
+                    pgnWAS[10] = unchecked((byte)1);
                 else
-                    pgnWAS[11] = unchecked((byte)7);
+                    pgnWAS[10] = unchecked((byte)0);
 
                 SendUDPMessage(pgnWAS);
             }
