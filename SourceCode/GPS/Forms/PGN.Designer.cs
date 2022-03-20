@@ -255,8 +255,6 @@ namespace AgOpenGPS
             public int pin23 = 28;
 
             // PGN  - 127.237 0x7FED
-            int crc = 0;
-
             public CPGN_EC()
             {
                 string[] words;

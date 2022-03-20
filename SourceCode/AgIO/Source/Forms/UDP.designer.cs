@@ -413,6 +413,17 @@ namespace AgIO
             
             else //is tool NMEA set to port 10,000
             {
+                if (data[0] == 0x80 && data[1] == 0x81)
+                {
+                    //module return via udp sent to AOG
+                    SendToLoopBackMessageAOG(data);
+
+                    return;
+
+                    //module data also sent to VR
+                    //SendToLoopBackMessageVR(data);
+                }
+
                 //GGA or Panda or PAOGI
                 if (data[0] == 36 && (data[1] == 71 || data[1] == 80))
                 {

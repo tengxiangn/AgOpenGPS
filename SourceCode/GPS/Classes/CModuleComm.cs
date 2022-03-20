@@ -23,9 +23,11 @@
             swOnGr1 = 7,
             swOffGr1 = 8;
 
-        public int pwmDisplay = 0;
+        public int pwmDisplay = 0, toolPWM = 0, toolStatus = 0;
         public double actualSteerAngleDegrees = 0;
         public int actualSteerAngleChart = 0, sensorData = -1;
+
+        public double toolActual = 0, toolError = 0;
 
         //for the workswitch
         public bool isWorkSwitchActiveLow, isWorkSwitchEnabled, isWorkSwitchManual, isSteerControlsManual;
