@@ -31,6 +31,7 @@ namespace AgOpenGPS
         private void btnClear_Click(object sender, EventArgs e)
         {
             textBox2.Text = "";
+            mf.Sarah.SpeakAsync("What the hell are you doing, I needed those.");
         }
 
         private void btnSpeech_Click(object sender, EventArgs e)

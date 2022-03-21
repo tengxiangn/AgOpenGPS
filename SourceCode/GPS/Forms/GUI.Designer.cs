@@ -310,7 +310,7 @@ namespace AgOpenGPS
                 {
                     dewfy--;
 
-                    if (dewfy == 3)
+                    if (dewfy == 1)
                     {
                         //recEngine.RecognizeAsyncStop();
                         recEngine.RecognizeAsyncCancel();

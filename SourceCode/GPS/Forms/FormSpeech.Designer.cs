@@ -43,6 +43,7 @@
             // 
             // nudConfidenceLevel
             // 
+            this.nudConfidenceLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudConfidenceLevel.BackColor = System.Drawing.Color.AliceBlue;
             this.nudConfidenceLevel.DecimalPlaces = 3;
             this.nudConfidenceLevel.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -68,6 +69,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(403, 11);
             this.label1.Name = "label1";
@@ -80,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(130, 25);
+            this.label2.Location = new System.Drawing.Point(135, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 19);
             this.label2.TabIndex = 495;
@@ -91,7 +93,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 25);
+            this.label3.Location = new System.Drawing.Point(16, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 19);
             this.label3.TabIndex = 496;
@@ -130,6 +132,7 @@
             // 
             // btnSpeech
             // 
+            this.btnSpeech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSpeech.Location = new System.Drawing.Point(414, 49);
             this.btnSpeech.Name = "btnSpeech";
             this.btnSpeech.Size = new System.Drawing.Size(75, 59);
@@ -140,6 +143,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(397, 143);
@@ -170,13 +174,14 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Honeydew;
             this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(22, 264);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(394, 57);
+            this.label5.Size = new System.Drawing.Size(377, 57);
             this.label5.TabIndex = 500;
-            this.label5.Text = "Say \"SkyNet\" +\r\nSteer Enable, You Turn, Section Control,\r\nManual Control, A B lin" +
-    "e, Steer Settings, Configuration";
+            this.label5.Text = "Say... \"Command\" +\r\nSteering,  You Turn,   Section Control, Line,  Curve,\r\nManual" +
+    " Control,   Steer Settings,  Configuration";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormSpeech

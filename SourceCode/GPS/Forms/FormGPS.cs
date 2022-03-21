@@ -389,35 +389,40 @@ namespace AgOpenGPS
             if (e.Result.Confidence < confidence) return;
             switch (e.Result.Text)
             {
-                case "SkyNet":
-                    dewfy = 8;
+                case "Command":
+                    dewfy = 6;
                     break;
-                case "steer enable":
-                    if (dewfy > 0) btnAutoSteer.PerformClick();
-                    if (isAutoSteerBtnOn) Sarah.SpeakAsync("Guidance On");
-                    else Sarah.SpeakAsync("Guidance Off");
+                case "steering":
+                    if (dewfy > 2) btnAutoSteer.PerformClick();
+                    dewfy = 2;
                     break;
                 case "you turn":
-                    if (dewfy > 0) btnAutoYouTurn.PerformClick();
+                    if (dewfy > 2) btnAutoYouTurn.PerformClick();
+                    dewfy = 2;
                     break;
                 case "section control":
-                    if (autoBtnState == btnStates.Auto) Sarah.SpeakAsync("Auto Section Control On");
-                    else Sarah.SpeakAsync("Auto Section Control Off");
-                    if (dewfy > 0) btnSectionOffAutoOn.PerformClick();
+                    if (dewfy > 2) btnSectionOffAutoOn.PerformClick();
+                    dewfy = 2;
                     break;
                 case "manual control":
-                    if (dewfy > 0) btnManualOffOn.PerformClick();
-                    if (manualBtnState == btnStates.On) Sarah.SpeakAsync("Manual Sections On");
-                    else Sarah.SpeakAsync("Manual Sections Off");
+                    if (dewfy > 2) btnManualOffOn.PerformClick();
+                    dewfy = 2;
                     break;
-                case "a b line":
-                    if (dewfy > 0) btnABLine.PerformClick();
+                case "line":
+                    if (dewfy > 2) btnABLine.PerformClick();
+                    dewfy = 2;
+                    break;
+                case "curve":
+                    if (dewfy > 2) btnCurve.PerformClick();
+                    dewfy = 2;
                     break;
                 case "steer settings":
-                    if (dewfy > 0) btnAutoSteerConfig.PerformClick();
+                    if (dewfy > 2) btnAutoSteerConfig.PerformClick();
+                    dewfy = 2;
                     break;
                 case "configuration":
-                    if (dewfy > 0) stripBtnConfig.PerformClick();
+                    if (dewfy > 2) stripBtnConfig.PerformClick();
+                    dewfy = 2;
                     break;
             }
         }
@@ -428,8 +433,8 @@ namespace AgOpenGPS
             //Speech engine
             Choices commands = new Choices();
 
-            commands.Add(new string[] { "steer enable", "you turn", "section control", 
-                "manual control", "SkyNet", "a b line", "steer settings", "configuration" });
+            commands.Add(new string[] { "steering", "you turn", "section control", 
+                "manual control", "Command", "line", "curve", "steer settings", "configuration" });
 
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
