@@ -8,6 +8,7 @@ using AgOpenGPS.Properties;
 using System.Globalization;
 using System.IO;
 using System.Media;
+using System.Speech.Recognition;
 
 //C:\Program Files(x86)\Arduino\hardware\tools\avr / bin / avrdude - CC:\Program Files(x86)\Arduino\hardware\tools\avr / etc / avrdude.conf 
 //- v - patmega328p - carduino - PCOM3 - b57600 - D - Uflash:w: C: \Users\FarmPC\AppData\Local\Temp\arduino_build_448484 / Autosteer_UDP_20.ino.hex:i
@@ -288,29 +289,6 @@ namespace AgOpenGPS
 
                 isFlashOnOff = !isFlashOnOff;
 
-                //AutoSteerAuto button enable - Ray Bear inspired code - Thx Ray!
-                //if (isJobStarted && ahrs.isAutoSteerAuto &&
-                //    (ABLine.isBtnABLineOn || ct.isContourBtnOn || curve.isBtnCurveOn))
-                //{
-                //    if (mc.steerSwitchValue == 0)
-                //    {
-                //        if (!isAutoSteerBtnOn) btnAutoSteer.PerformClick();
-                //    }
-                //    else
-                //    {
-                //        if (isAutoSteerBtnOn) btnAutoSteer.PerformClick();
-                //    }
-                //}
-                //// Extension added 29.12.2021 (Othmar Ehrhardt):
-                //// If no AB line or path is activated, the work switch has no function and can be used to
-                //// control the play button of the Record path feature:
-                //else if(panelDrag.Visible && ahrs.isAutoSteerAuto)
-                //{
-                //    // No AB line activated, the autosteer button can be used to control the play button:
-                //    if (isAutoSteerBtnOn && !recPath.isDrivingRecordedPath) btnPathGoStop.PerformClick();
-                //    else if(recPath.isDrivingRecordedPath) btnPathGoStop.PerformClick();
-                //}
-
                 //Make sure it is off when it should
                 if ((!ABLine.isBtnABLineOn && !ct.isContourBtnOn && !curve.isBtnCurveOn && isAutoSteerBtnOn)
                     ) btnAutoSteer.PerformClick();
@@ -326,6 +304,24 @@ namespace AgOpenGPS
                 {
                     lblSpeed.Text = SpeedMPH;
                     //btnContour.Text = InchXTE; //cross track error
+                }
+
+                if (dewfy > 0)
+                {
+                    dewfy--;
+
+                    if (dewfy == 3)
+                    {
+                        //recEngine.RecognizeAsyncStop();
+                        recEngine.RecognizeAsyncCancel();
+                        //recEngine.RecognizeAsync(RecognizeMode.Multiple);
+                    }
+                    else if (dewfy == 0)
+                    {
+                        //recEngine.RecognizeAsyncStop();
+                        //recEngine.RecognizeAsyncCancel();
+                        recEngine.RecognizeAsync(RecognizeMode.Multiple);
+                    }
                 }
 
 
@@ -345,6 +341,8 @@ namespace AgOpenGPS
 
                 //lblAV.Text = ABLine.angVel.ToString("N3");
             }
+
+
         }//wait till timer fires again.  
 
         private void IsBetweenSunriseSunset(double lat, double lon)

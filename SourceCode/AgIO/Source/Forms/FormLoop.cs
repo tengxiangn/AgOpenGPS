@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
+using System.Speech.Recognition;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,6 +16,8 @@ namespace AgIO
 
         [System.Runtime.InteropServices.DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr hWind, int nCmdShow);
+
+        SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
 
         public FormLoop()
         {

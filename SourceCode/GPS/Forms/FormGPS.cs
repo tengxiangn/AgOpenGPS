@@ -13,6 +13,8 @@ using System.Media;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Resources;
+using System.Speech.Recognition;
+using System.Speech.Synthesis;
 using System.Windows.Forms;
 
 namespace AgOpenGPS
@@ -32,6 +34,9 @@ namespace AgOpenGPS
 
         [System.Runtime.InteropServices.DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr hWind, int nCmdShow);
+
+        public SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
+        public SpeechSynthesizer Sarah = new SpeechSynthesizer();
 
         #region // Class Props and instances
 
@@ -361,9 +366,80 @@ namespace AgOpenGPS
             sounds = new CSound();
         }
 
+        //listen for commands for 3 seconds
+        int dewfy;
+        float confidence;
+        public void SpeechOnOff(bool isOn)
+        {
+            if (isOn)
+            {
+                recEngine.SpeechRecognized += recEngine_SpeechRecognized;
+                recEngine.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            else
+            {
+                recEngine.SpeechRecognized -= recEngine_SpeechRecognized;
+                recEngine.RecognizeAsyncStop();
+            }
+        }
+
+        public void recEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            //if (!isJobStarted) return;
+            if (e.Result.Confidence < confidence) return;
+            switch (e.Result.Text)
+            {
+                case "SkyNet":
+                    dewfy = 8;
+                    break;
+                case "steer enable":
+                    if (dewfy > 0) btnAutoSteer.PerformClick();
+                    if (isAutoSteerBtnOn) Sarah.SpeakAsync("Guidance On");
+                    else Sarah.SpeakAsync("Guidance Off");
+                    break;
+                case "you turn":
+                    if (dewfy > 0) btnAutoYouTurn.PerformClick();
+                    break;
+                case "section control":
+                    if (autoBtnState == btnStates.Auto) Sarah.SpeakAsync("Auto Section Control On");
+                    else Sarah.SpeakAsync("Auto Section Control Off");
+                    if (dewfy > 0) btnSectionOffAutoOn.PerformClick();
+                    break;
+                case "manual control":
+                    if (dewfy > 0) btnManualOffOn.PerformClick();
+                    if (manualBtnState == btnStates.On) Sarah.SpeakAsync("Manual Sections On");
+                    else Sarah.SpeakAsync("Manual Sections Off");
+                    break;
+                case "a b line":
+                    if (dewfy > 0) btnABLine.PerformClick();
+                    break;
+                case "steer settings":
+                    if (dewfy > 0) btnAutoSteerConfig.PerformClick();
+                    break;
+                case "configuration":
+                    if (dewfy > 0) stripBtnConfig.PerformClick();
+                    break;
+            }
+        }
+
         //Initialize items before the form Loads or is visible
         private void FormGPS_Load(object sender, EventArgs e)
         {
+            //Speech engine
+            Choices commands = new Choices();
+
+            commands.Add(new string[] { "steer enable", "you turn", "section control", 
+                "manual control", "SkyNet", "a b line", "steer settings", "configuration" });
+
+            GrammarBuilder gBuilder = new GrammarBuilder();
+            gBuilder.Append(commands);
+            Grammar grammar = new Grammar(gBuilder);
+            recEngine.LoadGrammarAsync(grammar);
+            recEngine.SetInputToDefaultAudioDevice();
+            confidence = Settings.Default.setSpeech_confidence;
+
+            SpeechOnOff(Settings.Default.setSpeech_isOn);
+
             this.MouseWheel += ZoomByMouseWheel;
 
             //start udp server is required

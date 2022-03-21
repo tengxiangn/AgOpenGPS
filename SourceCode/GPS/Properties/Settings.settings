@@ -359,5 +359,11 @@
     <Setting Name="setGPS_isGPSToolOnly" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="setSpeech_confidence" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0.94</Value>
+    </Setting>
+    <Setting Name="setSpeech_isOn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
