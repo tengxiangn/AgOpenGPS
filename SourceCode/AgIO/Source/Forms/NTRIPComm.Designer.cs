@@ -262,6 +262,7 @@ namespace AgIO
                 try
                 {
                     SendUDPMessageNTRIP(data, toUDP_Port);
+                    SendUDPMessageNTRIP(data, 10000);
 
                 }
                 catch (Exception)
