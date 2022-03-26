@@ -2067,10 +2067,13 @@ namespace AgOpenGPS
 
             font.DrawText(center, 0, head, 0.8);
 
-            head = Math.Round(ahrs.imuRollTool, 2).ToString();
-            center = -(int)(((head.Length) * 6));
+            if (ahrs.imuRollTool != 88888)
+            {
+                head = Math.Round(ahrs.imuRollTool, 2).ToString();
+                center = -(int)(((head.Length) * 6));
 
-            font.DrawText(center, 20, head, 0.8);
+                font.DrawText(center, 20, head, 0.8);
+            }
 
             //GL.Translate(0, 10, 0);
 

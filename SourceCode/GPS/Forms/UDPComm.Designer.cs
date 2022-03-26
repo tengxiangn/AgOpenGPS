@@ -58,6 +58,9 @@ namespace AgOpenGPS
                                 pn.latitude = Lat;
 
                                 pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fix.northing, out pn.fix.easting);
+
+                                //do position for tool
+                                if (pn.isGPSTool)
                                 pn.ConvertWGS84ToLocal(pn.latitudeTool, pn.longitudeTool, out pn.fixTool.northing, out pn.fixTool.easting);
 
                                 //From dual antenna heading sentences
