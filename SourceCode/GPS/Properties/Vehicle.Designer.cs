@@ -1078,5 +1078,29 @@ namespace AgOpenGPS.Properties {
                 this["setTool_Offset"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double setTool_antennaHeight {
+            get {
+                return ((double)(this["setTool_antennaHeight"]));
+            }
+            set {
+                this["setTool_antennaHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double setTool_antennaOffset {
+            get {
+                return ((double)(this["setTool_antennaOffset"]));
+            }
+            set {
+                this["setTool_antennaOffset"] = value;
+            }
+        }
     }
 }

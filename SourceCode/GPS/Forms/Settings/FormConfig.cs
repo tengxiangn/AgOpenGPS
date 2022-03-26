@@ -47,6 +47,8 @@ namespace AgOpenGPS
             nudMinTurnRadius.Controls[0].Enabled = false;
             nudAntennaHeight.Controls[0].Enabled = false;
             nudAntennaOffset.Controls[0].Enabled = false;
+            nudToolAntennaHeight.Controls[0].Enabled = false;
+            nudToolAntennaOffset.Controls[0].Enabled = false;
             nudAntennaPivot.Controls[0].Enabled = false;
             nudLightbarCmPerPixel.Controls[0].Enabled = false;
             nudVehicleTrack.Controls[0].Enabled = false;
@@ -317,6 +319,7 @@ namespace AgOpenGPS
         {
             SaveDisplaySettings();
         }
+
     }
 }
 

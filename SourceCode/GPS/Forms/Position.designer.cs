@@ -217,6 +217,13 @@ namespace AgOpenGPS
                             pn.fix.northing = (Math.Sin(-gpsHeading) * vehicle.antennaOffset) + pn.fix.northing;
                         }
 
+                        if (pn.toolAntennaOffset != 0)
+                        {
+                            pn.fixTool.easting = (Math.Cos(-gpsHeading) * pn.toolAntennaOffset) + pn.fixTool.easting;
+                            pn.fixTool.northing = (Math.Sin(-gpsHeading) * pn.toolAntennaOffset) + pn.fixTool.northing;
+                        }
+
+
                         uncorrectedEastingGraph = pn.fix.easting;
 
                         //originalEasting = pn.fix.easting;
@@ -230,6 +237,17 @@ namespace AgOpenGPS
                             // not any more - April 30, 2019 - roll to right is positive Now! Still Important
                             pn.fix.easting = (Math.Cos(-gpsHeading) * rollCorrectionDistance) + pn.fix.easting;
                             pn.fix.northing = (Math.Sin(-gpsHeading) * rollCorrectionDistance) + pn.fix.northing;
+                        }
+
+                        if (ahrs.imuRollTool != 88888)
+                        {
+                            //change for roll to the right is positive times -1
+                            rollCorrectionDistance = Math.Sin(glm.toRadians((ahrs.imuRollTool))) * -pn.toolAntennaHeight;
+
+                            // roll to left is positive  **** important!!
+                            // not any more - April 30, 2019 - roll to right is positive Now! Still Important
+                            pn.fixTool.easting = (Math.Cos(-gpsHeading) * rollCorrectionDistance) + pn.fixTool.easting;
+                            pn.fixTool.northing = (Math.Sin(-gpsHeading) * rollCorrectionDistance) + pn.fixTool.northing;
                         }
 
                         //initializing all done
@@ -588,6 +606,23 @@ namespace AgOpenGPS
 
                             pn.fix.easting = (Math.Cos(-gpsHeading) * rollCorrectionDistance) + pn.fix.easting;
                             pn.fix.northing = (Math.Sin(-gpsHeading) * rollCorrectionDistance) + pn.fix.northing;
+                        }
+
+                        if (pn.toolAntennaOffset != 0)
+                        {
+                            pn.fixTool.easting = (Math.Cos(-fixHeading) * pn.toolAntennaOffset) + pn.fixTool.easting;
+                            pn.fixTool.northing = (Math.Sin(-fixHeading) * pn.toolAntennaOffset) + pn.fixTool.northing;
+                        }
+
+                        if (ahrs.imuRollTool != 88888 && pn.toolAntennaHeight != 0)
+                        {
+                            //change for roll to the right is positive times -1
+                            rollCorrectionDistance = Math.Sin(glm.toRadians((ahrs.imuRollTool))) * -pn.toolAntennaHeight;
+
+                            // roll to left is positive  **** important!!
+                            // not any more - April 30, 2019 - roll to right is positive Now! Still Important
+                            pn.fixTool.easting = (Math.Cos(-gpsHeading) * rollCorrectionDistance) + pn.fixTool.easting;
+                            pn.fixTool.northing = (Math.Sin(-gpsHeading) * rollCorrectionDistance) + pn.fixTool.northing;
                         }
 
                         //grab the most current fix and save the distance from the last fix

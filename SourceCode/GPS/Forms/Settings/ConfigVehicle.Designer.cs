@@ -349,10 +349,9 @@ namespace AgOpenGPS
         {
             nudAntennaHeight.Value = (int)(Properties.Vehicle.Default.setVehicle_antennaHeight* mf.m2InchOrCm);
 
-            nudAntennaPivot.Value = (int)((Properties.Vehicle.Default.setVehicle_antennaPivot)* mf.m2InchOrCm);
-
             nudAntennaOffset.Value = (int)(Properties.Vehicle.Default.setVehicle_antennaOffset* mf.m2InchOrCm);
 
+            nudAntennaPivot.Value = (int)((Properties.Vehicle.Default.setVehicle_antennaPivot)* mf.m2InchOrCm);
 
             if (Properties.Vehicle.Default.setVehicle_vehicleType == 0)
                 pboxAntenna.BackgroundImage = Properties.Resources.AntennaTractor;

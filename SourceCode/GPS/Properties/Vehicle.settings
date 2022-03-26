@@ -266,5 +266,11 @@
     <Setting Name="setTool_Offset" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">127</Value>
     </Setting>
+    <Setting Name="setTool_antennaHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="setTool_antennaOffset" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

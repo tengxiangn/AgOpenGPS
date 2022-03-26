@@ -22,11 +22,11 @@ namespace AgOpenGPS
 
             lblHz.Text = mf.fixUpdateHz + " ~ " + (mf.frameTime.ToString("N1"));
 
-            lblEastingField.Text = Math.Round(mf.pn.fix.easting, 1).ToString();
-            lblNorthingField.Text = Math.Round(mf.pn.fix.northing, 1).ToString();
+            lblEastingField.Text = Math.Round(mf.pn.fix.easting, 3).ToString();
+            lblNorthingField.Text = Math.Round(mf.pn.fix.northing, 3).ToString();
 
-            lblEastingFieldTool.Text = Math.Round(mf.pn.fixTool.easting, 1).ToString();
-            lblNorthingFieldTool.Text = Math.Round(mf.pn.fixTool.northing, 1).ToString();
+            lblEastingFieldTool.Text = Math.Round(mf.pn.fixTool.easting, 3).ToString();
+            lblNorthingFieldTool.Text = Math.Round(mf.pn.fixTool.northing, 3).ToString();
 
             lblLatitude.Text = mf.Latitude;
             lblLongitude.Text = mf.Longitude;

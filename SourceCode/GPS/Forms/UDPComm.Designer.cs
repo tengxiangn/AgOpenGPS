@@ -58,6 +58,7 @@ namespace AgOpenGPS
                                 pn.latitude = Lat;
 
                                 pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fix.northing, out pn.fix.easting);
+                                pn.ConvertWGS84ToLocal(pn.latitudeTool, pn.longitudeTool, out pn.fixTool.northing, out pn.fixTool.easting);
 
                                 //From dual antenna heading sentences
                                 float temp = BitConverter.ToSingle(data, 21);
@@ -166,7 +167,7 @@ namespace AgOpenGPS
                                 pn.longitudeTool = Lon;
                                 pn.latitudeTool = Lat;
 
-                                pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fixTool.northing, out pn.fixTool.easting);
+                                //pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fixTool.northing, out pn.fixTool.easting);
 
                                 ushort sats = BitConverter.ToUInt16(data, 21);
                                 if (sats != ushort.MaxValue)
@@ -191,7 +192,7 @@ namespace AgOpenGPS
                                     if (ahrs.isRollInvert) rollK *= -0.1;
                                     else rollK *= 0.1;
                                     rollK -= ahrs.rollZeroTool;
-                                    ahrs.imuRollTool = ahrs.imuRollTool * ahrs.rollFilter + rollK * (1 - ahrs.rollFilter);
+                                    ahrs.imuRollTool = rollK;
                                 }
 
                                 //From dual antenna heading sentences

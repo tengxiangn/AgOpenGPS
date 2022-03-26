@@ -47,6 +47,12 @@ namespace AgOpenGPS
             if (cboxGPSToolOnlyOnOff.Checked) btnConvertToToolOnly.Visible = true;
             else btnConvertToToolOnly.Visible = false;
 
+            nudToolAntennaHeight.Value = (int)(Properties.Vehicle.Default.setTool_antennaHeight * mf.m2InchOrCm);
+
+            nudToolAntennaOffset.Value = (int)(Properties.Vehicle.Default.setTool_antennaOffset * mf.m2InchOrCm);
+
+
+
         }
         private void btnSendToolSteer_Click(object sender, EventArgs e)
         {
@@ -172,6 +178,24 @@ namespace AgOpenGPS
 
                 //hitch slightly forward to min length
                 Properties.Vehicle.Default.setVehicle_hitchLength = mf.tool.hitchLength = 0.1;
+            }
+        }
+
+        private void nudToolAntennaHeight_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NumericUpDown)sender, this))
+            {
+                Properties.Vehicle.Default.setTool_antennaHeight = (double)nudToolAntennaHeight.Value * mf.inchOrCm2m;
+                mf.pn.toolAntennaHeight = Properties.Vehicle.Default.setTool_antennaHeight;
+            }
+        }
+
+        private void nudToolAntennaOffset_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NumericUpDown)sender, this))
+            {
+                Properties.Vehicle.Default.setTool_antennaOffset = (double)nudToolAntennaOffset.Value * mf.inchOrCm2m;
+                mf.pn.toolAntennaOffset = Properties.Vehicle.Default.setTool_antennaOffset;
             }
         }
 

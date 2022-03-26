@@ -9,6 +9,7 @@ namespace AgOpenGPS
         // turn on functions used with GPS Antenna on tool
         public bool isGPSTool = false;
         public bool isGPSToolOnly = false;
+        public double toolAntennaHeight, toolAntennaOffset; 
 
         //WGS84 Lat Long
         public double latitude, longitude;
@@ -45,6 +46,9 @@ namespace AgOpenGPS
             ageAlarm = Properties.Settings.Default.setGPS_ageAlarm;
             isGPSTool = Properties.Settings.Default.setGPS_isGPSTool;
             isGPSToolOnly = Properties.Settings.Default.setGPS_isGPSToolOnly;
+            toolAntennaHeight = Properties.Vehicle.Default.setTool_antennaHeight;
+            toolAntennaOffset = Properties.Vehicle.Default.setTool_antennaOffset;
+
         }
 
         public void AverageTheSpeed()
@@ -71,7 +75,9 @@ namespace AgOpenGPS
 
         public void ConvertWGS84ToLocal(double Lat, double Lon, out double Northing, out double Easting)
         {
-            mPerDegreeLon = 111412.84 * Math.Cos(Lat * 0.01745329251994329576923690766743) - 93.5 * Math.Cos(3.0 * Lat * 0.01745329251994329576923690766743) + 0.118 * Math.Cos(5.0 * Lat * 0.01745329251994329576923690766743);
+            mPerDegreeLon = 111412.84 * Math.Cos(Lat * 0.01745329251994329576923690766743) - 93.5 
+                * Math.Cos(3.0 * Lat * 0.01745329251994329576923690766743) + 0.118 
+                * Math.Cos(5.0 * Lat * 0.01745329251994329576923690766743);
 
             Northing = (Lat - latStart) * mPerDegreeLat;
             Easting = (Lon - lonStart) * mPerDegreeLon;
