@@ -1791,6 +1791,21 @@ namespace AgOpenGPS
             formC.Show(this);
         }
 
+        private void toolSteerSettingsStrip_Click(object sender, EventArgs e)
+        {
+            Form fc = Application.OpenForms["FormToolSteer"];
+
+            if (fc != null)
+            {
+                fc.Focus();
+                return;
+            }
+
+            //
+            Form form = new FormToolSteer(this);
+            form.Show(this);
+        }
+
 
         #endregion
 

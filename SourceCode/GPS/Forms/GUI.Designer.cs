@@ -324,7 +324,6 @@ namespace AgOpenGPS
                     }
                 }
 
-
             } //end every 1/2 second
 
             //every fifth second update  ///////////////////////////   FIFTH Fifth ////////////////////////////

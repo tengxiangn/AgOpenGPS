@@ -373,40 +373,7 @@
             this.pboxSendRelay = new System.Windows.Forms.PictureBox();
             this.btnSendRelayConfigPGN = new System.Windows.Forms.Button();
             this.tabASteer = new System.Windows.Forms.TabPage();
-            this.label158 = new System.Windows.Forms.Label();
-            this.hsbarTool_Offset = new System.Windows.Forms.HScrollBar();
-            this.lblTool_Offset = new System.Windows.Forms.Label();
-            this.label160 = new System.Windows.Forms.Label();
-            this.hsbarTool_HighPWM = new System.Windows.Forms.HScrollBar();
-            this.lblTool_HighPWM = new System.Windows.Forms.Label();
-            this.label157 = new System.Windows.Forms.Label();
-            this.label156 = new System.Windows.Forms.Label();
-            this.label154 = new System.Windows.Forms.Label();
-            this.label105 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.hsbarTool_Counts = new System.Windows.Forms.HScrollBar();
-            this.lblTool_Counts = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.hsbarTool_LowPWM = new System.Windows.Forms.HScrollBar();
-            this.lblTool_LowPWM = new System.Windows.Forms.Label();
-            this.pboxSendToolSteer = new System.Windows.Forms.PictureBox();
-            this.btnSendToolSteer = new System.Windows.Forms.Button();
-            this.label153 = new System.Windows.Forms.Label();
-            this.hsbarTool_MinPWM = new System.Windows.Forms.HScrollBar();
-            this.lblTool_MinPWM = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.hsbarTool_I = new System.Windows.Forms.HScrollBar();
-            this.lblTool_I = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.hsbarTool_P = new System.Windows.Forms.HScrollBar();
-            this.lblTool_P = new System.Windows.Forms.Label();
-            this.cboxGPSNormal = new System.Windows.Forms.CheckBox();
-            this.btnConvertToToolOnly = new System.Windows.Forms.Button();
-            this.cboxGPSToolOnlyOnOff = new System.Windows.Forms.CheckBox();
-            this.cboxGPSToolOnOff = new System.Windows.Forms.CheckBox();
             this.label152 = new System.Windows.Forms.Label();
-            this.label155 = new System.Windows.Forms.Label();
             this.tabAMachine = new System.Windows.Forms.TabPage();
             this.label151 = new System.Windows.Forms.Label();
             this.label150 = new System.Windows.Forms.Label();
@@ -504,10 +471,6 @@
             this.lblFeetMeters = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.nudToolAntennaHeight = new System.Windows.Forms.NumericUpDown();
-            this.nudToolAntennaOffset = new System.Windows.Forms.NumericUpDown();
-            this.label159 = new System.Windows.Forms.Label();
-            this.label161 = new System.Windows.Forms.Label();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -602,7 +565,6 @@
             this.tabRelay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxSendRelay)).BeginInit();
             this.tabASteer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxSendToolSteer)).BeginInit();
             this.tabAMachine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudUser4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudUser3)).BeginInit();
@@ -620,8 +582,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabBtns.SuspendLayout();
             this.panelBottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudToolAntennaHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudToolAntennaOffset)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeftSideMenu
@@ -6887,451 +6847,16 @@
             // 
             this.tabASteer.BackColor = System.Drawing.Color.Gainsboro;
             this.tabASteer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabASteer.Controls.Add(this.label161);
-            this.tabASteer.Controls.Add(this.label159);
-            this.tabASteer.Controls.Add(this.nudToolAntennaHeight);
-            this.tabASteer.Controls.Add(this.nudToolAntennaOffset);
-            this.tabASteer.Controls.Add(this.label158);
-            this.tabASteer.Controls.Add(this.hsbarTool_Offset);
-            this.tabASteer.Controls.Add(this.lblTool_Offset);
-            this.tabASteer.Controls.Add(this.label160);
-            this.tabASteer.Controls.Add(this.hsbarTool_HighPWM);
-            this.tabASteer.Controls.Add(this.lblTool_HighPWM);
-            this.tabASteer.Controls.Add(this.label157);
-            this.tabASteer.Controls.Add(this.label156);
-            this.tabASteer.Controls.Add(this.label154);
-            this.tabASteer.Controls.Add(this.label105);
-            this.tabASteer.Controls.Add(this.label62);
-            this.tabASteer.Controls.Add(this.hsbarTool_Counts);
-            this.tabASteer.Controls.Add(this.lblTool_Counts);
-            this.tabASteer.Controls.Add(this.label7);
-            this.tabASteer.Controls.Add(this.label5);
-            this.tabASteer.Controls.Add(this.hsbarTool_LowPWM);
-            this.tabASteer.Controls.Add(this.lblTool_LowPWM);
-            this.tabASteer.Controls.Add(this.pboxSendToolSteer);
-            this.tabASteer.Controls.Add(this.btnSendToolSteer);
-            this.tabASteer.Controls.Add(this.label153);
-            this.tabASteer.Controls.Add(this.hsbarTool_MinPWM);
-            this.tabASteer.Controls.Add(this.lblTool_MinPWM);
-            this.tabASteer.Controls.Add(this.label70);
-            this.tabASteer.Controls.Add(this.hsbarTool_I);
-            this.tabASteer.Controls.Add(this.lblTool_I);
-            this.tabASteer.Controls.Add(this.label68);
-            this.tabASteer.Controls.Add(this.hsbarTool_P);
-            this.tabASteer.Controls.Add(this.lblTool_P);
-            this.tabASteer.Controls.Add(this.cboxGPSNormal);
-            this.tabASteer.Controls.Add(this.btnConvertToToolOnly);
-            this.tabASteer.Controls.Add(this.cboxGPSToolOnlyOnOff);
-            this.tabASteer.Controls.Add(this.cboxGPSToolOnOff);
             this.tabASteer.Controls.Add(this.label152);
-            this.tabASteer.Controls.Add(this.label155);
             this.tabASteer.ForeColor = System.Drawing.Color.White;
             this.tabASteer.Location = new System.Drawing.Point(4, 44);
             this.tabASteer.Name = "tabASteer";
             this.tabASteer.Size = new System.Drawing.Size(852, 585);
             this.tabASteer.TabIndex = 19;
             this.tabASteer.Text = "aSteer";
+            this.tabASteer.Click += new System.EventHandler(this.tabASteer_Click);
             this.tabASteer.Enter += new System.EventHandler(this.tabASteer_Enter);
             this.tabASteer.Leave += new System.EventHandler(this.tabASteer_Leave);
-            // 
-            // label158
-            // 
-            this.label158.AutoSize = true;
-            this.label158.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label158.ForeColor = System.Drawing.Color.Black;
-            this.label158.Location = new System.Drawing.Point(29, 377);
-            this.label158.Name = "label158";
-            this.label158.Size = new System.Drawing.Size(68, 23);
-            this.label158.TabIndex = 528;
-            this.label158.Text = "Offset";
-            this.label158.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hsbarTool_Offset
-            // 
-            this.hsbarTool_Offset.LargeChange = 1;
-            this.hsbarTool_Offset.Location = new System.Drawing.Point(100, 373);
-            this.hsbarTool_Offset.Maximum = 255;
-            this.hsbarTool_Offset.Name = "hsbarTool_Offset";
-            this.hsbarTool_Offset.Size = new System.Drawing.Size(268, 30);
-            this.hsbarTool_Offset.TabIndex = 526;
-            this.hsbarTool_Offset.Value = 20;
-            this.hsbarTool_Offset.ValueChanged += new System.EventHandler(this.hsbarTool_Offset_ValueChanged);
-            // 
-            // lblTool_Offset
-            // 
-            this.lblTool_Offset.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTool_Offset.ForeColor = System.Drawing.Color.Black;
-            this.lblTool_Offset.Location = new System.Drawing.Point(371, 372);
-            this.lblTool_Offset.Name = "lblTool_Offset";
-            this.lblTool_Offset.Size = new System.Drawing.Size(55, 35);
-            this.lblTool_Offset.TabIndex = 527;
-            this.lblTool_Offset.Text = "888";
-            this.lblTool_Offset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label160
-            // 
-            this.label160.AutoSize = true;
-            this.label160.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label160.ForeColor = System.Drawing.Color.Black;
-            this.label160.Location = new System.Drawing.Point(459, 432);
-            this.label160.Name = "label160";
-            this.label160.Size = new System.Drawing.Size(55, 23);
-            this.label160.TabIndex = 525;
-            this.label160.Text = "High";
-            this.label160.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hsbarTool_HighPWM
-            // 
-            this.hsbarTool_HighPWM.LargeChange = 1;
-            this.hsbarTool_HighPWM.Location = new System.Drawing.Point(517, 430);
-            this.hsbarTool_HighPWM.Maximum = 255;
-            this.hsbarTool_HighPWM.Name = "hsbarTool_HighPWM";
-            this.hsbarTool_HighPWM.Size = new System.Drawing.Size(268, 30);
-            this.hsbarTool_HighPWM.TabIndex = 523;
-            this.hsbarTool_HighPWM.Value = 20;
-            this.hsbarTool_HighPWM.ValueChanged += new System.EventHandler(this.hsbarTool_HighPWM_ValueChanged);
-            // 
-            // lblTool_HighPWM
-            // 
-            this.lblTool_HighPWM.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTool_HighPWM.ForeColor = System.Drawing.Color.Black;
-            this.lblTool_HighPWM.Location = new System.Drawing.Point(789, 427);
-            this.lblTool_HighPWM.Name = "lblTool_HighPWM";
-            this.lblTool_HighPWM.Size = new System.Drawing.Size(55, 35);
-            this.lblTool_HighPWM.TabIndex = 524;
-            this.lblTool_HighPWM.Text = "888";
-            this.lblTool_HighPWM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label157
-            // 
-            this.label157.AutoSize = true;
-            this.label157.ForeColor = System.Drawing.Color.Black;
-            this.label157.Location = new System.Drawing.Point(424, 60);
-            this.label157.Name = "label157";
-            this.label157.Size = new System.Drawing.Size(100, 16);
-            this.label157.TabIndex = 522;
-            this.label157.Text = "Change Settings";
-            // 
-            // label156
-            // 
-            this.label156.AutoSize = true;
-            this.label156.ForeColor = System.Drawing.Color.Black;
-            this.label156.Location = new System.Drawing.Point(314, 60);
-            this.label156.Name = "label156";
-            this.label156.Size = new System.Drawing.Size(61, 16);
-            this.label156.TabIndex = 521;
-            this.label156.Text = "Tool Only";
-            // 
-            // label154
-            // 
-            this.label154.AutoSize = true;
-            this.label154.ForeColor = System.Drawing.Color.Black;
-            this.label154.Location = new System.Drawing.Point(181, 60);
-            this.label154.Name = "label154";
-            this.label154.Size = new System.Drawing.Size(89, 16);
-            this.label154.TabIndex = 520;
-            this.label154.Text = "Vehicle + Tool";
-            // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.ForeColor = System.Drawing.Color.Black;
-            this.label105.Location = new System.Drawing.Point(44, 59);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(77, 16);
-            this.label105.TabIndex = 519;
-            this.label105.Text = "Vehicle Only";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.ForeColor = System.Drawing.Color.Black;
-            this.label62.Location = new System.Drawing.Point(20, 318);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(77, 23);
-            this.label62.TabIndex = 518;
-            this.label62.Text = "Counts";
-            this.label62.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hsbarTool_Counts
-            // 
-            this.hsbarTool_Counts.LargeChange = 1;
-            this.hsbarTool_Counts.Location = new System.Drawing.Point(100, 315);
-            this.hsbarTool_Counts.Maximum = 255;
-            this.hsbarTool_Counts.Name = "hsbarTool_Counts";
-            this.hsbarTool_Counts.Size = new System.Drawing.Size(268, 30);
-            this.hsbarTool_Counts.TabIndex = 516;
-            this.hsbarTool_Counts.Value = 20;
-            this.hsbarTool_Counts.ValueChanged += new System.EventHandler(this.hsbarTool_Counts_ValueChanged);
-            // 
-            // lblTool_Counts
-            // 
-            this.lblTool_Counts.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTool_Counts.ForeColor = System.Drawing.Color.Black;
-            this.lblTool_Counts.Location = new System.Drawing.Point(371, 312);
-            this.lblTool_Counts.Name = "lblTool_Counts";
-            this.lblTool_Counts.Size = new System.Drawing.Size(55, 35);
-            this.lblTool_Counts.TabIndex = 517;
-            this.lblTool_Counts.Text = "888";
-            this.lblTool_Counts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(325, 267);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(210, 25);
-            this.label7.TabIndex = 515;
-            this.label7.Text = "Tool Steer Settings";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(464, 378);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 23);
-            this.label5.TabIndex = 514;
-            this.label5.Text = "Low";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hsbarTool_LowPWM
-            // 
-            this.hsbarTool_LowPWM.LargeChange = 1;
-            this.hsbarTool_LowPWM.Location = new System.Drawing.Point(517, 374);
-            this.hsbarTool_LowPWM.Maximum = 255;
-            this.hsbarTool_LowPWM.Name = "hsbarTool_LowPWM";
-            this.hsbarTool_LowPWM.Size = new System.Drawing.Size(268, 30);
-            this.hsbarTool_LowPWM.TabIndex = 512;
-            this.hsbarTool_LowPWM.Value = 20;
-            this.hsbarTool_LowPWM.ValueChanged += new System.EventHandler(this.hsbarTool_LowPWM_ValueChanged);
-            // 
-            // lblTool_LowPWM
-            // 
-            this.lblTool_LowPWM.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTool_LowPWM.ForeColor = System.Drawing.Color.Black;
-            this.lblTool_LowPWM.Location = new System.Drawing.Point(788, 371);
-            this.lblTool_LowPWM.Name = "lblTool_LowPWM";
-            this.lblTool_LowPWM.Size = new System.Drawing.Size(55, 35);
-            this.lblTool_LowPWM.TabIndex = 513;
-            this.lblTool_LowPWM.Text = "888";
-            this.lblTool_LowPWM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pboxSendToolSteer
-            // 
-            this.pboxSendToolSteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pboxSendToolSteer.BackgroundImage = global::AgOpenGPS.Properties.Resources.ConSt_Mandatory1;
-            this.pboxSendToolSteer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pboxSendToolSteer.Location = new System.Drawing.Point(743, 496);
-            this.pboxSendToolSteer.Name = "pboxSendToolSteer";
-            this.pboxSendToolSteer.Size = new System.Drawing.Size(93, 85);
-            this.pboxSendToolSteer.TabIndex = 511;
-            this.pboxSendToolSteer.TabStop = false;
-            this.pboxSendToolSteer.Visible = false;
-            // 
-            // btnSendToolSteer
-            // 
-            this.btnSendToolSteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSendToolSteer.BackColor = System.Drawing.Color.Transparent;
-            this.btnSendToolSteer.FlatAppearance.BorderSize = 0;
-            this.btnSendToolSteer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendToolSteer.Image = global::AgOpenGPS.Properties.Resources.ToolAcceptChange;
-            this.btnSendToolSteer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSendToolSteer.Location = new System.Drawing.Point(608, 509);
-            this.btnSendToolSteer.Name = "btnSendToolSteer";
-            this.btnSendToolSteer.Size = new System.Drawing.Size(133, 62);
-            this.btnSendToolSteer.TabIndex = 509;
-            this.btnSendToolSteer.UseVisualStyleBackColor = false;
-            this.btnSendToolSteer.Click += new System.EventHandler(this.btnSendToolSteer_Click);
-            // 
-            // label153
-            // 
-            this.label153.AutoSize = true;
-            this.label153.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label153.ForeColor = System.Drawing.Color.Black;
-            this.label153.Location = new System.Drawing.Point(469, 319);
-            this.label153.Name = "label153";
-            this.label153.Size = new System.Drawing.Size(45, 23);
-            this.label153.TabIndex = 508;
-            this.label153.Text = "Min";
-            this.label153.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hsbarTool_MinPWM
-            // 
-            this.hsbarTool_MinPWM.LargeChange = 1;
-            this.hsbarTool_MinPWM.Location = new System.Drawing.Point(517, 315);
-            this.hsbarTool_MinPWM.Maximum = 255;
-            this.hsbarTool_MinPWM.Name = "hsbarTool_MinPWM";
-            this.hsbarTool_MinPWM.Size = new System.Drawing.Size(268, 30);
-            this.hsbarTool_MinPWM.TabIndex = 506;
-            this.hsbarTool_MinPWM.Value = 20;
-            this.hsbarTool_MinPWM.ValueChanged += new System.EventHandler(this.hsbarTool_MinPWM_ValueChanged);
-            // 
-            // lblTool_MinPWM
-            // 
-            this.lblTool_MinPWM.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTool_MinPWM.ForeColor = System.Drawing.Color.Black;
-            this.lblTool_MinPWM.Location = new System.Drawing.Point(788, 312);
-            this.lblTool_MinPWM.Name = "lblTool_MinPWM";
-            this.lblTool_MinPWM.Size = new System.Drawing.Size(55, 35);
-            this.lblTool_MinPWM.TabIndex = 507;
-            this.lblTool_MinPWM.Text = "888";
-            this.lblTool_MinPWM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.ForeColor = System.Drawing.Color.Black;
-            this.label70.Location = new System.Drawing.Point(78, 489);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(19, 23);
-            this.label70.TabIndex = 505;
-            this.label70.Text = "I";
-            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hsbarTool_I
-            // 
-            this.hsbarTool_I.LargeChange = 1;
-            this.hsbarTool_I.Location = new System.Drawing.Point(100, 486);
-            this.hsbarTool_I.Maximum = 255;
-            this.hsbarTool_I.Name = "hsbarTool_I";
-            this.hsbarTool_I.Size = new System.Drawing.Size(268, 30);
-            this.hsbarTool_I.TabIndex = 503;
-            this.hsbarTool_I.Value = 20;
-            this.hsbarTool_I.ValueChanged += new System.EventHandler(this.hsbarTool_I_ValueChanged);
-            // 
-            // lblTool_I
-            // 
-            this.lblTool_I.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTool_I.ForeColor = System.Drawing.Color.Black;
-            this.lblTool_I.Location = new System.Drawing.Point(371, 484);
-            this.lblTool_I.Name = "lblTool_I";
-            this.lblTool_I.Size = new System.Drawing.Size(55, 35);
-            this.lblTool_I.TabIndex = 504;
-            this.lblTool_I.Text = "888";
-            this.lblTool_I.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.ForeColor = System.Drawing.Color.Black;
-            this.label68.Location = new System.Drawing.Point(75, 433);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(22, 23);
-            this.label68.TabIndex = 502;
-            this.label68.Text = "P";
-            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hsbarTool_P
-            // 
-            this.hsbarTool_P.LargeChange = 1;
-            this.hsbarTool_P.Location = new System.Drawing.Point(100, 430);
-            this.hsbarTool_P.Maximum = 255;
-            this.hsbarTool_P.Name = "hsbarTool_P";
-            this.hsbarTool_P.Size = new System.Drawing.Size(268, 30);
-            this.hsbarTool_P.TabIndex = 500;
-            this.hsbarTool_P.Value = 20;
-            this.hsbarTool_P.ValueChanged += new System.EventHandler(this.hsbarTool_P_ValueChanged);
-            // 
-            // lblTool_P
-            // 
-            this.lblTool_P.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTool_P.ForeColor = System.Drawing.Color.Black;
-            this.lblTool_P.Location = new System.Drawing.Point(371, 427);
-            this.lblTool_P.Name = "lblTool_P";
-            this.lblTool_P.Size = new System.Drawing.Size(55, 35);
-            this.lblTool_P.TabIndex = 501;
-            this.lblTool_P.Text = "888";
-            this.lblTool_P.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cboxGPSNormal
-            // 
-            this.cboxGPSNormal.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cboxGPSNormal.AutoCheck = false;
-            this.cboxGPSNormal.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboxGPSNormal.BackgroundImage = global::AgOpenGPS.Properties.Resources.GPS_Vehicle;
-            this.cboxGPSNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.cboxGPSNormal.Checked = true;
-            this.cboxGPSNormal.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cboxGPSNormal.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.cboxGPSNormal.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
-            this.cboxGPSNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboxGPSNormal.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxGPSNormal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboxGPSNormal.Location = new System.Drawing.Point(30, 79);
-            this.cboxGPSNormal.Name = "cboxGPSNormal";
-            this.cboxGPSNormal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cboxGPSNormal.Size = new System.Drawing.Size(115, 72);
-            this.cboxGPSNormal.TabIndex = 495;
-            this.cboxGPSNormal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cboxGPSNormal.UseVisualStyleBackColor = false;
-            this.cboxGPSNormal.Click += new System.EventHandler(this.cboxGPSNormal_Click);
-            // 
-            // btnConvertToToolOnly
-            // 
-            this.btnConvertToToolOnly.BackColor = System.Drawing.Color.Transparent;
-            this.btnConvertToToolOnly.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Turquoise;
-            this.btnConvertToToolOnly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConvertToToolOnly.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConvertToToolOnly.ForeColor = System.Drawing.Color.Black;
-            this.btnConvertToToolOnly.Location = new System.Drawing.Point(433, 81);
-            this.btnConvertToToolOnly.Name = "btnConvertToToolOnly";
-            this.btnConvertToToolOnly.Size = new System.Drawing.Size(82, 70);
-            this.btnConvertToToolOnly.TabIndex = 494;
-            this.btnConvertToToolOnly.Text = "Set To Tool";
-            this.btnConvertToToolOnly.UseVisualStyleBackColor = false;
-            this.btnConvertToToolOnly.Click += new System.EventHandler(this.btnConvertToToolOnly_Click);
-            // 
-            // cboxGPSToolOnlyOnOff
-            // 
-            this.cboxGPSToolOnlyOnOff.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cboxGPSToolOnlyOnOff.AutoCheck = false;
-            this.cboxGPSToolOnlyOnOff.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboxGPSToolOnlyOnOff.BackgroundImage = global::AgOpenGPS.Properties.Resources.GPS_Tool;
-            this.cboxGPSToolOnlyOnOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cboxGPSToolOnlyOnOff.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.cboxGPSToolOnlyOnOff.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
-            this.cboxGPSToolOnlyOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboxGPSToolOnlyOnOff.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxGPSToolOnlyOnOff.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboxGPSToolOnlyOnOff.Location = new System.Drawing.Point(294, 79);
-            this.cboxGPSToolOnlyOnOff.Name = "cboxGPSToolOnlyOnOff";
-            this.cboxGPSToolOnlyOnOff.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cboxGPSToolOnlyOnOff.Size = new System.Drawing.Size(115, 72);
-            this.cboxGPSToolOnlyOnOff.TabIndex = 491;
-            this.cboxGPSToolOnlyOnOff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cboxGPSToolOnlyOnOff.UseVisualStyleBackColor = false;
-            this.cboxGPSToolOnlyOnOff.Click += new System.EventHandler(this.cboxGPSToolOnlyOnOff_Click);
-            // 
-            // cboxGPSToolOnOff
-            // 
-            this.cboxGPSToolOnOff.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cboxGPSToolOnOff.AutoCheck = false;
-            this.cboxGPSToolOnOff.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboxGPSToolOnOff.BackgroundImage = global::AgOpenGPS.Properties.Resources.GPS_ToolVehicle;
-            this.cboxGPSToolOnOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cboxGPSToolOnOff.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.cboxGPSToolOnOff.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumAquamarine;
-            this.cboxGPSToolOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboxGPSToolOnOff.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxGPSToolOnOff.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboxGPSToolOnOff.Location = new System.Drawing.Point(163, 79);
-            this.cboxGPSToolOnOff.Name = "cboxGPSToolOnOff";
-            this.cboxGPSToolOnOff.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cboxGPSToolOnOff.Size = new System.Drawing.Size(115, 72);
-            this.cboxGPSToolOnOff.TabIndex = 489;
-            this.cboxGPSToolOnOff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cboxGPSToolOnOff.UseVisualStyleBackColor = false;
-            this.cboxGPSToolOnOff.Click += new System.EventHandler(this.cboxGPSToolOnOff_Click);
             // 
             // label152
             // 
@@ -7346,20 +6871,6 @@
             this.label152.TabIndex = 488;
             this.label152.Text = "Steering and GPS Locations";
             this.label152.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label155
-            // 
-            this.label155.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label155.BackColor = System.Drawing.Color.Transparent;
-            this.label155.Font = new System.Drawing.Font("Tahoma", 15.75F);
-            this.label155.ForeColor = System.Drawing.Color.Black;
-            this.label155.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label155.Location = new System.Drawing.Point(455, 511);
-            this.label155.Name = "label155";
-            this.label155.Size = new System.Drawing.Size(172, 62);
-            this.label155.TabIndex = 510;
-            this.label155.Text = "Send +  Save";
-            this.label155.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tabAMachine
             // 
@@ -8949,73 +8460,6 @@
             this.label22.Text = "Units:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // nudToolAntennaHeight
-            // 
-            this.nudToolAntennaHeight.BackColor = System.Drawing.Color.AliceBlue;
-            this.nudToolAntennaHeight.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudToolAntennaHeight.InterceptArrowKeys = false;
-            this.nudToolAntennaHeight.Location = new System.Drawing.Point(663, 79);
-            this.nudToolAntennaHeight.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nudToolAntennaHeight.Name = "nudToolAntennaHeight";
-            this.nudToolAntennaHeight.ReadOnly = true;
-            this.nudToolAntennaHeight.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.nudToolAntennaHeight.Size = new System.Drawing.Size(144, 52);
-            this.nudToolAntennaHeight.TabIndex = 530;
-            this.nudToolAntennaHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudToolAntennaHeight.Value = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.nudToolAntennaHeight.Click += new System.EventHandler(this.nudToolAntennaHeight_Click);
-            // 
-            // nudToolAntennaOffset
-            // 
-            this.nudToolAntennaOffset.BackColor = System.Drawing.Color.AliceBlue;
-            this.nudToolAntennaOffset.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudToolAntennaOffset.InterceptArrowKeys = false;
-            this.nudToolAntennaOffset.Location = new System.Drawing.Point(663, 203);
-            this.nudToolAntennaOffset.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.nudToolAntennaOffset.Minimum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            -2147483648});
-            this.nudToolAntennaOffset.Name = "nudToolAntennaOffset";
-            this.nudToolAntennaOffset.ReadOnly = true;
-            this.nudToolAntennaOffset.Size = new System.Drawing.Size(144, 52);
-            this.nudToolAntennaOffset.TabIndex = 529;
-            this.nudToolAntennaOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudToolAntennaOffset.Click += new System.EventHandler(this.nudToolAntennaOffset_Click);
-            // 
-            // label159
-            // 
-            this.label159.AutoSize = true;
-            this.label159.ForeColor = System.Drawing.Color.Black;
-            this.label159.Location = new System.Drawing.Point(685, 59);
-            this.label159.Name = "label159";
-            this.label159.Size = new System.Drawing.Size(94, 16);
-            this.label159.TabIndex = 531;
-            this.label159.Text = "Antenna Height";
-            // 
-            // label161
-            // 
-            this.label161.AutoSize = true;
-            this.label161.ForeColor = System.Drawing.Color.Black;
-            this.label161.Location = new System.Drawing.Point(685, 182);
-            this.label161.Name = "label161";
-            this.label161.Size = new System.Drawing.Size(92, 16);
-            this.label161.TabIndex = 532;
-            this.label161.Text = "Antenna Offset";
-            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -9145,7 +8589,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pboxSendRelay)).EndInit();
             this.tabASteer.ResumeLayout(false);
             this.tabASteer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxSendToolSteer)).EndInit();
             this.tabAMachine.ResumeLayout(false);
             this.tabAMachine.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudUser4)).EndInit();
@@ -9168,8 +8611,6 @@
             this.tabBtns.PerformLayout();
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudToolAntennaHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudToolAntennaOffset)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -9617,43 +9058,6 @@
         private System.Windows.Forms.Label lblRollZeroOffsetTool;
         private System.Windows.Forms.Button btnZeroRollTool;
         private System.Windows.Forms.Button btnRemoveZeroOffsetTool;
-        private System.Windows.Forms.CheckBox cboxGPSToolOnOff;
         private System.Windows.Forms.Label label152;
-        private System.Windows.Forms.CheckBox cboxGPSToolOnlyOnOff;
-        private System.Windows.Forms.CheckBox cboxGPSNormal;
-        private System.Windows.Forms.Button btnConvertToToolOnly;
-        private System.Windows.Forms.Label label153;
-        private System.Windows.Forms.HScrollBar hsbarTool_MinPWM;
-        private System.Windows.Forms.Label lblTool_MinPWM;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.HScrollBar hsbarTool_I;
-        private System.Windows.Forms.Label lblTool_I;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.HScrollBar hsbarTool_P;
-        private System.Windows.Forms.Label lblTool_P;
-        private System.Windows.Forms.Label label155;
-        private System.Windows.Forms.PictureBox pboxSendToolSteer;
-        private System.Windows.Forms.Button btnSendToolSteer;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.HScrollBar hsbarTool_LowPWM;
-        private System.Windows.Forms.Label lblTool_LowPWM;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.HScrollBar hsbarTool_Counts;
-        private System.Windows.Forms.Label lblTool_Counts;
-        private System.Windows.Forms.Label label156;
-        private System.Windows.Forms.Label label154;
-        private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.Label label157;
-        private System.Windows.Forms.Label label158;
-        private System.Windows.Forms.HScrollBar hsbarTool_Offset;
-        private System.Windows.Forms.Label lblTool_Offset;
-        private System.Windows.Forms.Label label160;
-        private System.Windows.Forms.HScrollBar hsbarTool_HighPWM;
-        private System.Windows.Forms.Label lblTool_HighPWM;
-        private System.Windows.Forms.Label label161;
-        private System.Windows.Forms.Label label159;
-        private System.Windows.Forms.NumericUpDown nudToolAntennaHeight;
-        private System.Windows.Forms.NumericUpDown nudToolAntennaOffset;
     }
 }
