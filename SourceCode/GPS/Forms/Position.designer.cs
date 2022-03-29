@@ -217,7 +217,7 @@ namespace AgOpenGPS
                             pn.fix.northing = (Math.Sin(-gpsHeading) * vehicle.antennaOffset) + pn.fix.northing;
                         }
 
-                        if (pn.toolAntennaOffset != 0 && pn.isGPSTool)
+                        if (pn.toolAntennaOffset != 0 )
                         {
                             pn.fixTool.easting = (Math.Cos(-gpsHeading) * pn.toolAntennaOffset) + pn.fixTool.easting;
                             pn.fixTool.northing = (Math.Sin(-gpsHeading) * pn.toolAntennaOffset) + pn.fixTool.northing;
@@ -239,7 +239,7 @@ namespace AgOpenGPS
                             pn.fix.northing = (Math.Sin(-gpsHeading) * rollCorrectionDistance) + pn.fix.northing;
                         }
 
-                        if (ahrs.imuRollTool != 88888 && pn.isGPSTool)
+                        if (ahrs.imuRollTool != 88888)
                         {
                             //change for roll to the right is positive times -1
                             rollCorrectionDistance = Math.Sin(glm.toRadians((ahrs.imuRollTool))) * -pn.toolAntennaHeight;
@@ -608,13 +608,13 @@ namespace AgOpenGPS
                             pn.fix.northing = (Math.Sin(-gpsHeading) * rollCorrectionDistance) + pn.fix.northing;
                         }
 
-                        if (pn.toolAntennaOffset != 0 && pn.isGPSTool)
+                        if (pn.toolAntennaOffset != 0 )
                         {
                             pn.fixTool.easting = (Math.Cos(-fixHeading) * pn.toolAntennaOffset) + pn.fixTool.easting;
                             pn.fixTool.northing = (Math.Sin(-fixHeading) * pn.toolAntennaOffset) + pn.fixTool.northing;
                         }
 
-                        if (ahrs.imuRollTool != 88888 && pn.toolAntennaHeight != 0 && pn.isGPSTool)
+                        if (ahrs.imuRollTool != 88888 && pn.toolAntennaHeight != 0)
                         {
                             //change for roll to the right is positive times -1
                             rollCorrectionDistance = Math.Sin(glm.toRadians((ahrs.imuRollTool))) * -pn.toolAntennaHeight;

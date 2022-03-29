@@ -25,6 +25,8 @@ namespace AgOpenGPS
         private int udpWatchCounts = 0;
         public int udpWatchLimit = 70;
 
+        private double currentToolLat=0, currentToolLon=0;
+
         private readonly Stopwatch udpWatch = new Stopwatch();
 
         private void ReceiveFromAgIO(byte[] data)
@@ -60,9 +62,11 @@ namespace AgOpenGPS
                                 pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fix.northing, out pn.fix.easting);
 
                                 //do position for tool
-                                if (pn.isGPSTool)
-                                pn.ConvertWGS84ToLocal(pn.latitudeTool, pn.longitudeTool, out pn.fixTool.northing, out pn.fixTool.easting);
-
+                                {
+                                    pn.longitude = currentToolLon;
+                                    pn.latitude = currentToolLat;
+                                    pn.ConvertWGS84ToLocal(pn.latitudeTool, pn.longitudeTool, out pn.fixTool.northing, out pn.fixTool.easting);
+                                }
                                 //From dual antenna heading sentences
                                 float temp = BitConverter.ToSingle(data, 21);
                                 if (temp != float.MaxValue)
@@ -167,8 +171,8 @@ namespace AgOpenGPS
 
                             if (Lon != double.MaxValue && Lat != double.MaxValue)
                             {
-                                pn.longitudeTool = Lon;
-                                pn.latitudeTool = Lat;
+                                currentToolLon = Lon;
+                                currentToolLat = Lat;
 
                                 //pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fixTool.northing, out pn.fixTool.easting);
 
