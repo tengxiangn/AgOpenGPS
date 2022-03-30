@@ -1046,12 +1046,12 @@ namespace AgOpenGPS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public byte setTool_Counts {
+        public byte setTool_wasCounts {
             get {
-                return ((byte)(this["setTool_Counts"]));
+                return ((byte)(this["setTool_wasCounts"]));
             }
             set {
-                this["setTool_Counts"] = value;
+                this["setTool_wasCounts"] = value;
             }
         }
         
@@ -1070,12 +1070,12 @@ namespace AgOpenGPS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("127")]
-        public byte setTool_Offset {
+        public byte setTool_wasOffset {
             get {
-                return ((byte)(this["setTool_Offset"]));
+                return ((byte)(this["setTool_wasOffset"]));
             }
             set {
-                this["setTool_Offset"] = value;
+                this["setTool_wasOffset"] = value;
             }
         }
         
@@ -1100,6 +1100,42 @@ namespace AgOpenGPS.Properties {
             }
             set {
                 this["setTool_antennaOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("56")]
+        public byte setArdToolSteer_setting0 {
+            get {
+                return ((byte)(this["setArdToolSteer_setting0"]));
+            }
+            set {
+                this["setArdToolSteer_setting0"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        public byte setTool_maxSteerAngle {
+            get {
+                return ((byte)(this["setTool_maxSteerAngle"]));
+            }
+            set {
+                this["setTool_maxSteerAngle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte setTool_sideHillComp {
+            get {
+                return ((byte)(this["setTool_sideHillComp"]));
+            }
+            set {
+                this["setTool_sideHillComp"] = value;
             }
         }
     }

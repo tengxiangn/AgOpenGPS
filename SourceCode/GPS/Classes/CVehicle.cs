@@ -426,9 +426,10 @@ namespace AgOpenGPS
             {
                 //GL.Color3(1.25f, 1.20f, 0.0f);
                 //draw the bright antenna dot
-                GL.PointSize(8.0f);
+                GL.PointSize(16.0f);
                 GL.Begin(PrimitiveType.Points);
-                GL.Color3(0.20f, 1.25f, 1.25f);
+                if (mf.headingFromSource == "Fix") GL.Color3(0.20f, 1.0f, 1.0f);
+                else GL.Color3(0.50f, 1.0f, 0.0f);
                 GL.Vertex3(0, antennaPivot, 0.1);
                 GL.End();
             }

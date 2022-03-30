@@ -13,6 +13,7 @@ namespace AgOpenGPS
         // - App Sockets  -----------------------------------------------------
         private Socket sendToAppSocket;
         private Socket recvFromAppSocket;
+        private int toolGPSWatchdog = 20;
 
         //endpoints of modules
         private EndPoint epAgIO, epSender = new IPEndPoint(IPAddress.Any, 0);
@@ -48,6 +49,9 @@ namespace AgOpenGPS
                             udpWatch.Reset();
                             udpWatch.Start();
 
+                            //make sure tool gps is either off or resetting watchdog
+                            if (toolGPSWatchdog++ > 10) currentToolLon = 0;
+
                             double Lon = BitConverter.ToDouble(data, 5);
                             double Lat = BitConverter.ToDouble(data, 13);
 
@@ -62,18 +66,25 @@ namespace AgOpenGPS
                                 pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fix.northing, out pn.fix.easting);
 
                                 //do position for tool
+                                if (currentToolLon != 0)
                                 {
-                                    pn.longitude = currentToolLon;
-                                    pn.latitude = currentToolLat;
-                                    pn.ConvertWGS84ToLocal(pn.latitudeTool, pn.longitudeTool, out pn.fixTool.northing, out pn.fixTool.easting);
+                                    pn.longitudeTool = currentToolLon;
+                                    pn.latitudeTool = currentToolLat;
+                                    pn.ConvertWGS84ToLocal(pn.latitudeTool, pn.longitudeTool, 
+                                        out pn.fixTool.northing, out pn.fixTool.easting);
                                 }
                                 //From dual antenna heading sentences
                                 float temp = BitConverter.ToSingle(data, 21);
                                 if (temp != float.MaxValue)
                                 {
+                                    headingFromSource = "Dual";
                                     pn.headingTrueDual = temp + pn.headingTrueDualOffset;
                                     if (pn.headingTrueDual < 0) pn.headingTrueDual += 360;
                                     if (ahrs.isDualAsIMU) ahrs.imuHeading = temp;
+                                }
+                                else
+                                {
+                                    headingFromSource = "Fix";
                                 }
 
                                 //from single antenna sentences (VTG,RMC)
@@ -174,6 +185,7 @@ namespace AgOpenGPS
                                 currentToolLon = Lon;
                                 currentToolLat = Lat;
 
+                                toolGPSWatchdog = 0; 
                                 //pn.ConvertWGS84ToLocal(Lat, Lon, out pn.fixTool.northing, out pn.fixTool.easting);
 
                                 ushort sats = BitConverter.ToUInt16(data, 21);

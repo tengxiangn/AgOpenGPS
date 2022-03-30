@@ -405,7 +405,7 @@ namespace AgOpenGPS
                     //}
 
                     //draw the 2nd GPS
-                    if (pn.isGPSTool)
+                    if (currentToolLon !=0)
                     {
                         GL.PointSize(8.0f);
                         GL.Color3(0.20f, 1.0f, 1.0f);
