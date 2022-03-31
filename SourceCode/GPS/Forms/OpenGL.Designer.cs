@@ -490,7 +490,7 @@ namespace AgOpenGPS
                     if (bbCounter++ > 1) bbCounter = 0;
 
                     //draw the section control window off screen buffer
-                    if (isJobStarted )
+                    //if (isJobStarted )
                     {
                         if (isFastSections)
                         {

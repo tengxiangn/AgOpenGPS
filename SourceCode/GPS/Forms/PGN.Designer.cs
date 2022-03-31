@@ -56,7 +56,7 @@ namespace AgOpenGPS
         public class CPGN_FD
         {
             /// <summary>
-            /// From steer module
+            /// From steer module 253
             /// </summary>
             public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xFD, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
             public int actualLo = 5;
@@ -323,12 +323,12 @@ namespace AgOpenGPS
             public int P = 5;
             public int I = 6;
             public int minPWM = 7;
-            public int lowPWM = 8;
+            public int windup = 8;
             public int highPWM = 9;
             public int wasCounts = 10;
             public int wasOffset = 11;
             public int maxSteer = 12;
-            public int sidehillComp = 13;
+            //public int sidehillComp = 13;
 
             public CPGN_E9()
             {

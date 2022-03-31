@@ -1034,12 +1034,12 @@ namespace AgOpenGPS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte setTool_LowPWM {
+        public byte setTool_windupLimit {
             get {
-                return ((byte)(this["setTool_LowPWM"]));
+                return ((byte)(this["setTool_windupLimit"]));
             }
             set {
-                this["setTool_LowPWM"] = value;
+                this["setTool_windupLimit"] = value;
             }
         }
         
@@ -1117,25 +1117,13 @@ namespace AgOpenGPS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public byte setTool_maxSteerAngle {
             get {
                 return ((byte)(this["setTool_maxSteerAngle"]));
             }
             set {
                 this["setTool_maxSteerAngle"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public byte setTool_sideHillComp {
-            get {
-                return ((byte)(this["setTool_sideHillComp"]));
-            }
-            set {
-                this["setTool_sideHillComp"] = value;
             }
         }
     }

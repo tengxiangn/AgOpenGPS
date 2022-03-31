@@ -203,7 +203,7 @@ namespace AgIO
             textBoxRcv.Text = mf.recvGPSSentence;
             lblGPS.Text = mf.spGPS.PortName;
 
-            lblFromGPS.Text = mf.traffic.cntrGPSIn == 0 ? "--" : (mf.traffic.cntrGPSIn).ToString();
+            lblFromGPS.Text = mf.traffic.cntrGPSOut == 0 ? "--" : (mf.traffic.cntrGPSOut).ToString();
         }
 
         private void btnSerialOK_Click(object sender, EventArgs e)

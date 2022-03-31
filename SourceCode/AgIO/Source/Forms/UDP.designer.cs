@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -11,20 +12,20 @@ namespace AgIO
         public int cntrPGNFromAOG = 0;
         public int cntrPGNToAOG = 0;
      
-        public int cntrUDPOut = 0;
-        public int cntrUDPIn = 0;
+        //public int cntrUDPOut = 0;
+        //public int cntrUDPIn = 0;
 
-        public int cntrGPSIn = 0;
         public int cntrGPSOut = 0;
+        public int cntrGPSIn = 0;
 
         public int cntrGPS2In = 0;
         public int cntrGPS2Out = 0;
 
-        public int cntrModule1In = 0;
-        public int cntrModule1Out = 0;
+        public int cntrSteerIn = 0;
+        public int cntrSteerOut = 0;
 
-        public int cntrModule2In = 0;
-        public int cntrModule2Out = 0;
+        public int cntrMachineIn = 0;
+        public int cntrMachineOut = 0;
 
         public int cntrModule3In = 0;
         public int cntrModule3Out = 0;
@@ -89,11 +90,16 @@ namespace AgIO
                 recvFromUDPSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref client, 
                     new AsyncCallback(ReceiveDataUDPAsync), recvFromUDPSocket);
                 isUDPNetworkConnected = true;
+                btnUDP.BackColor = Color.LightGreen;
             }
             catch (Exception e)
             {
                 //WriteErrorLog("UDP Server" + e);
-                MessageBox.Show("Load Error: " + e.Message, "UDP Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Network Address -> " + Properties.Settings.Default.setIP_localAOG + " May not exist. \r\n" 
+                    + "Are you sure ethernet is connected?\r\n\r\n" 
+                    + "Windows Error Message: " + e.Message, "Network Connection Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnUDP.BackColor = Color.Wheat;
             }
         }
 
@@ -299,7 +305,7 @@ namespace AgIO
                         sendToUDPSocket.BeginSendTo(byteData, 0, byteData.Length, SocketFlags.None,
                             epModule, new AsyncCallback(SendDataUDPAsync), null);
 
-                    traffic.cntrUDPOut+=byteData.Length;
+                    //traffic.cntrUDPOut+=byteData.Length;
                 }
                 catch (Exception)
                 {
@@ -326,7 +332,19 @@ namespace AgIO
                             epModule, new AsyncCallback(SendDataUDPAsync), null);      
                     }
 
-                    traffic.cntrUDPOut+=byteData.Length;
+                    //traffic.cntrUDPOut+=byteData.Length;
+
+                    if (byteData[0] == 0x80 && byteData[1] == 0x81)
+                    {
+                        //module return via udp sent to AOG
+                        SendToLoopBackMessageAOG(byteData);
+
+                        //module byteData also sent to VR
+                        SendToLoopBackMessageVR(byteData);
+
+                        if (byteData[3] == 254) traffic.cntrSteerIn += byteData.Length;
+                        if (byteData[3] == 239) traffic.cntrMachineIn += byteData.Length;
+                    }
                 }
                 catch (Exception)
                 {
@@ -348,12 +366,17 @@ namespace AgIO
 
                     //module data also sent to VR
                     SendToLoopBackMessageVR(data);
+
+                    if (data[3] == 253) traffic.cntrSteerOut += data.Length;
+                    if (data[3] == 199) traffic.cntrSteerOut += data.Length;
+                    if (data[3] == 237) 
+                        traffic.cntrMachineOut += data.Length;
                 }
                 //$ = 36 G=71 P=80 K=75
                 else if (data[0] == 36 && (data[1] == 71 || data[1] == 80 || data[1] == 75))
                 {
                     //if (timerSim.Enabled) DisableSim();
-                    traffic.cntrGPSIn += data.Length;
+                    traffic.cntrGPSOut += data.Length;
                     rawBuffer += Encoding.ASCII.GetString(data);
                     ParseNMEA(ref rawBuffer);
                 }
@@ -381,7 +404,7 @@ namespace AgIO
                 }
             }
 
-            traffic.cntrUDPIn += data.Length;
+            //traffic.cntrUDPIn += data.Length;
         }
 
         public void SendUDPMessageNTRIP(byte[] byteData, int port)
@@ -397,7 +420,10 @@ namespace AgIO
                         sendToUDPSocket.BeginSendTo(byteData, 0, byteData.Length, SocketFlags.None, epAutoSteer, 
                             new AsyncCallback(SendDataUDPAsync), null);
 
-                    traffic.cntrUDPOut += byteData.Length;
+                    //traffic.cntrUDPOut += byteData.Length;
+
+                    if (traffic.cntrGPSIn > 4000) traffic.cntrGPSIn = 0;
+                    traffic.cntrGPSIn += byteData.Length;
 
                 }
                 catch (Exception)

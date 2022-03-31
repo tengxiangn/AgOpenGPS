@@ -54,34 +54,34 @@ namespace AgOpenGPS
 
 
             //low steer, high steer
-            hsbarLowSteerPWM.ValueChanged -= hsbarLowSteerPWM_ValueChanged;
+            hsbarWindupLimit.ValueChanged -= hsbarWindupLimit_ValueChanged;
             hsbarHighSteerPWM.ValueChanged -= hsbarHighSteerPWM_ValueChanged;
 
-            hsbarLowSteerPWM.Value = Properties.Vehicle.Default.setTool_LowPWM;
-            lblLowSteerPWM.Text = hsbarLowSteerPWM.Value.ToString();
+            hsbarWindupLimit.Value = Properties.Vehicle.Default.setTool_windupLimit;
+            lblWindupLimit.Text = hsbarWindupLimit.Value.ToString();
 
             hsbarHighSteerPWM.Value = Properties.Vehicle.Default.setTool_HighPWM;
             lblHighSteerPWM.Text = hsbarHighSteerPWM.Value.ToString();
 
-            hsbarLowSteerPWM.ValueChanged += hsbarLowSteerPWM_ValueChanged;
+            hsbarWindupLimit.ValueChanged += hsbarWindupLimit_ValueChanged;
             hsbarHighSteerPWM.ValueChanged += hsbarHighSteerPWM_ValueChanged;
 
             //max steer, sidehill comp, integral
             hsbarMaxSteerAngle.ValueChanged -= hsbarMaxSteerAngle_ValueChanged;
-            hsbarSideHillComp.ValueChanged -= hsbarSideHillComp_ValueChanged;
+            //hsbarSideHillComp.ValueChanged -= hsbarSideHillComp_ValueChanged;
             hsbarIntegral.ValueChanged -= hsbarIntegral_ValueChanged;
 
             hsbarMaxSteerAngle.Value = (Int16)Properties.Vehicle.Default.setTool_maxSteerAngle;
             lblMaxSteerAngle.Text = hsbarMaxSteerAngle.Value.ToString();
 
-            hsbarSideHillComp.Value = (int)(Properties.Vehicle.Default.setTool_sideHillComp);
-            lblSideHillComp.Text = hsbarSideHillComp.Value.ToString();
+            //hsbarSideHillComp.Value = (int)(Properties.Vehicle.Default.setTool_sideHillComp);
+            //lblSideHillComp.Text = hsbarSideHillComp.Value.ToString();
 
             hsbarIntegral.Value = (int)(Properties.Vehicle.Default.setTool_I);
             lblPureIntegral.Text = hsbarIntegral.Value.ToString();
 
             hsbarMaxSteerAngle.ValueChanged += hsbarMaxSteerAngle_ValueChanged;
-            hsbarSideHillComp.ValueChanged += hsbarSideHillComp_ValueChanged;
+            //hsbarSideHillComp.ValueChanged += hsbarSideHillComp_ValueChanged;
             hsbarIntegral.ValueChanged += hsbarIntegral_ValueChanged;
 
             //make sure free drive is off
@@ -154,19 +154,18 @@ namespace AgOpenGPS
                 Properties.Vehicle.Default.setTool_wasOffset = mf.p_233.pgn[mf.p_233.wasOffset] = unchecked((byte)hsbarWasOffset.Value);
 
                 Properties.Vehicle.Default.setTool_HighPWM = mf.p_233.pgn[mf.p_233.highPWM] = unchecked((byte)hsbarHighSteerPWM.Value);
-                Properties.Vehicle.Default.setTool_LowPWM = mf.p_233.pgn[mf.p_233.lowPWM] = unchecked((byte)hsbarLowSteerPWM.Value);
+                Properties.Vehicle.Default.setTool_windupLimit = mf.p_233.pgn[mf.p_233.windup] = unchecked((byte)hsbarWindupLimit.Value);
                 Properties.Vehicle.Default.setTool_P = mf.p_233.pgn[mf.p_233.P] = unchecked((byte)hsbarProportionalGain.Value);
                 Properties.Vehicle.Default.setTool_MinPWM = mf.p_233.pgn[mf.p_233.minPWM] = unchecked((byte)hsbarMinPWM.Value);
                 
                 Properties.Vehicle.Default.setTool_I = mf.p_233.pgn[mf.p_233.I] = unchecked((byte)hsbarIntegral.Value);
-                Properties.Vehicle.Default.setTool_sideHillComp = mf.p_233.pgn[mf.p_233.sidehillComp] = unchecked((byte)hsbarSideHillComp.Value);
 
                 mf.SendPgnToLoop(mf.p_233.pgn);
                 toSend = false;
                 counter = 0;
             }
 
-            if (hsbarMinPWM.Value > hsbarLowSteerPWM.Value) lblMinPWM.ForeColor = Color.OrangeRed;
+            if (hsbarMinPWM.Value > hsbarWindupLimit.Value) lblMinPWM.ForeColor = Color.OrangeRed;
             else lblMinPWM.ForeColor = SystemColors.ControlText;
 
         }
@@ -215,17 +214,16 @@ namespace AgOpenGPS
             counter = 0;
         }
 
-        private void hsbarLowSteerPWM_ValueChanged(object sender, EventArgs e)
+        private void hsbarWindupLimit_ValueChanged(object sender, EventArgs e)
         {
-            if (hsbarLowSteerPWM.Value > hsbarHighSteerPWM.Value) hsbarHighSteerPWM.Value = hsbarLowSteerPWM.Value;
-            lblLowSteerPWM.Text = unchecked((byte)hsbarLowSteerPWM.Value).ToString();
+            lblWindupLimit.Text = unchecked((byte)hsbarWindupLimit.Value).ToString();
             toSend = true;
             counter = 0;
         }
 
         private void hsbarHighSteerPWM_ValueChanged(object sender, EventArgs e)
         {
-            if (hsbarLowSteerPWM.Value > hsbarHighSteerPWM.Value) hsbarLowSteerPWM.Value = hsbarHighSteerPWM.Value;
+            if (hsbarWindupLimit.Value > hsbarHighSteerPWM.Value) hsbarWindupLimit.Value = hsbarHighSteerPWM.Value;
             lblHighSteerPWM.Text = unchecked((byte)hsbarHighSteerPWM.Value).ToString();
             toSend = true;
             counter = 0;
@@ -261,12 +259,12 @@ namespace AgOpenGPS
             counter = 0;
         }
 
-        private void hsbarSideHillComp_ValueChanged(object sender, EventArgs e)
-        {
-            lblSideHillComp.Text = hsbarSideHillComp.Value.ToString();
-            toSend = true;
-            counter = 0;
-        }
+        //private void hsbarSideHillComp_ValueChanged(object sender, EventArgs e)
+        //{
+        //    lblSideHillComp.Text = hsbarSideHillComp.Value.ToString();
+        //    toSend = true;
+        //    counter = 0;
+        //}
 
         #endregion
 

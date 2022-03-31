@@ -41,13 +41,13 @@ namespace AgIO
                 if (spRtcm.IsOpen)
                 {
                     spRtcm.Write(data, 0, data.Length);
-                    traffic.cntrGPSOut += data.Length;
+                    traffic.cntrGPSIn += data.Length;
                 }
 
                 else if (spGPS.IsOpen)
                 {
                     spGPS.Write(data, 0, data.Length);
-                    traffic.cntrGPSOut += data.Length;
+                    traffic.cntrGPSIn += data.Length;
                 }
             }
             catch (Exception)
@@ -126,7 +126,7 @@ namespace AgIO
             ParseNMEA(ref rawBuffer);
 
             //SendToLoopBackMessageAOG(sentence);
-            traffic.cntrGPSIn += sentence.Length;
+            traffic.cntrGPSOut += sentence.Length;
             if (isGPSCommOpen) recvGPSSentence = sentence;
         }
 
