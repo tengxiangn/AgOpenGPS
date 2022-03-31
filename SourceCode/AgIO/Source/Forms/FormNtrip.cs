@@ -56,7 +56,9 @@ namespace AgIO
             tboxHostName.Text = hostName;
 
             //IPAddress[] ipaddress = Dns.GetHostAddresses(hostName);
-            tboxThisIP.Text = GetIP4Address();
+            GetIP4AddressList();
+
+            tboxLocalNtripIP.Text = Properties.Settings.Default.setIP_localNTRIP;
 
             tboxEnterURL.Text = Properties.Settings.Default.setNTRIP_casterURL;
 
@@ -84,24 +86,20 @@ namespace AgIO
 
             if (Properties.Settings.Default.setNTRIP_isHTTP10) cboxHTTP.Text = "1.0";
             else cboxHTTP.Text = "1.1";
-
         }
 
         //get the ipv4 address only
-        public static string GetIP4Address()
+        public void GetIP4AddressList()
         {
-            string IP4Address = String.Empty;
+            listboxIP.Items.Clear();
 
             foreach (IPAddress IPA in Dns.GetHostAddresses(Dns.GetHostName()))
             {
                 if (IPA.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    IP4Address = IPA.ToString();
-                    break;
+                    listboxIP.Items.Add(IPA.ToString());
                 }
             }
-
-            return IP4Address;
         }
 
         private void btnGetIP_Click(object sender, EventArgs e)
@@ -163,6 +161,7 @@ namespace AgIO
 
         private void btnSerialOK_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.setIP_localNTRIP = tboxLocalNtripIP.Text.Trim();
             Properties.Settings.Default.setNTRIP_casterIP = tboxCasterIP.Text;
             Properties.Settings.Default.setNTRIP_casterPort = (int)nudCasterPort.Value;
             Properties.Settings.Default.setNTRIP_sendToUDPPort = (int)nudSendToUDPPort.Value;
@@ -367,6 +366,11 @@ namespace AgIO
             if (tboxUserPassword.PasswordChar == '*') tboxUserPassword.PasswordChar = '\0';
             else tboxUserPassword.PasswordChar = '*';
             tboxUserPassword.Invalidate();
+        }
+
+        private void listboxIP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tboxLocalNtripIP.Text = listboxIP.SelectedItem.ToString();
         }
     }
 }

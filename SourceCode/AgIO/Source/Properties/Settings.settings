@@ -9,25 +9,13 @@
       <Value Profile="(Default)">9600</Value>
     </Setting>
     <Setting Name="setUDP_isOn" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="setPort_wasModule1Connected" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="setPort_portNameModule1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Mod1**</Value>
-    </Setting>
-    <Setting Name="setPort_wasModule3Connected" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="setPort_portNameModule3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Auto**</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="setIP_thisPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">9999</Value>
     </Setting>
     <Setting Name="setIP_autoSteerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.1.255</Value>
+      <Value Profile="(Default)">192.168.5.255</Value>
     </Setting>
     <Setting Name="setIP_autoSteerPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">8888</Value>
@@ -89,33 +77,6 @@
     <Setting Name="setF_workingDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)">Default</Value>
     </Setting>
-    <Setting Name="setGPS_SimLatitude" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="setGPS_SimLongitude" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="setComm_commName" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="setPort_portNameGPS2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">GPS2</Value>
-    </Setting>
-    <Setting Name="setPort_baudRateGPS2" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9600</Value>
-    </Setting>
-    <Setting Name="setPort_portNameModule2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Mod2</Value>
-    </Setting>
-    <Setting Name="setPort_wasModule2Connected" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="setPort_wasIMUConnected" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="setPort_portNameIMU" Type="System.String" Scope="User">
-      <Value Profile="(Default)">IMU</Value>
-    </Setting>
     <Setting Name="setPort_wasGPSConnected" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -149,8 +110,11 @@
     <Setting Name="setPort_wasRtcmConnected" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="setPort_wasGPS2Connected" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="setIP_localNTRIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.10</Value>
+    </Setting>
+    <Setting Name="setIP_localAOG" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.5.5</Value>
     </Setting>
   </Settings>
 </SettingsFile>

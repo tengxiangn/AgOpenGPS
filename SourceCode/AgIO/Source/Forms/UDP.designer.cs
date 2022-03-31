@@ -20,9 +20,6 @@ namespace AgIO
         public int cntrGPS2In = 0;
         public int cntrGPS2Out = 0;
 
-        public int cntrIMUIn = 0;
-        public int cntrIMUOut = 0;
-
         public int cntrModule1In = 0;
         public int cntrModule1Out = 0;
 
@@ -68,9 +65,14 @@ namespace AgIO
             {
                 // Initialise the socket
                 sendToUDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                
+                IPAddress localIPAddress = IPAddress.Parse(Properties.Settings.Default.setIP_localAOG);
+                IPEndPoint localEndPoint = new IPEndPoint(localIPAddress, 0);
+                sendToUDPSocket.Bind(localEndPoint);
+
                 sendToUDPSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
 
-                // AgIO sends to this endpoint - usually 192.168.1.255:8888
+                // AgIO sends to this endpoint - usually 192.168.5.255:8888
                 epModule = new IPEndPoint(epIP, 8888);
 
                 //Initialize Recv socket
@@ -221,60 +223,6 @@ namespace AgIO
 
                 //send out to VR Loopback
                 SendToLoopBackMessageVR(data);
-
-                if (data[0] == 0x80 && data[1] == 0x81)
-                {
-                    switch (data[3])
-                    {
-                        case 0xFE: //254 AutoSteer Data
-                            {
-                                //serList.AddRange(data);
-                                SendModule1Port(data, data.Length);
-                                SendModule2Port(data, data.Length);
-                                break;
-                            }
-                        case 0xFC: //252 steer settings
-                            {
-                                SendModule1Port(data, data.Length);
-                                break;
-                            }
-                        case 0xFB: //251 steer config
-                            {
-                                SendModule1Port(data, data.Length);
-                                break;
-                            }
-                        case 0xEF: //239 machine pgn
-                            {
-                                SendModule2Port(data, data.Length);
-                                SendModule1Port(data, data.Length);
-                                break;
-                            }
-
-                        case 0xEE: //238 machine config
-                            {
-                                SendModule2Port(data, data.Length);
-                                SendModule1Port(data, data.Length);
-                                break;
-                            }
-
-                        case 0xEC: //236 machine config
-                            {
-                                SendModule2Port(data, data.Length);
-                                SendModule1Port(data, data.Length);
-                                break;
-                            }
-                        case 0xEB: //235 machine steer - out machine Steer port
-                            {
-                                SendModule3Port(data, data.Length);
-                                break;
-                            }
-                        case 0xE9: //233 tool steer config
-                            {
-                                SendModule3Port(data, data.Length);
-                                break;
-                            }
-                    }
-                }
             }
 
             //coming from VR plugin

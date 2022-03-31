@@ -56,11 +56,6 @@ namespace AgIO
             isSendNMEAToUDP = Properties.Settings.Default.setUDP_isSendNMEAToUDP;
 
             lblGPS1Comm.Text = "---";
-            lblGPS2Comm.Text = "---";
-            lblIMUComm.Text = "---";
-            lblMod1Comm.Text = "---";
-            lblMod2Comm.Text = "---";
-            lblMod3Comm.Text = "---";
 
             //set baud and port from last time run
             baudRateGPS = Settings.Default.setPort_baudRateGPS;
@@ -72,16 +67,6 @@ namespace AgIO
                 if (spGPS.IsOpen) lblGPS1Comm.Text = portNameGPS;
             }
 
-            //set baud and port from last time run
-            baudRateGPS2 = Settings.Default.setPort_baudRateGPS2;
-            portNameGPS2 = Settings.Default.setPort_portNameGPS2;
-            wasGPS2ConnectedLastRun = Settings.Default.setPort_wasGPS2Connected;
-            if (wasGPS2ConnectedLastRun)
-            {
-                OpenGPS2Port();
-                if (spGPS2.IsOpen) lblGPS2Comm.Text = portNameGPS2;
-            }
-
             // set baud and port for rtcm from last time run
             baudRateRtcm = Settings.Default.setPort_baudRateRtcm;
             portNameRtcm = Settings.Default.setPort_portNameRtcm;
@@ -90,43 +75,6 @@ namespace AgIO
             if (wasRtcmConnectedLastRun)
             {
                 OpenRtcmPort();
-            }
-
-            //Open IMU
-            portNameIMU = Settings.Default.setPort_portNameIMU;
-            wasIMUConnectedLastRun = Settings.Default.setPort_wasIMUConnected;
-            if (wasIMUConnectedLastRun)
-            {
-                OpenIMUPort();
-                if (spIMU.IsOpen) lblIMUComm.Text = portNameIMU;
-            }
-
-
-            //same for Module1 port
-            portNameModule1 = Settings.Default.setPort_portNameModule1;
-            wasModule1ConnectedLastRun = Settings.Default.setPort_wasModule1Connected;
-            if (wasModule1ConnectedLastRun)
-            {
-                OpenModule1Port();
-                if (spModule1.IsOpen) lblMod1Comm.Text = portNameModule1;
-            }
-
-            //same for Module2 port
-            portNameModule2 = Settings.Default.setPort_portNameModule2;
-            wasModule2ConnectedLastRun = Settings.Default.setPort_wasModule2Connected;
-            if (wasModule2ConnectedLastRun)
-            {
-                OpenModule2Port();
-                if (spModule2.IsOpen) lblMod2Comm.Text = portNameModule2;
-            }
-
-            //same for Module3 port
-            portNameModule3 = Settings.Default.setPort_portNameModule3;
-            wasModule3ConnectedLastRun = Settings.Default.setPort_wasModule3Connected;
-            if (wasModule3ConnectedLastRun)
-            {
-                OpenModule3Port();
-                if (spModule3.IsOpen) lblMod3Comm.Text = portNameModule3;
             }
 
             ConfigureNTRIP();
@@ -222,52 +170,12 @@ namespace AgIO
 
                 lastSecond = secondsSinceStart;
 
-                if (wasIMUConnectedLastRun)
-                {
-                    if (!spIMU.IsOpen)
-                    {
-                        byte[] imuClose = new byte[] { 0x80, 0x81, 0x7C, 0xD4, 2, 1, 0, 83 };
-
-                        //tell AOG IMU is disconnected
-                        SendToLoopBackMessageAOG(imuClose);
-                        wasIMUConnectedLastRun = false;
-                        lblIMUComm.Text = "---";
-                    }
-                }
-
                 if (wasGPSConnectedLastRun)
                 {
                     if (!spGPS.IsOpen)
                     {
                         wasGPSConnectedLastRun = false;
                         lblGPS1Comm.Text = "---";
-                    }
-                }
-
-                if (wasModule1ConnectedLastRun)
-                {
-                    if (!spModule1.IsOpen)
-                    {
-                        wasModule1ConnectedLastRun = false;
-                        lblMod1Comm.Text = "---";
-                    }
-                }
-
-                if (wasModule2ConnectedLastRun)
-                {
-                    if (!spModule2.IsOpen)
-                    {
-                        wasModule2ConnectedLastRun = false;
-                        lblMod2Comm.Text = "---";
-                    }
-                }
-
-                if (wasModule3ConnectedLastRun)
-                {
-                    if (!spModule3.IsOpen)
-                    {
-                        wasModule3ConnectedLastRun = false;
-                        lblMod3Comm.Text = "---";
                     }
                 }
             }
@@ -281,10 +189,6 @@ namespace AgIO
         private void btnBringUpCommSettings_Click(object sender, EventArgs e)
         {
             SettingsCommunicationGPS();
-        }
-        private void btnBringUpCommSettingsTool_Click(object sender, EventArgs e)
-        {
-           SettingsCommunicationGPSTool();
         }
 
         private void btnUDP_Click(object sender, EventArgs e)
@@ -311,11 +215,6 @@ namespace AgIO
         {
             Close();
         }
-        private void btnToolSteer_Click(object sender, EventArgs e)
-        {
-            SettingsCommunicationGPSTool();
-        }
-
 
         public void ConfigureNTRIP()
         {
@@ -440,11 +339,6 @@ namespace AgIO
         private void FormLoop_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.setPort_wasGPSConnected = wasGPSConnectedLastRun;
-            Properties.Settings.Default.setPort_wasGPS2Connected = wasGPS2ConnectedLastRun;
-            Properties.Settings.Default.setPort_wasModule3Connected = wasModule3ConnectedLastRun;
-            Properties.Settings.Default.setPort_wasModule2Connected = wasModule2ConnectedLastRun;
-            Properties.Settings.Default.setPort_wasModule1Connected = wasModule1ConnectedLastRun;
-            Properties.Settings.Default.setPort_wasIMUConnected = wasIMUConnectedLastRun;
             Properties.Settings.Default.setPort_wasRtcmConnected = wasRtcmConnectedLastRun;
             Properties.Settings.Default.Save();
 
@@ -508,12 +402,8 @@ namespace AgIO
             lblFromModule3.Text = traffic.cntrModule3In == 0 ? "--" : (traffic.cntrModule3In).ToString();
             lblToModule3.Text = traffic.cntrModule3Out == 0 ? "--" : (traffic.cntrModule3Out).ToString();
 
-            lblFromMU.Text = traffic.cntrIMUIn == 0 ? "--" : (traffic.cntrIMUIn).ToString();
-            lblToIMU.Text = traffic.cntrIMUOut == 0 ? "--" : (traffic.cntrIMUOut).ToString();
-
             traffic.cntrPGNToAOG = traffic.cntrPGNFromAOG = traffic.cntrUDPIn = traffic.cntrUDPOut =
                 traffic.cntrGPSIn = traffic.cntrGPSOut = traffic.cntrGPS2In = traffic.cntrGPS2Out =
-                traffic.cntrIMUIn = traffic.cntrIMUOut =
                 traffic.cntrModule3In = traffic.cntrModule3Out =
                 traffic.cntrModule1In = traffic.cntrModule1Out =
                 traffic.cntrModule2Out = traffic.cntrModule2In = 0;

@@ -133,6 +133,11 @@ namespace AgIO
 
                     // Connect to server non-Blocking method
                     clientSocket.Blocking = false;
+
+                    IPAddress localIPAddress = IPAddress.Parse(Properties.Settings.Default.setIP_localNTRIP);
+                    IPEndPoint localEndPoint = new IPEndPoint(localIPAddress, 0);
+                    clientSocket.Bind(localEndPoint);
+
                     clientSocket.BeginConnect(new IPEndPoint(IPAddress.Parse(broadCasterIP), broadCasterPort), new AsyncCallback(OnConnect), null);
                 }
                 catch (Exception)
@@ -253,7 +258,6 @@ namespace AgIO
             if (toUDP_Port == 0)
             {
                 SendGPSPort(data);
-                SendGPS2Port(data);
             }
 
             //send out UDP Port
