@@ -278,11 +278,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.nudMinFixStepDistance = new System.Windows.Forms.NumericUpDown();
-            this.headingGroupBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.rbtnHeadingHDT = new System.Windows.Forms.RadioButton();
-            this.rbtnHeadingGPS = new System.Windows.Forms.RadioButton();
-            this.rbtnHeadingFix = new System.Windows.Forms.RadioButton();
             this.tabDRoll = new System.Windows.Forms.TabPage();
             this.label64 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
@@ -556,8 +551,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudReverseComp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinFixStepDistance)).BeginInit();
-            this.headingGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.tabDRoll.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.tabUTurn.SuspendLayout();
@@ -4545,7 +4538,6 @@
             this.tabDHeading.Controls.Add(this.nudMinimumFrameTime);
             this.tabDHeading.Controls.Add(this.cboxIsRTK);
             this.tabDHeading.Controls.Add(this.gboxSingle);
-            this.tabDHeading.Controls.Add(this.headingGroupBox);
             this.tabDHeading.Location = new System.Drawing.Point(4, 44);
             this.tabDHeading.Name = "tabDHeading";
             this.tabDHeading.Size = new System.Drawing.Size(852, 585);
@@ -4561,7 +4553,7 @@
             this.label12.Font = new System.Drawing.Font("Tahoma", 14.25F);
             this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(27, 282);
+            this.label12.Location = new System.Drawing.Point(32, 80);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(178, 56);
             this.label12.TabIndex = 469;
@@ -4575,7 +4567,7 @@
             this.nudDualHeadingOffset.DecimalPlaces = 1;
             this.nudDualHeadingOffset.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudDualHeadingOffset.InterceptArrowKeys = false;
-            this.nudDualHeadingOffset.Location = new System.Drawing.Point(211, 284);
+            this.nudDualHeadingOffset.Location = new System.Drawing.Point(216, 82);
             this.nudDualHeadingOffset.Minimum = new decimal(new int[] {
             100,
             0,
@@ -4632,7 +4624,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 14.25F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(201, 363);
+            this.label2.Location = new System.Drawing.Point(201, 224);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(178, 56);
             this.label2.TabIndex = 466;
@@ -4645,7 +4637,7 @@
             this.nudAgeAlarm.BackColor = System.Drawing.Color.AliceBlue;
             this.nudAgeAlarm.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudAgeAlarm.InterceptArrowKeys = false;
-            this.nudAgeAlarm.Location = new System.Drawing.Point(233, 421);
+            this.nudAgeAlarm.Location = new System.Drawing.Point(233, 282);
             this.nudAgeAlarm.Maximum = new decimal(new int[] {
             300,
             0,
@@ -4676,7 +4668,7 @@
             this.label104.Font = new System.Drawing.Font("Tahoma", 14.25F);
             this.label104.ForeColor = System.Drawing.Color.Black;
             this.label104.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label104.Location = new System.Drawing.Point(17, 363);
+            this.label104.Location = new System.Drawing.Point(17, 224);
             this.label104.Name = "label104";
             this.label104.Size = new System.Drawing.Size(178, 56);
             this.label104.TabIndex = 462;
@@ -4689,7 +4681,7 @@
             this.nudMinimumFrameTime.BackColor = System.Drawing.Color.AliceBlue;
             this.nudMinimumFrameTime.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudMinimumFrameTime.InterceptArrowKeys = false;
-            this.nudMinimumFrameTime.Location = new System.Drawing.Point(51, 421);
+            this.nudMinimumFrameTime.Location = new System.Drawing.Point(51, 282);
             this.nudMinimumFrameTime.Maximum = new decimal(new int[] {
             90,
             0,
@@ -5065,86 +5057,6 @@
             65536});
             this.nudMinFixStepDistance.Click += new System.EventHandler(this.nudMinFixStepDistance_Click);
             this.nudMinFixStepDistance.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.nudMinFixStepDistance_HelpRequested);
-            // 
-            // headingGroupBox
-            // 
-            this.headingGroupBox.Controls.Add(this.pictureBox13);
-            this.headingGroupBox.Controls.Add(this.rbtnHeadingHDT);
-            this.headingGroupBox.Controls.Add(this.rbtnHeadingGPS);
-            this.headingGroupBox.Controls.Add(this.rbtnHeadingFix);
-            this.headingGroupBox.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headingGroupBox.ForeColor = System.Drawing.Color.Black;
-            this.headingGroupBox.Location = new System.Drawing.Point(28, 2);
-            this.headingGroupBox.Name = "headingGroupBox";
-            this.headingGroupBox.Size = new System.Drawing.Size(329, 275);
-            this.headingGroupBox.TabIndex = 85;
-            this.headingGroupBox.TabStop = false;
-            this.headingGroupBox.Text = "Antenna Heading Type";
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Image = global::AgOpenGPS.Properties.Resources.Con_SourcesGPS;
-            this.pictureBox13.Location = new System.Drawing.Point(191, 48);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(110, 204);
-            this.pictureBox13.TabIndex = 3;
-            this.pictureBox13.TabStop = false;
-            // 
-            // rbtnHeadingHDT
-            // 
-            this.rbtnHeadingHDT.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbtnHeadingHDT.BackColor = System.Drawing.Color.AliceBlue;
-            this.rbtnHeadingHDT.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
-            this.rbtnHeadingHDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnHeadingHDT.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnHeadingHDT.ForeColor = System.Drawing.Color.Black;
-            this.rbtnHeadingHDT.Location = new System.Drawing.Point(24, 206);
-            this.rbtnHeadingHDT.Name = "rbtnHeadingHDT";
-            this.rbtnHeadingHDT.Size = new System.Drawing.Size(117, 43);
-            this.rbtnHeadingHDT.TabIndex = 2;
-            this.rbtnHeadingHDT.Text = "Dual";
-            this.rbtnHeadingHDT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbtnHeadingHDT.UseVisualStyleBackColor = false;
-            this.rbtnHeadingHDT.CheckedChanged += new System.EventHandler(this.rbtnHeadingFix_CheckedChanged);
-            this.rbtnHeadingHDT.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.rbtnHeadingHDT_HelpRequested);
-            // 
-            // rbtnHeadingGPS
-            // 
-            this.rbtnHeadingGPS.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbtnHeadingGPS.BackColor = System.Drawing.Color.AliceBlue;
-            this.rbtnHeadingGPS.Checked = true;
-            this.rbtnHeadingGPS.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
-            this.rbtnHeadingGPS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnHeadingGPS.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnHeadingGPS.ForeColor = System.Drawing.Color.Black;
-            this.rbtnHeadingGPS.Location = new System.Drawing.Point(24, 106);
-            this.rbtnHeadingGPS.Name = "rbtnHeadingGPS";
-            this.rbtnHeadingGPS.Size = new System.Drawing.Size(117, 43);
-            this.rbtnHeadingGPS.TabIndex = 1;
-            this.rbtnHeadingGPS.TabStop = true;
-            this.rbtnHeadingGPS.Text = "VTG";
-            this.rbtnHeadingGPS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbtnHeadingGPS.UseVisualStyleBackColor = false;
-            this.rbtnHeadingGPS.CheckedChanged += new System.EventHandler(this.rbtnHeadingFix_CheckedChanged);
-            this.rbtnHeadingGPS.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.rbtnHeadingGPS_HelpRequested);
-            // 
-            // rbtnHeadingFix
-            // 
-            this.rbtnHeadingFix.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbtnHeadingFix.BackColor = System.Drawing.Color.AliceBlue;
-            this.rbtnHeadingFix.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
-            this.rbtnHeadingFix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnHeadingFix.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnHeadingFix.ForeColor = System.Drawing.Color.Black;
-            this.rbtnHeadingFix.Location = new System.Drawing.Point(23, 42);
-            this.rbtnHeadingFix.Name = "rbtnHeadingFix";
-            this.rbtnHeadingFix.Size = new System.Drawing.Size(117, 43);
-            this.rbtnHeadingFix.TabIndex = 0;
-            this.rbtnHeadingFix.Text = "Fix";
-            this.rbtnHeadingFix.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbtnHeadingFix.UseVisualStyleBackColor = false;
-            this.rbtnHeadingFix.CheckedChanged += new System.EventHandler(this.rbtnHeadingFix_CheckedChanged);
-            this.rbtnHeadingFix.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.rbtnHeadingFix_HelpRequested);
             // 
             // tabDRoll
             // 
@@ -8577,8 +8489,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudReverseComp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStartSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinFixStepDistance)).EndInit();
-            this.headingGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.tabDRoll.ResumeLayout(false);
             this.tabDRoll.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
@@ -8650,10 +8560,6 @@
         private System.Windows.Forms.Button btnSubToolSettings;
         private System.Windows.Forms.Button btnSubToolConfig;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox headingGroupBox;
-        private System.Windows.Forms.RadioButton rbtnHeadingHDT;
-        private System.Windows.Forms.RadioButton rbtnHeadingGPS;
-        private System.Windows.Forms.RadioButton rbtnHeadingFix;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -8850,7 +8756,6 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.NumericUpDown nudMenusOnTime;
         private System.Windows.Forms.Button btnVehicleSaveAs;
-        private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.GroupBox gboxSingle;
         private System.Windows.Forms.CheckBox cboxIsRTK;
         private System.Windows.Forms.Label label57;

@@ -26,6 +26,28 @@ namespace AgOpenGPS
 
         private void FormSteer_Load(object sender, EventArgs e)
         {
+            nudToolAntennaHeight.Value = (decimal)(Properties.Vehicle.Default.setTool_antennaHeight * mf.m2InchOrCm);
+            nudToolAntennaOffset.Value = (decimal)(Properties.Vehicle.Default.setTool_antennaOffset * mf.m2InchOrCm);
+
+            cboxToolOnlyGPS.Checked = Properties.Settings.Default.setGPS_isGPSToolOnly;
+
+            if (cboxToolOnlyGPS.Checked)
+            {
+                nudToolAntennaHeight.Visible = false;
+                nudToolAntennaOffset.Visible = false;
+                lblAntennaHeight.Visible = false;
+                lblAntennaOffset.Visible = false;
+                btnConvertToToolOnly.Visible = true;
+            }
+            else
+            {
+                nudToolAntennaHeight.Visible = true;
+                nudToolAntennaOffset.Visible = true;
+                lblAntennaHeight.Visible = true;
+                lblAntennaOffset.Visible = true;
+                btnConvertToToolOnly.Visible = false;
+            }
+
             //WAS Zero, CPD
             hsbarWasOffset.ValueChanged -= hsbarSteerAngleSensorZero_ValueChanged;
             hsbarCountsPerDegree.ValueChanged -= hsbarCountsPerDegree_ValueChanged;
@@ -113,9 +135,6 @@ namespace AgOpenGPS
 
             if ((sett & 32) == 32) cboxDanfoss.Checked = true;
             else cboxDanfoss.Checked = false;
-
-            //if ((sett & 128) == 0) cboxEncoder.Checked = false;
-            //else cboxEncoder.Checked = true;
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -148,19 +167,19 @@ namespace AgOpenGPS
             if (toSend && counter > 4)
             {
                 //Fixx
-                Properties.Vehicle.Default.setTool_maxSteerAngle = mf.p_233.pgn[mf.p_233.maxSteer] = unchecked((byte)hsbarMaxSteerAngle.Value);
-                Properties.Vehicle.Default.setTool_wasCounts = mf.p_233.pgn[mf.p_233.wasCounts] = unchecked((byte)hsbarCountsPerDegree.Value);
+                Properties.Vehicle.Default.setTool_maxSteerAngle = mf.p_232.pgn[mf.p_232.maxSteer] = unchecked((byte)hsbarMaxSteerAngle.Value);
+                Properties.Vehicle.Default.setTool_wasCounts = mf.p_232.pgn[mf.p_232.wasCounts] = unchecked((byte)hsbarCountsPerDegree.Value);
 
-                Properties.Vehicle.Default.setTool_wasOffset = mf.p_233.pgn[mf.p_233.wasOffset] = unchecked((byte)hsbarWasOffset.Value);
+                Properties.Vehicle.Default.setTool_wasOffset = mf.p_232.pgn[mf.p_232.wasOffset] = unchecked((byte)hsbarWasOffset.Value);
 
-                Properties.Vehicle.Default.setTool_HighPWM = mf.p_233.pgn[mf.p_233.highPWM] = unchecked((byte)hsbarHighSteerPWM.Value);
-                Properties.Vehicle.Default.setTool_windupLimit = mf.p_233.pgn[mf.p_233.windup] = unchecked((byte)hsbarWindupLimit.Value);
-                Properties.Vehicle.Default.setTool_P = mf.p_233.pgn[mf.p_233.P] = unchecked((byte)hsbarProportionalGain.Value);
-                Properties.Vehicle.Default.setTool_MinPWM = mf.p_233.pgn[mf.p_233.minPWM] = unchecked((byte)hsbarMinPWM.Value);
+                Properties.Vehicle.Default.setTool_HighPWM = mf.p_232.pgn[mf.p_232.highPWM] = unchecked((byte)hsbarHighSteerPWM.Value);
+                Properties.Vehicle.Default.setTool_windupLimit = mf.p_232.pgn[mf.p_232.windup] = unchecked((byte)hsbarWindupLimit.Value);
+                Properties.Vehicle.Default.setTool_P = mf.p_232.pgn[mf.p_232.P] = unchecked((byte)hsbarProportionalGain.Value);
+                Properties.Vehicle.Default.setTool_MinPWM = mf.p_232.pgn[mf.p_232.minPWM] = unchecked((byte)hsbarMinPWM.Value);
                 
-                Properties.Vehicle.Default.setTool_I = mf.p_233.pgn[mf.p_233.I] = unchecked((byte)hsbarIntegral.Value);
+                Properties.Vehicle.Default.setTool_I = mf.p_232.pgn[mf.p_232.I] = unchecked((byte)hsbarIntegral.Value);
 
-                mf.SendPgnToLoop(mf.p_233.pgn);
+                mf.SendPgnToLoop(mf.p_232.pgn);
                 toSend = false;
                 counter = 0;
             }
@@ -318,7 +337,7 @@ namespace AgOpenGPS
         private void btnSendSteerConfigPGN_Click(object sender, EventArgs e)
         {
             SaveSettings();
-            mf.SendPgnToLoop(mf.p_232.pgn);
+            mf.SendPgnToLoop(mf.p_231.pgn);
             pboxSendSteer.Visible = false;
 
             mf.TimedMessageBox(1000, gStr.gsMachinePort, "Settings Sent To Tool Steer Module");
@@ -384,7 +403,7 @@ namespace AgOpenGPS
 
             Properties.Vehicle.Default.setArdToolSteer_setting0 = (byte)sett;
 
-            mf.p_232.pgn[mf.p_232.set0] = Properties.Vehicle.Default.setArdToolSteer_setting0;
+            mf.p_231.pgn[mf.p_231.set0] = Properties.Vehicle.Default.setArdToolSteer_setting0;
 
             Properties.Settings.Default.Save();
             Properties.Vehicle.Default.Save();
@@ -401,7 +420,7 @@ namespace AgOpenGPS
                 //turn OFF free drive mode
                 btnFreeDrive.Image = Properties.Resources.SteerDriveOff;
                 btnFreeDrive.BackColor = Color.FromArgb(50, 50, 70);
-                mf.vehicle.ast.isInFreeDriveMode = false;
+                mf.vehicle.ast.isInFreeToolDriveMode = false;
                 btnToolDistanceDown.Enabled = false;
                 btnToolDistanceUp.Enabled = false;
                 //hSBarFreeDrive.Value = 0;
@@ -412,7 +431,7 @@ namespace AgOpenGPS
                 //turn ON free drive mode
                 btnFreeDrive.Image = Properties.Resources.SteerDriveOn;
                 btnFreeDrive.BackColor = Color.LightGreen;
-                mf.vehicle.ast.isInFreeDriveMode = true;
+                mf.vehicle.ast.isInFreeToolDriveMode = true;
                 btnToolDistanceDown.Enabled = true;
                 btnToolDistanceUp.Enabled = true;
                 //hSBarFreeDrive.Value = 0;
@@ -442,7 +461,29 @@ namespace AgOpenGPS
         }
         #endregion
 
+        private void cboxToolOnlyGPS_Click(object sender, EventArgs e)
+        {
+            mf.pn.isGPSToolOnly = cboxToolOnlyGPS.Checked;
+            Properties.Settings.Default.setGPS_isGPSToolOnly = mf.pn.isGPSToolOnly;
+            Properties.Settings.Default.Save();
 
+            if (cboxToolOnlyGPS.Checked)
+            {
+                nudToolAntennaHeight.Visible = false;
+                nudToolAntennaOffset.Visible = false;
+                lblAntennaHeight.Visible = false;
+                lblAntennaOffset.Visible = false;
+                btnConvertToToolOnly.Visible = true;
+            }
+            else
+            {
+                nudToolAntennaHeight.Visible = true;
+                nudToolAntennaOffset.Visible = true;
+                lblAntennaHeight.Visible = true;
+                lblAntennaOffset.Visible = true;
+                btnConvertToToolOnly.Visible = false;
+            }
+        }
 
         #region Help
 
@@ -618,5 +659,6 @@ namespace AgOpenGPS
         }
 
         #endregion
+
     }
 }

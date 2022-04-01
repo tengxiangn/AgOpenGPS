@@ -1753,7 +1753,7 @@ namespace AgOpenGPS
             if (mc.toolStatus == 0) GL.Color4(0.952f, 0.70f, 0.5f, 0.97);
             else GL.Color4(0.32f, 0.93570f, 0.3f, 0.97);
 
-            GL.Rotate(-mc.toolActual * 2, 0, 0, 1);
+            GL.Rotate(-mc.toolActualDistance * 2, 0, 0, 1);
 
             GL.Begin(PrimitiveType.Quads);              // Build Quad From A Triangle Strip
             {

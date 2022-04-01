@@ -22,12 +22,7 @@ namespace AgOpenGPS
         #region Heading
         private void tabDHeading_Enter(object sender, EventArgs e)
         {
-            //heading
-            if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Fix") rbtnHeadingFix.Checked = true;
-            else if (Properties.Settings.Default.setGPS_headingFromWhichSource == "VTG") rbtnHeadingGPS.Checked = true;
-            else if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Dual") rbtnHeadingHDT.Checked = true;
-
-            if (rbtnHeadingHDT.Checked)
+            if (mf.isSingleAntenna)
             {
                 gboxSingle.Enabled = false;
                 nudDualHeadingOffset.Enabled = true;
@@ -83,25 +78,6 @@ namespace AgOpenGPS
 
             Properties.Settings.Default.Save();
         }
-
-        private void rbtnHeadingFix_CheckedChanged(object sender, EventArgs e)
-        {
-            var checkedButton = headingGroupBox.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-            Properties.Settings.Default.setGPS_headingFromWhichSource = checkedButton.Text;
-            mf.headingFromSource = checkedButton.Text;
-
-            if (rbtnHeadingHDT.Checked)
-            {
-                gboxSingle.Enabled = false;
-                nudDualHeadingOffset.Enabled = true;
-            }
-            else
-            {
-                nudDualHeadingOffset.Enabled = false;
-                gboxSingle.Enabled = true;
-            }
-        }
-
 
         private void nudDualHeadingOffset_Click(object sender, EventArgs e)
         {

@@ -428,14 +428,29 @@ namespace AgOpenGPS
                 //draw the bright antenna dot
                 GL.PointSize(8.0f);
                 GL.Begin(PrimitiveType.Points);
-                if (mf.headingFromSource == "Fix")
+                if (mf.isSingleAntenna)
+                {
+                    GL.Color3(0.0f, 0.0f, 0.0f);
+                    GL.Vertex3(0, antennaPivot, 0.1);
+                }
+                else
+                {
+                    GL.Color3(0.0f, 0.0f, 0.0f);
+                    GL.Vertex3(-0.6, antennaPivot, 0.1);
+                    GL.Vertex3(0.6, antennaPivot, 0.1);
+                }
+                GL.End();
+
+                GL.PointSize(4.0f);
+                GL.Begin(PrimitiveType.Points);
+                if (mf.isSingleAntenna)
                 {
                     GL.Color3(0.20f, 1.0f, 1.0f);
                     GL.Vertex3(0, antennaPivot, 0.1);
                 }
                 else
                 {
-                    GL.Color3(0.50f, 1.0f, 0.0f);
+                    GL.Color3(0.20f, 1.0f, 1.0f);
                     GL.Vertex3(-0.6, antennaPivot, 0.1);
                     GL.Vertex3(0.6, antennaPivot, 0.1);
                 }

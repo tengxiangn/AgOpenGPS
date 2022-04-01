@@ -562,9 +562,6 @@ namespace AgOpenGPS
 
             DisableYouTurnButtons();
 
-            //which heading source is being used
-            headingFromSource = Settings.Default.setGPS_headingFromWhichSource;
-
             //workswitch stuff
             mc.isWorkSwitchEnabled = Settings.Default.setF_IsWorkSwitchEnabled;
             mc.isWorkSwitchActiveLow = Settings.Default.setF_IsWorkSwitchActiveLow;

@@ -33,7 +33,7 @@ namespace AgOpenGPS
         public double fixUpdateTime = 0.2;
 
         //for heading or Atan2 as camera
-        public string headingFromSource, headingFromSourceBak;
+        public bool isSingleAntenna = true;
 
         public vec3 pivotAxlePos = new vec3(0, 0, 0);
         public vec3 steerAxlePos = new vec3(0, 0, 0);
@@ -125,9 +125,9 @@ namespace AgOpenGPS
                 return;
             }
 
-            switch (headingFromSource)
+            switch (isSingleAntenna)
             {
-                case "Fix":
+                case true:
                     {
                         //calculate current heading only when moving, otherwise use last
 
@@ -466,105 +466,7 @@ namespace AgOpenGPS
                         break;
                     }
 
-                case "VTG":
-                    {
-                        isFirstHeadingSet = true;
-                        if (pn.speed > startSpeed)
-                        {
-                            //use NMEA headings for camera and tractor graphic
-                            fixHeading = glm.toRadians(pn.headingTrue);
-                            camHeading = pn.headingTrue;
-                            gpsHeading = fixHeading;
-                        }
-
-                        //grab the most current fix to last fix distance
-                        distanceCurrentStepFix = glm.Distance(pn.fix, prevFix);
-
-                        #region Antenna Offset
-
-                        if (vehicle.antennaOffset != 0)
-                        {
-                            pn.fix.easting = (Math.Cos(-fixHeading) * vehicle.antennaOffset) + pn.fix.easting;
-                            pn.fix.northing = (Math.Sin(-fixHeading) * vehicle.antennaOffset) + pn.fix.northing;
-                        }
-                        #endregion
-
-                        uncorrectedEastingGraph = pn.fix.easting;
-
-                        //an IMU with heading correction, add the correction
-                        if (ahrs.imuHeading != 99999)
-                        {
-                            //current gyro angle in radians
-                            double correctionHeading = (glm.toRadians(ahrs.imuHeading));
-
-                            //Difference between the IMU heading and the GPS heading
-                            double gyroDelta = (correctionHeading + imuGPS_Offset) - gpsHeading;
-                            if (gyroDelta < 0) gyroDelta += glm.twoPI;
-
-                            //calculate delta based on circular data problem 0 to 360 to 0, clamp to +- 2 Pi
-                            if (gyroDelta >= -glm.PIBy2 && gyroDelta <= glm.PIBy2) gyroDelta *= -1.0;
-                            else
-                            {
-                                if (gyroDelta > glm.PIBy2) { gyroDelta = glm.twoPI - gyroDelta; }
-                                else { gyroDelta = (glm.twoPI + gyroDelta) * -1.0; }
-                            }
-                            if (gyroDelta > glm.twoPI) gyroDelta -= glm.twoPI;
-                            if (gyroDelta < -glm.twoPI) gyroDelta += glm.twoPI;
-
-                            //if the gyro and last corrected fix is < 10 degrees, super low pass for gps
-                            if (Math.Abs(gyroDelta) < 0.18)
-                            {
-                                //a bit of delta and add to correction to current gyro
-                                imuGPS_Offset += (gyroDelta * (0.1));
-                                if (imuGPS_Offset > glm.twoPI) imuGPS_Offset -= glm.twoPI;
-                                if (imuGPS_Offset < -glm.twoPI) imuGPS_Offset += glm.twoPI;
-                            }
-                            else
-                            {
-                                //a bit of delta and add to correction to current gyro
-                                imuGPS_Offset += (gyroDelta * (0.2));
-                                if (imuGPS_Offset > glm.twoPI) imuGPS_Offset -= glm.twoPI;
-                                if (imuGPS_Offset < -glm.twoPI) imuGPS_Offset += glm.twoPI;
-                            }
-
-                            //determine the Corrected heading based on gyro and GPS
-                            imuCorrected = correctionHeading + imuGPS_Offset;
-                            if (imuCorrected > glm.twoPI) imuCorrected -= glm.twoPI;
-                            if (imuCorrected < 0) imuCorrected += glm.twoPI;
-
-                            fixHeading = imuCorrected;
-
-                            camHeading = fixHeading;
-                            if (camHeading > glm.twoPI) camHeading -= glm.twoPI;
-                            camHeading = glm.toDegrees(camHeading);
-                        }
-
-
-                        #region Roll
-
-                        if (ahrs.imuRoll != 88888)
-                        {
-                            //change for roll to the right is positive times -1
-                            rollCorrectionDistance = Math.Sin(glm.toRadians((ahrs.imuRoll))) * -vehicle.antennaHeight;
-                            correctionDistanceGraph = rollCorrectionDistance;
-
-                            // roll to left is positive  **** important!!
-                            // not any more - April 30, 2019 - roll to right is positive Now! Still Important
-                            pn.fix.easting = (Math.Cos(-fixHeading) * rollCorrectionDistance) + pn.fix.easting;
-                            pn.fix.northing = (Math.Sin(-fixHeading) * rollCorrectionDistance) + pn.fix.northing;
-                        }
-
-                        #endregion Roll
-
-                        TheRest();
-
-                        //most recent fixes are now the prev ones
-                        prevFix.easting = pn.fix.easting; prevFix.northing = pn.fix.northing;
-
-                        break;
-                    }
-
-                case "Dual":
+                case false:
                     {
                         isFirstHeadingSet = true;
                         //use Dual Antenna heading for camera and tractor graphic
@@ -697,7 +599,9 @@ namespace AgOpenGPS
                 //fill up0 the appropriate arrays with new values
                 p_254.pgn[p_254.speedHi] = unchecked((byte)((int)(Math.Abs(pn.speed) * 10.0) >> 8));
                 p_254.pgn[p_254.speedLo] = unchecked((byte)((int)(Math.Abs(pn.speed) * 10.0)));
-                //mc.machineControlData[mc.cnSpeed] = mc.autoSteerData[mc.sdSpeed];
+
+                //speed for tool
+                p_233.pgn[p_233.speed] = unchecked((byte)(Math.Abs(pn.speed) * 10.0));
 
                 //save distance for display
                 lightbarDistance = guidanceLineDistanceOff;
@@ -708,15 +612,15 @@ namespace AgOpenGPS
                     guidanceLineDistanceOff = 32020;
                     guidanceLineDistanceOffTool = 32020;
                     p_254.pgn[p_254.status] = 0;
-                    p_235.pgn[p_235.status] = 0;
+                    p_233.pgn[p_233.status] = 0;
                 }
                 else
                 {
                     p_254.pgn[p_254.status] = 1;
 
                     //no tool guidance when uturn
-                    if (!yt.isYouTurnTriggered) p_235.pgn[p_235.status] = 1;
-                    else p_235.pgn[p_235.status] = 0;
+                    if (!yt.isYouTurnTriggered) p_233.pgn[p_233.status] = 1;
+                    else p_233.pgn[p_233.status] = 0;
                 }
 
                 if (recPath.isDrivingRecordedPath || recPath.isFollowingDubinsToPath) p_254.pgn[p_254.status] = 1;
@@ -737,28 +641,17 @@ namespace AgOpenGPS
 
                 p_254.pgn[p_254.lineDistance] = unchecked((byte)distanceX2);
 
-                if (isAngVelGuidance)
-                {
-                    errorAngVel = (short)(((int)(setAngVel) - ahrs.angVel));
+                p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
+                p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
 
-                    p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(errorAngVel >> 8));
-                    p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(errorAngVel));
-                }
-                else
-                {
-                    p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
-                    p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
+                //Tool XTE
+                p_233.pgn[p_233.highXTE] = unchecked((byte)(guidanceLineDistanceOffTool >> 8));
+                p_233.pgn[p_233.lowXTE] = unchecked((byte)(guidanceLineDistanceOffTool));
 
-                    //Tool XTE
-                    p_235.pgn[p_235.highXTE] = unchecked((byte)(guidanceLineDistanceOffTool >> 8));
-                    p_235.pgn[p_235.lowXTE] = unchecked((byte)(guidanceLineDistanceOffTool));
-
-                    //Vehicle XTE
-                    p_235.pgn[p_235.highVehXTE] = unchecked((byte)(guidanceLineDistanceOff >> 8));
-                    p_235.pgn[p_235.lowVehXTE] = unchecked((byte)(guidanceLineDistanceOff));
-                }
+                //Vehicle XTE
+                p_233.pgn[p_233.highVehXTE] = unchecked((byte)(guidanceLineDistanceOff >> 8));
+                p_233.pgn[p_233.lowVehXTE] = unchecked((byte)(guidanceLineDistanceOff));
             }
-
             else //Drive button is on
             {
                 //fill up the auto steer array with free drive values
@@ -767,33 +660,32 @@ namespace AgOpenGPS
 
                 //turn on status to operate
                 p_254.pgn[p_254.status] = 1;
-                p_235.pgn[p_235.status] = 0;
+                p_233.pgn[p_233.status] = 0;
 
                 //send the steer angle
                 guidanceLineSteerAngle = (Int16)(vehicle.ast.driveFreeSteerAngle * 100);
 
-                if (isAngVelGuidance)
-                {
-                    setAngVel = 0.277777 * avgSpeed * (Math.Tan(glm.toRadians(vehicle.ast.driveFreeSteerAngle))) / vehicle.wheelbase;
-                    setAngVel = glm.toDegrees(setAngVel) * 100;
-
-                    errorAngVel = (short)(((int)(setAngVel) - ahrs.angVel));
-
-                    p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(errorAngVel >> 8));
-                    p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(errorAngVel));
-                }
-
-                else
                 {
                     p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
                     p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
                 }
             }
 
+            if (vehicle.ast.isInFreeToolDriveMode)
+            {
+                p_233.pgn[p_233.speed] = unchecked((byte)(50));  //speed set to 5 kmh
+
+                guidanceLineDistanceOffTool = (Int16)(vehicle.ast.driveFreeToolDistance * 100);
+
+                p_233.pgn[p_233.highXTE] = unchecked((byte)(guidanceLineDistanceOffTool >> 8));
+                p_233.pgn[p_233.lowXTE] = unchecked((byte)(guidanceLineDistanceOffTool));
+
+            }
+
             //out serial to autosteer module  //indivdual classes load the distance and heading deltas 
             SendPgnToLoop(p_254.pgn);
 
-            if (pn.isGPSTool) SendPgnToLoop(p_235.pgn);
+            if (currentToolLon != 0 || pn.isGPSToolOnly) SendPgnToLoop(p_233.pgn);
 
             //for average cross track error
             if (guidanceLineDistanceOff < 29000)

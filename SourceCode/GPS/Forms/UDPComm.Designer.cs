@@ -26,7 +26,7 @@ namespace AgOpenGPS
         private int udpWatchCounts = 0;
         public int udpWatchLimit = 70;
 
-        private double currentToolLat=0, currentToolLon=0;
+        public double currentToolLat=0, currentToolLon=0;
 
         private readonly Stopwatch udpWatch = new Stopwatch();
 
@@ -77,14 +77,14 @@ namespace AgOpenGPS
                                 float temp = BitConverter.ToSingle(data, 21);
                                 if (temp != float.MaxValue)
                                 {
-                                    headingFromSource = "Dual";
+                                    isSingleAntenna = false;
                                     pn.headingTrueDual = temp + pn.headingTrueDualOffset;
                                     if (pn.headingTrueDual < 0) pn.headingTrueDual += 360;
                                     if (ahrs.isDualAsIMU) ahrs.imuHeading = temp;
                                 }
                                 else
                                 {
-                                    headingFromSource = "Fix";
+                                    isSingleAntenna = true;
                                 }
 
                                 //from single antenna sentences (VTG,RMC)
@@ -226,49 +226,6 @@ namespace AgOpenGPS
                         }
                         break;
 
-                    case 0xD3: //external IMU
-                        {
-                            if (data.Length != 14)
-                                break;
-                            if (ahrs.imuRoll > 25 || ahrs.imuRoll < -25) ahrs.imuRoll = 0;
-                            //Heading
-                            ahrs.imuHeading = (Int16)((data[6] << 8) + data[5]);
-                            ahrs.imuHeading *= 0.1;
-                            
-                            //Roll
-                            rollK = (Int16)((data[8] << 8) + data[7]);
-
-                            if (ahrs.isRollInvert) rollK *= -0.1;
-                            else rollK *= 0.1;
-                            rollK -= ahrs.rollZero;                           
-                            ahrs.imuRoll = ahrs.imuRoll * ahrs.rollFilter + rollK * (1 - ahrs.rollFilter);
-
-                            //Angular velocity
-                            ahrs.angVel = (Int16)((data[10] << 8) + data[9]);
-                            ahrs.angVel /= -2;
-
-                            //Log activity
-                            //if (isLogNMEA)
-                            //    pn.logNMEASentence.Append(
-                            //        DateTime.UtcNow.ToString("HH:mm:ss.ff", CultureInfo.InvariantCulture) + " IMU " +
-                            //        Math.Round(ahrs.imuRoll, 1).ToString("N1") + " " +
-                            //        Math.Round(ahrs.imuHeading, 1).ToString("N1") + 
-                            //        "\r\n"
-                            //        );
-                            break;
-                        }
-                    case 0xD4: //imu disconnect pgn
-                        {
-                            if (data[5] == 1)
-                            {
-                                ahrs.imuHeading = 99999;
-
-                                ahrs.imuRoll = 88888;
-
-                                ahrs.angVel = 0;
-                            }
-                            break;
-                        }
                     case 253: //return from autosteer module
                         {
                             //Steer angle actual
@@ -277,22 +234,22 @@ namespace AgOpenGPS
                             mc.actualSteerAngleChart = (Int16)((data[6] << 8) + data[5]);
                             mc.actualSteerAngleDegrees = (double)mc.actualSteerAngleChart * 0.01;
 
-                            //Heading
-                            double head253 = (Int16)((data[8] << 8) + data[7]);
-                            if (head253 != 9999)
-                            {
-                                ahrs.imuHeading = head253 * 0.1;
-                            }
+                            ////Heading
+                            //double head253 = (Int16)((data[8] << 8) + data[7]);
+                            //if (head253 != 9999)
+                            //{
+                            //    ahrs.imuHeading = head253 * 0.1;
+                            //}
 
-                            //Roll
-                            rollK = (Int16)((data[10] << 8) + data[9]);
-                            if (rollK != 8888)
-                            {
-                                if (ahrs.isRollInvert) rollK *= -0.1;
-                                else rollK *= 0.1;
-                                rollK -= ahrs.rollZero;
-                                ahrs.imuRoll = ahrs.imuRoll * ahrs.rollFilter + rollK * (1 - ahrs.rollFilter);
-                            }
+                            ////Roll
+                            //rollK = (Int16)((data[10] << 8) + data[9]);
+                            //if (rollK != 8888)
+                            //{
+                            //    if (ahrs.isRollInvert) rollK *= -0.1;
+                            //    else rollK *= 0.1;
+                            //    rollK -= ahrs.rollZero;
+                            //    ahrs.imuRoll = ahrs.imuRoll * ahrs.rollFilter + rollK * (1 - ahrs.rollFilter);
+                            //}
                             //else ahrs.imuRoll = 88888;
 
                             //switch status
@@ -316,7 +273,7 @@ namespace AgOpenGPS
                             break;
                         }
 
-                    case 250:
+                    case 250: //return sensor Data
                         {                            
                             if (data.Length != 14)
                                 break;
@@ -324,13 +281,13 @@ namespace AgOpenGPS
                             break;
                         }
 
-                    case 232: //return from tool steer module
+                    case 230: //return from tool steer module
                         {
                             //Steer angle actual
                             if (data.Length != 14)
                                 break;
-                            mc.toolActual = (Int16)((data[6] << 8) + data[5]);
-                            mc.toolActual *= 0.1;
+                            mc.toolActualDistance = (Int16)((data[6] << 8) + data[5]);
+                            mc.toolActualDistance *= 0.1;
                             mc.toolError = (Int16)((data[8] << 8) + data[7]);
                             mc.toolError *= 0.1;
 

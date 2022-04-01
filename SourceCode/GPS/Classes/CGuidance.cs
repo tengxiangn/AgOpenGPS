@@ -126,13 +126,14 @@ namespace AgOpenGPS
                         * curPtA.northing) - (curPtB.northing * curPtA.easting))
                             / Math.Sqrt((dy * dy) + (dx * dx));
 
-            if (mf.pn.isGPSToolOnly || mf.pn.isGPSTool)
+            if (mf.pn.isGPSToolOnly)
             {
                 mf.ABLine.distanceFromCurrentLineTool = ((dy * mf.pn.fix.easting) - (dx * mf.pn.fix.northing) + (curPtB.easting
                         * curPtA.northing) - (curPtB.northing * curPtA.easting))
                         / Math.Sqrt((dy * dy) + (dx * dx));
             }
-            else
+
+            else if (mf.currentToolLon != 0)
             {
                 mf.ABLine.distanceFromCurrentLineTool = ((dy * mf.toolPos.easting) - (dx * mf.toolPos.northing) + (curPtB.easting
                             * curPtA.northing) - (curPtB.northing * curPtA.easting))

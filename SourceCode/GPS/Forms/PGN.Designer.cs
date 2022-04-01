@@ -291,58 +291,56 @@ namespace AgOpenGPS
             }
         }
 
-        //Tool Steer Data 235
-        public class CPGN_EB
+        //Tool Steer Data 233
+        public class CPGN_E9
         {
             /// <summary>
-            /// PGN - 235 - EB - Tool Steer Data
-            /// lowXTE=5  highXTE=6 
+            /// PGN - 233 - E9 - Tool Steer Data
             /// </summary>
-            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xEB, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE9, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
             public int lowXTE = 5;
             public int highXTE = 6;
             public int status = 7;
             public int lowVehXTE = 8;
             public int highVehXTE = 9;
-            //public int isUturn = 10;
+            public int speed = 10;
             //public int sc1to8 = 11;
             //public int sc9to16 = 12;
-
-            public CPGN_EB()
-            {
-            }
-        }
-
-        //Tool Steer Config 233
-        public class CPGN_E9
-        {
-            /// <summary>
-            /// PGN - 233 - E9 - Tool Steer Config
-            /// </summary>
-            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE9, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
-            public int P = 5;
-            public int I = 6;
-            public int minPWM = 7;
-            public int windup = 8;
-            public int highPWM = 9;
-            public int wasCounts = 10;
-            public int wasOffset = 11;
-            public int maxSteer = 12;
-            //public int sidehillComp = 13;
 
             public CPGN_E9()
             {
             }
         }
 
-        //Autosteer Board Config
+        //Tool Steer Config 232
         public class CPGN_E8
         {
             /// <summary>
-            /// 
-            /// PGN - 232 - E8 
+            /// PGN - 232 - E8 - Tool Steer Config
             /// </summary>
-            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE8, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+            public int P = 5;
+            public int I = 6;
+            public int minPWM = 7;
+            public int highPWM = 8;
+            public int windup = 9;
+            public int wasCounts = 10;
+            public int wasOffset = 11;
+            public int maxSteer = 12;
+
+            public CPGN_E8()
+            {
+            }
+        }
+
+        //Tool steer Board Config 231
+        public class CPGN_E7
+        {
+            /// <summary>
+            /// 
+            /// PGN - 231 - E7 
+            /// </summary>
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE7, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
             public int set0 = 5;
             //public int maxPulse = 6;
             //public int minSpeed = 7;
@@ -352,7 +350,7 @@ namespace AgOpenGPS
             //public int  = 11;
             //public int  = 12;
 
-            public CPGN_E8()
+            public CPGN_E7()
             {
                 pgn[set0] = 0;
                 //pgn[maxPulse] = 0;
@@ -361,10 +359,6 @@ namespace AgOpenGPS
                 //pgn[angVel] = 0;
             }
         }
-
-
-
-        //pgn instances
 
         /// <summary>
         /// autoSteerData - FE - 254 - 
@@ -381,6 +375,8 @@ namespace AgOpenGPS
         /// </summary>
         public CPGN_FB p_251 = new CPGN_FB();
 
+
+
         /// <summary>
         /// machineData PGN - 239 - EF
         /// </summary>
@@ -396,26 +392,22 @@ namespace AgOpenGPS
         /// </summary>
         public CPGN_EC p_236 = new CPGN_EC();
 
-        /// <summary>
-        /// Tool Steer Data PGN - 235 - EB
-        /// </summary>
-        public CPGN_EB p_235 = new CPGN_EB();
+
 
         /// <summary>
-        /// ToolSteerConfig PGN - 233 - E9
+        /// Tool Steer Data PGN - 235 - EB
         /// </summary>
         public CPGN_E9 p_233 = new CPGN_E9();
 
         /// <summary>
-        /// ToolSteerSettings PGN - 232 - E8
+        /// ToolSteerConfig PGN - 233 - E9
         /// </summary>
         public CPGN_E8 p_232 = new CPGN_E8();
 
         /// <summary>
-        /// LatitudeLongitude - D0 - 
+        /// ToolSteerSettings PGN - 232 - E8
         /// </summary>
-        //public CPGN_D0 p_208 = new CPGN_D0();
-
+        public CPGN_E7 p_231 = new CPGN_E7();
     }
 }
     

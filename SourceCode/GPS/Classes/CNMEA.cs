@@ -7,7 +7,6 @@ namespace AgOpenGPS
     public class CNMEA
     {
         // turn on functions used with GPS Antenna on tool
-        public bool isGPSTool = false;
         public bool isGPSToolOnly = false;
         public double toolAntennaHeight, toolAntennaOffset; 
 
@@ -44,7 +43,6 @@ namespace AgOpenGPS
             latStart = 0;
             lonStart = 0;
             ageAlarm = Properties.Settings.Default.setGPS_ageAlarm;
-            isGPSTool = Properties.Settings.Default.setGPS_isGPSTool;
             isGPSToolOnly = Properties.Settings.Default.setGPS_isGPSToolOnly;
             toolAntennaHeight = Properties.Vehicle.Default.setTool_antennaHeight;
             toolAntennaOffset = Properties.Vehicle.Default.setTool_antennaOffset;
