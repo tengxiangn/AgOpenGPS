@@ -94,15 +94,14 @@
   uint8_t watchdogTimer = WATCHDOG_FORCE_VALUE;
 
   //show life in AgIO
-  uint8_t helloAgIO[] = {0x80,0x81, 0x7f, 0xC7, 1, 0, 0x47 };
-  uint8_t helloCounter=0;
+  uint8_t helloFromSteer[] = {0x80,0x81, 0x78, 199, 1, 0, 0x47 };
 
   //fromAutoSteerData FD 253 - ActualSteerAngle*100 -5,6, SwitchByte-7, pwmDisplay-8
-  uint8_t PGN_253[] = {0x80,0x81, 0x7f, 0xFD, 8, 0, 0, 0, 0, 0,0,0,0, 0xCC };
+  uint8_t PGN_253[] = {0x80,0x81, 0x78, 0xFD, 8, 0, 0, 0, 0, 0,0,0,0, 0xCC };
   int8_t PGN_253_Size = sizeof(PGN_253) - 1;
 
   //fromAutoSteerData FD 250 - sensor values etc
-  uint8_t PGN_250[] = { 0x80,0x81, 0x7f, 0xFA, 8, 0, 0, 0, 0, 0,0,0,0, 0xCC };
+  uint8_t PGN_250[] = { 0x80,0x81, 0x78, 0xFA, 8, 0, 0, 0, 0, 0,0,0,0, 0xCC };
   int8_t PGN_250_Size = sizeof(PGN_250) - 1;
   uint8_t aog2Count = 0;
   float sensorReading, sensorSample;
@@ -516,13 +515,6 @@
         motorDrive(); //out to motors the pwm value
         pulseCount=0;
       }
-
-      //send empty pgn to AgIO to show activity
-      if (++helloCounter > 10)
-      {
-        ether.sendUdp(helloAgIO, sizeof(helloAgIO), portMy, ipDestination, portDestination);
-        helloCounter = 0;
-      }
     } //end of timed loop
 
     //This runs continuously, outside of the timed loop, keeps checking for new udpData, turn sense
@@ -698,12 +690,17 @@ void udpSteerRecv(uint16_t dest_port, uint8_t src_ip[IP_LEN], uint16_t src_port,
               aog2Count = 0;
           }
       }
-      // Stop sending the helloAgIO message
-      helloCounter = 0;
 
       //Serial.println(steerAngleActual); 
       //--------------------------------------------------------------------------    
     }
+
+    else if (udpData[3] == 200) //Hello from AgIO
+    {
+        if (udpData[5] == 1)
+            ether.sendUdp(helloFromSteer, sizeof(helloFromSteer), portMy, ipDestination, portDestination);
+    }
+
 
     //steer settings
     else if (udpData[3] == 0xFC)  //252

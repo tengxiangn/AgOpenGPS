@@ -31,6 +31,8 @@ namespace AgIO
         public int cntrModule3Out = 0;
 
         public bool isTrafficOn = true;
+
+        public uint helloFromMachine = 0, helloFromAutoSteer = 0;
     }
 
     public partial class FormLoop
@@ -99,7 +101,7 @@ namespace AgIO
                     + "Are you sure ethernet is connected?\r\n\r\n" 
                     + "Windows Error Message: " + e.Message, "Network Connection Error", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnUDP.BackColor = Color.Wheat;
+                btnUDP.BackColor = Color.Orange;
             }
         }
 
@@ -228,7 +230,7 @@ namespace AgIO
                 }
 
                 //send out to VR Loopback
-                SendToLoopBackMessageVR(data);
+                if (isPluginUsed) SendToLoopBackMessageVR(data);
             }
 
             //coming from VR plugin
@@ -332,19 +334,20 @@ namespace AgIO
                             epModule, new AsyncCallback(SendDataUDPAsync), null);      
                     }
 
+                    if (byteData[3] == 254) traffic.cntrSteerIn += byteData.Length;
+                    if (byteData[3] == 239) traffic.cntrMachineIn += byteData.Length;
+
                     //traffic.cntrUDPOut+=byteData.Length;
 
-                    if (byteData[0] == 0x80 && byteData[1] == 0x81)
-                    {
-                        //module return via udp sent to AOG
-                        SendToLoopBackMessageAOG(byteData);
+                    //if (byteData[0] == 0x80 && byteData[1] == 0x81)
+                    //{
+                    //    //module return via udp sent to AOG
+                    //    SendToLoopBackMessageAOG(byteData);
 
-                        //module byteData also sent to VR
-                        SendToLoopBackMessageVR(byteData);
+                    //    //module byteData also sent to VR
+                    //    SendToLoopBackMessageVR(byteData);
 
-                        if (byteData[3] == 254) traffic.cntrSteerIn += byteData.Length;
-                        if (byteData[3] == 239) traffic.cntrMachineIn += byteData.Length;
-                    }
+                    //}
                 }
                 catch (Exception)
                 {
@@ -365,12 +368,16 @@ namespace AgIO
                     SendToLoopBackMessageAOG(data);
 
                     //module data also sent to VR
-                    SendToLoopBackMessageVR(data);
+                    if (isPluginUsed) SendToLoopBackMessageVR(data);
 
                     if (data[3] == 253) traffic.cntrSteerOut += data.Length;
                     if (data[3] == 199) traffic.cntrSteerOut += data.Length;
                     if (data[3] == 237) 
                         traffic.cntrMachineOut += data.Length;
+
+                    //reset hello counters
+                    if (data[3] == 197) traffic.helloFromMachine = 0;
+                    if (data[3] == 199) traffic.helloFromAutoSteer = 0;
                 }
                 //$ = 36 G=71 P=80 K=75
                 else if (data[0] == 36 && (data[1] == 71 || data[1] == 80 || data[1] == 75))

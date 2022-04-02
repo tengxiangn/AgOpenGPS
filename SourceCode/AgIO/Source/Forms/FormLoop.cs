@@ -25,6 +25,9 @@ namespace AgIO
             InitializeComponent();
         }
 
+        //used to send communication check pgn= C8 or 200
+        private byte[] helloFromAgIO = { 0x80, 0x81, 0x7F, 200, 1, 1, 0x47 };
+
         public StringBuilder logNMEASentence = new StringBuilder();
         public StringBuilder logNMEASentence2 = new StringBuilder();
 
@@ -36,6 +39,7 @@ namespace AgIO
 
         public string lastSentence;
 
+        public bool isPluginUsed;
         //The base directory where Drive will be stored and fields and vehicles branch from
         public string baseDirectory;
 
@@ -55,6 +59,7 @@ namespace AgIO
             LoadLoopback();
 
             isSendNMEAToUDP = Properties.Settings.Default.setUDP_isSendNMEAToUDP;
+            isPluginUsed = Properties.Settings.Default.setUDP_isUsePluginApp;
 
             lblGPS1Comm.Text = "---";
 
@@ -146,6 +151,9 @@ namespace AgIO
 
             DoTraffic();
 
+            //send a hello to modules
+            SendUDPMessage(helloFromAgIO);
+
             lblCurentLon.Text = longitude.ToString("N7");
             lblCurrentLat.Text = latitude.ToString("N7");
 
@@ -156,6 +164,12 @@ namespace AgIO
             //every 3 seconds
             if ((secondsSinceStart - lastSecond) > 2)
             {
+                if (traffic.helloFromMachine < 3) btnMachine.BackColor = Color.LightGreen;
+                else btnMachine.BackColor = Color.Orange;
+
+                if (traffic.helloFromAutoSteer < 3) btnSteer.BackColor = Color.LightGreen;
+                else btnSteer.BackColor = Color.Orange;
+
                 if (isLogNMEA)
                 {
                     using (StreamWriter writer = new StreamWriter("zAgIO_log.txt", true))
@@ -382,6 +396,9 @@ namespace AgIO
 
         private void DoTraffic()
         {
+            traffic.helloFromMachine++;
+            traffic.helloFromAutoSteer++;
+
             lblToAOG.Text = traffic.cntrPGNToAOG == 0 ? "--" : (traffic.cntrPGNToAOG).ToString();
             lblFromAOG.Text = traffic.cntrPGNFromAOG == 0 ? "--" : (traffic.cntrPGNFromAOG).ToString();
 
@@ -402,17 +419,17 @@ namespace AgIO
             lblToModule3.Text = traffic.cntrModule3In == 0 ? "--" : (traffic.cntrModule3In).ToString();
             lblFromModule3.Text = traffic.cntrModule3Out == 0 ? "--" : (traffic.cntrModule3Out).ToString();
 
-            if (traffic.cntrSteerIn > 0 && traffic.cntrSteerOut > 0) btnSteer.BackColor = Color.LightGreen;
-            else btnSteer.BackColor = Color.Wheat;
+            //if (traffic.cntrSteerIn > 0 && traffic.cntrSteerOut > 0) btnSteer.BackColor = Color.LightGreen;
+            //else btnSteer.BackColor = Color.Orange;
 
             if (traffic.cntrGPSOut > 0) btnGPS.BackColor = Color.LightGreen;
-            else btnGPS.BackColor = Color.Wheat;
+            else btnGPS.BackColor = Color.Orange;
 
-            if (traffic.cntrMachineOut > 0 && traffic.cntrMachineIn > 0) btnMachine.BackColor = Color.LightGreen;
-            else btnMachine.BackColor = Color.Wheat;
+            //if (traffic.cntrMachineOut > 0 && traffic.cntrMachineIn > 0) btnMachine.BackColor = Color.LightGreen;
+            //else btnMachine.BackColor = Color.Orange;
 
             if (traffic.cntrPGNFromAOG > 0 && traffic.cntrPGNToAOG > 0) btnAOGButton.BackColor = Color.LightGreen;
-            else btnAOGButton.BackColor = Color.Wheat;
+            else btnAOGButton.BackColor = Color.Orange;
 
             traffic.cntrPGNToAOG = traffic.cntrPGNFromAOG = //traffic.cntrUDPIn = traffic.cntrUDPOut =
                 traffic.cntrGPSOut = traffic.cntrGPS2In = traffic.cntrGPS2Out =

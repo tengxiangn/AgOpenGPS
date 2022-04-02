@@ -116,5 +116,8 @@
     <Setting Name="setIP_localAOG" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.5.5</Value>
     </Setting>
+    <Setting Name="setUDP_isUsePluginApp" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -477,5 +477,17 @@ namespace AgIO.Properties {
                 this["setIP_localAOG"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setUDP_isUsePluginApp {
+            get {
+                return ((bool)(this["setUDP_isUsePluginApp"]));
+            }
+            set {
+                this["setUDP_isUsePluginApp"] = value;
+            }
+        }
     }
 }

@@ -652,7 +652,7 @@ namespace AgIO
             // 
             // btnAOGButton
             // 
-            this.btnAOGButton.BackColor = System.Drawing.Color.Wheat;
+            this.btnAOGButton.BackColor = System.Drawing.Color.Orange;
             this.btnAOGButton.BackgroundImage = global::AgIO.Properties.Resources.B_AoG;
             this.btnAOGButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAOGButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;

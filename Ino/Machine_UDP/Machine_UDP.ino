@@ -80,6 +80,9 @@
     //read value from Machine data and set 1 or zero according to list
     uint8_t relayState[] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 
+    uint8_t helloFromMachine[] = {0x80, 0x81, 0x73, 197, 1, 1, 0x47};
+
+
   const uint8_t LOOP_TIME = 200; //5hz
   uint32_t lastTime = LOOP_TIME;
   uint32_t currentTime = LOOP_TIME;
@@ -302,6 +305,13 @@
               watchdogTimer = 0;
               
           }
+
+          else if (udpData[3] == 200) // Hello from AgIO
+          {
+              if (udpData[5] == 1)
+                  ether.sendUdp(helloFromMachine, sizeof(helloFromMachine), portMy, ipDestination, portDestination);
+          }
+
 
           else if (udpData[3] == 238)
           {

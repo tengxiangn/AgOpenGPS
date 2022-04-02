@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.listboxIP = new System.Windows.Forms.ListBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -51,12 +52,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cboxIsUDPOn = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboxPlugin = new System.Windows.Forms.CheckBox();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudThisPort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAutoSteerPort)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -79,6 +82,15 @@
             this.groupBox4.TabIndex = 72;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "This Computer";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 155);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 50);
+            this.label1.TabIndex = 140;
+            this.label1.Text = "Available Networks";
             // 
             // label12
             // 
@@ -218,7 +230,7 @@
             this.btnSerialCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSerialCancel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSerialCancel.Image = global::AgIO.Properties.Resources.Cancel64;
-            this.btnSerialCancel.Location = new System.Drawing.Point(441, 398);
+            this.btnSerialCancel.Location = new System.Drawing.Point(441, 500);
             this.btnSerialCancel.Name = "btnSerialCancel";
             this.btnSerialCancel.Size = new System.Drawing.Size(88, 59);
             this.btnSerialCancel.TabIndex = 71;
@@ -233,7 +245,7 @@
             this.btnSerialOK.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSerialOK.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSerialOK.Image = global::AgIO.Properties.Resources.OK64;
-            this.btnSerialOK.Location = new System.Drawing.Point(554, 396);
+            this.btnSerialOK.Location = new System.Drawing.Point(554, 498);
             this.btnSerialOK.Name = "btnSerialOK";
             this.btnSerialOK.Size = new System.Drawing.Size(102, 59);
             this.btnSerialOK.TabIndex = 70;
@@ -347,7 +359,7 @@
             this.cboxIsUDPOn.Font = new System.Drawing.Font("Tahoma", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxIsUDPOn.Location = new System.Drawing.Point(42, 42);
             this.cboxIsUDPOn.Name = "cboxIsUDPOn";
-            this.cboxIsUDPOn.Size = new System.Drawing.Size(190, 58);
+            this.cboxIsUDPOn.Size = new System.Drawing.Size(190, 62);
             this.cboxIsUDPOn.TabIndex = 92;
             this.cboxIsUDPOn.Text = "On";
             this.cboxIsUDPOn.UseVisualStyleBackColor = true;
@@ -356,29 +368,50 @@
             // 
             this.groupBox2.Controls.Add(this.cboxIsUDPOn);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(399, 256);
+            this.groupBox2.Location = new System.Drawing.Point(399, 357);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(257, 115);
+            this.groupBox2.Size = new System.Drawing.Size(257, 126);
             this.groupBox2.TabIndex = 93;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "UDP Networking Off On";
             // 
-            // label1
+            // groupBox3
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 155);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 50);
-            this.label1.TabIndex = 140;
-            this.label1.Text = "Available Networks";
+            this.groupBox3.Controls.Add(this.cboxPlugin);
+            this.groupBox3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(399, 251);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(257, 92);
+            this.groupBox3.TabIndex = 94;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Application Plugin";
+            // 
+            // cboxPlugin
+            // 
+            this.cboxPlugin.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cboxPlugin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cboxPlugin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cboxPlugin.Checked = true;
+            this.cboxPlugin.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxPlugin.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleGreen;
+            this.cboxPlugin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboxPlugin.Font = new System.Drawing.Font("Tahoma", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxPlugin.Location = new System.Drawing.Point(80, 38);
+            this.cboxPlugin.Name = "cboxPlugin";
+            this.cboxPlugin.Size = new System.Drawing.Size(81, 46);
+            this.cboxPlugin.TabIndex = 92;
+            this.cboxPlugin.Text = "On";
+            this.cboxPlugin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboxPlugin.UseVisualStyleBackColor = true;
             // 
             // FormUDP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(672, 467);
+            this.ClientSize = new System.Drawing.Size(672, 569);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
@@ -402,6 +435,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,5 +467,7 @@
         private System.Windows.Forms.ListBox listboxIP;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox cboxPlugin;
     }
 }

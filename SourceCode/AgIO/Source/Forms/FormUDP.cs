@@ -46,11 +46,13 @@ namespace AgIO
             //Properties.Settings.Default.setIP_rateMachinePort = (int)nudRateMachinePort.Value;
 
             Properties.Settings.Default.setUDP_isOn = cboxIsUDPOn.Checked;
+            Properties.Settings.Default.setUDP_isUsePluginApp = cboxPlugin.Checked;
             //Properties.Settings.Default.setUDP_isSendNMEAToUDP = cboxIsSendNMEAToUDP.Checked;
 
             Properties.Settings.Default.Save();
 
             Close();
+            
         }
 
         private void FormUDp_Load(object sender, EventArgs e)
@@ -68,6 +70,7 @@ namespace AgIO
             nudAutoSteerPort.Value = Properties.Settings.Default.setIP_autoSteerPort;
 
             cboxIsUDPOn.Checked = Properties.Settings.Default.setUDP_isOn;
+            cboxPlugin.Checked = Properties.Settings.Default.setUDP_isUsePluginApp;
             //cboxIsSendNMEAToUDP.Checked = Properties.Settings.Default.setUDP_isSendNMEAToUDP;
         }
 
