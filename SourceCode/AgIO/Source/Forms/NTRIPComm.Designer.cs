@@ -250,6 +250,7 @@ namespace AgIO
         {
             //update gui with stats
             tripBytes += (uint)data.Length;
+            traffic.cntrGPSIn++; 
 
             //reset watchdog since we have updated data
             NTRIP_Watchdog = 0;
@@ -272,8 +273,6 @@ namespace AgIO
                     //WriteErrorLog("NTRIP Data UDP Send" + ex.ToString());
                 }
             }
-
-            //SendToLoopBackMessageVR(data);
         }
 
         public void SendGGA()

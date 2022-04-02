@@ -41,19 +41,16 @@ namespace AgIO
                 if (spRtcm.IsOpen)
                 {
                     spRtcm.Write(data, 0, data.Length);
-                    traffic.cntrGPSIn += data.Length;
                 }
 
                 else if (spGPS.IsOpen)
                 {
                     spGPS.Write(data, 0, data.Length);
-                    traffic.cntrGPSIn += data.Length;
                 }
             }
             catch (Exception)
             {
             }
-
         }
 
         public void OpenGPSPort()

@@ -426,12 +426,6 @@ namespace AgIO
                     if (byteData.Length != 0)
                         sendToUDPSocket.BeginSendTo(byteData, 0, byteData.Length, SocketFlags.None, epAutoSteer, 
                             new AsyncCallback(SendDataUDPAsync), null);
-
-                    //traffic.cntrUDPOut += byteData.Length;
-
-                    if (traffic.cntrGPSIn > 4000) traffic.cntrGPSIn = 0;
-                    traffic.cntrGPSIn += byteData.Length;
-
                 }
                 catch (Exception)
                 {

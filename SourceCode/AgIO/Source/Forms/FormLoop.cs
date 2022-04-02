@@ -204,6 +204,7 @@ namespace AgIO
 
         private void btnBringUpCommSettings_Click(object sender, EventArgs e)
         {
+            SettingsCommunicationGPS();
         }
 
         private void btnUDP_Click(object sender, EventArgs e)
@@ -251,7 +252,7 @@ namespace AgIO
                 btnStartStopNtrip.Visible = true;
                 lblWatch.Visible = true;
                 lblNTRIPBytes.Visible = true;
-                lblBytes.Visible = true;
+                lblToGPS.Visible = true;
             }
             else
             {
@@ -259,7 +260,7 @@ namespace AgIO
                 btnStartStopNtrip.Visible = false;
                 lblWatch.Visible = false;
                 lblNTRIPBytes.Visible = false;
-                lblBytes.Visible = false;
+                lblToGPS.Visible = false;
             }
 
             btnStartStopNtrip.Text = "Off";
@@ -407,6 +408,7 @@ namespace AgIO
 
             lblFromGPS.Text = traffic.cntrGPSOut == 0 ? "--" : (traffic.cntrGPSOut).ToString();
             lblToGPS.Text = traffic.cntrGPSIn == 0 ? "--" : (traffic.cntrGPSIn).ToString();
+
             lblToGPS2.Text = traffic.cntrGPS2Out == 0 ? "--" : (traffic.cntrGPS2Out).ToString();
             lblFromGPS2.Text = traffic.cntrGPS2In == 0 ? "--" : (traffic.cntrGPS2In).ToString();
 
@@ -439,6 +441,8 @@ namespace AgIO
 
             lblCurentLon.Text = longitude.ToString("N7");
             lblCurrentLat.Text = latitude.ToString("N7");
+
+            if (traffic.cntrGPSIn > 9999) traffic.cntrGPSIn = 0;
         }
     }
 }
