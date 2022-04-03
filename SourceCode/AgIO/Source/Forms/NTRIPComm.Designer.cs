@@ -50,7 +50,6 @@ namespace AgIO
 
         //NTRIP metering
         Queue<byte> rawTrip = new Queue<byte>();
-        private byte[] trip = new byte[128];
 
         private void NTRIPtick(object o, EventArgs e)
         {
@@ -265,53 +264,56 @@ namespace AgIO
             {
                 rawTrip.Enqueue(data[i]);
             }
+            if (rawTrip.Count > 0) ntripMeterTimer.Enabled = true;
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            lblToGPS.Text = traffic.cntrGPSIn == 0 ? "--" : (traffic.cntrGPSIn).ToString();
+            //how many sends have occured
+            traffic.cntrGPSIn++;
+            
+            //how many bytes in the Queue
             int cnt = rawTrip.Count;
+
+            //we really should get here, but have to check
             if (cnt == 0) return;
 
 
-            traffic.cntrGPSIn++;
-            if (cnt > 128)
-            {
-                cnt = 128;
+            //128 bytes chunks max
+            if (cnt > 128) cnt = 128;
 
-                for (int i = 0; i < cnt; i++)
-                {
-                    trip[i] = rawTrip.Dequeue();
-                    SendNTRIP(trip);
-                }
-            }
-            else
-            {
-                byte[] trip = new byte[cnt];
+            //new data array to send
+            byte[] trip = new byte[cnt];
 
-                for (int i = 0; i < cnt; i++)
-                {
-                    trip[i] = rawTrip.Dequeue();
-                    SendNTRIP(trip);
-                }
+            //dequeue into the array
+            for (int i = 0; i < cnt; i++) trip[i] = rawTrip.Dequeue();
+
+            //send it
+            SendNTRIP(trip);
+
+            //Are we done?
+            if (rawTrip.Count == 0)
+            {
+                ntripMeterTimer.Enabled = false;
+                lblToGPS.Text = traffic.cntrGPSIn == 0 ? "--" : (traffic.cntrGPSIn).ToString();
             }
 
-            if (rawTrip.Count > 6000) rawTrip.Clear();
-            lblCount.Text = rawTrip.Count.ToString(); 
+            //Can't keep up of internet dumped a shit load so clear
+            if (rawTrip.Count > 10000) rawTrip.Clear();
+
+            //show how many bytes left in the queue
+            lblCount.Text = rawTrip.Count.ToString();
         }
 
 
         public void SendNTRIP(byte[] data)
         {
             //serial send out GPS port
-            if (toUDP_Port == 0)
             {
                 SendGPSPort(data);
             }
 
             //send out UDP Port
-            else
-            {
                 try
                 {
                     SendUDPMessageNTRIP(data, toUDP_Port);
@@ -320,7 +322,6 @@ namespace AgIO
                 {
                     //WriteErrorLog("NTRIP Data UDP Send" + ex.ToString());
                 }
-            }
 
             //rawTrip.Clear();    
 

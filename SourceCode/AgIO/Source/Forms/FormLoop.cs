@@ -291,20 +291,7 @@ namespace AgIO
 
         private void toolStripGPSData_Click(object sender, EventArgs e)
         {
-            Form f = Application.OpenForms["FormGPSData"];
-
-            if (f != null)
-            {
-                f.Focus();
-                f.Close();
-                isGPSSentencesOn = false;
-                return;
-            }
-
-            isGPSSentencesOn = true;
-
-            Form form = new FormGPSData(this);
-            form.Show(this);
+            SettingsRadio();
         }
 
         private void toolStripAgDiag_Click(object sender, EventArgs e)

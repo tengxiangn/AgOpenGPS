@@ -58,6 +58,10 @@ namespace AgIO
             //IPAddress[] ipaddress = Dns.GetHostAddresses(hostName);
             GetIP4AddressList();
 
+            cboxToSerial.Checked = Properties.Settings.Default.setNTRIP_sendToSerial;
+            cboxToUDP.Checked = Properties.Settings.Default.setNTRIP_sendToUDP;
+
+
             tboxLocalNtripIP.Text = Properties.Settings.Default.setIP_localNTRIP;
 
             tboxEnterURL.Text = Properties.Settings.Default.setNTRIP_casterURL;
@@ -180,6 +184,9 @@ namespace AgIO
             Properties.Settings.Default.setNTRIP_isHTTP10 = cboxHTTP.Text == "1.0";
             Properties.Settings.Default.setNTRIP_isTCP = checkBoxusetcp.Checked;
 
+            Properties.Settings.Default.setNTRIP_sendToSerial = cboxToSerial.Checked;
+            Properties.Settings.Default.setNTRIP_sendToUDP = cboxToUDP.Checked;
+            
             if (Properties.Settings.Default.setNTRIP_isOn && Properties.Settings.Default.setRadio_isOn)
             {
                 mf.TimedMessageBox(2000, "Radio also enabled", "Radio is also enabled, diabling it");

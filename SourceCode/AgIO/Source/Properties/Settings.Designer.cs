@@ -181,7 +181,7 @@ namespace AgIO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2233")]
         public int setNTRIP_sendToUDPPort {
             get {
                 return ((int)(this["setNTRIP_sendToUDPPort"]));
@@ -487,6 +487,30 @@ namespace AgIO.Properties {
             }
             set {
                 this["setUDP_isUsePluginApp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setNTRIP_sendToSerial {
+            get {
+                return ((bool)(this["setNTRIP_sendToSerial"]));
+            }
+            set {
+                this["setNTRIP_sendToSerial"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setNTRIP_sendToUDP {
+            get {
+                return ((bool)(this["setNTRIP_sendToUDP"]));
+            }
+            set {
+                this["setNTRIP_sendToUDP"] = value;
             }
         }
     }
