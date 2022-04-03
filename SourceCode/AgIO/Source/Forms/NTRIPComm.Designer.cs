@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Globalization;
 using System.IO.Ports;
+using System.Collections.Generic;
 
 // Declare the delegate prototype to send data back to the form
 delegate void UpdateRTCM_Data(byte[] data);
@@ -46,6 +47,10 @@ namespace AgIO
 
         public bool isRadio_RequiredOn = false;
         internal SerialPort spRadio = new SerialPort("Radio", 9600, Parity.None, 8, StopBits.One);
+
+        //NTRIP metering
+        Queue<byte> rawTrip = new Queue<byte>();
+        private byte[] trip = new byte[128];
 
         private void NTRIPtick(object o, EventArgs e)
         {
@@ -250,11 +255,54 @@ namespace AgIO
         {
             //update gui with stats
             tripBytes += (uint)data.Length;
-            traffic.cntrGPSIn++; 
+
 
             //reset watchdog since we have updated data
             NTRIP_Watchdog = 0;
 
+            //move the ntrip stream to queue
+            for (int i = 0; i < data.Length; i++)
+            {
+                rawTrip.Enqueue(data[i]);
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            lblToGPS.Text = traffic.cntrGPSIn == 0 ? "--" : (traffic.cntrGPSIn).ToString();
+            int cnt = rawTrip.Count;
+            if (cnt == 0) return;
+
+
+            traffic.cntrGPSIn++;
+            if (cnt > 128)
+            {
+                cnt = 128;
+
+                for (int i = 0; i < cnt; i++)
+                {
+                    trip[i] = rawTrip.Dequeue();
+                    SendNTRIP(trip);
+                }
+            }
+            else
+            {
+                byte[] trip = new byte[cnt];
+
+                for (int i = 0; i < cnt; i++)
+                {
+                    trip[i] = rawTrip.Dequeue();
+                    SendNTRIP(trip);
+                }
+            }
+
+            if (rawTrip.Count > 6000) rawTrip.Clear();
+            lblCount.Text = rawTrip.Count.ToString(); 
+        }
+
+
+        public void SendNTRIP(byte[] data)
+        {
             //serial send out GPS port
             if (toUDP_Port == 0)
             {
@@ -273,6 +321,9 @@ namespace AgIO
                     //WriteErrorLog("NTRIP Data UDP Send" + ex.ToString());
                 }
             }
+
+            //rawTrip.Clear();    
+
         }
 
         public void SendGGA()
