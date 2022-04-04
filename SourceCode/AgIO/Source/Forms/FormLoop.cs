@@ -33,6 +33,8 @@ namespace AgIO
 
         public bool isKeyboardOn = true;
 
+        public bool isSendToSerial = false, isSendToUDP = false;
+
         public bool isGPSSentencesOn = false, isSendNMEAToUDP;
 
         public double secondsSinceStart, lastSecond;
@@ -60,7 +62,8 @@ namespace AgIO
 
             isSendNMEAToUDP = Properties.Settings.Default.setUDP_isSendNMEAToUDP;
             isPluginUsed = Properties.Settings.Default.setUDP_isUsePluginApp;
-
+            isSendToSerial = Settings.Default.setNTRIP_sendToSerial;
+            isSendToUDP = Settings.Default.setNTRIP_sendToUDP;
             lblGPS1Comm.Text = "---";
 
             //set baud and port from last time run

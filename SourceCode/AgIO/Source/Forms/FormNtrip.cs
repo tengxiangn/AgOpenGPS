@@ -186,7 +186,11 @@ namespace AgIO
 
             Properties.Settings.Default.setNTRIP_sendToSerial = cboxToSerial.Checked;
             Properties.Settings.Default.setNTRIP_sendToUDP = cboxToUDP.Checked;
-            
+
+            mf.isSendToSerial = cboxToSerial.Checked;
+            mf.isSendToUDP = cboxToUDP.Checked;
+
+
             if (Properties.Settings.Default.setNTRIP_isOn && Properties.Settings.Default.setRadio_isOn)
             {
                 mf.TimedMessageBox(2000, "Radio also enabled", "Radio is also enabled, diabling it");

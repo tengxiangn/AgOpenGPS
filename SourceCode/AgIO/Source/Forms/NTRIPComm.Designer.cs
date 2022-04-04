@@ -309,11 +309,14 @@ namespace AgIO
         public void SendNTRIP(byte[] data)
         {
             //serial send out GPS port
+            if (isSendToSerial)
             {
                 SendGPSPort(data);
             }
 
             //send out UDP Port
+            if (isSendToUDP)
+            {
                 try
                 {
                     SendUDPMessageNTRIP(data, toUDP_Port);
@@ -322,9 +325,7 @@ namespace AgIO
                 {
                     //WriteErrorLog("NTRIP Data UDP Send" + ex.ToString());
                 }
-
-            //rawTrip.Clear();    
-
+            }
         }
 
         public void SendGGA()
