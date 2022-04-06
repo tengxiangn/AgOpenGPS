@@ -18,8 +18,6 @@ namespace AgIO
         [System.Runtime.InteropServices.DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr hWind, int nCmdShow);
 
-        SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
-
         public FormLoop()
         {
             InitializeComponent();
@@ -42,6 +40,9 @@ namespace AgIO
         public string lastSentence;
 
         public bool isPluginUsed;
+
+        public int packetSizeNTRIP;
+
         //The base directory where Drive will be stored and fields and vehicles branch from
         public string baseDirectory;
 
@@ -60,10 +61,14 @@ namespace AgIO
             if (Settings.Default.setUDP_isOn) LoadUDPNetwork();
             LoadLoopback();
 
+            packetSizeNTRIP = Properties.Settings.Default.setNTRIP_packetSize;
+
             isSendNMEAToUDP = Properties.Settings.Default.setUDP_isSendNMEAToUDP;
             isPluginUsed = Properties.Settings.Default.setUDP_isUsePluginApp;
+
             isSendToSerial = Settings.Default.setNTRIP_sendToSerial;
             isSendToUDP = Settings.Default.setNTRIP_sendToUDP;
+
             lblGPS1Comm.Text = "---";
 
             //set baud and port from last time run
@@ -73,7 +78,11 @@ namespace AgIO
             if (wasGPSConnectedLastRun)
             {
                 OpenGPSPort();
-                if (spGPS.IsOpen) lblGPS1Comm.Text = portNameGPS;
+
+                if (spGPS.IsOpen)
+                {
+                    lblGPS1Comm.Text = portNameGPS;
+                }
             }
 
             // set baud and port for rtcm from last time run
@@ -393,9 +402,6 @@ namespace AgIO
             lblToAOG.Text = traffic.cntrPGNToAOG == 0 ? "--" : (traffic.cntrPGNToAOG).ToString();
             lblFromAOG.Text = traffic.cntrPGNFromAOG == 0 ? "--" : (traffic.cntrPGNFromAOG).ToString();
 
-            //lblFromUDP.Text = traffic.cntrUDPIn == 0 ? "--" : (traffic.cntrUDPIn).ToString();
-            //lblToUDP.Text = traffic.cntrUDPOut == 0 ? "--" : (traffic.cntrUDPOut).ToString();
-
             lblFromGPS.Text = traffic.cntrGPSOut == 0 ? "--" : (traffic.cntrGPSOut).ToString();
 
             lblToGPS2.Text = traffic.cntrGPS2Out == 0 ? "--" : (traffic.cntrGPS2Out).ToString();
@@ -410,14 +416,8 @@ namespace AgIO
             lblToModule3.Text = traffic.cntrModule3In == 0 ? "--" : (traffic.cntrModule3In).ToString();
             lblFromModule3.Text = traffic.cntrModule3Out == 0 ? "--" : (traffic.cntrModule3Out).ToString();
 
-            //if (traffic.cntrSteerIn > 0 && traffic.cntrSteerOut > 0) btnSteer.BackColor = Color.LightGreen;
-            //else btnSteer.BackColor = Color.Orange;
-
             if (traffic.cntrGPSOut > 0) btnGPS.BackColor = Color.LightGreen;
             else btnGPS.BackColor = Color.Orange;
-
-            //if (traffic.cntrMachineOut > 0 && traffic.cntrMachineIn > 0) btnMachine.BackColor = Color.LightGreen;
-            //else btnMachine.BackColor = Color.Orange;
 
             if (traffic.cntrPGNFromAOG > 0 && traffic.cntrPGNToAOG > 0) btnAOGButton.BackColor = Color.LightGreen;
             else btnAOGButton.BackColor = Color.Orange;

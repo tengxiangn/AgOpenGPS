@@ -137,11 +137,6 @@ namespace AgIO
 
                     // Connect to server non-Blocking method
                     clientSocket.Blocking = false;
-
-                    IPAddress localIPAddress = IPAddress.Parse(Properties.Settings.Default.setIP_localNTRIP);
-                    IPEndPoint localEndPoint = new IPEndPoint(localIPAddress, 0);
-                    clientSocket.Bind(localEndPoint);
-
                     clientSocket.BeginConnect(new IPEndPoint(IPAddress.Parse(broadCasterIP), broadCasterPort), new AsyncCallback(OnConnect), null);
                 }
                 catch (Exception)
@@ -247,43 +242,47 @@ namespace AgIO
             {
                 //MessageBox.Show(this, ex.Message, "Send Message Failed!");
             }
-
         }
+
 
         public void OnAddMessage(byte[] data)
         {
             //update gui with stats
             tripBytes += (uint)data.Length;
 
-
             //reset watchdog since we have updated data
             NTRIP_Watchdog = 0;
+
+            if (rawTrip.Count == 0) lblToGPS.Text = "-";
+
 
             //move the ntrip stream to queue
             for (int i = 0; i < data.Length; i++)
             {
                 rawTrip.Enqueue(data[i]);
             }
-            if (rawTrip.Count > 0) ntripMeterTimer.Enabled = true;
+            
+            ntripMeterTimer.Enabled = true;
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
             //how many sends have occured
             traffic.cntrGPSIn++;
-            
+
             //how many bytes in the Queue
             int cnt = rawTrip.Count;
 
             //we really should get here, but have to check
             if (cnt == 0) return;
 
-
-            //128 bytes chunks max
-            if (cnt > 128) cnt = 128;
+            //settable bytes chunks max
+            if (cnt > packetSizeNTRIP) cnt = packetSizeNTRIP;
 
             //new data array to send
             byte[] trip = new byte[cnt];
+
+            traffic.cntrGPSInBytes += cnt;
 
             //dequeue into the array
             for (int i = 0; i < cnt; i++) trip[i] = rawTrip.Dequeue();
@@ -295,10 +294,11 @@ namespace AgIO
             if (rawTrip.Count == 0)
             {
                 ntripMeterTimer.Enabled = false;
-                lblToGPS.Text = traffic.cntrGPSIn == 0 ? "--" : (traffic.cntrGPSIn).ToString();
+                lblToGPS.Text = traffic.cntrGPSInBytes == 0 ? "--" : (traffic.cntrGPSInBytes).ToString();
+                traffic.cntrGPSInBytes = 0;
             }
 
-            //Can't keep up of internet dumped a shit load so clear
+            //Can't keep up as internet dumped a shit load so clear
             if (rawTrip.Count > 10000) rawTrip.Clear();
 
             //show how many bytes left in the queue

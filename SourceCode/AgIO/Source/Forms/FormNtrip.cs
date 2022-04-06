@@ -61,9 +61,6 @@ namespace AgIO
             cboxToSerial.Checked = Properties.Settings.Default.setNTRIP_sendToSerial;
             cboxToUDP.Checked = Properties.Settings.Default.setNTRIP_sendToUDP;
 
-
-            tboxLocalNtripIP.Text = Properties.Settings.Default.setIP_localNTRIP;
-
             tboxEnterURL.Text = Properties.Settings.Default.setNTRIP_casterURL;
 
             tboxCasterIP.Text = Properties.Settings.Default.setNTRIP_casterIP;
@@ -90,6 +87,8 @@ namespace AgIO
 
             if (Properties.Settings.Default.setNTRIP_isHTTP10) cboxHTTP.Text = "1.0";
             else cboxHTTP.Text = "1.1";
+
+            comboboxPacketSize.Text = mf.packetSizeNTRIP.ToString();    
         }
 
         //get the ipv4 address only
@@ -163,9 +162,9 @@ namespace AgIO
             }
         }
 
+
         private void btnSerialOK_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.setIP_localNTRIP = tboxLocalNtripIP.Text.Trim();
             Properties.Settings.Default.setNTRIP_casterIP = tboxCasterIP.Text;
             Properties.Settings.Default.setNTRIP_casterPort = (int)nudCasterPort.Value;
             Properties.Settings.Default.setNTRIP_sendToUDPPort = (int)nudSendToUDPPort.Value;
@@ -189,6 +188,9 @@ namespace AgIO
 
             mf.isSendToSerial = cboxToSerial.Checked;
             mf.isSendToUDP = cboxToUDP.Checked;
+
+            mf.packetSizeNTRIP = Convert.ToInt32(comboboxPacketSize.Text);
+            Properties.Settings.Default.setNTRIP_packetSize = Convert.ToInt32(comboboxPacketSize.Text);
 
 
             if (Properties.Settings.Default.setNTRIP_isOn && Properties.Settings.Default.setRadio_isOn)
@@ -214,7 +216,6 @@ namespace AgIO
             tboxCurrentLat.Text = mf.latitude.ToString();
             tboxCurrentLon.Text = mf.longitude.ToString();
         }
-
 
         private readonly List<string> dataList = new List<string>();
 
@@ -377,11 +378,6 @@ namespace AgIO
             if (tboxUserPassword.PasswordChar == '*') tboxUserPassword.PasswordChar = '\0';
             else tboxUserPassword.PasswordChar = '*';
             tboxUserPassword.Invalidate();
-        }
-
-        private void listboxIP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            tboxLocalNtripIP.Text = listboxIP.SelectedItem.ToString();
         }
     }
 }

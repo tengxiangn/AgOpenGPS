@@ -16,6 +16,7 @@ namespace AgIO
         //public int cntrUDPIn = 0;
 
         public int cntrGPSOut = 0;
+        public int cntrGPSInBytes = 0;
         public int cntrGPSIn = 0;
 
         public int cntrGPS2In = 0;
@@ -29,8 +30,6 @@ namespace AgIO
 
         public int cntrModule3In = 0;
         public int cntrModule3Out = 0;
-
-        public bool isTrafficOn = true;
 
         public uint helloFromMachine = 0, helloFromAutoSteer = 0;
     }
@@ -64,42 +63,72 @@ namespace AgIO
         //initialize loopback and udp network
         private void LoadUDPNetwork()
         {
+            IPAddress localIPAddress = IPAddress.Parse("127.0.0.1");
+
+            bool isDot5Found = false;
+
             try //udp network
             {
-                // Initialise the socket
-                sendToUDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                
-                IPAddress localIPAddress = IPAddress.Parse(Properties.Settings.Default.setIP_localAOG);
-                IPEndPoint localEndPoint = new IPEndPoint(localIPAddress, 0);
-                sendToUDPSocket.Bind(localEndPoint);
+                foreach (IPAddress IPA in Dns.GetHostAddresses(Dns.GetHostName()))
+                {
+                    if (IPA.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        byte[] data = IPA.GetAddressBytes();
+                        //  Split string by ".", check that array length is 3
+                        if (data[0] == 192 && data[1] == 168 && data[2] == 5)
+                        {
+                            if (data[3] < 255 && data[3] > 1)
+                            {
+                                localIPAddress = IPA;
+                                isDot5Found = true;
+                                break;
+                            }
+                        }
+                    }
+                }
 
-                sendToUDPSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
+                if (isDot5Found)
+                {
+                    // Initialise the socket
+                    sendToUDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-                // AgIO sends to this endpoint - usually 192.168.5.255:8888
-                epModule = new IPEndPoint(epIP, 8888);
+                    IPEndPoint localEndPoint = new IPEndPoint(localIPAddress, 0);
+                    sendToUDPSocket.Bind(localEndPoint);
 
-                //Initialize Recv socket
-                recvFromUDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                recvFromUDPSocket.EnableBroadcast = true;
+                    sendToUDPSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
 
-                // AgIO listens to this endpoint
-                recvFromUDPSocket.Bind(new IPEndPoint(IPAddress.Any, 9999));
+                    // AgIO sends to this endpoint - usually 192.168.1.255:8888
+                    epModule = new IPEndPoint(epIP, 8888);
 
-                // Initialise the IPEndPoint for async listener!
-                EndPoint client = new IPEndPoint(IPAddress.Any, 0);
+                    //Initialize Recv socket
+                    recvFromUDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                    recvFromUDPSocket.EnableBroadcast = true;
 
-                // Start listening for incoming data
-                recvFromUDPSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref client, 
-                    new AsyncCallback(ReceiveDataUDPAsync), recvFromUDPSocket);
-                isUDPNetworkConnected = true;
-                btnUDP.BackColor = Color.LightGreen;
+                    // AgIO listens to this endpoint
+                    recvFromUDPSocket.Bind(new IPEndPoint(IPAddress.Any, 9999));
+
+                    // Initialise the IPEndPoint for async listener!
+                    EndPoint client = new IPEndPoint(IPAddress.Any, 0);
+
+                    // Start listening for incoming data
+                    recvFromUDPSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref client,
+                        new AsyncCallback(ReceiveDataUDPAsync), recvFromUDPSocket);
+                    isUDPNetworkConnected = true;
+                    btnUDP.BackColor = Color.LightGreen;
+                }
+
+                else
+                {
+                    MessageBox.Show("Network Address -> 192.168.5.xxx <- may not exist. \r\n"
+                    + "Are you sure ethernet is connected?\r\n\r\n", "Network Connection Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnUDP.BackColor = Color.Orange;
+                }
             }
             catch (Exception e)
             {
                 //WriteErrorLog("UDP Server" + e);
-                MessageBox.Show("Network Address -> " + Properties.Settings.Default.setIP_localAOG + " May not exist. \r\n" 
-                    + "Are you sure ethernet is connected?\r\n\r\n" 
-                    + "Windows Error Message: " + e.Message, "Network Connection Error", 
+                MessageBox.Show(e.Message, "Network Connection Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnUDP.BackColor = Color.Orange;
             }
@@ -371,13 +400,11 @@ namespace AgIO
                     if (isPluginUsed) SendToLoopBackMessageVR(data);
 
                     if (data[3] == 253) traffic.cntrSteerOut += data.Length;
-                    if (data[3] == 199) traffic.cntrSteerOut += data.Length;
-                    if (data[3] == 237) 
-                        traffic.cntrMachineOut += data.Length;
+                    if (data[3] == 237) traffic.cntrMachineOut += data.Length;
 
                     //reset hello counters
-                    if (data[3] == 197) traffic.helloFromMachine = 0;
                     if (data[3] == 199) traffic.helloFromAutoSteer = 0;
+                    if (data[3] == 197) traffic.helloFromMachine = 0;
                 }
                 //$ = 36 G=71 P=80 K=75
                 else if (data[0] == 36 && (data[1] == 71 || data[1] == 80 || data[1] == 75))

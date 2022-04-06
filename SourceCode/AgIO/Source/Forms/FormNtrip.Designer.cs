@@ -35,8 +35,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tboxHostName = new System.Windows.Forms.TextBox();
-            this.tboxLocalNtripIP = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.nudSendToUDPPort = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tboxUserName = new System.Windows.Forms.TextBox();
             this.tboxUserPassword = new System.Windows.Forms.TextBox();
@@ -70,17 +71,17 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.listboxIP = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboxToSerial = new System.Windows.Forms.CheckBox();
+            this.cboxToUDP = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.comboboxPacketSize = new System.Windows.Forms.ComboBox();
+            this.labelRtcmPort = new System.Windows.Forms.Label();
             this.cboxIsNTRIPOn = new System.Windows.Forms.CheckBox();
             this.btnSerialCancel = new System.Windows.Forms.Button();
             this.btnSerialOK = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.cboxToSerial = new System.Windows.Forms.CheckBox();
-            this.cboxToUDP = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudCasterPort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSendToUDPPort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGGAInterval)).BeginInit();
@@ -95,7 +96,7 @@
             // tboxCasterIP
             // 
             this.tboxCasterIP.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxCasterIP.Location = new System.Drawing.Point(91, 452);
+            this.tboxCasterIP.Location = new System.Drawing.Point(83, 458);
             this.tboxCasterIP.Name = "tboxCasterIP";
             this.tboxCasterIP.ReadOnly = true;
             this.tboxCasterIP.Size = new System.Drawing.Size(157, 33);
@@ -107,7 +108,7 @@
             // 
             this.nudCasterPort.BackColor = System.Drawing.Color.AliceBlue;
             this.nudCasterPort.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudCasterPort.Location = new System.Drawing.Point(493, 420);
+            this.nudCasterPort.Location = new System.Drawing.Point(494, 427);
             this.nudCasterPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -133,17 +134,17 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(489, 392);
+            this.label6.Location = new System.Drawing.Point(434, 436);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(123, 25);
+            this.label6.Size = new System.Drawing.Size(57, 25);
             this.label6.TabIndex = 81;
-            this.label6.Text = "Caster Port:";
+            this.label6.Text = "Port:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(49, 455);
+            this.label5.Location = new System.Drawing.Point(41, 461);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 25);
             this.label5.TabIndex = 82;
@@ -152,38 +153,38 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 291);
+            this.label4.Location = new System.Drawing.Point(28, 263);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(334, 35);
+            this.label4.Size = new System.Drawing.Size(297, 56);
             this.label4.TabIndex = 83;
             this.label4.Text = "Enter Broadcaster URL or IP ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // tboxHostName
             // 
-            this.tboxHostName.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxHostName.Location = new System.Drawing.Point(106, 29);
+            this.tboxHostName.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxHostName.Location = new System.Drawing.Point(91, 32);
             this.tboxHostName.Name = "tboxHostName";
             this.tboxHostName.ReadOnly = true;
-            this.tboxHostName.Size = new System.Drawing.Size(221, 33);
+            this.tboxHostName.Size = new System.Drawing.Size(221, 30);
             this.tboxHostName.TabIndex = 86;
             this.tboxHostName.Text = "HostName";
             // 
-            // tboxLocalNtripIP
+            // label14
             // 
-            this.tboxLocalNtripIP.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxLocalNtripIP.Location = new System.Drawing.Point(108, 114);
-            this.tboxLocalNtripIP.Name = "tboxLocalNtripIP";
-            this.tboxLocalNtripIP.ReadOnly = true;
-            this.tboxLocalNtripIP.Size = new System.Drawing.Size(168, 33);
-            this.tboxLocalNtripIP.TabIndex = 73;
-            this.tboxLocalNtripIP.Text = "192.168.1.255";
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(38, 35);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(47, 23);
+            this.label14.TabIndex = 85;
+            this.label14.Text = "Host";
             // 
             // nudSendToUDPPort
             // 
             this.nudSendToUDPPort.BackColor = System.Drawing.Color.AliceBlue;
             this.nudSendToUDPPort.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudSendToUDPPort.Location = new System.Drawing.Point(571, 172);
+            this.nudSendToUDPPort.Location = new System.Drawing.Point(567, 169);
             this.nudSendToUDPPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -200,21 +201,31 @@
             0});
             this.nudSendToUDPPort.Enter += new System.EventHandler(this.NudSendToUDPPort_Enter);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(53, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(27, 23);
+            this.label10.TabIndex = 76;
+            this.label10.Text = "IP";
+            // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(551, 138);
+            this.label7.Location = new System.Drawing.Point(537, 127);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 31);
+            this.label7.Size = new System.Drawing.Size(180, 31);
             this.label7.TabIndex = 99;
-            this.label7.Text = "UDP Port:";
+            this.label7.Text = "To UDP Port";
             this.label7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // tboxUserName
             // 
             this.tboxUserName.BackColor = System.Drawing.Color.AliceBlue;
             this.tboxUserName.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxUserName.Location = new System.Drawing.Point(395, 82);
+            this.tboxUserName.Location = new System.Drawing.Point(389, 63);
             this.tboxUserName.Name = "tboxUserName";
             this.tboxUserName.PasswordChar = '*';
             this.tboxUserName.Size = new System.Drawing.Size(252, 33);
@@ -225,7 +236,7 @@
             // 
             this.tboxUserPassword.BackColor = System.Drawing.Color.AliceBlue;
             this.tboxUserPassword.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxUserPassword.Location = new System.Drawing.Point(395, 153);
+            this.tboxUserPassword.Location = new System.Drawing.Point(389, 134);
             this.tboxUserPassword.Name = "tboxUserPassword";
             this.tboxUserPassword.PasswordChar = '*';
             this.tboxUserPassword.Size = new System.Drawing.Size(252, 33);
@@ -236,7 +247,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(399, 54);
+            this.label3.Location = new System.Drawing.Point(393, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 25);
             this.label3.TabIndex = 102;
@@ -246,7 +257,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(399, 125);
+            this.label12.Location = new System.Drawing.Point(393, 106);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 25);
             this.label12.TabIndex = 103;
@@ -256,7 +267,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(389, 298);
+            this.label13.Location = new System.Drawing.Point(394, 291);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(70, 25);
             this.label13.TabIndex = 105;
@@ -266,9 +277,9 @@
             // 
             this.tboxMount.BackColor = System.Drawing.Color.AliceBlue;
             this.tboxMount.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxMount.Location = new System.Drawing.Point(394, 329);
+            this.tboxMount.Location = new System.Drawing.Point(380, 322);
             this.tboxMount.Name = "tboxMount";
-            this.tboxMount.Size = new System.Drawing.Size(322, 33);
+            this.tboxMount.Size = new System.Drawing.Size(341, 33);
             this.tboxMount.TabIndex = 104;
             this.tboxMount.Click += new System.EventHandler(this.tboxMount_Click);
             // 
@@ -276,7 +287,7 @@
             // 
             this.nudGGAInterval.BackColor = System.Drawing.Color.AliceBlue;
             this.nudGGAInterval.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudGGAInterval.Location = new System.Drawing.Point(475, 376);
+            this.nudGGAInterval.Location = new System.Drawing.Point(445, 373);
             this.nudGGAInterval.Maximum = new decimal(new int[] {
             600,
             0,
@@ -296,18 +307,18 @@
             // label15
             // 
             this.label15.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(434, 314);
+            this.label15.Location = new System.Drawing.Point(411, 333);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(196, 58);
+            this.label15.Size = new System.Drawing.Size(196, 33);
             this.label15.TabIndex = 107;
-            this.label15.Text = "GGA Send Interval (secs)";
+            this.label15.Text = "GGA Interval (secs)";
             this.label15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // tboxEnterURL
             // 
             this.tboxEnterURL.BackColor = System.Drawing.Color.AliceBlue;
             this.tboxEnterURL.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxEnterURL.Location = new System.Drawing.Point(17, 329);
+            this.tboxEnterURL.Location = new System.Drawing.Point(21, 322);
             this.tboxEnterURL.Name = "tboxEnterURL";
             this.tboxEnterURL.Size = new System.Drawing.Size(341, 33);
             this.tboxEnterURL.TabIndex = 108;
@@ -318,7 +329,7 @@
             // 
             this.btnGetIP.BackColor = System.Drawing.SystemColors.MenuBar;
             this.btnGetIP.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetIP.Location = new System.Drawing.Point(91, 392);
+            this.btnGetIP.Location = new System.Drawing.Point(83, 381);
             this.btnGetIP.Name = "btnGetIP";
             this.btnGetIP.Size = new System.Drawing.Size(157, 40);
             this.btnGetIP.TabIndex = 109;
@@ -330,7 +341,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 71);
+            this.label2.Location = new System.Drawing.Point(23, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 23);
             this.label2.TabIndex = 115;
@@ -340,7 +351,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(31, 126);
+            this.label8.Location = new System.Drawing.Point(18, 137);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 23);
             this.label8.TabIndex = 116;
@@ -356,7 +367,7 @@
             0,
             0,
             131072});
-            this.nudLatitude.Location = new System.Drawing.Point(89, 71);
+            this.nudLatitude.Location = new System.Drawing.Point(76, 82);
             this.nudLatitude.Maximum = new decimal(new int[] {
             90,
             0,
@@ -387,7 +398,7 @@
             0,
             0,
             131072});
-            this.nudLongitude.Location = new System.Drawing.Point(89, 126);
+            this.nudLongitude.Location = new System.Drawing.Point(76, 137);
             this.nudLongitude.Maximum = new decimal(new int[] {
             180,
             0,
@@ -411,7 +422,7 @@
             // tboxCurrentLat
             // 
             this.tboxCurrentLat.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxCurrentLat.Location = new System.Drawing.Point(89, 315);
+            this.tboxCurrentLat.Location = new System.Drawing.Point(75, 310);
             this.tboxCurrentLat.Name = "tboxCurrentLat";
             this.tboxCurrentLat.ReadOnly = true;
             this.tboxCurrentLat.Size = new System.Drawing.Size(224, 33);
@@ -421,10 +432,10 @@
             // tboxCurrentLon
             // 
             this.tboxCurrentLon.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxCurrentLon.Location = new System.Drawing.Point(88, 361);
+            this.tboxCurrentLon.Location = new System.Drawing.Point(75, 369);
             this.tboxCurrentLon.Name = "tboxCurrentLon";
             this.tboxCurrentLon.ReadOnly = true;
-            this.tboxCurrentLon.Size = new System.Drawing.Size(225, 33);
+            this.tboxCurrentLon.Size = new System.Drawing.Size(224, 33);
             this.tboxCurrentLon.TabIndex = 120;
             this.tboxCurrentLon.Text = "-111.1234567";
             // 
@@ -437,7 +448,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(45, 276);
+            this.label9.Location = new System.Drawing.Point(31, 271);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(319, 32);
             this.label9.TabIndex = 122;
@@ -448,7 +459,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(41, 319);
+            this.label11.Location = new System.Drawing.Point(27, 314);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(42, 23);
             this.label11.TabIndex = 123;
@@ -458,7 +469,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(36, 365);
+            this.label16.Location = new System.Drawing.Point(23, 373);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(47, 23);
             this.label16.TabIndex = 124;
@@ -467,7 +478,7 @@
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(58, 35);
+            this.label17.Location = new System.Drawing.Point(45, 46);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(269, 30);
             this.label17.TabIndex = 125;
@@ -478,7 +489,7 @@
             // 
             this.btnGetSourceTable.BackColor = System.Drawing.SystemColors.MenuBar;
             this.btnGetSourceTable.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetSourceTable.Location = new System.Drawing.Point(437, 251);
+            this.btnGetSourceTable.Location = new System.Drawing.Point(486, 252);
             this.btnGetSourceTable.Name = "btnGetSourceTable";
             this.btnGetSourceTable.Size = new System.Drawing.Size(235, 37);
             this.btnGetSourceTable.TabIndex = 127;
@@ -489,9 +500,9 @@
             // btnSetManualPosition
             // 
             this.btnSetManualPosition.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetManualPosition.Location = new System.Drawing.Point(88, 410);
+            this.btnSetManualPosition.Location = new System.Drawing.Point(75, 430);
             this.btnSetManualPosition.Name = "btnSetManualPosition";
-            this.btnSetManualPosition.Size = new System.Drawing.Size(225, 37);
+            this.btnSetManualPosition.Size = new System.Drawing.Size(224, 33);
             this.btnSetManualPosition.TabIndex = 121;
             this.btnSetManualPosition.Text = "Send To Manual Fix";
             this.btnSetManualPosition.UseVisualStyleBackColor = true;
@@ -506,7 +517,7 @@
             this.cboxGGAManual.Items.AddRange(new object[] {
             "Use Manual Fix",
             "Use GPS Fix"});
-            this.cboxGGAManual.Location = new System.Drawing.Point(89, 179);
+            this.cboxGGAManual.Location = new System.Drawing.Point(76, 190);
             this.cboxGGAManual.Name = "cboxGGAManual";
             this.cboxGGAManual.Size = new System.Drawing.Size(192, 33);
             this.cboxGGAManual.TabIndex = 128;
@@ -515,7 +526,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(488, 424);
+            this.label19.Location = new System.Drawing.Point(564, 381);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(81, 25);
             this.label19.TabIndex = 131;
@@ -527,7 +538,7 @@
             this.checkBoxusetcp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Teal;
             this.checkBoxusetcp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxusetcp.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxusetcp.Location = new System.Drawing.Point(24, 138);
+            this.checkBoxusetcp.Location = new System.Drawing.Point(45, 148);
             this.checkBoxusetcp.Name = "checkBoxusetcp";
             this.checkBoxusetcp.Size = new System.Drawing.Size(129, 41);
             this.checkBoxusetcp.TabIndex = 132;
@@ -537,7 +548,7 @@
             // btnPassUsername
             // 
             this.btnPassUsername.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPassUsername.Location = new System.Drawing.Point(653, 79);
+            this.btnPassUsername.Location = new System.Drawing.Point(647, 60);
             this.btnPassUsername.Name = "btnPassUsername";
             this.btnPassUsername.Size = new System.Drawing.Size(63, 40);
             this.btnPassUsername.TabIndex = 133;
@@ -548,7 +559,7 @@
             // btnPassPassword
             // 
             this.btnPassPassword.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPassPassword.Location = new System.Drawing.Point(653, 150);
+            this.btnPassPassword.Location = new System.Drawing.Point(647, 131);
             this.btnPassPassword.Name = "btnPassPassword";
             this.btnPassPassword.Size = new System.Drawing.Size(63, 40);
             this.btnPassPassword.TabIndex = 134;
@@ -565,7 +576,7 @@
             this.cboxHTTP.Items.AddRange(new object[] {
             "1.0",
             "1.1"});
-            this.cboxHTTP.Location = new System.Drawing.Point(51, 63);
+            this.cboxHTTP.Location = new System.Drawing.Point(68, 72);
             this.cboxHTTP.Name = "cboxHTTP";
             this.cboxHTTP.Size = new System.Drawing.Size(80, 33);
             this.cboxHTTP.TabIndex = 135;
@@ -574,7 +585,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(60, 37);
+            this.label20.Location = new System.Drawing.Point(77, 46);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(62, 23);
             this.label20.TabIndex = 136;
@@ -596,29 +607,27 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.AliceBlue;
-            this.tabPage1.Controls.Add(this.tboxHostName);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.BackColor = System.Drawing.Color.Azure;
             this.tabPage1.Controls.Add(this.listboxIP);
             this.tabPage1.Controls.Add(this.tboxUserPassword);
             this.tabPage1.Controls.Add(this.btnGetSourceTable);
             this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.btnPassPassword);
-            this.tabPage1.Controls.Add(this.btnPassUsername);
-            this.tabPage1.Controls.Add(this.tboxMount);
             this.tabPage1.Controls.Add(this.tboxUserName);
-            this.tabPage1.Controls.Add(this.btnGetIP);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.tboxCasterIP);
+            this.tabPage1.Controls.Add(this.tboxMount);
             this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.btnPassPassword);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.btnPassUsername);
+            this.tabPage1.Controls.Add(this.btnGetIP);
+            this.tabPage1.Controls.Add(this.tboxCasterIP);
             this.tabPage1.Controls.Add(this.tboxEnterURL);
             this.tabPage1.Controls.Add(this.nudCasterPort);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.tboxLocalNtripIP);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.label14);
+            this.tabPage1.Controls.Add(this.tboxHostName);
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -626,36 +635,9 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Source";
             // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 50);
-            this.label1.TabIndex = 143;
-            this.label1.Text = "Available Networks";
-            // 
-            // label14
-            // 
-            this.label14.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(8, 29);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(96, 50);
-            this.label14.TabIndex = 142;
-            this.label14.Text = "Computer Name";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 117);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 23);
-            this.label10.TabIndex = 141;
-            this.label10.Text = "Using IP";
-            // 
             // listboxIP
             // 
+            this.listboxIP.Enabled = false;
             this.listboxIP.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listboxIP.FormattingEnabled = true;
             this.listboxIP.ItemHeight = 29;
@@ -663,15 +645,15 @@
             "1",
             "2",
             "3"});
-            this.listboxIP.Location = new System.Drawing.Point(106, 156);
+            this.listboxIP.Location = new System.Drawing.Point(91, 94);
             this.listboxIP.Name = "listboxIP";
-            this.listboxIP.Size = new System.Drawing.Size(215, 120);
-            this.listboxIP.TabIndex = 137;
-            this.listboxIP.SelectedIndexChanged += new System.EventHandler(this.listboxIP_SelectedIndexChanged);
+            this.listboxIP.Size = new System.Drawing.Size(221, 120);
+            this.listboxIP.TabIndex = 144;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Azure;
+            this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.cboxToSerial);
             this.tabPage2.Controls.Add(this.cboxToUDP);
             this.tabPage2.Controls.Add(this.label7);
@@ -698,9 +680,96 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Position";
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(434, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(240, 31);
+            this.label1.TabIndex = 142;
+            this.label1.Text = "Sending NTRIP";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // cboxToSerial
+            // 
+            this.cboxToSerial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboxToSerial.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cboxToSerial.BackColor = System.Drawing.Color.Salmon;
+            this.cboxToSerial.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cboxToSerial.Checked = true;
+            this.cboxToSerial.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxToSerial.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.cboxToSerial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboxToSerial.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxToSerial.Location = new System.Drawing.Point(395, 82);
+            this.cboxToSerial.Name = "cboxToSerial";
+            this.cboxToSerial.Size = new System.Drawing.Size(150, 50);
+            this.cboxToSerial.TabIndex = 140;
+            this.cboxToSerial.Text = "To Serial";
+            this.cboxToSerial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboxToSerial.UseVisualStyleBackColor = false;
+            // 
+            // cboxToUDP
+            // 
+            this.cboxToUDP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboxToUDP.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cboxToUDP.BackColor = System.Drawing.Color.Salmon;
+            this.cboxToUDP.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cboxToUDP.Checked = true;
+            this.cboxToUDP.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxToUDP.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.cboxToUDP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboxToUDP.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxToUDP.Location = new System.Drawing.Point(395, 164);
+            this.cboxToUDP.Name = "cboxToUDP";
+            this.cboxToUDP.Size = new System.Drawing.Size(150, 50);
+            this.cboxToUDP.TabIndex = 141;
+            this.cboxToUDP.Text = "To UDP";
+            this.cboxToUDP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboxToUDP.UseVisualStyleBackColor = false;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.comboboxPacketSize);
+            this.tabPage3.Controls.Add(this.labelRtcmPort);
+            this.tabPage3.Controls.Add(this.cboxHTTP);
+            this.tabPage3.Controls.Add(this.checkBoxusetcp);
+            this.tabPage3.Controls.Add(this.label20);
+            this.tabPage3.Location = new System.Drawing.Point(4, 44);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(733, 515);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Advanced";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // comboboxPacketSize
+            // 
+            this.comboboxPacketSize.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboboxPacketSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboboxPacketSize.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
+            this.comboboxPacketSize.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.comboboxPacketSize.FormattingEnabled = true;
+            this.comboboxPacketSize.Items.AddRange(new object[] {
+            "64",
+            "128",
+            "256"});
+            this.comboboxPacketSize.Location = new System.Drawing.Point(53, 344);
+            this.comboboxPacketSize.Name = "comboboxPacketSize";
+            this.comboboxPacketSize.Size = new System.Drawing.Size(112, 37);
+            this.comboboxPacketSize.TabIndex = 138;
+            // 
+            // labelRtcmPort
+            // 
+            this.labelRtcmPort.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRtcmPort.Location = new System.Drawing.Point(48, 295);
+            this.labelRtcmPort.Name = "labelRtcmPort";
+            this.labelRtcmPort.Size = new System.Drawing.Size(121, 47);
+            this.labelRtcmPort.TabIndex = 137;
+            this.labelRtcmPort.Text = "UDP Send Packet Size";
+            this.labelRtcmPort.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // cboxIsNTRIPOn
             // 
-            this.cboxIsNTRIPOn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cboxIsNTRIPOn.Appearance = System.Windows.Forms.Appearance.Button;
             this.cboxIsNTRIPOn.BackColor = System.Drawing.Color.Salmon;
             this.cboxIsNTRIPOn.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -709,11 +778,11 @@
             this.cboxIsNTRIPOn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.cboxIsNTRIPOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboxIsNTRIPOn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxIsNTRIPOn.Location = new System.Drawing.Point(241, 589);
+            this.cboxIsNTRIPOn.Location = new System.Drawing.Point(237, 586);
             this.cboxIsNTRIPOn.Name = "cboxIsNTRIPOn";
             this.cboxIsNTRIPOn.Size = new System.Drawing.Size(150, 50);
             this.cboxIsNTRIPOn.TabIndex = 92;
-            this.cboxIsNTRIPOn.Text = "NTRIP";
+            this.cboxIsNTRIPOn.Text = "NTRIP On";
             this.cboxIsNTRIPOn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cboxIsNTRIPOn.UseVisualStyleBackColor = false;
             // 
@@ -749,56 +818,6 @@
             this.btnSerialOK.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnSerialOK.UseVisualStyleBackColor = true;
             this.btnSerialOK.Click += new System.EventHandler(this.btnSerialOK_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.checkBoxusetcp);
-            this.tabPage3.Controls.Add(this.label20);
-            this.tabPage3.Controls.Add(this.cboxHTTP);
-            this.tabPage3.Location = new System.Drawing.Point(4, 44);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(733, 515);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Advanced";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // cboxToSerial
-            // 
-            this.cboxToSerial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboxToSerial.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cboxToSerial.BackColor = System.Drawing.Color.Salmon;
-            this.cboxToSerial.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cboxToSerial.Checked = true;
-            this.cboxToSerial.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cboxToSerial.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.cboxToSerial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboxToSerial.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxToSerial.Location = new System.Drawing.Point(385, 68);
-            this.cboxToSerial.Name = "cboxToSerial";
-            this.cboxToSerial.Size = new System.Drawing.Size(150, 50);
-            this.cboxToSerial.TabIndex = 138;
-            this.cboxToSerial.Text = "To Serial";
-            this.cboxToSerial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cboxToSerial.UseVisualStyleBackColor = false;
-            // 
-            // cboxToUDP
-            // 
-            this.cboxToUDP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboxToUDP.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cboxToUDP.BackColor = System.Drawing.Color.Salmon;
-            this.cboxToUDP.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cboxToUDP.Checked = true;
-            this.cboxToUDP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cboxToUDP.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.cboxToUDP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboxToUDP.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxToUDP.Location = new System.Drawing.Point(385, 167);
-            this.cboxToUDP.Name = "cboxToUDP";
-            this.cboxToUDP.Size = new System.Drawing.Size(150, 50);
-            this.cboxToUDP.TabIndex = 139;
-            this.cboxToUDP.Text = "To UDP";
-            this.cboxToUDP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cboxToUDP.UseVisualStyleBackColor = false;
             // 
             // FormNtrip
             // 
@@ -843,8 +862,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tboxHostName;
-        private System.Windows.Forms.TextBox tboxLocalNtripIP;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown nudSendToUDPPort;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnSerialCancel;
         private System.Windows.Forms.Button btnSerialOK;
         private System.Windows.Forms.Label label7;
@@ -881,12 +901,12 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ListBox listboxIP;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.CheckBox cboxToSerial;
         private System.Windows.Forms.CheckBox cboxToUDP;
+        private System.Windows.Forms.ListBox listboxIP;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ComboBox comboboxPacketSize;
+        private System.Windows.Forms.Label labelRtcmPort;
     }
 }
