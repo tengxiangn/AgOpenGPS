@@ -447,6 +447,7 @@ namespace AgIO
             {
                 try
                 {
+
                     IPEndPoint epAutoSteer = new IPEndPoint(epIP, port);
 
                     // Send packet to the zero
