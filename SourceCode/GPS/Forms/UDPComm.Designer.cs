@@ -10,13 +10,13 @@ namespace AgOpenGPS
 {
     public partial class FormGPS
     {
-        // - App Sockets  -----------------------------------------------------
-        private Socket sendToAppSocket;
-        private Socket recvFromAppSocket;
         private int toolGPSWatchdog = 20;
+        // - App Sockets  -----------------------------------------------------
+        private Socket loopBackSocket;
 
         //endpoints of modules
-        private EndPoint epAgIO, epSender = new IPEndPoint(IPAddress.Any, 0);
+        private EndPoint epAgIO = new IPEndPoint(IPAddress.Parse("127.255.255.255"), 17777);
+        private EndPoint endPointLoopBack = new IPEndPoint(IPAddress.Loopback, 0);
 
         // Data stream
         private byte[] loopBuffer = new byte[1024];
@@ -322,26 +322,11 @@ namespace AgOpenGPS
             try
             {
                 // Initialise the socket
-                sendToAppSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-                //sendToAppSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-                sendToAppSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
-                sendToAppSocket.Bind(new IPEndPoint(IPAddress.Loopback, 15550));
-
-                // AOG sends to AgIO using this endpoint
-                epAgIO = new IPEndPoint(IPAddress.Parse("127.255.255.255"), 17777);
-
-                // Initialise the client socket
-                recvFromAppSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-                // IPEndPoint for AOG  to listen on 
-                recvFromAppSocket.Bind(new IPEndPoint(IPAddress.Loopback, 15555));
-
-                // Initialise the IPEndPoint for the client
-                EndPoint clientEp = new IPEndPoint(IPAddress.Any, 0);
-
-                // Start listening for incoming data
-                recvFromAppSocket.BeginReceiveFrom(loopBuffer, 0, loopBuffer.Length, SocketFlags.None, ref clientEp, new AsyncCallback(ReceiveAppData), recvFromAppSocket);
+                loopBackSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                loopBackSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
+                loopBackSocket.Bind(new IPEndPoint(IPAddress.Loopback, 15555));
+                loopBackSocket.BeginReceiveFrom(loopBuffer, 0, loopBuffer.Length, SocketFlags.None,
+                    ref endPointLoopBack, new AsyncCallback(ReceiveAppData), null);
             }
             catch (Exception ex)
             {
@@ -368,29 +353,17 @@ namespace AgOpenGPS
         {
             try
             {
-                // Initialise the IPEndPoint for the clients
-
                 // Receive all data
-                int msgLen = recvFromAppSocket.EndReceiveFrom(asyncResult, ref epSender);
+                int msgLen = loopBackSocket.EndReceiveFrom(asyncResult, ref endPointLoopBack);
 
                 byte[] localMsg = new byte[msgLen];
                 Array.Copy(loopBuffer, localMsg, msgLen);
 
                 // Listen for more connections again...
-                recvFromAppSocket.BeginReceiveFrom(loopBuffer, 0, loopBuffer.Length, SocketFlags.None, ref epSender, new AsyncCallback(ReceiveAppData), recvFromAppSocket);
+                loopBackSocket.BeginReceiveFrom(loopBuffer, 0, loopBuffer.Length, SocketFlags.None,
+                    ref endPointLoopBack, new AsyncCallback(ReceiveAppData), null);
 
-                int Length = Math.Max((localMsg[4]) + 5, 5);
-                if (localMsg.Length > Length)
-                {
-                    byte CK_A = 0;
-                    for (int j = 2; j < Length; j++)
-                    {
-                        CK_A += localMsg[j];
-                    }
-
-                    if (localMsg[Length] == (byte)CK_A)
-                        BeginInvoke((MethodInvoker)(() => ReceiveFromAgIO(localMsg)));
-                }
+                BeginInvoke((MethodInvoker)(() => ReceiveFromAgIO(localMsg)));
             }
             catch (Exception)
             {
@@ -398,21 +371,9 @@ namespace AgOpenGPS
             }
         }
 
-        public void SendAsyncLoopData(IAsyncResult asyncResult)
-        {
-            try
-            {
-                sendToAppSocket.EndSend(asyncResult);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SendData Error: " + ex.Message, "UDP Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         public void SendPgnToLoop(byte[] byteData)
         {
-            if (sendToAppSocket != null)
+            if (loopBackSocket != null && byteData.Length > 2)
             {
                 try
                 {
@@ -423,15 +384,26 @@ namespace AgOpenGPS
                     }
                     byteData[byteData.Length - 1] = (byte)crc;
 
-                    if (byteData.Length != 0)
-                        sendToAppSocket.BeginSendTo(byteData, 0, byteData.Length,
-                            SocketFlags.None, epAgIO, new AsyncCallback(SendAsyncLoopData), null);
+                    loopBackSocket.BeginSendTo(byteData, 0, byteData.Length, SocketFlags.None,
+                        epAgIO, new AsyncCallback(SendAsyncLoopData), null);
                 }
                 catch (Exception)
                 {
                     //WriteErrorLog("Sending UDP Message" + e.ToString());
                     //MessageBox.Show("Send Error: " + e.Message, "UDP Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        public void SendAsyncLoopData(IAsyncResult asyncResult)
+        {
+            try
+            {
+                loopBackSocket.EndSend(asyncResult);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SendData Error: " + ex.Message, "UDP Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

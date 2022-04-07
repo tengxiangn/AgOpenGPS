@@ -132,6 +132,9 @@ namespace AgIO
                         clientSocket.Close();
                     }
 
+
+                    epNtrip = new IPEndPoint(IPAddress.Parse("192.168.5.255"), toUDP_Port);
+
                     // Create the socket object
                     clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
@@ -319,7 +322,7 @@ namespace AgIO
             {
                 try
                 {
-                    SendUDPMessageNTRIP(data, toUDP_Port);
+                    SendUDPMessage(data, epNtrip);
                 }
                 catch (Exception)
                 {

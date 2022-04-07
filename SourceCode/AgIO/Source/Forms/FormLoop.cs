@@ -29,6 +29,7 @@ namespace AgIO
         public StringBuilder logNMEASentence = new StringBuilder();
         public StringBuilder logNMEASentence2 = new StringBuilder();
 
+        public bool isLogNMEA;
         public bool isKeyboardOn = true;
 
         public bool isSendToSerial = false, isSendToUDP = false;
@@ -97,21 +98,6 @@ namespace AgIO
 
             ConfigureNTRIP();
 
-            string[] ports = System.IO.Ports.SerialPort.GetPortNames();
-            listBox1.Items.Clear();
-
-            if (ports.Length == 0)
-            {
-                listBox1.Items.Add("None");
-            }
-            else
-            {
-                for (int i = 0; i < ports.Length; i++)
-                {
-                    listBox1.Items.Add(ports[i]);
-                }
-            }
-
             lastSentence = Properties.Settings.Default.setGPS_lastSentence;
 
             timer1.Enabled = true;
@@ -127,26 +113,6 @@ namespace AgIO
         {
             Process.Start("devmgmt.msc");
         }
-
-        private void btnRescanPorts_Click(object sender, EventArgs e)
-        {
-            string[] ports = System.IO.Ports.SerialPort.GetPortNames();
-            listBox1.Items.Clear();
-
-            if (ports.Length == 0)
-            {
-                listBox1.Items.Add("None");
-                return;
-            }
-            else
-            {
-                for (int i = 0; i < ports.Length; i++)
-                {
-                    listBox1.Items.Add(ports[i]);
-                }
-            }
-        }
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -164,7 +130,7 @@ namespace AgIO
             DoTraffic();
 
             //send a hello to modules
-            SendUDPMessage(helloFromAgIO);
+            SendUDPMessage(helloFromAgIO, epModule);
 
             lblCurentLon.Text = longitude.ToString("N7");
             lblCurrentLat.Text = latitude.ToString("N7");
@@ -209,6 +175,46 @@ namespace AgIO
             }
         }
 
+        private void DoTraffic()
+        {
+            traffic.helloFromMachine++;
+            traffic.helloFromAutoSteer++;
+
+            lblToAOG.Text = traffic.cntrPGNToAOG == 0 ? "--" : (traffic.cntrPGNToAOG).ToString();
+            lblFromAOG.Text = traffic.cntrPGNFromAOG == 0 ? "--" : (traffic.cntrPGNFromAOG).ToString();
+
+            lblFromGPS.Text = traffic.cntrGPSOut == 0 ? "--" : (traffic.cntrGPSOut).ToString();
+
+            lblToGPS2.Text = traffic.cntrGPS2Out == 0 ? "--" : (traffic.cntrGPS2Out).ToString();
+            lblFromGPS2.Text = traffic.cntrGPS2In == 0 ? "--" : (traffic.cntrGPS2In).ToString();
+
+            lblToSteer.Text = traffic.cntrSteerIn == 0 ? "--" : (traffic.cntrSteerIn).ToString();
+            lblFromSteer.Text = traffic.cntrSteerOut == 0 ? "--" : (traffic.cntrSteerOut).ToString();
+
+            lblToMachine.Text = traffic.cntrMachineIn == 0 ? "--" : (traffic.cntrMachineIn).ToString();
+            lblFromMachine.Text = traffic.cntrMachineOut == 0 ? "--" : (traffic.cntrMachineOut).ToString();
+
+            lblToModule3.Text = traffic.cntrModule3In == 0 ? "--" : (traffic.cntrModule3In).ToString();
+            lblFromModule3.Text = traffic.cntrModule3Out == 0 ? "--" : (traffic.cntrModule3Out).ToString();
+
+            if (traffic.cntrGPSOut > 0) btnGPS.BackColor = Color.LightGreen;
+            else btnGPS.BackColor = Color.Orange;
+
+            if (traffic.cntrPGNFromAOG > 0 && traffic.cntrPGNToAOG > 0) btnAOGButton.BackColor = Color.LightGreen;
+            else btnAOGButton.BackColor = Color.Orange;
+
+            traffic.cntrPGNToAOG = traffic.cntrPGNFromAOG = //traffic.cntrUDPIn = traffic.cntrUDPOut =
+                traffic.cntrGPSOut = traffic.cntrGPS2In = traffic.cntrGPS2Out =
+                traffic.cntrModule3In = traffic.cntrModule3Out =
+                traffic.cntrSteerIn = traffic.cntrSteerOut =
+                traffic.cntrMachineOut = traffic.cntrMachineIn = 0;
+
+            lblCurentLon.Text = longitude.ToString("N7");
+            lblCurrentLat.Text = latitude.ToString("N7");
+
+            if (traffic.cntrGPSIn > 9999) traffic.cntrGPSIn = 0;
+        }
+
         private void deviceManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("devmgmt.msc");
@@ -232,11 +238,6 @@ namespace AgIO
         private void btnNTRIP_Click(object sender, EventArgs e)
         {
             SettingsNTRIP();
-        }
-
-        private void btnRadio_Click(object sender, EventArgs e)
-        {
-            SettingsRadio();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -344,8 +345,6 @@ namespace AgIO
 
         }
 
-        public bool isLogNMEA;
-
         private void cboxLogNMEA_CheckedChanged(object sender, EventArgs e)
         {
             isLogNMEA = cboxLogNMEA.Checked;
@@ -357,81 +356,23 @@ namespace AgIO
             Properties.Settings.Default.setPort_wasRtcmConnected = wasRtcmConnectedLastRun;
             Properties.Settings.Default.Save();
 
-            if (recvFromAOGLoopBackSocket != null)
+            if (loopBackSocket != null)
             {
                 try
                 {
-                    recvFromAOGLoopBackSocket.Shutdown(SocketShutdown.Both);
+                    loopBackSocket.Shutdown(SocketShutdown.Both);
                 }
-                finally { recvFromAOGLoopBackSocket.Close(); }
+                finally { loopBackSocket.Close(); }
             }
 
-            if (sendToAOGLoopBackSocket != null)
+            if (UDPSocket != null)
             {
                 try
                 {
-                    sendToAOGLoopBackSocket.Shutdown(SocketShutdown.Both);
+                    UDPSocket.Shutdown(SocketShutdown.Both);
                 }
-                finally { sendToAOGLoopBackSocket.Close(); }
+                finally { UDPSocket.Close(); }
             }
-
-            if (sendToUDPSocket != null)
-            {
-                try
-                {
-                    sendToUDPSocket.Shutdown(SocketShutdown.Both);
-                }
-                finally { sendToUDPSocket.Close(); }
-            }
-
-            if (recvFromUDPSocket != null)
-            {
-                try
-                {
-                    recvFromUDPSocket.Shutdown(SocketShutdown.Both);
-                }
-                finally { recvFromUDPSocket.Close(); }
-            }
-        }
-
-        private void DoTraffic()
-        {
-            traffic.helloFromMachine++;
-            traffic.helloFromAutoSteer++;
-
-            lblToAOG.Text = traffic.cntrPGNToAOG == 0 ? "--" : (traffic.cntrPGNToAOG).ToString();
-            lblFromAOG.Text = traffic.cntrPGNFromAOG == 0 ? "--" : (traffic.cntrPGNFromAOG).ToString();
-
-            lblFromGPS.Text = traffic.cntrGPSOut == 0 ? "--" : (traffic.cntrGPSOut).ToString();
-
-            lblToGPS2.Text = traffic.cntrGPS2Out == 0 ? "--" : (traffic.cntrGPS2Out).ToString();
-            lblFromGPS2.Text = traffic.cntrGPS2In == 0 ? "--" : (traffic.cntrGPS2In).ToString();
-
-            lblToSteer.Text = traffic.cntrSteerIn == 0 ? "--" : (traffic.cntrSteerIn).ToString();
-            lblFromSteer.Text = traffic.cntrSteerOut == 0 ? "--" : (traffic.cntrSteerOut).ToString();
-
-            lblToMachine.Text = traffic.cntrMachineIn == 0 ? "--" : (traffic.cntrMachineIn).ToString();
-            lblFromMachine.Text = traffic.cntrMachineOut == 0 ? "--" : (traffic.cntrMachineOut).ToString();
-
-            lblToModule3.Text = traffic.cntrModule3In == 0 ? "--" : (traffic.cntrModule3In).ToString();
-            lblFromModule3.Text = traffic.cntrModule3Out == 0 ? "--" : (traffic.cntrModule3Out).ToString();
-
-            if (traffic.cntrGPSOut > 0) btnGPS.BackColor = Color.LightGreen;
-            else btnGPS.BackColor = Color.Orange;
-
-            if (traffic.cntrPGNFromAOG > 0 && traffic.cntrPGNToAOG > 0) btnAOGButton.BackColor = Color.LightGreen;
-            else btnAOGButton.BackColor = Color.Orange;
-
-            traffic.cntrPGNToAOG = traffic.cntrPGNFromAOG = //traffic.cntrUDPIn = traffic.cntrUDPOut =
-                traffic.cntrGPSOut = traffic.cntrGPS2In = traffic.cntrGPS2Out =
-                traffic.cntrModule3In = traffic.cntrModule3Out =
-                traffic.cntrSteerIn = traffic.cntrSteerOut =
-                traffic.cntrMachineOut = traffic.cntrMachineIn = 0;
-
-            lblCurentLon.Text = longitude.ToString("N7");
-            lblCurrentLat.Text = latitude.ToString("N7");
-
-            if (traffic.cntrGPSIn > 9999) traffic.cntrGPSIn = 0;
         }
     }
 }
