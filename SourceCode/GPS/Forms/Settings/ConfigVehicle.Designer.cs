@@ -349,7 +349,7 @@ namespace AgOpenGPS
         {
             nudAntennaHeight.Value = (int)(Properties.Vehicle.Default.setVehicle_antennaHeight* mf.m2InchOrCm);
 
-            nudAntennaOffset.Value = (int)(Properties.Vehicle.Default.setVehicle_antennaOffset* mf.m2InchOrCm);
+            nudAntennaOffset.Value = (decimal)(Properties.Vehicle.Default.setVehicle_antennaOffset* mf.m2InchOrCm);
 
             nudAntennaPivot.Value = (int)((Properties.Vehicle.Default.setVehicle_antennaPivot)* mf.m2InchOrCm);
 

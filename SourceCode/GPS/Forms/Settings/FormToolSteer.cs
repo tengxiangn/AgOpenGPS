@@ -138,8 +138,14 @@ namespace AgOpenGPS
             if ((sett & 16) == 0) cboxMotorDrive.Text = "IBT2";
             else cboxMotorDrive.Text = "Cytron";
 
-            if ((sett & 32) == 32) cboxDanfoss.Checked = true;
+            if ((sett & 32) == 32) cboxSteerEnable.Text = "Switch";
+            else if ((sett & 64) == 64) cboxSteerEnable.Text = "Button";
+            else cboxSteerEnable.Text = "None";
+
+            if ((sett & 128) == 128) cboxDanfoss.Checked = true;
             else cboxDanfoss.Checked = false;
+
+            
 
             toSend = true; //should send when opening, so the right values are in the module
         }
