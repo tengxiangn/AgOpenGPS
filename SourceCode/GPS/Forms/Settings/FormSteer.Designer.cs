@@ -110,7 +110,6 @@
             this.lblLookAheadMult = new System.Windows.Forms.Label();
             this.hsbarLookAhead = new System.Windows.Forms.HScrollBar();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.label28 = new System.Windows.Forms.Label();
             this.labelPressureTurnSensor = new System.Windows.Forms.Label();
             this.labelCurrentTurnSensor = new System.Windows.Forms.Label();
             this.labelEncoder = new System.Windows.Forms.Label();
@@ -118,8 +117,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.cboxMotorDrive = new System.Windows.Forms.ComboBox();
-            this.cboxSteerEnable = new System.Windows.Forms.ComboBox();
-            this.label62 = new System.Windows.Forms.Label();
             this.cboxConv = new System.Windows.Forms.ComboBox();
             this.label63 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
@@ -140,6 +137,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.hsbarSensor = new System.Windows.Forms.HScrollBar();
             this.lblhsbarSensor = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.cboxSteerEnable = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabSteer.SuspendLayout();
             this.tabGain.SuspendLayout();
@@ -1186,17 +1186,6 @@
             this.imageList1.Images.SetKeyName(2, "ST_StanleyTab.png");
             this.imageList1.Images.SetKeyName(3, "Sf_PPTab.png");
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(717, 307);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(147, 52);
-            this.label28.TabIndex = 513;
-            this.label28.Text = "Button - Push Release, On.   \r\n               Push Release, Off\r\nSwitch - While P" +
-    "ushed is On. \r\n               Released is Off.";
-            // 
             // labelPressureTurnSensor
             // 
             this.labelPressureTurnSensor.AutoSize = true;
@@ -1277,38 +1266,6 @@
             this.cboxMotorDrive.TabIndex = 495;
             this.cboxMotorDrive.Click += new System.EventHandler(this.EnableAlert_Click);
             this.cboxMotorDrive.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.cboxMotorDrive_HelpRequested);
-            // 
-            // cboxSteerEnable
-            // 
-            this.cboxSteerEnable.BackColor = System.Drawing.Color.AliceBlue;
-            this.cboxSteerEnable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxSteerEnable.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboxSteerEnable.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxSteerEnable.FormattingEnabled = true;
-            this.cboxSteerEnable.Items.AddRange(new object[] {
-            "None",
-            "Switch",
-            "Button"});
-            this.cboxSteerEnable.Location = new System.Drawing.Point(702, 261);
-            this.cboxSteerEnable.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.cboxSteerEnable.Name = "cboxSteerEnable";
-            this.cboxSteerEnable.Size = new System.Drawing.Size(175, 37);
-            this.cboxSteerEnable.TabIndex = 498;
-            this.cboxSteerEnable.Click += new System.EventHandler(this.EnableAlert_Click);
-            this.cboxSteerEnable.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.cboxSteerEnable_HelpRequested);
-            // 
-            // label62
-            // 
-            this.label62.BackColor = System.Drawing.Color.Transparent;
-            this.label62.Font = new System.Drawing.Font("Tahoma", 15.75F);
-            this.label62.ForeColor = System.Drawing.Color.Black;
-            this.label62.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label62.Location = new System.Drawing.Point(699, 230);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(181, 29);
-            this.label62.TabIndex = 499;
-            this.label62.Text = "Steer Enable";
-            this.label62.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // cboxConv
             // 
@@ -1642,12 +1599,55 @@
             this.lblhsbarSensor.Text = "0%";
             this.lblhsbarSensor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label62
+            // 
+            this.label62.BackColor = System.Drawing.Color.Transparent;
+            this.label62.Font = new System.Drawing.Font("Tahoma", 15.75F);
+            this.label62.ForeColor = System.Drawing.Color.Black;
+            this.label62.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label62.Location = new System.Drawing.Point(699, 230);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(181, 29);
+            this.label62.TabIndex = 499;
+            this.label62.Text = "Steer Enable";
+            this.label62.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // cboxSteerEnable
+            // 
+            this.cboxSteerEnable.BackColor = System.Drawing.Color.AliceBlue;
+            this.cboxSteerEnable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxSteerEnable.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboxSteerEnable.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxSteerEnable.FormattingEnabled = true;
+            this.cboxSteerEnable.Items.AddRange(new object[] {
+            "None",
+            "Switch",
+            "Button"});
+            this.cboxSteerEnable.Location = new System.Drawing.Point(702, 261);
+            this.cboxSteerEnable.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cboxSteerEnable.Name = "cboxSteerEnable";
+            this.cboxSteerEnable.Size = new System.Drawing.Size(175, 37);
+            this.cboxSteerEnable.TabIndex = 498;
+            this.cboxSteerEnable.Click += new System.EventHandler(this.EnableAlert_Click);
+            this.cboxSteerEnable.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.cboxSteerEnable_HelpRequested);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(717, 307);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(147, 52);
+            this.label28.TabIndex = 513;
+            this.label28.Text = "Button - Push Release, On.   \r\n               Push Release, Off\r\nSwitch - While P" +
+    "ushed is On. \r\n               Released is Off.";
+            // 
             // FormSteer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(362, 423);
+            this.ClientSize = new System.Drawing.Size(892, 423);
             this.Controls.Add(this.lblhsbarSensor);
             this.Controls.Add(this.hsbarSensor);
             this.Controls.Add(this.lblPercentFS);
@@ -1792,7 +1792,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ProgressBar pbarSensor;
         private System.Windows.Forms.Label lblPercentFS;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label labelPressureTurnSensor;
         private System.Windows.Forms.Label labelCurrentTurnSensor;
         private System.Windows.Forms.Label labelEncoder;
@@ -1800,8 +1799,6 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.ComboBox cboxMotorDrive;
-        private System.Windows.Forms.ComboBox cboxSteerEnable;
-        private System.Windows.Forms.Label label62;
         private System.Windows.Forms.ComboBox cboxConv;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label64;
@@ -1822,5 +1819,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.HScrollBar hsbarSensor;
         private System.Windows.Forms.Label lblhsbarSensor;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.ComboBox cboxSteerEnable;
+        private System.Windows.Forms.Label label28;
     }
 }

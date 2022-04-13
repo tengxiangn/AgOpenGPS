@@ -674,8 +674,8 @@ namespace AgOpenGPS
             if (vehicle.ast.isInFreeToolDriveMode)
             {
                 p_233.pgn[p_233.speed] = unchecked((byte)(50));  //speed set to 5 kmh
-
-                guidanceLineDistanceOffTool = (Int16)(vehicle.ast.driveFreeToolDistance * 100);
+                p_233.pgn[p_233.status] = 1;
+                guidanceLineDistanceOffTool = (Int16)(vehicle.ast.driveFreeToolDistance);
 
                 p_233.pgn[p_233.highXTE] = unchecked((byte)(guidanceLineDistanceOffTool >> 8));
                 p_233.pgn[p_233.lowXTE] = unchecked((byte)(guidanceLineDistanceOffTool));

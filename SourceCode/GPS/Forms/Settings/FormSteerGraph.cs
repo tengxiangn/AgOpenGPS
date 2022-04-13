@@ -13,6 +13,10 @@ namespace AgOpenGPS
 
         private string dataPWM = "-1";
 
+        private string dataXTE = "0";
+        private string dataXTEActual = "0";
+        private string dataError = "0";
+
         public FormSteerGraph(Form callingForm)
         {
             mf = callingForm as FormGPS;
@@ -26,7 +30,8 @@ namespace AgOpenGPS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DrawChart();
+            if (tabControl1.TabIndex == 0) DrawChart();
+            if (tabControl1.TabIndex == 1) DrawChartTool();
         }
 
         private void DrawChart()
@@ -63,6 +68,53 @@ namespace AgOpenGPS
                     w.Points.RemoveAt(0);
                 }
                 unoChart.ResetAutoValues();
+            }
+        }
+
+        private void DrawChartTool()
+        {
+            {
+                dataXTE = mf.guidanceLineDistanceOffTool.ToString();
+                dataXTEActual = mf.mc.toolActualDistanceChart.ToString();
+                dataError = mf.mc.toolError.ToString();
+
+                label2.Text = mf.guidanceLineDistanceOffTool.ToString();
+                label3.Text = mf.mc.toolActualDistanceChart.ToString();
+                label7.Text = mf.mc.toolError.ToString();
+            }
+
+            //chart data
+            Series s = chartTool.Series["S"];
+            Series w = chartTool.Series["Actual"]; 
+            Series e = chartTool.Series["Error"];
+
+            double nextX = 1;
+            double nextX5 = 1;
+            double nextE = 1;
+
+            if (s.Points.Count > 0) nextX = s.Points[s.Points.Count - 1].XValue + 1;
+            if (w.Points.Count > 0) nextX5 = w.Points[w.Points.Count - 1].XValue + 1;
+            if (e.Points.Count > 0) nextE = e.Points[e.Points.Count - 1].XValue + 1;
+
+            chartTool.Series["S"].Points.AddXY(nextX, dataXTE);
+            chartTool.Series["PWM"].Points.AddXY(nextX5, dataXTEActual);
+            chartTool.Series["Error"].Points.AddXY(nextE, dataError);
+
+            //if (isScroll)
+            {
+                while (s.Points.Count > 30)
+                {
+                    s.Points.RemoveAt(0);
+                }
+                while (w.Points.Count > 30)
+                {
+                    w.Points.RemoveAt(0);
+                }
+                while (e.Points.Count > 30)
+                {
+                    e.Points.RemoveAt(0);
+                }
+                chartTool.ResetAutoValues();
             }
         }
 

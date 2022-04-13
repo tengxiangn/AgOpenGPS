@@ -994,34 +994,53 @@ namespace AgOpenGPS.Properties {
                 this["setArdMac_user4"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public byte setTool_P {
+        public byte setTool_PXTE
+        {
+            get
+            {
+                return ((byte)(this["setTool_PXTE"]));
+            }
+            set
+            {
+                this["setTool_PXTE"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public byte setTool_IXTE
+        {
+            get
+            {
+                return ((byte)(this["setTool_IXTE"]));
+            }
+            set
+            {
+                this["setTool_IXTE"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public byte setTool_PHyd {
             get {
-                return ((byte)(this["setTool_P"]));
+                return ((byte)(this["setTool_PHyd"]));
             }
             set {
-                this["setTool_P"] = value;
+                this["setTool_PHyd"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte setTool_I {
-            get {
-                return ((byte)(this["setTool_I"]));
-            }
-            set {
-                this["setTool_I"] = value;
-            }
-        }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public byte setTool_MinPWM {
             get {
                 return ((byte)(this["setTool_MinPWM"]));
@@ -1070,9 +1089,9 @@ namespace AgOpenGPS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("127")]
-        public byte setTool_wasOffset {
+        public double setTool_wasOffset {
             get {
-                return ((byte)(this["setTool_wasOffset"]));
+                return ((double)(this["setTool_wasOffset"]));
             }
             set {
                 this["setTool_wasOffset"] = value;

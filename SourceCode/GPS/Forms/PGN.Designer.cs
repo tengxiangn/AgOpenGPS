@@ -318,15 +318,17 @@ namespace AgOpenGPS
             /// <summary>
             /// PGN - 232 - E8 - Tool Steer Config
             /// </summary>
-            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE8, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
-            public int P = 5;
-            public int I = 6;
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE8, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+            public int PXTE = 5;
+            public int IXTE = 6;
             public int minPWM = 7;
             public int highPWM = 8;
             public int windup = 9;
             public int wasCounts = 10;
-            public int wasOffset = 11;
-            public int maxSteer = 12;
+            public int wasOffsetLo = 11;
+            public int wasOffsetHi = 12;
+            public int maxSteer = 13;
+            public int PHyd = 14;
 
             public CPGN_E8()
             {
@@ -359,6 +361,25 @@ namespace AgOpenGPS
                 //pgn[angVel] = 0;
             }
         }
+
+        public class CPGN_E6
+        {
+            /// <summary>
+            /// From tool module 230
+            /// </summary>
+            public byte[] pgn = new byte[] { 0x80, 0x81, 0x7f, 0xE6, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0xCC };
+            public int actualXTELo = 5;
+            public int actualXTEHi = 6;
+            public int errorLo = 7;
+            public int errorHi = 8;
+            public int pwm = 9;
+            public int status = 10;
+
+            public void Reset()
+            {
+            }
+        }
+
 
         /// <summary>
         /// autoSteerData - FE - 254 - 
@@ -408,6 +429,7 @@ namespace AgOpenGPS
         /// ToolSteerSettings PGN - 232 - E8
         /// </summary>
         public CPGN_E7 p_231 = new CPGN_E7();
+
     }
 }
     

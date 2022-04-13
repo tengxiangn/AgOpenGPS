@@ -49,31 +49,38 @@ namespace AgOpenGPS
             }
 
             //WAS Zero, CPD
-            hsbarWasOffset.ValueChanged -= hsbarSteerAngleSensorZero_ValueChanged;
+            hsbarWasOffset.ValueChanged -= hsbarWasOffset_ValueChanged;
             hsbarCountsPerDegree.ValueChanged -= hsbarCountsPerDegree_ValueChanged;
 
-            hsbarWasOffset.Value = Properties.Vehicle.Default.setTool_wasOffset; ;
+            hsbarWasOffset.Value = (int)Properties.Vehicle.Default.setTool_wasOffset; ;
             hsbarCountsPerDegree.Value = Properties.Vehicle.Default.setTool_wasCounts;
 
             lblCountsPerDegree.Text = hsbarCountsPerDegree.Value.ToString();
 
-            hsbarWasOffset.ValueChanged += hsbarSteerAngleSensorZero_ValueChanged;
+            hsbarWasOffset.ValueChanged += hsbarWasOffset_ValueChanged;
             hsbarCountsPerDegree.ValueChanged += hsbarCountsPerDegree_ValueChanged;
 
+            hsbarWasOffset.LargeChange = (int)(hsbarCountsPerDegree.Value * 0.1);
+            lblWasOffset.Text = (hsbarWasOffset.Value / (double)(hsbarCountsPerDegree.Value)).ToString("N1");
 
             //min pwm, kP
             hsbarMinPWM.ValueChanged -= hsbarMinPWM_ValueChanged;
-            hsbarProportionalGain.ValueChanged -= hsbarProportionalGain_ValueChanged;
+            hsbarProportionalGainXTE.ValueChanged -= hsbarProportionalGain_ValueChanged;
 
             hsbarMinPWM.Value = Properties.Vehicle.Default.setTool_MinPWM; ;
             lblMinPWM.Text = hsbarMinPWM.Value.ToString();
 
-            hsbarProportionalGain.Value = Properties.Vehicle.Default.setTool_P; 
-            lblProportionalGain.Text = hsbarProportionalGain.Value.ToString();
+            hsbarProportionalGainXTE.Value = Properties.Vehicle.Default.setTool_PXTE; 
+            lblProportionalGainXTE.Text = hsbarProportionalGainXTE.Value.ToString();
 
             hsbarMinPWM.ValueChanged += hsbarMinPWM_ValueChanged;
-            hsbarProportionalGain.ValueChanged += hsbarProportionalGain_ValueChanged;
+            hsbarProportionalGainXTE.ValueChanged += hsbarProportionalGain_ValueChanged;
 
+            //Hydraulic Prop Gain
+            hsbarProportionalGainHyd.ValueChanged -= hsbarProportionalGainHyd_ValueChanged;
+            hsbarProportionalGainHyd.Value = Properties.Vehicle.Default.setTool_PHyd;
+            lblProportionalGainHyd.Text = hsbarProportionalGainHyd.Value.ToString();
+            hsbarProportionalGainHyd.ValueChanged += hsbarProportionalGainHyd_ValueChanged;
 
             //low steer, high steer
             hsbarWindupLimit.ValueChanged -= hsbarWindupLimit_ValueChanged;
@@ -91,20 +98,20 @@ namespace AgOpenGPS
             //max steer, sidehill comp, integral
             hsbarMaxSteerAngle.ValueChanged -= hsbarMaxSteerAngle_ValueChanged;
             //hsbarSideHillComp.ValueChanged -= hsbarSideHillComp_ValueChanged;
-            hsbarIntegral.ValueChanged -= hsbarIntegral_ValueChanged;
+            hsbarIntegralXTE.ValueChanged -= hsbarIntegral_ValueChanged;
 
             hsbarMaxSteerAngle.Value = (Int16)Properties.Vehicle.Default.setTool_maxSteerAngle;
-            lblMaxSteerAngle.Text = hsbarMaxSteerAngle.Value.ToString();
+            lblMaxSteerAngle.Text = (hsbarMaxSteerAngle.Value * 0.1).ToString("N1");
 
             //hsbarSideHillComp.Value = (int)(Properties.Vehicle.Default.setTool_sideHillComp);
             //lblSideHillComp.Text = hsbarSideHillComp.Value.ToString();
 
-            hsbarIntegral.Value = (int)(Properties.Vehicle.Default.setTool_I);
-            lblPureIntegral.Text = hsbarIntegral.Value.ToString();
+            hsbarIntegralXTE.Value = (int)(Properties.Vehicle.Default.setTool_IXTE);
+            lblIntegralXTE.Text = hsbarIntegralXTE.Value.ToString();
 
             hsbarMaxSteerAngle.ValueChanged += hsbarMaxSteerAngle_ValueChanged;
             //hsbarSideHillComp.ValueChanged += hsbarSideHillComp_ValueChanged;
-            hsbarIntegral.ValueChanged += hsbarIntegral_ValueChanged;
+            hsbarIntegralXTE.ValueChanged += hsbarIntegral_ValueChanged;
 
             //make sure free drive is off
             btnFreeDrive.Image = Properties.Resources.SteerDriveOff;
@@ -113,8 +120,6 @@ namespace AgOpenGPS
             btnToolDistanceUp.Enabled = false;
             //hSBarFreeDrive.Value = 0;
             mf.vehicle.ast.driveFreeToolDistance = 0;
-
-            toSend = false;
 
             int sett = Properties.Vehicle.Default.setArdToolSteer_setting0;
 
@@ -135,6 +140,8 @@ namespace AgOpenGPS
 
             if ((sett & 32) == 32) cboxDanfoss.Checked = true;
             else cboxDanfoss.Checked = false;
+
+            toSend = true; //should send when opening, so the right values are in the module
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -154,30 +161,29 @@ namespace AgOpenGPS
                 CExtensionMethods.SetProgressNoAnimation(pbarLeft, (int)-actAng);
             }
 
-            lblToolDistanceSet.Text = mf.SetSteerAngle;
-            lblToolDistanceActual.Text = mf.mc.actualSteerAngleDegrees.ToString("N1");
+            lblToolDistanceSet.Text = mf.guidanceLineDistanceOffTool.ToString();
+            lblToolDistanceActual.Text = mf.mc.toolActualDistance.ToString("N1");
             lblActualSteerAngleUpper.Text = lblToolDistanceActual.Text;
-            double err = (mf.mc.actualSteerAngleDegrees - mf.guidanceLineSteerAngle * 0.01);
-            lblError.Text = Math.Abs(err).ToString("N1");
-            if (err > 0) lblError.ForeColor = Color.Red;
+            lblError.Text = mf.mc.toolError.ToString("N1");
+            if (mf.mc.toolError > 0) lblError.ForeColor = Color.Red;
             else lblError.ForeColor = Color.DarkGreen;
 
-            lblPWMDisplay.Text = mf.mc.pwmDisplay.ToString();
+            lblPWMDisplay.Text = mf.mc.toolPWM.ToString();
             counter++;
             if (toSend && counter > 4)
             {
                 //Fixx
                 Properties.Vehicle.Default.setTool_maxSteerAngle = mf.p_232.pgn[mf.p_232.maxSteer] = unchecked((byte)hsbarMaxSteerAngle.Value);
                 Properties.Vehicle.Default.setTool_wasCounts = mf.p_232.pgn[mf.p_232.wasCounts] = unchecked((byte)hsbarCountsPerDegree.Value);
-
-                Properties.Vehicle.Default.setTool_wasOffset = mf.p_232.pgn[mf.p_232.wasOffset] = unchecked((byte)hsbarWasOffset.Value);
-
+                Properties.Vehicle.Default.setTool_wasOffset = mf.p_232.pgn[mf.p_232.wasOffsetHi] = unchecked((byte)(hsbarWasOffset.Value >> 8));
+                Properties.Vehicle.Default.setTool_wasOffset = mf.p_232.pgn[mf.p_232.wasOffsetLo] = unchecked((byte)hsbarWasOffset.Value);
                 Properties.Vehicle.Default.setTool_HighPWM = mf.p_232.pgn[mf.p_232.highPWM] = unchecked((byte)hsbarHighSteerPWM.Value);
                 Properties.Vehicle.Default.setTool_windupLimit = mf.p_232.pgn[mf.p_232.windup] = unchecked((byte)hsbarWindupLimit.Value);
-                Properties.Vehicle.Default.setTool_P = mf.p_232.pgn[mf.p_232.P] = unchecked((byte)hsbarProportionalGain.Value);
+                Properties.Vehicle.Default.setTool_PXTE = mf.p_232.pgn[mf.p_232.PXTE] = unchecked((byte)hsbarProportionalGainXTE.Value);
+                Properties.Vehicle.Default.setTool_IXTE = mf.p_232.pgn[mf.p_232.IXTE] = unchecked((byte)hsbarIntegralXTE.Value);
                 Properties.Vehicle.Default.setTool_MinPWM = mf.p_232.pgn[mf.p_232.minPWM] = unchecked((byte)hsbarMinPWM.Value);
-                
-                Properties.Vehicle.Default.setTool_I = mf.p_232.pgn[mf.p_232.I] = unchecked((byte)hsbarIntegral.Value);
+                Properties.Vehicle.Default.setTool_PHyd = mf.p_232.pgn[mf.p_232.PHyd] = unchecked((byte)hsbarProportionalGainHyd.Value);
+
 
                 mf.SendPgnToLoop(mf.p_232.pgn);
                 toSend = false;
@@ -228,7 +234,7 @@ namespace AgOpenGPS
 
         private void hsbarProportionalGain_ValueChanged(object sender, EventArgs e)
         {
-            lblProportionalGain.Text = unchecked((byte)hsbarProportionalGain.Value).ToString();
+            lblProportionalGainXTE.Text = unchecked((byte)hsbarProportionalGainXTE.Value).ToString();
             toSend = true;
             counter = 0;
         }
@@ -252,7 +258,7 @@ namespace AgOpenGPS
         #region Steer
         private void hsbarMaxSteerAngle_ValueChanged(object sender, EventArgs e)
         {
-            lblMaxSteerAngle.Text = hsbarMaxSteerAngle.Value.ToString();
+            lblMaxSteerAngle.Text = (hsbarMaxSteerAngle.Value * 0.1).ToString("N1");
             toSend = true;
             counter = 0;
         }
@@ -260,20 +266,14 @@ namespace AgOpenGPS
         private void hsbarCountsPerDegree_ValueChanged(object sender, EventArgs e)
         {
             lblCountsPerDegree.Text = unchecked((byte)hsbarCountsPerDegree.Value).ToString();
-            toSend = true;
-            counter = 0;
-        }
-
-        private void hsbarSteerAngleSensorZero_ValueChanged(object sender, EventArgs e)
-        {
-            lblSteerAngleSensorZero.Text = (hsbarWasOffset.Value - 127).ToString();
+            hsbarWasOffset.LargeChange = (int)(hsbarCountsPerDegree.Value * 0.1);
             toSend = true;
             counter = 0;
         }
 
         private void hsbarIntegral_ValueChanged(object sender, EventArgs e)
         {
-            lblPureIntegral.Text = hsbarIntegral.Value.ToString();
+            lblIntegralXTE.Text = hsbarIntegralXTE.Value.ToString();
             toSend = true;
             counter = 0;
         }
@@ -380,20 +380,20 @@ namespace AgOpenGPS
             set <<= 1;
             reset <<= 1;
             reset += 1;
-            if (cboxDanfoss.Checked) sett |= set;
+            if (cboxSteerEnable.Text == "Switch") sett |= set;
             else sett &= reset;
 
             set <<= 1;
             reset <<= 1;
             reset += 1;
-            //if (cboxSteerEnable.Text == "Button") sett |= set;
-            //else sett &= reset;
+            if (cboxSteerEnable.Text == "Button") sett |= set;
+            else sett &= reset;
 
             set <<= 1;
             reset <<= 1;
             reset += 1;
-            //if (cboxEncoder.Checked) sett |= set;
-            //else sett &= reset;
+            if (cboxDanfoss.Checked) sett |= set;
+            else sett &= reset;
 
             //set = (set << 1);
             //reset = (reset << 1);
@@ -443,7 +443,7 @@ namespace AgOpenGPS
         private void btnFreeDriveZero_Click(object sender, EventArgs e)
         {
             if (mf.vehicle.ast.driveFreeToolDistance == 0)
-                mf.vehicle.ast.driveFreeToolDistance = 5;
+                mf.vehicle.ast.driveFreeToolDistance = 50;
             else mf.vehicle.ast.driveFreeToolDistance = 0;
         }
 
@@ -451,13 +451,13 @@ namespace AgOpenGPS
         private void btnSteerAngleUp_MouseDown(object sender, MouseEventArgs e)
         {
             mf.vehicle.ast.driveFreeToolDistance++;
-            if (mf.vehicle.ast.driveFreeToolDistance > 40) mf.vehicle.ast.driveFreeToolDistance = 40;
+            if (mf.vehicle.ast.driveFreeToolDistance > 100) mf.vehicle.ast.driveFreeToolDistance = 100;
         }
 
         private void btnSteerAngleDown_MouseDown(object sender, MouseEventArgs e)
         {
             mf.vehicle.ast.driveFreeToolDistance--;
-            if (mf.vehicle.ast.driveFreeToolDistance < -40) mf.vehicle.ast.driveFreeToolDistance = -40;
+            if (mf.vehicle.ast.driveFreeToolDistance < -100) mf.vehicle.ast.driveFreeToolDistance = -100;
         }
         #endregion
 
@@ -660,5 +660,18 @@ namespace AgOpenGPS
 
         #endregion
 
+        private void hsbarWasOffset_ValueChanged(object sender, EventArgs e)
+        {
+            lblWasOffset.Text = (hsbarWasOffset.Value / (double)(hsbarCountsPerDegree.Value)).ToString("N1");
+            toSend = true;
+            counter = 0;
+        }
+
+        private void hsbarProportionalGainHyd_ValueChanged(object sender, EventArgs e)
+        {
+            lblProportionalGainHyd.Text = hsbarProportionalGainHyd.Value.ToString();
+            toSend = true;
+            counter = 0;
+        }
     }
 }

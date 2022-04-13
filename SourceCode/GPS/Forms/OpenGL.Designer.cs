@@ -1981,12 +1981,12 @@ namespace AgOpenGPS
                     if (avgPivotDistance > 0.0)
                     {
                         GL.Color3(0.9752f, 0.50f, 0.3f);
-                        hede = "< " + (Math.Abs(avgPivotDistance)).ToString("N0");
+                        hede = "< " + (Math.Abs(avgPivotDistance)).ToString("N1");
                     }
                     else
                     {
                         GL.Color3(0.50f, 0.952f, 0.3f);
-                        hede = (Math.Abs(avgPivotDistance)).ToString("N0") + " >";
+                        hede = (Math.Abs(avgPivotDistance)).ToString("N1") + " >";
                     }
 
                     int center = -(int)(((double)(hede.Length) * 0.5) * 16);
@@ -2014,12 +2014,12 @@ namespace AgOpenGPS
                     if (avgPivotDistance2 > 0.0)
                     {
                         GL.Color3(0.9752f, 0.50f, 0.3f);
-                        hede = "< " + (Math.Abs(avgPivotDistance2)).ToString("N0");
+                        hede = "< " + (Math.Abs(avgPivotDistance2)).ToString("N1");
                     }
                     else
                     {
                         GL.Color3(0.50f, 0.952f, 0.3f);
-                        hede = (Math.Abs(avgPivotDistance2)).ToString("N0") + " >";
+                        hede = (Math.Abs(avgPivotDistance2)).ToString("N1") + " >";
                     }
 
                     int center = -(int)(((double)(hede.Length) * 0.5) * 16);
