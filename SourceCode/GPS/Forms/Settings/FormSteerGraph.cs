@@ -30,8 +30,10 @@ namespace AgOpenGPS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (tabControl1.TabIndex == 0) DrawChart();
-            if (tabControl1.TabIndex == 1) DrawChartTool();
+            //if (tabControl1.TabIndex == 0) DrawChart();
+            //if (tabControl1.TabIndex == 1) DrawChartTool();
+            DrawChart();
+            DrawChartTool();
         }
 
         private void DrawChart()
@@ -75,16 +77,16 @@ namespace AgOpenGPS
         {
             {
                 dataXTE = mf.guidanceLineDistanceOffTool.ToString();
-                dataXTEActual = mf.mc.toolActualDistanceChart.ToString();
+                dataXTEActual = mf.mc.toolActualDistance.ToString();
                 dataError = mf.mc.toolError.ToString();
 
                 label2.Text = mf.guidanceLineDistanceOffTool.ToString();
-                label3.Text = mf.mc.toolActualDistanceChart.ToString();
+                label3.Text = mf.mc.toolActualDistance.ToString();
                 label7.Text = mf.mc.toolError.ToString();
             }
 
             //chart data
-            Series s = chartTool.Series["S"];
+            Series s = chartTool.Series["Set"];
             Series w = chartTool.Series["Actual"]; 
             Series e = chartTool.Series["Error"];
 
@@ -96,8 +98,8 @@ namespace AgOpenGPS
             if (w.Points.Count > 0) nextX5 = w.Points[w.Points.Count - 1].XValue + 1;
             if (e.Points.Count > 0) nextE = e.Points[e.Points.Count - 1].XValue + 1;
 
-            chartTool.Series["S"].Points.AddXY(nextX, dataXTE);
-            chartTool.Series["PWM"].Points.AddXY(nextX5, dataXTEActual);
+            chartTool.Series["Set"].Points.AddXY(nextX, dataXTE);
+            chartTool.Series["Actual"].Points.AddXY(nextX5, dataXTEActual);
             chartTool.Series["Error"].Points.AddXY(nextE, dataError);
 
             //if (isScroll)
