@@ -166,12 +166,6 @@
     <Compile Include="Forms\FormFieldKML.Designer.cs">
       <DependentUpon>FormFieldKML.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormSpeech.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormSpeech.Designer.cs">
-      <DependentUpon>FormSpeech.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -563,9 +557,6 @@
     </Compile>
     <EmbeddedResource Include="Forms\FormFieldKML.resx">
       <DependentUpon>FormFieldKML.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSpeech.resx">
-      <DependentUpon>FormSpeech.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMap.resx">
       <DependentUpon>FormMap.cs</DependentUpon>

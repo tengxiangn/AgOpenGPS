@@ -8,7 +8,7 @@ using AgOpenGPS.Properties;
 using System.Globalization;
 using System.IO;
 using System.Media;
-using System.Speech.Recognition;
+//using System.Speech.Recognition;
 
 //C:\Program Files(x86)\Arduino\hardware\tools\avr / bin / avrdude - CC:\Program Files(x86)\Arduino\hardware\tools\avr / etc / avrdude.conf 
 //- v - patmega328p - carduino - PCOM3 - b57600 - D - Uflash:w: C: \Users\FarmPC\AppData\Local\Temp\arduino_build_448484 / Autosteer_UDP_20.ino.hex:i
@@ -306,23 +306,23 @@ namespace AgOpenGPS
                     //btnContour.Text = InchXTE; //cross track error
                 }
 
-                if (dewfy > 0)
-                {
-                    dewfy--;
+                //if (dewfy > 0)
+                //{
+                //    dewfy--;
 
-                    if (dewfy == 1)
-                    {
-                        //recEngine.RecognizeAsyncStop();
-                        recEngine.RecognizeAsyncCancel();
-                        //recEngine.RecognizeAsync(RecognizeMode.Multiple);
-                    }
-                    else if (dewfy == 0)
-                    {
-                        //recEngine.RecognizeAsyncStop();
-                        //recEngine.RecognizeAsyncCancel();
-                        recEngine.RecognizeAsync(RecognizeMode.Multiple);
-                    }
-                }
+                //    if (dewfy == 1)
+                //    {
+                //        //recEngine.RecognizeAsyncStop();
+                //        recEngine.RecognizeAsyncCancel();
+                //        //recEngine.RecognizeAsync(RecognizeMode.Multiple);
+                //    }
+                //    else if (dewfy == 0)
+                //    {
+                //        //recEngine.RecognizeAsyncStop();
+                //        //recEngine.RecognizeAsyncCancel();
+                //        recEngine.RecognizeAsync(RecognizeMode.Multiple);
+                //    }
+                //}
 
             } //end every 1/2 second
 

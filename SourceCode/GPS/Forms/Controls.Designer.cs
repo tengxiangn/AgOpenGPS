@@ -1021,17 +1021,17 @@ namespace AgOpenGPS
 
         private void speechRecognitionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form fc = Application.OpenForms["FormSpeech"];
+            //Form fc = Application.OpenForms["FormSpeech"];
 
-            if (fc != null)
-            {
-                fc.Focus();
-                return;
-            }
+            //if (fc != null)
+            //{
+            //    fc.Focus();
+            //    return;
+            //}
 
-            //
-            Form form = new FormSpeech(this);
-            form.Show(this);
+            ////
+            //Form form = new FormSpeech(this);
+            //form.Show(this);
         }
 
         private void helpMenuItem_Click(object sender, EventArgs e)

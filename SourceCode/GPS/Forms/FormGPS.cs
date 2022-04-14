@@ -13,8 +13,8 @@ using System.Media;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Resources;
-using System.Speech.Recognition;
-using System.Speech.Synthesis;
+//using System.Speech.Recognition;
+//using System.Speech.Synthesis;
 using System.Windows.Forms;
 
 namespace AgOpenGPS
@@ -35,8 +35,8 @@ namespace AgOpenGPS
         [System.Runtime.InteropServices.DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr hWind, int nCmdShow);
 
-        public SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
-        public SpeechSynthesizer Sarah = new SpeechSynthesizer();
+        //public SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
+        //public SpeechSynthesizer Sarah = new SpeechSynthesizer();
 
         #region // Class Props and instances
 
@@ -367,83 +367,83 @@ namespace AgOpenGPS
         }
 
         //listen for commands for 3 seconds
-        int dewfy;
-        float confidence;
-        public void SpeechOnOff(bool isOn)
-        {
-            if (isOn)
-            {
-                recEngine.SpeechRecognized += recEngine_SpeechRecognized;
-                recEngine.RecognizeAsync(RecognizeMode.Multiple);
-            }
-            else
-            {
-                recEngine.SpeechRecognized -= recEngine_SpeechRecognized;
-                recEngine.RecognizeAsyncStop();
-            }
-        }
+        //int dewfy;
+        //float confidence;
+        //public void SpeechOnOff(bool isOn)
+        //{
+        //    if (isOn)
+        //    {
+        //        recEngine.SpeechRecognized += recEngine_SpeechRecognized;
+        //        recEngine.RecognizeAsync(RecognizeMode.Multiple);
+        //    }
+        //    else
+        //    {
+        //        recEngine.SpeechRecognized -= recEngine_SpeechRecognized;
+        //        recEngine.RecognizeAsyncStop();
+        //    }
+        //}
 
-        public void recEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
-        {
-            //if (!isJobStarted) return;
-            if (e.Result.Confidence < confidence) return;
-            switch (e.Result.Text)
-            {
-                case "Command":
-                    dewfy = 6;
-                    break;
-                case "steering":
-                    if (dewfy > 2) btnAutoSteer.PerformClick();
-                    dewfy = 2;
-                    break;
-                case "you turn":
-                    if (dewfy > 2) btnAutoYouTurn.PerformClick();
-                    dewfy = 2;
-                    break;
-                case "section control":
-                    if (dewfy > 2) btnSectionOffAutoOn.PerformClick();
-                    dewfy = 2;
-                    break;
-                case "manual control":
-                    if (dewfy > 2) btnManualOffOn.PerformClick();
-                    dewfy = 2;
-                    break;
-                case "line":
-                    if (dewfy > 2) btnABLine.PerformClick();
-                    dewfy = 2;
-                    break;
-                case "curve":
-                    if (dewfy > 2) btnCurve.PerformClick();
-                    dewfy = 2;
-                    break;
-                case "steer settings":
-                    if (dewfy > 2) btnAutoSteerConfig.PerformClick();
-                    dewfy = 2;
-                    break;
-                case "configuration":
-                    if (dewfy > 2) stripBtnConfig.PerformClick();
-                    dewfy = 2;
-                    break;
-            }
-        }
+        //public void recEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        //{
+        //    //if (!isJobStarted) return;
+        //    if (e.Result.Confidence < confidence) return;
+        //    switch (e.Result.Text)
+        //    {
+        //        case "Command":
+        //            dewfy = 6;
+        //            break;
+        //        case "steering":
+        //            if (dewfy > 2) btnAutoSteer.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //        case "you turn":
+        //            if (dewfy > 2) btnAutoYouTurn.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //        case "section control":
+        //            if (dewfy > 2) btnSectionOffAutoOn.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //        case "manual control":
+        //            if (dewfy > 2) btnManualOffOn.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //        case "line":
+        //            if (dewfy > 2) btnABLine.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //        case "curve":
+        //            if (dewfy > 2) btnCurve.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //        case "steer settings":
+        //            if (dewfy > 2) btnAutoSteerConfig.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //        case "configuration":
+        //            if (dewfy > 2) stripBtnConfig.PerformClick();
+        //            dewfy = 2;
+        //            break;
+        //    }
+        //}
 
         //Initialize items before the form Loads or is visible
         private void FormGPS_Load(object sender, EventArgs e)
         {
             //Speech engine
-            Choices commands = new Choices();
+            //Choices commands = new Choices();
 
-            commands.Add(new string[] { "steering", "you turn", "section control", 
-                "manual control", "Command", "line", "curve", "steer settings", "configuration" });
+            //commands.Add(new string[] { "steering", "you turn", "section control", 
+            //    "manual control", "Command", "line", "curve", "steer settings", "configuration" });
 
-            GrammarBuilder gBuilder = new GrammarBuilder();
-            gBuilder.Append(commands);
-            Grammar grammar = new Grammar(gBuilder);
-            recEngine.LoadGrammarAsync(grammar);
-            recEngine.SetInputToDefaultAudioDevice();
-            confidence = Settings.Default.setSpeech_confidence;
+            //GrammarBuilder gBuilder = new GrammarBuilder();
+            //gBuilder.Append(commands);
+            //Grammar grammar = new Grammar(gBuilder);
+            //recEngine.LoadGrammarAsync(grammar);
+            //recEngine.SetInputToDefaultAudioDevice();
+            //confidence = Settings.Default.setSpeech_confidence;
 
-            SpeechOnOff(Settings.Default.setSpeech_isOn);
+            //SpeechOnOff(Settings.Default.setSpeech_isOn);
 
             this.MouseWheel += ZoomByMouseWheel;
 
